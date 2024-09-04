@@ -1,0 +1,1543 @@
+fileFormatVersion: 2
+guid: 0eba95f82f23c904bba7bbc5c6bed911
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1081
+        width: 254
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65615c39fec5c841b491bba03318015
+      internalID: 940115539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 8
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1231
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db1624b74ee18e044a64b90afcfead40
+      internalID: 1263463830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1289
+        width: 39
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa822b9808e4801499a6f5645036231b
+      internalID: -912439742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_3
+      rect:
+        serializedVersion: 2
+        x: 1741
+        y: 1019
+        width: 194
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b20d61d4c6864340af4ffec063d3526
+      internalID: 2134244705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_4
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 1019
+        width: 191
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf489b73e75c4554c9721e854806044b
+      internalID: -1809102823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_5
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 1019
+        width: 193
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80cbd562316956a4ab75dc939975790a
+      internalID: -1427957416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1080
+        width: 78
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 109600f510ac569408b58dfce6e782c5
+      internalID: 963250562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1176
+        width: 107
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2e00978c130b14a8cfda052da3143b
+      internalID: -1657316712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_8
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1158
+        width: 108
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0fb2d562ffb694459e8460f8037e84e
+      internalID: -889732214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_9
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 1019
+        width: 210
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f964de41e2a86714fbb0955532ceda77
+      internalID: 1961590093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_10
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 1019
+        width: 209
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7e13061f220004bac102f98233da5e
+      internalID: 1965083131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_11
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 1019
+        width: 211
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82593305977451549a9ea13080221994
+      internalID: -248911476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_12
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 1019
+        width: 238
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0325ede3a67b8f48b6562c8f64ac7be
+      internalID: -453866370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_13
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 957
+        width: 152
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd134e9ac80a5348bc8d4d7f7caa1a4
+      internalID: 1516169264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 983
+        width: 108
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 340e08445e182d047a56a74bf370c24f
+      internalID: 611749414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 976
+        width: 98
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb107fbd0a7ad084aa6d93f9435e0936
+      internalID: 373008554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_16
+      rect:
+        serializedVersion: 2
+        x: 1958
+        y: 711
+        width: 213
+        height: 273
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c71f2f3dde2469489571b71d3e826b5
+      internalID: 1028341736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_17
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 827
+        width: 75
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f930ef6ec97ccc48ac8c000ca059ef6
+      internalID: -796779661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 843
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b2221d3f35d794a99c1f0f860bec4d
+      internalID: -1555678793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_19
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 840
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7960c61970a34004f847bbffb08a5fd5
+      internalID: -926572644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_20
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 841
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6838f9130d615c24a8b3949f984646cf
+      internalID: -1416911083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_21
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 841
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc938ff8dfdadc24480b78f3ecc10431
+      internalID: 767787828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_22
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 841
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b5107df78a3fa942b82798ad534bcff
+      internalID: 854149176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_23
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 711
+        width: 285
+        height: 271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f479e63dbbf289044b90dc499e79f843
+      internalID: -1502948459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_24
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 711
+        width: 279
+        height: 271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551df2dd755fe304694fc6b8bb3dbfd8
+      internalID: -149413949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_25
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 711
+        width: 269
+        height: 271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e324b2abaf31e41822ff8d15af237e
+      internalID: -1319172877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_26
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 711
+        width: 339
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7061c62e639f76429d158eb6d481232
+      internalID: -1969485547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_27
+      rect:
+        serializedVersion: 2
+        x: 2183
+        y: 711
+        width: 219
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987e03a99ff208f48a03cff9b3afd852
+      internalID: -1764575713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_28
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 753
+        width: 105
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3057d6dcfbd88f34eb8c48092b4acd7f
+      internalID: 1113908348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_29
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 772
+        width: 38
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a7b9bc833b8e5d49a7ad916acc19692
+      internalID: 584476570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_30
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 770
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8baa698b8ba3d4ebaebc468f55fb92
+      internalID: -349610072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 751
+        width: 75
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97fd3826c47cee341a36b79bc45e9655
+      internalID: -470403544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_32
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 753
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38ec27510839594fb9c2e177f33d2e4
+      internalID: 107605865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_33
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 753
+        width: 4
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e46908763e5f1d49ae446bf1717bf4b
+      internalID: 1059188843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_34
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 753
+        width: 4
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8eac93138f78a44e9c7f5552360aff3
+      internalID: -93406860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_35
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 753
+        width: 42
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb3335d840b573468ac93d7d204e7e2
+      internalID: 1029360499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_36
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 731
+        width: 110
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7839abcd33777914ebc6fb81075d5424
+      internalID: -2010841074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_37
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 740
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b78ff29dac6d574e88d21a4bf901a6b
+      internalID: -1922779640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_38
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 735
+        width: 29
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b483608f92687b40bc15ed1547ee730
+      internalID: -819206137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_39
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 735
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a59f8b2210cf5b842824f23f3c65265a
+      internalID: -73049934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_40
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 369
+        width: 578
+        height: 273
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511ad46f48acc7b4c853fe7215aa9079
+      internalID: 825952424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_41
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 368
+        width: 254
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634d220792c13734fbbf8f6ace48707e
+      internalID: -2022737048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_42
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 368
+        width: 251
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 756d1f9e1ce0082468d5bfeedd97ebfa
+      internalID: 783981961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_43
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 368
+        width: 248
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08759bafd56d6224ea3b9bff4c5f478a
+      internalID: -864442257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_44
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 368
+        width: 177
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ffbbb7c96519a740af77ca863ddcb08
+      internalID: -826536647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_45
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 368
+        width: 196
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb1081b85ce04549a7b08f2fe642f6c
+      internalID: 1907946555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_46
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 368
+        width: 293
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d5d6298a3d9f74196e33a51356a3bc
+      internalID: -761866389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_47
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 436
+        width: 45
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03141f431c10734a99dc7e01f08543e
+      internalID: 1162611187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_48
+      rect:
+        serializedVersion: 2
+        x: 2351
+        y: 435
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafa95637d9688e4ea918964f1ffd30d
+      internalID: 604567128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_49
+      rect:
+        serializedVersion: 2
+        x: 2372
+        y: 386
+        width: 88
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df8ac5afd778dd4fa15b52cca6458a9
+      internalID: 823890485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_50
+      rect:
+        serializedVersion: 2
+        x: 2244
+        y: 417
+        width: 124
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236ac1fac132b7c4784acf6f16d2cc70
+      internalID: -834111580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_51
+      rect:
+        serializedVersion: 2
+        x: 2224
+        y: 402
+        width: 144
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6729959926d1f7488502a0089f978e7
+      internalID: 355572637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_52
+      rect:
+        serializedVersion: 2
+        x: 2238
+        y: 386
+        width: 49
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65119154e6d651743922c3f6261fbcc7
+      internalID: -528633243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_53
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 386
+        width: 29
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8a0a1fce7c30f48895a2adf19e0971
+      internalID: 2034664648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_54
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 388
+        width: 44
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f8cb4961a1a2984e940b3b374237cd3
+      internalID: 1601644133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_55
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 38
+        width: 207
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6794e0c1f72d0429bd2b515d44e94e
+      internalID: -736229049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_56
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 3
+        width: 240
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b2b2fb3d79fa74fbbe7ece634a1801
+      internalID: 821576499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_57
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 3
+        width: 247
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1615d369db331b04caef9ce77d91930d
+      internalID: -962006821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_58
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 3
+        width: 239
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb76e7ddd3271448a1643ebe8223611
+      internalID: 579638557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_59
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 3
+        width: 242
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b48cb65dcf69c84a8d80e7a839b02ba
+      internalID: -2109513054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_60
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 3
+        width: 244
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a147b10163d6645b6fca7bf87c3a9e
+      internalID: 2097024931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_61
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 4
+        width: 307
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a7a1aa934c76a4c8df728d8e962afe
+      internalID: 88637061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_62
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 3
+        width: 304
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507e51f86ef29ea4d9488c8ab367267f
+      internalID: 1191561109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Marvel Avengers Alliance - Hulk World War_63
+      rect:
+        serializedVersion: 2
+        x: 2159
+        y: 3
+        width: 300
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844064d76c6b98743b602d713978f4c1
+      internalID: 1523144178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      2: 611749414
+      3: 373008554
+      4: 963250562
+      6: -1657316712
+      7: -912439742
+      8: 1263463830
+      Browser Games - Marvel Avengers Alliance - Hulk World War_0: 940115539
+      Browser Games - Marvel Avengers Alliance - Hulk World War_10: 1965083131
+      Browser Games - Marvel Avengers Alliance - Hulk World War_11: -248911476
+      Browser Games - Marvel Avengers Alliance - Hulk World War_12: -453866370
+      Browser Games - Marvel Avengers Alliance - Hulk World War_13: 1516169264
+      Browser Games - Marvel Avengers Alliance - Hulk World War_16: 1028341736
+      Browser Games - Marvel Avengers Alliance - Hulk World War_17: -796779661
+      Browser Games - Marvel Avengers Alliance - Hulk World War_18: -1555678793
+      Browser Games - Marvel Avengers Alliance - Hulk World War_19: -926572644
+      Browser Games - Marvel Avengers Alliance - Hulk World War_20: -1416911083
+      Browser Games - Marvel Avengers Alliance - Hulk World War_21: 767787828
+      Browser Games - Marvel Avengers Alliance - Hulk World War_22: 854149176
+      Browser Games - Marvel Avengers Alliance - Hulk World War_23: -1502948459
+      Browser Games - Marvel Avengers Alliance - Hulk World War_24: -149413949
+      Browser Games - Marvel Avengers Alliance - Hulk World War_25: -1319172877
+      Browser Games - Marvel Avengers Alliance - Hulk World War_26: -1969485547
+      Browser Games - Marvel Avengers Alliance - Hulk World War_27: -1764575713
+      Browser Games - Marvel Avengers Alliance - Hulk World War_28: 1113908348
+      Browser Games - Marvel Avengers Alliance - Hulk World War_29: 584476570
+      Browser Games - Marvel Avengers Alliance - Hulk World War_3: 2134244705
+      Browser Games - Marvel Avengers Alliance - Hulk World War_30: -349610072
+      Browser Games - Marvel Avengers Alliance - Hulk World War_31: -470403544
+      Browser Games - Marvel Avengers Alliance - Hulk World War_32: 107605865
+      Browser Games - Marvel Avengers Alliance - Hulk World War_33: 1059188843
+      Browser Games - Marvel Avengers Alliance - Hulk World War_34: -93406860
+      Browser Games - Marvel Avengers Alliance - Hulk World War_35: 1029360499
+      Browser Games - Marvel Avengers Alliance - Hulk World War_36: -2010841074
+      Browser Games - Marvel Avengers Alliance - Hulk World War_37: -1922779640
+      Browser Games - Marvel Avengers Alliance - Hulk World War_38: -819206137
+      Browser Games - Marvel Avengers Alliance - Hulk World War_39: -73049934
+      Browser Games - Marvel Avengers Alliance - Hulk World War_4: -1809102823
+      Browser Games - Marvel Avengers Alliance - Hulk World War_40: 825952424
+      Browser Games - Marvel Avengers Alliance - Hulk World War_41: -2022737048
+      Browser Games - Marvel Avengers Alliance - Hulk World War_42: 783981961
+      Browser Games - Marvel Avengers Alliance - Hulk World War_43: -864442257
+      Browser Games - Marvel Avengers Alliance - Hulk World War_44: -826536647
+      Browser Games - Marvel Avengers Alliance - Hulk World War_45: 1907946555
+      Browser Games - Marvel Avengers Alliance - Hulk World War_46: -761866389
+      Browser Games - Marvel Avengers Alliance - Hulk World War_47: 1162611187
+      Browser Games - Marvel Avengers Alliance - Hulk World War_48: 604567128
+      Browser Games - Marvel Avengers Alliance - Hulk World War_49: 823890485
+      Browser Games - Marvel Avengers Alliance - Hulk World War_5: -1427957416
+      Browser Games - Marvel Avengers Alliance - Hulk World War_50: -834111580
+      Browser Games - Marvel Avengers Alliance - Hulk World War_51: 355572637
+      Browser Games - Marvel Avengers Alliance - Hulk World War_52: -528633243
+      Browser Games - Marvel Avengers Alliance - Hulk World War_53: 2034664648
+      Browser Games - Marvel Avengers Alliance - Hulk World War_54: 1601644133
+      Browser Games - Marvel Avengers Alliance - Hulk World War_55: -736229049
+      Browser Games - Marvel Avengers Alliance - Hulk World War_56: 821576499
+      Browser Games - Marvel Avengers Alliance - Hulk World War_57: -962006821
+      Browser Games - Marvel Avengers Alliance - Hulk World War_58: 579638557
+      Browser Games - Marvel Avengers Alliance - Hulk World War_59: -2109513054
+      Browser Games - Marvel Avengers Alliance - Hulk World War_60: 2097024931
+      Browser Games - Marvel Avengers Alliance - Hulk World War_61: 88637061
+      Browser Games - Marvel Avengers Alliance - Hulk World War_62: 1191561109
+      Browser Games - Marvel Avengers Alliance - Hulk World War_63: 1523144178
+      Browser Games - Marvel Avengers Alliance - Hulk World War_8: -889732214
+      Browser Games - Marvel Avengers Alliance - Hulk World War_9: 1961590093
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
