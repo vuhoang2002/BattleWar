@@ -6,6 +6,7 @@ public class Chosen : MonoBehaviour
 {
     // Khai báo PlayerController
     private PlayerController playerController;
+    private GameObject BattleCanvas;
 
     void Start()
     {
@@ -14,20 +15,22 @@ public class Chosen : MonoBehaviour
 
         if (playerController != null)
         {
-            Debug.Log("Tìm thấy PlayerController trong đối tượng cha.");
+           // Debug.Log("Tìm thấy PlayerController trong đối tượng cha.");
         }
         if(playerController==null)
         {
-            Debug.LogError("Không tìm thấy PlayerController trong đối tượng cha.");
+           // Debug.LogError("Không tìm thấy PlayerController trong đối tượng cha.");
         }
     }
 
     void OnMouseDown()
     {
-        Debug.Log("Nhân vật đã được click bời cái thứ 2!!");
-
+        
+       
+      
         if (playerController != null && playerController.canChosen)
         {
+             Debug.Log("Nhân vật đã được click bời cái thứ 2!!");
             Collider collider = GetComponent<Collider>();
             playerController.isChosen = true;
 
@@ -41,10 +44,18 @@ public class Chosen : MonoBehaviour
                     pc.canChosen = false;
                 }
             }
+            // khi click thành công, đồng thời ta phải set JoyStick hiện
+            showJoyStickCanva();
         }
         else
         {
-            Debug.LogWarning("PlayerController không tìm thấy hoặc canChosen không phải true.");
+           // Debug.LogWarning("PlayerController không tìm thấy hoặc canChosen không phải true.");
         }
+    }
+    // hiện JoyStickCanva
+    private void showJoyStickCanva(){
+          BattleCanvas=GameObject.Find("BattleCanva");
+          Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
+          joyStickCanvaTransform.gameObject.SetActive(true);
     }
 }

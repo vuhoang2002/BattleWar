@@ -34,7 +34,6 @@ RectTransform:
   m_Children:
   - {fileID: 7389946472040602869}
   m_Father: {fileID: 4467931089310546072}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -178,7 +177,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9131795291512723444}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -319,7 +317,6 @@ RectTransform:
   - {fileID: 6746475537714181158}
   - {fileID: 9131795291512723444}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -343,7 +340,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -369,7 +368,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1794530883577054148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +399,7 @@ GameObject:
   - component: {fileID: 6746475536572532995}
   - component: {fileID: 6746475536572532994}
   - component: {fileID: 6775872303705129255}
-  - component: {fileID: 7213399113075455103}
+  - component: {fileID: 6546121745865201457}
   m_Layer: 5
   m_Name: Def_Btn
   m_TagString: Untagged
@@ -422,7 +421,6 @@ RectTransform:
   m_Children:
   - {fileID: 6746475537361325489}
   m_Father: {fileID: 4467931089310546072}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -536,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDef_Btn_Active: 1
---- !u!114 &7213399113075455103
+--- !u!114 &6546121745865201457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -545,16 +543,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6746475536572533020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0d460a4bf9566043a72220a3319b838, type: 3}
+  m_Script: {fileID: 11500000, guid: 67d1ee4de45365b478ef23a2eaa3ec94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeightPoint: {fileID: 0}
-  minHeightPoint: {fileID: 0}
+  playerBattleArea: {fileID: 0}
   units: []
-  maxUnitsPerColumn: 5
-  spacingX: 1
-  spaceing_Btw_Y: 1
-  moveSpeed: 2
+  unitInfo_List: []
+  Max_Unit_Per_Col: 5
+  space_X_Btw_Col: 1
+  space_X_In_Col: 0
+  maxPos: {x: 0, y: 0}
+  minPos: {x: 0, y: 0}
+  targetPositions: []
+  unitPerCol: 
+  totalColum: 0
 --- !u!1 &6746475536713332516
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +588,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6746475537714181158}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -723,7 +724,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6746475536572533021}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -863,7 +863,6 @@ RectTransform:
   m_Children:
   - {fileID: 6746475536713332517}
   m_Father: {fileID: 4467931089310546072}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

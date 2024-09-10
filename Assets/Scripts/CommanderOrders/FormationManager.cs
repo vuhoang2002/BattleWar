@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,14 +10,14 @@ public class FormationManager : MonoBehaviour
     public GameObject playerBattleArea;
     public List<GameObject> units;  // Danh sách các đơn vị (unit)
     public int maxUnitsPerColumn = 5;  // Số lượng đơn vị tối đa trong mỗi cột dọc (trục Y)
-    public float spacingX = 0.4f;  // Khoảng cách giữa các đơn vị theo trục X (hàng ngang)
+    public float spacingX = 1f;  // Khoảng cách giữa các đơn vị theo trục X (hàng ngang)
     public float spaceing_Btw_Y = 0.3f;// cái này khaongr cách chiều ngang giữa các đơn vị ở hàng dọc
     public float moveSpeed = 2.0f;  // Tốc độ di chuyển của các đơn vị
     Vector2 position;
     public Vector2 maxPos;
     public Vector2 minPos;
     private List<Vector2> targetPositions;  // Danh sách các vị trí mục tiêu cho các đơn vị
-    Renderer renderer ;
+    Renderer renderer;
 
     void Awake()
     {
@@ -32,8 +33,8 @@ public class FormationManager : MonoBehaviour
             }
             if (playerBattleArea == null)
             {
-                Debug.Log("Không có PlayerBattleArea"); 
-                }
+                Debug.Log("Không có PlayerBattleArea");
+            }
         }
 
         targetPositions = new List<Vector2>();
@@ -61,12 +62,10 @@ public class FormationManager : MonoBehaviour
                 // Lấy tọa độ của bounds
                 Vector3 min = renderer.bounds.min; // Tọa độ thấp nhất
                 Vector3 max = renderer.bounds.max; // Tọa độ cao nhất
-               // maxPos=max.y;
-               // minPos=min.y;
-               maxPos=new Vector2(max.x,max.y);
-                minPos=new Vector2(min.x,min.y);
-
-               
+                                                   // maxPos=max.y;
+                                                   // minPos=min.y;
+                maxPos = new Vector2(max.x, max.y);
+                minPos = new Vector2(min.x, min.y);
 
                 Debug.Log("Tọa độ thấp nhất: " + min);
                 Debug.Log("Tọa độ cao nhất: " + max);
@@ -87,8 +86,9 @@ public class FormationManager : MonoBehaviour
 
         float currentX = maxPos.x;  // Bắt đầu từ vị trí của điểm maxHeight trên trục X
         float currentY = maxPos.y;  // Bắt đầu từ maxHeight trên trục Y
-        float preX = currentX;
         float preY = 0f;
+         float preX = currentX;
+
 
         int unitIndex = 0;  // Chỉ số của unit trong danh sách
 
@@ -96,6 +96,7 @@ public class FormationManager : MonoBehaviour
         for (int row = 0; row < totalRows && unitIndex < units.Count; row++)
         {
             // Thêm đơn vị vào hàng dọc cho tới khi đạt số lượng tối đa cho một cột
+                preX=currentX;
             for (int i = 0; i < maxUnitsPerColumn && unitIndex < units.Count; i++)
             {
                 position = new Vector2(preX - spaceing_Btw_Y, currentY);
@@ -106,7 +107,7 @@ public class FormationManager : MonoBehaviour
                 preX = position.x;
                 // preY=currentY;
             }
-
+            Debug.Log("Amen"+ currentX);
             // Sau khi hoàn thành một cột, di chuyển sang cột tiếp theo trên trục X và đặt lại vị trí Y
             currentX -= spacingX;  // Di chuyển sang tría theo trục X
             currentY = maxPos.y;  // Đặt lại vị trí Y cho cột tiếp theo

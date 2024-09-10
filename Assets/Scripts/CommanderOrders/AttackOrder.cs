@@ -24,7 +24,7 @@ public class AttackOrder : MonoBehaviour
             playerController.isDef_Order = false;
             playerController.isFallBack_Order = false;
 
-            Debug.Log("Attack Order!!!");
+         //   Debug.Log("Attack Order!!!");
         }
 
         // Kiểm tra và cập nhật Def_Btn nếu nó không phải là null
@@ -38,12 +38,12 @@ public class AttackOrder : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("DefenseOrder component not found on def_Child.");
+              //  Debug.LogWarning("DefenseOrder component not found on def_Child.");
             }
         }
         else
         {
-            Debug.LogWarning("def_Child is not assigned.");
+          //  Debug.LogWarning("def_Child is not assigned.");
         }
     }
     

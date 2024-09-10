@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     public bool isChosen = false;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 1f;
     public float searchRadius = 5f;
     public float attackCooldown = 0.7f;
     public float highPos = -4.5f; // Giá trị Y khi prefab đạt kích thước lớn nhất
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     // private bool isColliding;
     public bool isAttacking = false;
-    private bool staticDirection = true;
+    private bool staticDirection = true; //enemy là false, cái này là hướng mặc định
     private Vector2 previousPosition;
     //  private bool isTest;
 
@@ -217,13 +217,13 @@ public class PlayerController : MonoBehaviour
     {
         if (currentDirection.x > 0 && !isRightWay) // Di chuyển sang phải
         {
-            //Debug.Log("Xoay Phải");
+       
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = true;
         }
         else if (currentDirection.x < 0 && isRightWay) // Di chuyển sang trái
         {
-            // Debug.Log("Xoay Trái");
+        
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = false;// tức là nhân vật đang quay sang trái, nó có tác dụng trong hàm scale
         }
@@ -235,10 +235,10 @@ public class PlayerController : MonoBehaviour
         {// phải
        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); 
         // Ghi lại thông báo
-        Debug.Log("Xoay phải cho " + gameObject.name);
+      
             isRightWay = true;// tức là nhân vật đang quay sang trái, nó có tác dụng trong hàm scale
         } else{
-            Debug.Log("Xoay trái");
+       
              transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = false;
         }
@@ -308,7 +308,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void AttackCommandOrder()
-    {
+    {       
+        Debug.Log("Target là: "+target+" isAttacking là: "+ isAttacking);
         if (target == null && !isAttacking)
         {// ko tìm thấy ai thì đi về phía trc
             if (!staticDirection)
@@ -336,7 +337,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("Nhân vật đã đc click!!");
+       
         // Kiểm tra nếu đối tượng có tag là "Player"
         if (canChosen)
         {
@@ -352,12 +353,14 @@ public class PlayerController : MonoBehaviour
                     playerController.canChosen = false;
                 }
             }
+              chosenPlayerSetCam();
+            showJoyStickCanva();
         }
     }
     // hoặc
      void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Nhân vật đã được click!!");
+       
         // Kiểm tra nếu đối tượng có thể được chọn
         if (canChosen)
         {
@@ -372,7 +375,27 @@ public class PlayerController : MonoBehaviour
                     playerController.canChosen = false;
                 }
             }
+            chosenPlayerSetCam();
+            showJoyStickCanva();// show Joystick
         }
+    }
+    private void chosenPlayerSetCam(){
+        // Tìm kiếm camera
+    GameObject mainCamera = GameObject.Find("Main Camera"); 
+if (mainCamera != null){
+        Debug.Log("Found Camera");
+    CameraControl cam = mainCamera.GetComponent<CameraControl>();
+    if (cam != null)
+    {
+        Debug.Log("Found Cam Controller");
+
+        cam.setChosenPlayer(this.gameObject, true);
+    }
+}
+else
+{
+    Debug.LogWarning("Camera not found!");
+}
     }
 
     public void Set_CanChosen(Boolean bl)
@@ -387,8 +410,7 @@ public class PlayerController : MonoBehaviour
         {
             isAttacking = true;
 
-            // Thêm xử lý khi va chạm với Enemy ở đây
-            //    Debug.Log("Player Bắt đầu va chạm với " + other.gameObject.name);
+       
         }
         else if (other.gameObject.CompareTag("Player"))
         {
@@ -403,6 +425,35 @@ public class PlayerController : MonoBehaviour
 
         attackComponent.setAttack(false);
         isAttacking = false;
+    }
+    //public void MoveToPosition(Vector2 to_position){
+      //  do{
+        //transform.position = Vector2.MoveTowards(transform.position, to_position, moveSpeed * Time.deltaTime);
+        //}while(transform.position!=to_position);
+       // Flip_To_True_Direction();
+
+    //}
+     public void StartMovingToPosition(Vector3 targetPosition)
+    {
+        StartCoroutine(MoveToPosition(targetPosition));
+    }
+
+    private IEnumerator MoveToPosition(Vector3 targetPosition)
+    {
+        // Di chuyển đến vị trí mục tiêu
+        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            yield return null; // Chờ cho đến khung hình tiếp theo
+        }
+
+        // Đảm bảo đối tượng đến đúng vị trí
+        transform.position = targetPosition;
+    }
+     private void showJoyStickCanva(){
+          GameObject BattleCanvas=GameObject.Find("BattleCanva");
+          Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
+          joyStickCanvaTransform.gameObject.SetActive(true);
     }
 
 }

@@ -16,5 +16,17 @@ public class CancelChosen : MonoBehaviour
                 playerController.Set_CanChosen(true);
             }
         }
+        offChosenPlayerCam();
+        offJoyStickCanva();
+    }
+      private void offJoyStickCanva(){
+          GameObject BattleCanvas=GameObject.Find("BattleCanva");
+          Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
+          joyStickCanvaTransform.gameObject.SetActive(false);
+    }
+    private void offChosenPlayerCam(){
+        GameObject mainCamera= GameObject.Find("Main Camera");
+        CameraControl cam= mainCamera.GetComponent<CameraControl>();
+        cam.setChosenPlayer(null, false);
     }
 }

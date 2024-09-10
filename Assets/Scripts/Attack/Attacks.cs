@@ -102,12 +102,12 @@ public class Attacks : MonoBehaviour
         isAttacking = true;
         if (targetHealth == null)
         {
-            Debug.LogError("Target does not have a Health component!");
+           // Debug.LogError("Target does not have a Health component!");
             return;
         }
         // amt.SetBool("isRunning", false);
         amt.SetTrigger("isAttack"); // Kích hoạt trigger animation
-        Debug.Log("Tấn công");
+      //  Debug.Log("Tấn công");
         ;// nhận st đúng thời điểm vũ khí tấn công trúng mục tiêu
        
         Invoke("BasicAttackActive", timeToDealDmg);

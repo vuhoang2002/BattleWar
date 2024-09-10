@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,18 @@ public class Health : MonoBehaviour
 
     private Animator animator;
     public GameObject deadthObject;
+    public Sprite halfCastle;//castle
+    public Sprite dieCastle;// for castke
     private AnimationClip deathClip;
     private float deathDuration;
+    private int halfHealth;
+    SpriteRenderer spriteRenderer ;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        halfHealth=health/2;
+         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -38,11 +45,25 @@ public class Health : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
         }
         this.health -= amount;
-        if (health <= 0)
+
+     if(halfCastle!=null && dieCastle!=null ){
+            if(health<=halfHealth){
+                ShowHalfDead(); //for castle
+            }
+            if(health<=0){
+                //thua
+                ShowDieCastle();// for castle
+                 gameObject.tag = "Dead";
+
+
+            }
+        }else if (health <= 0)
         {
             health = 0;
             Die();
         }
+       
+
     }
 
     public void Heal(int amount)
@@ -64,9 +85,8 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Death");
-        gameObject.tag = "Dead";
-
+      //  Debug.Log("Death");
+       // gameObject.tag = "Dead";
         animator.SetBool("isDead", true);
 
         deathClip = GetComponent<Animator>().runtimeAnimatorController.animationClips
@@ -76,7 +96,7 @@ public class Health : MonoBehaviour
         deathDuration = deathClip.length;
 
         // In thời lượng animation ra console
-        Debug.Log("Death animation duration: " + deathDuration + " seconds");
+       // Debug.Log("Death animation duration: " + deathDuration + " seconds");
 
         // Lập lịch để xóa GameObject hiện tại sau khi animation "Knight_Dead" kết thúc
         Invoke("DeleteSelf", deathDuration);
@@ -87,9 +107,12 @@ public class Health : MonoBehaviour
     private void DeleteSelf()
     {
         Destroy(gameObject);
-
+        if(deadthObject!=null){
         GameObject instantiatedObject = Instantiate(deadthObject, transform.position, Quaternion.identity);
         instantiatedObject.transform.localScale = transform.localScale; // Đảm bảo deadthObject quay cùng hướng
+    }else{
+        //Debug.Log("Đôi tượng không có xác!!");
+    }
     }
 
     public void SetHealth(int healthAtThisMoment)
@@ -100,5 +123,11 @@ public class Health : MonoBehaviour
     public int getCurrentHealth()
     {
         return health;
+    }
+    private void ShowHalfDead(){
+        spriteRenderer.sprite = halfCastle;
+    }
+    private void  ShowDieCastle(){
+          spriteRenderer.sprite = dieCastle;
     }
 }

@@ -34,7 +34,6 @@ RectTransform:
   m_Children:
   - {fileID: 275161439169973367}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -153,6 +152,12 @@ MonoBehaviour:
   - {fileID: 2877152860383863476, guid: f0e21de78da7f7048b551ad75cfb2e73, type: 3}
   - {fileID: 2520483857507915414, guid: b4ca4ff1c751875459e14d394a377655, type: 3}
   mapSize: {fileID: 0}
+  maxY: {fileID: 0}
+  minY: {fileID: 0}
+  leftY: {fileID: 0}
+  highest_Y: 2.5
+  lowest_Y: -2.5
+  positionSpawn_X: 2
   prefabName: Knight
 --- !u!1 &5539407820525240922
 GameObject:
@@ -185,7 +190,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2450426925258961216}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -220,7 +224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Spawn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
