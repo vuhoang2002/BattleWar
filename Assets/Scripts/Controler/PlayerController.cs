@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isAtk_Order = false;
     public bool isDef_Order = true;
     public bool isFallBack_Order = false;
+  //  public string unitTag=Knight;
    
     private GameObject target;
     private Animator amt;
@@ -454,6 +455,26 @@ else
           GameObject BattleCanvas=GameObject.Find("BattleCanva");
           Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
           joyStickCanvaTransform.gameObject.SetActive(true);
+    }
+    public string Get_Current_Order_toString(){
+       if(isChosen){
+        return "chosen";
+       }
+        if(isAtk_Order){
+                return "atk";
+        }else if(isDef_Order){
+                            return "def";
+
+        }
+        else if(isFallBack_Order){
+                            return "back";
+
+        }
+        //else if(isAtk_Order){
+            
+       // }
+        
+        return "unKnow_Behavius";
     }
 
 }

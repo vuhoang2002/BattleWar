@@ -161,7 +161,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.28699848, y: -0.28569478}
+  m_Offset: {x: -0.06772223, y: 0.015172526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.3, y: 0}
@@ -172,7 +172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26960427, y: 0.6996987}
+  m_Size: {x: 0.13701859, y: 0.09796405}
   m_EdgeRadius: 0
 --- !u!50 &-782973349911396331
 Rigidbody2D:
@@ -279,7 +279,7 @@ Transform:
   m_GameObject: {fileID: 4598714656854097812}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.335, y: -0.025, z: 0.016005715}
+  m_LocalPosition: {x: -0.18, y: -0.025, z: 0.016005715}
   m_LocalScale: {x: 0.8666667, y: 0.8666667, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -329,9 +329,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.45253643, y: 0.1588284}
+    - - {x: 0.5466801, y: 0.2059001}
       - {x: 0.14303002, y: 0.0022773445}
-      - {x: 0.461089, y: 0.00028074253}
+      - {x: 0.59053653, y: 0.012048717}
   m_UseDelaunayMesh: 0
 --- !u!1001 &1875813678496197815
 PrefabInstance:
@@ -343,7 +343,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2377237470876882843, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_Size.x
-      value: 0.27204087
+      value: 0.31126758
       objectReference: {fileID: 0}
     - target: {fileID: 2377237470876882843, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_Size.y
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2377237470876882843, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_Offset.x
-      value: -0.11265601
+      value: 0.103089824
       objectReference: {fileID: 0}
     - target: {fileID: 2377237470876882843, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_Offset.y

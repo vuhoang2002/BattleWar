@@ -118,7 +118,8 @@ public class Attacks : MonoBehaviour
 
     private void BasicAttackActive()
     {
-        targetHealth.TakeDamage(basic_Atk);
+        if(targetHealth!=null){//mục tiêu mà chết quá sớm sẽ ko ảnh hừng gì
+        targetHealth.TakeDamage(basic_Atk);}
     }
 
     public void setAttack(bool value)

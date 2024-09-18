@@ -1,4 +1,4 @@
-using System.Diagnostics;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,15 +27,7 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            // Damage(10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            // Heal(10);
-        }
+       
     }
 
     public void TakeDamage(int amount)
@@ -87,13 +79,22 @@ public class Health : MonoBehaviour
     {
       //  Debug.Log("Death");
        // gameObject.tag = "Dead";
-        animator.SetBool("isDead", true);
-
-        deathClip = GetComponent<Animator>().runtimeAnimatorController.animationClips
+       if (deadthObject != null)
+{
+    animator.SetBool("isDead", true);
+      deathClip = GetComponent<Animator>().runtimeAnimatorController.animationClips
             .FirstOrDefault(clip => clip.name == deadthObject.name);
+            
 
         // Lấy thời lượng của animation "Knight_Dead"
         deathDuration = deathClip.length;
+}
+else
+{
+    Debug.LogWarning("Chưa có dead Object");
+}
+
+      
 
         // In thời lượng animation ra console
        // Debug.Log("Death animation duration: " + deathDuration + " seconds");
@@ -106,12 +107,13 @@ public class Health : MonoBehaviour
 
     private void DeleteSelf()
     {
-        Destroy(gameObject);
+       
         if(deadthObject!=null){
         GameObject instantiatedObject = Instantiate(deadthObject, transform.position, Quaternion.identity);
         instantiatedObject.transform.localScale = transform.localScale; // Đảm bảo deadthObject quay cùng hướng
+         Destroy(gameObject);
     }else{
-        //Debug.Log("Đôi tượng không có xác!!");
+         Destroy(gameObject);
     }
     }
 

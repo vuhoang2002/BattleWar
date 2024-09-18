@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public bool isAtk_Order = false;
     public bool isDef_Order = true;
     public bool isFallBack_Order = false;
+   // public string unitTag =Knight;
 
     private GameObject target;
     private Animator amt;
@@ -426,9 +427,8 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Xử lý va chạm
-          isAttacking = false;   
-          
+        // Xử lý va chạ
+            isAttacking = false;   //  
        
      //   isAttacking = false;
       if (other.gameObject.CompareTag("Player") && isAtk_Order)

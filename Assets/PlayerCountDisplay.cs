@@ -10,7 +10,7 @@ public class PlayerCountDisplay : MonoBehaviour
     void Update()
     {
         int playerCount = GameObject.FindGameObjectsWithTag("Player").Length; // Tìm tất cả đối tượng có tag "Player"
-        playerCountText.text = $"Players: {playerCount}"+"/"+MAX_PLAYER_COUNT; // Cập nhật Text với số lượng player
+        playerCountText.text = $"{playerCount}"+"/"+MAX_PLAYER_COUNT; // Cập nhật Text với số lượng player
         if(playerCount==MAX_PLAYER_COUNT){
             isMaxPlayer=true;// true thì ko thể spawn thêm
         }else{
