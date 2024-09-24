@@ -251,7 +251,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 7
 --- !u!1 &2625562862612760094
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.7197479, y: -0.11863136}
-      - {x: 0.38781995, y: -0.10727236}
-      - {x: 0.37980622, y: -0.29146814}
-      - {x: 0.71154696, y: -0.280217}
+      - {x: 0.16468802, y: -0.12359905}
+      - {x: 0.15667434, y: -0.30779487}
+      - {x: 0.7278737, y: -0.29654372}
   m_UseDelaunayMesh: 0

@@ -77,7 +77,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.45253643, y: 0.1588284}
-      - {x: 0.14303002, y: 0.0022773445}
+      - {x: -0.026180223, y: 0.15078725}
+      - {x: -0.1147667, y: 0.0022773445}
       - {x: 0.461089, y: 0.00028074253}
   m_UseDelaunayMesh: 0
 --- !u!1 &2916172966324721739
@@ -332,7 +333,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!1001 &2539020322040008775
 PrefabInstance:
   m_ObjectHideFlags: 0

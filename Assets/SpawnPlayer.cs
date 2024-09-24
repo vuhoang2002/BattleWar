@@ -18,6 +18,9 @@ public class SpawnPlayer : MonoBehaviour
     private float lowest_Y;
     private float positionSpawn_X;
     public UnitListManager unitListManager;
+    public AttackOrder atk;
+    public DefenseOrder def;
+    public FallBackOrder fbk;
 
     void Start()
     {
@@ -62,7 +65,11 @@ public class SpawnPlayer : MonoBehaviour
             {
                 Vector3 spawnPosition = new Vector3(positionSpawn_X, positionSpawn_Y, 0f);
                 GameObject newUnit=Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); // Spawn prefab
-                 unitListManager.AddUnitToTagList(prefabToSpawn.name,newUnit);
+                newUnit.GetComponent<PlayerController>().Set_BehaviusForPrefab(atk.isAtk_Active, def.isDef_Active, fbk.isFallBack_Active);// set bahavius
+                newUnit.GetComponent<PlayerController>().Set_Retreat_Position(spawnPosition);
+                unitListManager.AddUnitToTagList(prefabToSpawn.name,newUnit);
+                // sau khi được thêm, ta cần tạo cho nó 1 defpossition
+                unitListManager.CreatDef(prefabToSpawn.name);
             }
            
         }

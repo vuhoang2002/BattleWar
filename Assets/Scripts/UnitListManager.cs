@@ -10,6 +10,7 @@ public class UnitListOrder
 {
     public GameObject prefab; // Cho phép gán trong Inspector
     public string currentOrder; // Hành vi hiện tại của unit đó
+    
 }
 
 [Serializable]
@@ -22,6 +23,7 @@ public class TagList
 
 public class UnitListManager : MonoBehaviour
 {
+    public GameObject unitDef_Area;// là player battle cũ đổi tên cho sang // khu vực phòng thủ
     public List<string> selectedUnitTags;
     public UnitPanelFunction unitPanelFunction;
 
@@ -48,6 +50,7 @@ public class UnitListManager : MonoBehaviour
                     tagName = tag // Gán tên tag cho danh sách
                 };
                 unitTagLists.Add(newTagList);
+              //  Create_DefUnitAreas(tag);
             }
 
             // Tìm tất cả các GameObject có tag "Player"
@@ -58,7 +61,14 @@ public class UnitListManager : MonoBehaviour
                 // Thêm object vào danh sách
                 AddUnitToTagList(player.name, player);
             }
+             foreach (string tag in selectedUnitTags)
+            {
+                // Tạo danh sách tương ứng với unitTag
+               
+                Create_DefUnitAreas(tag);
+            }
         }
+      
     }
 
     void Update()
@@ -118,5 +128,87 @@ public class UnitListManager : MonoBehaviour
         {
             Debug.LogWarning($"Không tìm thấy TagList với tagName '{unitTag}'");
         }
+        //chỉnh sửa position
     }
+public void Create_DefUnitAreas(string unitName)
+{
+    // Tìm TagList với tagName tương ứng
+    TagList tagList = unitTagLists.Find(tagList => tagList.tagName == unitName);
+        // Lấy danh sách my_Units
+        List<UnitListOrder> myUnits = tagList.my_Units;
+
+        // Thực hiện các thao tác với myUnits nếu cần
+    // Tiếp tục với việc tạo khu vực phòng thủ
+    float totalLength = unitDef_Area.GetComponent<Renderer>().bounds.size.x; // Lấy chiều dài theo trục x
+
+    GameObject newArea = Instantiate(unitDef_Area, gameObject.transform);
+    newArea.SetActive(true);
+    
+    // Truyền các unit vào các area con nếu cần
+    newArea.GetComponent<FomationManager_NewUprade>().SetUnitForArea(myUnits);
+     newArea.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+
+    newArea.name = unitName + "_DefArea";
+}
+    public void CreatDef(string unitName ){
+        //tạo defposition cho unit đo
+        Transform childArea = transform.Find(unitName+"_DefArea");
+        childArea.gameObject.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+    }
+public bool RemoveUnitFromTagList(string unitTag, GameObject prefab)
+{   
+      string prefabName = unitTag;
+        int index = prefabName.IndexOf('(');
+        if (index >= 0)
+        {
+            prefabName = prefabName.Substring(0, index).Trim(); // Cắt chuỗi từ đầu đến dấu (
+        }
+        Debug.Log("Unit sắp xóa tên"+prefabName);
+    // Tìm TagList có tagName tương ứng
+    TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
+
+    if (tagList != null)
+    {
+        // Lấy tên prefab mà không có dấu (
+      
+
+        // Tìm UnitListOrder có prefab tương ứng
+        UnitListOrder unitToRemove = tagList.my_Units.Find(unit => 
+        {
+           prefab = unit.prefab;
+           
+            return prefab; // So sánh với tên đã xử lý
+        });
+
+        if (unitToRemove != null)
+        {
+            // Xóa unit khỏi danh sách
+            tagList.my_Units.Remove(unitToRemove);
+             Transform childArea = transform.Find(prefabName+"_DefArea");
+             //tạo lại
+            childArea.gameObject.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+
+
+            // Cập nhật số lượng đơn vị
+            tagList.unitCount--;
+
+            // Nếu cần, có thể hủy GameObject của unit trong scene
+           unitToRemove.prefab.GetComponent<Health>().killSelf();
+
+
+            Debug.Log($"Đã xóa unit '{prefab.name}' khỏi tag '{unitTag}'");
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning($"Không tìm thấy unit '{prefab.name}' trong tag '{unitTag}'");
+        }
+    }
+    else
+    {
+        Debug.LogWarning($"Không tìm thấy TagList với    '{unitTag}'");
+    }
+    // chỉnh sửa
+    return false;
+}
 }

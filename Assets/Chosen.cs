@@ -42,10 +42,11 @@ public class Chosen : MonoBehaviour
                 if (player.TryGetComponent(out PlayerController pc))
                 {
                     pc.canChosen = false;
+                    showJoyStickCanva();
                 }
             }
             // khi click thành công, đồng thời ta phải set JoyStick hiện
-            showJoyStickCanva();
+          
         }
         else
         {

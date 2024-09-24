@@ -8,7 +8,7 @@ public class OnClicked : MonoBehaviour
     public float fixedX = 0f; // Vị trí cố định trên trục X
     public float minY = -5f; // Điểm bắt đầu trục Y
     public float maxY = 5f; // Điểm kết thúc trục Y
-
+    public GameObject abc;
     void Start()
     {
         if (minionPrefab == null)
@@ -17,25 +17,8 @@ public class OnClicked : MonoBehaviour
             minionPrefab = GameObject.Find("Minion");
         }
     }
-
-    public void Update()
-    {
-
-    }
-
-    public void OnButtonClick()
-    {
-        Debug.Log("Nút đã được click!");
-        this.Spawn();
-    }
-
-    void Spawn()
-    {
-        // Tạo vị trí random trên trục Y
-        float randomY = Random.Range(minY, maxY);
-        // Tạo vị trí spawn ở trục X cố định
-        Vector3 spawnPosition = new Vector3(fixedX, randomY, 0f);
-
-        Instantiate(this.minionPrefab, spawnPosition, Quaternion.identity);
+    public void OnMouseDown(){
+            abc.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+           
     }
 }

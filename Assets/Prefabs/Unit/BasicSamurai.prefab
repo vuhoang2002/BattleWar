@@ -200,7 +200,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 7
 --- !u!114 &8271858124747008988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +249,7 @@ MonoBehaviour:
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
+  def_Position: {x: 0, y: 0, z: 0}
   canChosen: 1
   timeBwFindTarget: 1
   timerFindTarget: 0
@@ -330,6 +331,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.5466801, y: 0.2059001}
+      - {x: 0.13674973, y: 0.11484533}
       - {x: 0.14303002, y: 0.0022773445}
       - {x: 0.59053653, y: 0.012048717}
   m_UseDelaunayMesh: 0

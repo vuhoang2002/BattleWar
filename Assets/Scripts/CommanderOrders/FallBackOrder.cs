@@ -3,16 +3,21 @@ using UnityEngine;
 public class FallBackOrder : MonoBehaviour
 {
     //public GameObject Def_Btn;  // Thay Object bằng GameObject
-        private  Transform def_Child;
+    public GameObject def_Child;      
+    public  GameObject atk_Child;// retreatOrder
+    public bool isFallBack_Active; 
     void Start()  // Viết đúng tên phương thức khởi tạo
     {
         // Nếu cần, có thể thêm mã khởi tạo ở đây
-        def_Child= transform.parent.Find("Def_Btn");
+       
     }
     
 
     public void HandleButtonClick()
     {
+         isFallBack_Active=true;
+        atk_Child.GetComponent<AttackOrder>().isAtk_Active=false;
+        def_Child.GetComponent<DefenseOrder>().isDef_Active=false;
         // Tìm tất cả các PlayerController
         PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
 
@@ -23,25 +28,7 @@ public class FallBackOrder : MonoBehaviour
             playerController.isDef_Order = false;
             playerController.isFallBack_Order = true;  // Thiết lập isFallBack_Order thành true
             Debug.Log("Fall Back Order!!!");
-        }
-
-        // Kiểm tra và cập nhật Def_Btn nếu nó không phải là null
-       if (def_Child != null)
-        {
-            // Truy cập script DefenseOrder trên đối tượng con và thay đổi giá trị của isDef_Btn_Active
-            DefenseOrder defenseOrder = def_Child.GetComponent<DefenseOrder>();
-            if (defenseOrder != null)
-            {
-                defenseOrder.isDef_Btn_Active = false;
-            }
-            else
-            {
-                Debug.LogWarning("DefenseOrder component not found on def_Child.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("def_Child is not assigned.");
-        }
+            //Sound here
+        }      
     }
 }

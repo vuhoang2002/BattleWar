@@ -7,7 +7,7 @@ using System.Linq; // Thêm dòng này
 public class Health : MonoBehaviour
 {
     [SerializeField] private int health = 100;
-    private int MAX_HEALTH = 100;
+    private int MAX_HEALTH ;
 
     private Animator animator;
     public GameObject deadthObject;
@@ -16,18 +16,22 @@ public class Health : MonoBehaviour
     private AnimationClip deathClip;
     private float deathDuration;
     private int halfHealth;
-    SpriteRenderer spriteRenderer ;
+    SpriteRenderer spriteRenderer;
+    private bool isDestroy=false;
+  
 
     void Start()
     {
+        MAX_HEALTH=health;
         animator = GetComponent<Animator>();
         halfHealth=health/2;
          spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     void Update()
     {
-       
+      
     }
 
     public void TakeDamage(int amount)
@@ -76,12 +80,38 @@ public class Health : MonoBehaviour
     }
 
     public void Die()
-    {
+    {   
       //  Debug.Log("Death");
        // gameObject.tag = "Dead";
-       if (deadthObject != null)
+        //đối tượng là player|| enemy thì khi chết xóa khỏi danh sách
+        if(gameObject.CompareTag("Player")){
+            GameObject list=GameObject.Find("PUnit_List");
+            UnitListManager unitListManager=list.GetComponent<UnitListManager>();
+            isDestroy= unitListManager.RemoveUnitFromTagList( gameObject.name,gameObject);
+          //  Debug.Log("remove will "+gameObject.name +"and"+gameObject);
+       }else if(gameObject.CompareTag("Enemy")){
+           // GetComponent<EnemyController>().SetActive(false);
+       }
+      
+       gameObject.tag = "Dead";
+      
+        animator.SetBool("isDead", true);
+
+      
+
+        // In thời lượng animation ra console
+       // Debug.Log("Death animation duration: " + deathDuration + " seconds");
+
+        // Lập lịch để xóa GameObject hiện tại sau khi animation "Knight_Dead" kết thúc
+       // Invoke("DeleteSelf", deathDuration);
+
+        // Instantiate the "deadthObject" at the same position và quay cùng hướng
+    }
+
+    public void killSelf(){
+               if (deadthObject != null)
 {
-    animator.SetBool("isDead", true);
+  
       deathClip = GetComponent<Animator>().runtimeAnimatorController.animationClips
             .FirstOrDefault(clip => clip.name == deadthObject.name);
             
@@ -93,18 +123,9 @@ else
 {
     Debug.LogWarning("Chưa có dead Object");
 }
+        Invoke("DeleteSelf",deathDuration );
 
-      
-
-        // In thời lượng animation ra console
-       // Debug.Log("Death animation duration: " + deathDuration + " seconds");
-
-        // Lập lịch để xóa GameObject hiện tại sau khi animation "Knight_Dead" kết thúc
-        Invoke("DeleteSelf", deathDuration);
-
-        // Instantiate the "deadthObject" at the same position và quay cùng hướng
     }
-
     private void DeleteSelf()
     {
        
@@ -112,8 +133,13 @@ else
         GameObject instantiatedObject = Instantiate(deadthObject, transform.position, Quaternion.identity);
         instantiatedObject.transform.localScale = transform.localScale; // Đảm bảo deadthObject quay cùng hướng
          Destroy(gameObject);
+        //desroy ở UnitListManager
+          
+        // gameObject.SetActive(false);
     }else{
          Destroy(gameObject);
+       //  gameObject.tag = "Dead";
+        //  gameObject.SetActive(false);
     }
     }
 

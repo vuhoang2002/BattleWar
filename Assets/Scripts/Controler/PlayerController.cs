@@ -17,15 +17,22 @@ public class PlayerController : MonoBehaviour
     public bool isAtk_Order = false;
     public bool isDef_Order = true;
     public bool isFallBack_Order = false;
+    public bool isHold_Order=false;
+    public int heal=5;
+    private float timerHeal=0f;
+    private float time_Heal=2f;
   //  public string unitTag=Knight;
    
+   public Vector3 def_Position;// tọa độ phòng thủ
+   public Vector3 retreat_Position; // tọa độ rút lui
     private GameObject target;
     private Animator amt;
+    
 
     private GameObject joystickContainer;
     private Joystick joystick;
     private Vector2 movement;
-    private Vector3 currentDirection;
+    public Vector3 currentDirection;
     private float currentScale;
     float currentY;// vị trí y hiện tại
     float scale = 1f;
@@ -52,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private bool staticDirection = true; //enemy là false, cái này là hướng mặc định
     private Vector2 previousPosition;
     //  private bool isTest;
+  
 
     void Start()
     {
@@ -86,7 +94,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             if (isAtk_Order)
-            {
+            {   unit_Over_Healing();
                 if (timerFindTarget <= 0)
                 {
                     FindClosestEnemy(searchRadius);
@@ -96,15 +104,34 @@ public class PlayerController : MonoBehaviour
                 // cái này chỉ di chuyển về phía trước, còn việc tìm kiếm ở update bên trên
             }
             else if (isDef_Order)
-            {
+            {   
+                unit_Over_Healing();
                 currentDirection = new Vector3(0, 0, 0);
                 // Logic phòng thủ
                 // Giữ nguyên vị trí, chỉ tấn công kẻ địch trong phạm vi vị trí đó, nếu kẻ địch rời khỏi phạm vi thì quay về
+                if(def_Position!=null){                
+                if(Vector3.Distance(transform.position, def_Position)>0.1f){
+                    moveToDefPosition();
+                }else{
+                    Flip_To_True_Direction();
+                }
+                }else{
+                    Debug.Log("ko có defPosition");
+                }
                 
             }
             else if (isFallBack_Order)
             {
-                // lui về sau tường thành
+                // lui về sau tường thành+heal
+                moveToRetreatPosition();
+                if(Check_Is_At_Retreat_Position()){
+                    unit_Is_Healing(true,heal);
+                }else{
+                    unit_Over_Healing();
+                }
+            }
+            else if(isHold_Order){
+                //đứng yên
             }
         }
 
@@ -123,9 +150,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-
     {
+      if(isFallBack_Order){
+        timerHeal-=Time.deltaTime;
+      }
     }
+
 
     void CheckMovement()
     {
@@ -310,21 +340,28 @@ public class PlayerController : MonoBehaviour
 
     void AttackCommandOrder()
     {       
-        Debug.Log("Target là: "+target+" isAttacking là: "+ isAttacking);
+       // Debug.Log("Target là: "+target+" isAttacking là: "+ isAttacking);
         if (target == null && !isAttacking)
         {// ko tìm thấy ai thì đi về phía trc
-            if (!staticDirection)
-            {
-                currentDirection = new Vector3(-1, 0, 0); // Di chuyển sang phải
-                movement = -Vector3.right * moveSpeed * Time.deltaTime;
+            if (!staticDirection)// cái này là cho enemy
+            {   //currentDirection = new Vector3(1, 0, 0).normalized; // Di chuyển sang phải
+                Vector3 vt3=new Vector3(transform.position.x +1.0f, def_Position.y, 0);
+                currentDirection=(vt3 - transform.position).normalized;
+                movement = currentDirection * moveSpeed * Time.deltaTime;
                 transform.Translate(movement);
             }
             else
-            {
-                currentDirection = new Vector3(1, 0, 0); // Di chuyển sang phải
-                movement = Vector3.right * moveSpeed * Time.deltaTime;
+            {//player
+                //currentDirection = new Vector3(1, 0, 0).normalized; // Di chuyển sang phải
+                Vector3 vt3=new Vector3(transform.position.x +1.0f, def_Position.y, 0);
+                currentDirection=(vt3 - transform.position).normalized;
+                movement = currentDirection * moveSpeed * Time.deltaTime;
                 transform.Translate(movement);
             }
+             
+
+        // Tính toán hướng di chuyển về bên phải
+       
         }
         else if (target != null && !isAttacking)
         {// có thì đi về phía mục tiêu
@@ -384,18 +421,18 @@ public class PlayerController : MonoBehaviour
         // Tìm kiếm camera
     GameObject mainCamera = GameObject.Find("Main Camera"); 
 if (mainCamera != null){
-        Debug.Log("Found Camera");
+   //     Debug.Log("Found Camera");
     CameraControl cam = mainCamera.GetComponent<CameraControl>();
     if (cam != null)
     {
-        Debug.Log("Found Cam Controller");
+     //   Debug.Log("Found Cam Controller");
 
         cam.setChosenPlayer(this.gameObject, true);
     }
 }
 else
 {
-    Debug.LogWarning("Camera not found!");
+ //   Debug.LogWarning("Camera not found!");
 }
     }
 
@@ -413,11 +450,11 @@ else
 
        
         }
-        else if (other.gameObject.CompareTag("Player"))
-        {
+       // else if (other.gameObject.CompareTag("Player"))
+       // {
             // Vô hiệu hóa va chạm giữa các Player
-            Physics2D.IgnoreCollision(other, GetComponent<Collider2D>());
-        }
+           // Physics2D.IgnoreCollision(other, GetComponent<Collider2D>());
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -439,18 +476,26 @@ else
         StartCoroutine(MoveToPosition(targetPosition));
     }
 
-    private IEnumerator MoveToPosition(Vector3 targetPosition)
+private IEnumerator MoveToPosition(Vector3 targetPosition)
+{
+    while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
     {
-        // Di chuyển đến vị trí mục tiêu
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        currentDirection = (targetPosition - transform.position).normalized;
+        movement = currentDirection * moveSpeed * Time.deltaTime;
+        
+        // Giới hạn tốc độ
+        if (movement.magnitude > Vector3.Distance(transform.position, targetPosition))
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            yield return null; // Chờ cho đến khung hình tiếp theo
+            movement = (targetPosition - transform.position).normalized * Vector3.Distance(transform.position, targetPosition);
         }
-
-        // Đảm bảo đối tượng đến đúng vị trí
-        transform.position = targetPosition;
+        
+        transform.Translate(movement);   
+        yield return null; // Chờ cho đến khung hình tiếp theo
     }
+
+    // Đảm bảo đối tượng đến đúng vị trí
+    transform.position = targetPosition;
+}
      private void showJoyStickCanva(){
           GameObject BattleCanvas=GameObject.Find("BattleCanva");
           Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
@@ -475,6 +520,84 @@ else
        // }
         
         return "unKnow_Behavius";
+    }
+    public void Set_BehaviusForPrefab(bool atk, bool def, bool fck){
+            // thiết lập trạng thái ngay khi vừa được spawn cho unit
+            this.isAtk_Order=atk;
+            this.isDef_Order=def;
+            this.isFallBack_Order=fck;
+    }
+    public void moveToDefPosition(){
+        if(def_Position!=null){
+          //  StartMovingToPosition(def_Position);
+             currentDirection = (def_Position - transform.position).normalized;
+             movement = currentDirection * moveSpeed * Time.deltaTime;
+            transform.Translate(movement);   
+             }
+           
+    }
+    public void moveToPosition(Vector3 position){
+            currentDirection = (position - transform.position).normalized;
+            movement = currentDirection * moveSpeed * Time.deltaTime;
+            transform.Translate(movement);       
+    }
+    public void moveToPosition(Vector2 position){
+            Vector3 position3=new Vector3(position.x, position.y, 0);
+              currentDirection = (position3 - transform.position).normalized;
+             movement = currentDirection * moveSpeed * Time.deltaTime;
+            transform.Translate(movement);         
+    }
+    public void Set_Def_Position(Vector2 def){
+        // chuyển đôi vectorw thành vecotr 3
+        this.def_Position=new Vector3(def.x, def.y,0);
+    }
+    public void Set_Retreat_Position(Vector3 set_position){
+        // truyền tham số này ngay khi spawn
+        this.retreat_Position= set_position;
+    }
+    public void moveToRetreatPosition(){
+        if(retreat_Position!=null){
+            moveToPosition(retreat_Position);
+          
+        }else{
+            Debug.Log("Chưa thiết lập retreat_Postion");
+           
+        }
+      
+    }
+    public bool Check_Is_At_Retreat_Position(){
+        if((transform.position.x- retreat_Position.x)<0.1f){
+            // thực hiện tạm ẩn nhân vật
+            // thực hiện hồi máu cho nhân vật ở castle
+            
+            
+            return true;
+
+        }
+        return false;
+    }
+    public void unit_Is_Healing(bool inTheCastle, int heal){
+        if(inTheCastle){// còn có hồi máu ngoài thành
+            gameObject.tag="isHealing";
+           gameObject.GetComponent<Renderer>().enabled = false; // Ẩn đối tượng
+            gameObject.GetComponent<BoxCollider2D>().enabled = false; // Ngừng tương tác vật lý
+        }
+        if(timerHeal<=0){
+        gameObject.GetComponent<Health>().Heal(heal);
+        timerHeal=time_Heal;
+        }
+    }
+    public void unit_Over_Healing(){
+         if(gameObject.CompareTag("isHealing")){
+          if(staticDirection){
+          gameObject.tag="Player";
+          }else{
+            gameObject.tag="Enemy";
+          }
+
+           gameObject.GetComponent<Renderer>().enabled = true; // Ẩn đối tượng
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+         }
     }
 
 }

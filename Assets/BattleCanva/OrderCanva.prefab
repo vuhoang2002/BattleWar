@@ -146,6 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8c576b0ba8b524e83133d8ff583a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  def_Child: {fileID: 6746475536572533020}
+  atk_Child: {fileID: 6746475537714181153}
+  isFallBack_Active: 0
 --- !u!1 &3005258338651931921
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,8 +316,8 @@ RectTransform:
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6746475536572533021}
   - {fileID: 6746475537714181158}
+  - {fileID: 6746475536572533021}
   - {fileID: 9131795291512723444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,7 +402,6 @@ GameObject:
   - component: {fileID: 6746475536572532995}
   - component: {fileID: 6746475536572532994}
   - component: {fileID: 6775872303705129255}
-  - component: {fileID: 6546121745865201457}
   m_Layer: 5
   m_Name: Def_Btn
   m_TagString: Untagged
@@ -533,30 +535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc09315b6f3b9d4aafc53fe730bdacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDef_Btn_Active: 1
---- !u!114 &6546121745865201457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6746475536572533020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d1ee4de45365b478ef23a2eaa3ec94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBattleArea: {fileID: 0}
-  units: []
-  unitInfo_List: []
-  Max_Unit_Per_Col: 5
-  space_X_Btw_Col: 1
-  space_X_In_Col: 0
-  maxPos: {x: 0, y: 0}
-  minPos: {x: 0, y: 0}
-  targetPositions: []
-  unitPerCol: 
-  totalColum: 0
+  atk_Child: {fileID: 6746475537714181153}
+  fallBack_Child: {fileID: 104662515125403786}
+  isDef_Active: 1
 --- !u!1 &6746475536713332516
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,3 +956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87d6ee2a31a2d540877c7b86e343e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  def_Child: {fileID: 6746475536572533020}
+  fallBack_Child: {fileID: 104662515125403786}
+  isAtk_Active: 0

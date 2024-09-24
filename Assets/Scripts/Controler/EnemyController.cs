@@ -331,7 +331,7 @@ public class EnemyController : MonoBehaviour
 
     void AttackCommandOrder()
     {
-        Debug.Log("target:"+target+"atk:"+isAttacking);
+        //Debug.Log("target:"+target+"atk:"+isAttacking);
         if (target == null && !isAttacking)
         {// ko tìm thấy ai thì đi về phía trc
             if (!staticDirection)
@@ -414,15 +414,15 @@ public class EnemyController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("PlayerCastle") && isAtk_Order)
         {
-            Debug.Log("va chạm vs tower");
+       //     Debug.Log("va chạm vs tower");
             isAttacking = true;   //  
             //attackComponent.CallAttack(other.gameObject);
         }
-        else if (other.gameObject.CompareTag("Enemy"))
-        {
+       // else if (other.gameObject.CompareTag("Enemy"))
+       // {
             // Vô hiệu hóa va chạm giữa các Enemy
-            Physics2D.IgnoreCollision(other, GetComponent<Collider2D>());
-        }
+           // Physics2D.IgnoreCollision(other, GetComponent<Collider2D>());
+       // }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -439,7 +439,7 @@ public class EnemyController : MonoBehaviour
         else if (other.gameObject.CompareTag("PlayerCastle") && isAtk_Order)
         { 
             //attackComponent.setAttack(false);
-            Debug.Log("va chạm vs tower");
+          //  Debug.Log("va chạm vs tower");
             isAttacking = false;   //  
             //attackComponent.CallAttack(other.gameObject);
         }
