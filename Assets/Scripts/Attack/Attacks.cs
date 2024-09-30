@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Attacks : MonoBehaviour
-
 {
     // thông số sát thương và hồi chiêu
     public int abl_Count = 4;// tổng số lượng chiêu thức mà vị tướng đó có, max là 4
@@ -40,7 +39,11 @@ public class Attacks : MonoBehaviour
     private Ability myAbility;
     private float distanceTo_Target;
     private Health targetHealth;
-
+    private PlayerController playerController;
+    private EnemyController enemyController;
+   // bool isChosen=false;
+    bool isRightWay=true;
+    bool isPlayer=true;
     void Start()
     {
         //attackArea = transform.GetChild(0).gameObject;
@@ -51,6 +54,13 @@ public class Attacks : MonoBehaviour
         abl1_Cd_Time = 0;
         abl2_Cd_Time = 0;
         abl3_Cd_Time = 0;
+        playerController=GetComponent<PlayerController>();
+        enemyController=GetComponent<EnemyController>();
+        if(playerController==null){
+            isPlayer=false;
+        }
+       // timeToDealDmg*=Time.deltaTime;
+        //this.isChosen=playerController.isChosen;
     }
 
     void FixedUpdate()
@@ -59,6 +69,9 @@ public class Attacks : MonoBehaviour
         CalculatedCoolDownTiming();
 
         // StartCoroutine(UpdateAttack());
+    }
+    void Update() {
+     //   this.isChosen=playerController.isChosen;
     }
 
     void CalculatedCoolDownTiming()
@@ -106,12 +119,15 @@ public class Attacks : MonoBehaviour
             return;
         }
         // amt.SetBool("isRunning", false);
-        amt.SetTrigger("isAttack"); // Kích hoạt trigger animation
-      //  Debug.Log("Tấn công");
-        ;// nhận st đúng thời điểm vũ khí tấn công trúng mục tiêu
-       
-        Invoke("BasicAttackActive", timeToDealDmg);
-
+        
+         if(GetComponent<Shot>()==null){
+            amt.SetTrigger("isAttack"); 
+            Invoke("BasicAttackActive", timeToDealDmg); // nhận st đúng thời điểm vũ khí tấn công trúng mục tiêu
+        }else{
+            //isRightWay=playerController.isRightWay;
+            amt.SetTrigger("isShot");
+             StartCoroutine(ShotAttack(basic_Atk));  
+        }  
         // Thời gian hồi chiêu
         basic_Cd_Time = basic_Cd;
     }
@@ -119,7 +135,9 @@ public class Attacks : MonoBehaviour
     private void BasicAttackActive()
     {
         if(targetHealth!=null){//mục tiêu mà chết quá sớm sẽ ko ảnh hừng gì
-        targetHealth.TakeDamage(basic_Atk);}
+        targetHealth.TakeDamage(basic_Atk);
+        Debug.Log("Gây "+ basic_Atk+ "dmg");
+        }
     }
 
     public void setAttack(bool value)
@@ -131,4 +149,55 @@ public class Attacks : MonoBehaviour
     {
         return isAttacking;
     }
+    
+    public void AttackByButton(){
+      if(basic_Cd_Time<=0){
+        if(GetComponent<Shot>()==null){
+            amt.SetTrigger("isAttack");
+        StartCoroutine(MeleeAttack(0.2f)); 
+        }else{
+            amt.SetTrigger("isShot");
+            StartCoroutine(ShotAttack(basic_Atk)); 
+        }
+        basic_Cd_Time=basic_Cd;
+      }
+    }
+
+    
+   public void GetAttack_byBtn(GameObject myTarget){
+             myTarget.GetComponent<Health>().TakeDamage(basic_Atk);
+    }
+
+       private IEnumerator ShotAttack(int basic_Atk)
+    {
+        yield return new WaitForSeconds(timeToDealDmg);
+        //spawn ra cung tên
+        if(isPlayer ||GetComponent<PlayerController>()!=null){
+            isRightWay=playerController.isRightWay;
+        }else if(!isPlayer ||GetComponent<EnemyController>()!=null){
+            isRightWay=enemyController.isRightWay;
+
+        }
+         GetComponent<Shot>().Spawn_Arrow(basic_Atk, isRightWay);
+        
+        //Debug.Log("Collider đã được tắt!");
+    }
+    private IEnumerator MeleeAttack(float duration)
+    {//duration là thơi gian colider tồn tại
+         GameObject attackArea=transform.Find("AtkArea").gameObject;
+       
+        yield return new WaitForSeconds(timeToDealDmg);
+        //attackArea.SetActive(true); // Tắt collider
+        GetComponent<PolygonCollider2D>().enabled = true;
+        Debug.Log("Collider đã được bật!");
+        yield return new WaitForSeconds(duration); // Chờ trong khoảng thời gian đã chỉ định
+        //attackArea.SetActive(false);
+        GetComponent<PolygonCollider2D>().enabled = false;
+        
+        Debug.Log("Collider đã được tắt!");
+    }
+ 
 }
+
+
+

@@ -27,8 +27,7 @@ public class LevelSelect_Btn : MonoBehaviour
     public void LoadLevelScene()
     {
         // Lưu tên scene hiện tại trước khi chuyển
-        previousScene = SceneManager.GetActiveScene().name;
-        
+        previousScene = SceneManager.GetActiveScene().name;   
         // Chuyển đến scene mới
         SceneManager.LoadScene(scenceLevel);
         

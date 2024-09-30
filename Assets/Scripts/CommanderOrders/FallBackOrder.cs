@@ -1,34 +1,75 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FallBackOrder : MonoBehaviour
 {
-    //public GameObject Def_Btn;  // Thay Object bằng GameObject
-    public GameObject def_Child;      
-    public  GameObject atk_Child;// retreatOrder
-    public bool isFallBack_Active; 
-    void Start()  // Viết đúng tên phương thức khởi tạo
+    public GameObject def_Child;
+    public GameObject attack_Child;
+    public GameObject hold_Child;
+    public bool isFallBack_Active;
+
+    void Start()
     {
-        // Nếu cần, có thể thêm mã khởi tạo ở đây
-       
+        // Tìm đối tượng con bằng tên
     }
-    
 
     public void HandleButtonClick()
     {
-         isFallBack_Active=true;
-        atk_Child.GetComponent<AttackOrder>().isAtk_Active=false;
-        def_Child.GetComponent<DefenseOrder>().isDef_Active=false;
+        isFallBack_Active = true;
+        def_Child.GetComponent<DefenseOrder>().isDef_Active = false;
+        attack_Child.GetComponent<AttackOrder>().isAtk_Active = false;
+        hold_Child.GetComponent<HoldOrder>().isHold_Active = false;
+
         // Tìm tất cả các PlayerController
         PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
 
-        // Cập nhật isAtk_Order thành false cho tất cả các PlayerController
+        // Cập nhật isFallBack_Order thành true cho tất cả các PlayerController
         foreach (PlayerController playerController in playerControllers)
         {
-            playerController.isAtk_Order = false;
-            playerController.isDef_Order = false;
-            playerController.isFallBack_Order = true;  // Thiết lập isFallBack_Order thành true
-            Debug.Log("Fall Back Order!!!");
-            //Sound here
-        }      
+            SetFallBackActive(playerController);
+        }
+    }
+
+    public void OrderOneUnitType()
+    {
+        GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
+        Debug.Log("chosen là " + chosenPlayer);
+
+        // Tìm instance của UnitListManager
+        UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
+        if (unitListManager == null)
+        {
+            Debug.LogError("Không tìm thấy UnitListManager trong scene.");
+            return;
+        }
+
+        string unitNameToFind = chosenPlayer.name;
+        List<UnitListOrder> units = unitListManager.FindUnitsByName(unitNameToFind);
+
+        foreach (UnitListOrder unit in units)
+        {
+            if (unit.prefab == chosenPlayer)
+            {
+               // continue; // Bỏ qua chosenPlayer
+            }
+
+            PlayerController pl = unit.prefab.GetComponent<PlayerController>();
+            if (pl != null)
+            {
+                SetFallBackActive(pl);
+            }
+            else
+            {
+                Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
+            }
+        }
+    }
+
+    public void SetFallBackActive(PlayerController playerController)
+    {
+        playerController.isFallBack_Order = true;  // Kích hoạt rút lui
+        playerController.isAtk_Order = false;       // Tắt tấn công
+        playerController.isDef_Order = false;       // Tắt phòng thủ
+        playerController.isHold_Order = false;      // Tắt giữ
     }
 }

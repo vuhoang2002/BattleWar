@@ -102,6 +102,7 @@ public class CardUnitManager : MonoBehaviour
     
 
     // Lấy tất cả các CardUnit trong CardArea
+        
     CardUnit[] cardUnits = cardArea.GetComponentsInChildren<CardUnit>();
 
     // Kiểm tra và in ra các unitTag trùng khớp
@@ -121,6 +122,7 @@ public class CardUnitManager : MonoBehaviour
     {
       
         string path = Application.persistentDataPath + "/savedata.dat";
+        Debug.Log("Path is:" +path);
      //     Debug.Log("Dữ liệu được lưu ở: " + path);
         if (File.Exists(path))
         {

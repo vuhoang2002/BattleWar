@@ -25,9 +25,6 @@ public class Chosen : MonoBehaviour
 
     void OnMouseDown()
     {
-        
-       
-      
         if (playerController != null && playerController.canChosen)
         {
              Debug.Log("Nhân vật đã được click bời cái thứ 2!!");
@@ -58,5 +55,11 @@ public class Chosen : MonoBehaviour
           BattleCanvas=GameObject.Find("BattleCanva");
           Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
           joyStickCanvaTransform.gameObject.SetActive(true);
+          // tìm order unittype
+         joyStickCanvaTransform = BattleCanvas.transform.Find("OrderCanva");
+         joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
+         joyStickCanvaTransform.gameObject.SetActive(true);
+
     }
+
 }

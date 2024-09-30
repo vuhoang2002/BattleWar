@@ -7,8 +7,10 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     public bool isChosen = false;
+    public string id; //id cho player
     public float moveSpeed = 1f;
     public float searchRadius = 5f;
+    private float searchRadius_Def=8f;
     public float attackCooldown = 0.7f;
     public float highPos = -4.5f; // Giá trị Y khi prefab đạt kích thước lớn nhất
     public float lowPos = -2.5f;  // Giá trị Y khi prefab đạt kích thước nhỏ nhất
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float maxScale = 1.5f; // Kích thước lớn nhất
     public bool isAtk_Order = false;
     public bool isDef_Order = true;
+ 
     public bool isFallBack_Order = false;
     public bool isHold_Order=false;
     public int heal=5;
@@ -25,8 +28,11 @@ public class PlayerController : MonoBehaviour
    
    public Vector3 def_Position;// tọa độ phòng thủ
    public Vector3 retreat_Position; // tọa độ rút lui
+   public Vector3 hold_Position;
     private GameObject target;
     private Animator amt;
+    public bool isAtkBtn=false;
+    
     
 
     private GameObject joystickContainer;
@@ -51,16 +57,21 @@ public class PlayerController : MonoBehaviour
     public float timeBwFindTarget = 1f;
     public float timerFindTarget = 0f;
 
-    private bool isRightWay = true;// với player, hướng mặc định là true
+    public bool isRightWay = true;// với player, hướng mặc định là true. Huosng di chuyển hiện tại, dùng nó để bắn cung
     private Attacks attackComponent;
     private Rigidbody2D rb;
     // private bool isColliding;
     public bool isAttacking = false;
+    public bool isDef_Hold=true;
+       public bool isDef_Force=false;
     private bool staticDirection = true; //enemy là false, cái này là hướng mặc định
     private Vector2 previousPosition;
     //  private bool isTest;
-  
-
+    public static GameObject playerHasBeenChosen;
+    //
+    public bool thisIsPlayer=true;
+    public string findTarget="Enemy";
+    public string aliesTarget="Player";
     void Start()
     {
         final_Speed = moveSpeed;
@@ -82,6 +93,15 @@ public class PlayerController : MonoBehaviour
         }
         previousPosition = transform.position;
         attackComponent = GetComponent<Attacks>();
+        if(thisIsPlayer ||gameObject.CompareTag("Player") ){//các thông số phân biệt player vs enemy
+            findTarget="Enemy";
+            aliesTarget="Player";
+            staticDirection=true;
+        }else if(gameObject.CompareTag("Enemy")){
+                findTarget="Player";
+                aliesTarget="Enemy";
+                staticDirection=false;
+        }
     }
 
     void Update()
@@ -90,9 +110,10 @@ public class PlayerController : MonoBehaviour
         if (isChosen)
         {
             MoveByJoystick();
+            
         }
         else
-        {
+        {   
             if (isAtk_Order)
             {   unit_Over_Healing();
                 if (timerFindTarget <= 0)
@@ -106,19 +127,40 @@ public class PlayerController : MonoBehaviour
             else if (isDef_Order)
             {   
                 unit_Over_Healing();
+               
+                 if(transform.position.x< def_Position.x){//đảm bảo việc vừa spawn thì vẫn đánh
+                    isDef_Force=false;
+                } else if(Vector3.Distance(transform.position, def_Position)>searchRadius_Def){
+                    isDef_Force=true; //ép buộc lui về
+                }
                 currentDirection = new Vector3(0, 0, 0);
                 // Logic phòng thủ
                 // Giữ nguyên vị trí, chỉ tấn công kẻ địch trong phạm vi vị trí đó, nếu kẻ địch rời khỏi phạm vi thì quay về
-                if(def_Position!=null){                
+                if(def_Position!=null && isDef_Hold ){                
                 if(Vector3.Distance(transform.position, def_Position)>0.1f){
                     moveToDefPosition();
                 }else{
                     Flip_To_True_Direction();
+                    isDef_Hold=false;// cái này false đc phép tấn công
+                    isDef_Force=false;
                 }
-                }else{
-                    Debug.Log("ko có defPosition");
                 }
-                
+                if (timerFindTarget <= 0)
+                {
+                    FindClosestEnemy_ByFindPositon(searchRadius_Def, def_Position);
+                    timerFindTarget = timeBwFindTarget;
+                }
+
+                if(!isDef_Hold && !isDef_Force){//được phép tấn công
+                AttackCommandOrder();
+                }
+
+                if(target==null){
+                    isDef_Hold=true;// 
+                }
+                else if(target!=null ){// có mục tiêu và không cưỡng chế rút lui
+                    isDef_Hold=false;//dược phép tấn công
+                }
             }
             else if (isFallBack_Order)
             {
@@ -132,8 +174,39 @@ public class PlayerController : MonoBehaviour
             }
             else if(isHold_Order){
                 //đứng yên
+                hold_Position=transform.position;
+                  
+               if(Vector3.Distance(transform.position, def_Position)>searchRadius_Def){
+                    isDef_Force=true; //ép buộc lui về
+                }
+                if(hold_Position!=null && isDef_Hold){                
+                if(Vector3.Distance(transform.position, hold_Position)>0.1f){
+                    moveToDefPosition();
+                }else{
+                    Flip_To_True_Direction();
+                    isDef_Hold=false;
+                    isDef_Force=false;
+                }
+                }
+                if (timerFindTarget <= 0)
+                {
+                    FindClosestEnemy_ByFindPositon(searchRadius_Def, hold_Position);
+                    timerFindTarget = timeBwFindTarget;
+                }
+
+                if(!isDef_Hold && ! isDef_Force){//được phép tấn công
+                AttackCommandOrder();
+                }
+
+                if(target==null){
+                    isDef_Hold=true;
+                }
+                else{
+                    isDef_Hold=false;
+                }
             }
-        }
+            }
+         
 
         if (timerFindTarget > 0)
         {
@@ -147,8 +220,15 @@ public class PlayerController : MonoBehaviour
         //isRunning(currentDirection);
         CheckMovement();
         Flip();
+        if(!isChosen){
+            ActiveChild();
+        }
     }
+    void ActiveChild(){
+        transform.Find("AtkArea").gameObject.SetActive(true);
+        transform.Find("ChosenArea").gameObject.SetActive(true);
 
+    }
     void FixedUpdate()
     {
       if(isFallBack_Order){
@@ -287,7 +367,7 @@ public class PlayerController : MonoBehaviour
 
     void FindClosestEnemy(float searchRadius)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(findTarget);
         float closestDistance = Mathf.Infinity;
         GameObject closestEnemy = null;
 
@@ -302,9 +382,27 @@ public class PlayerController : MonoBehaviour
             }
         }
         target = closestEnemy;
-        if (target != null)
+       
+    }
+    
+    void FindClosestEnemy_ByFindPositon(float searchRadius, Vector3 find_Position)
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(findTarget);
+        float closestDistance = Mathf.Infinity;
+        GameObject closestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
         {
+            float distanceToEnemy = Vector3.Distance(find_Position, enemy.transform.position);
+
+            if (distanceToEnemy < searchRadius && distanceToEnemy < closestDistance)
+            {
+                closestDistance = distanceToEnemy;
+                closestEnemy = enemy;
+            }
         }
+        target = closestEnemy;
+       
     }
 
     void MoveTowardTarget()
@@ -341,7 +439,7 @@ public class PlayerController : MonoBehaviour
     void AttackCommandOrder()
     {       
        // Debug.Log("Target là: "+target+" isAttacking là: "+ isAttacking);
-        if (target == null && !isAttacking)
+        if (target == null && !isAttacking && isAtk_Order)
         {// ko tìm thấy ai thì đi về phía trc
             if (!staticDirection)// cái này là cho enemy
             {   //currentDirection = new Vector3(1, 0, 0).normalized; // Di chuyển sang phải
@@ -358,10 +456,7 @@ public class PlayerController : MonoBehaviour
                 movement = currentDirection * moveSpeed * Time.deltaTime;
                 transform.Translate(movement);
             }
-             
-
-        // Tính toán hướng di chuyển về bên phải
-       
+        // Tính toán hướng di chuyển về bên phả 
         }
         else if (target != null && !isAttacking)
         {// có thì đi về phía mục tiêu
@@ -371,6 +466,7 @@ public class PlayerController : MonoBehaviour
         {
             attackComponent.CallAttack(target);
         }
+         
     }
 
     void OnMouseDown()
@@ -443,18 +539,39 @@ else
 
     private void OnTriggerStay2D(Collider2D other)
     {
+      //  Debug.Log("Va chạm với "+ other);
         // Xử lý va chạm
-        if (other.gameObject.CompareTag("Enemy") && isAtk_Order)
+          BoxCollider2D boxCollider = other.GetComponent<BoxCollider2D>();
+        if (other.gameObject.CompareTag(findTarget) && boxCollider!=null )
         {
             isAttacking = true;
 
-       
+            if(GetComponent<Shot>()!=null){//dành cho xạ thủ
+                Collider2D[] playerColliders = GetComponents<Collider2D>();
+               foreach (var collider in playerColliders)
+            {
+                // Kiểm tra nếu collider là BoxCollider2D
+                if (collider is PolygonCollider2D)
+                {
+                  
+                     attackComponent.CallAttack(other.gameObject);    
+                       return;
+                }
+                //attackComponent.CallAttack(other.gameObject);
+            }
+
         }
-       // else if (other.gameObject.CompareTag("Player"))
-       // {
-            // Vô hiệu hóa va chạm giữa các Player
-           // Physics2D.IgnoreCollision(other, GetComponent<Collider2D>());
-        //}
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+          // Debug.Log("Va chạm với "+ other);
+        if (other.gameObject.CompareTag(findTarget) && isChosen )
+        {
+            attackComponent.GetAttack_byBtn(other.gameObject);// nhận st
+            Debug.Log("tấn công");
+            GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -497,9 +614,23 @@ private IEnumerator MoveToPosition(Vector3 targetPosition)
     transform.position = targetPosition;
 }
      private void showJoyStickCanva(){
+        //hiện tất cả cái gì cần hiện
           GameObject BattleCanvas=GameObject.Find("BattleCanva");
           Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
           joyStickCanvaTransform.gameObject.SetActive(true);
+          // tìm order unittype
+         joyStickCanvaTransform = BattleCanvas.transform.Find("OrderCanva");
+         joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
+         joyStickCanvaTransform.gameObject.SetActive(true);
+         joyStickCanvaTransform = BattleCanvas.transform.Find("FunctionCanva");
+          joyStickCanvaTransform.gameObject.SetActive(true);
+         GameObject atkbtn= joyStickCanvaTransform.Find("Atck_Btn").gameObject;
+          atkbtn.GetComponent<ButtonHandler>().setAttacks_Var (this.gameObject);//truyền attack vào ở đây
+        // joyStickCanvaTransform.gameObject.GetComponent<ButtonHandler>().setAttacks_Var();
+         gameObject.transform.Find("ChosenArea").gameObject.SetActive(false);
+        gameObject.transform.Find("AtkArea").gameObject.SetActive(false);  
+        playerHasBeenChosen=this.gameObject;
+           //joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
     }
     public string Get_Current_Order_toString(){
        if(isChosen){
@@ -581,6 +712,21 @@ private IEnumerator MoveToPosition(Vector3 targetPosition)
             gameObject.tag="isHealing";
            gameObject.GetComponent<Renderer>().enabled = false; // Ẩn đối tượng
             gameObject.GetComponent<BoxCollider2D>().enabled = false; // Ngừng tương tác vật lý
+            // Tìm đối tượng con
+Transform currentBarTransform = gameObject.transform.Find("CurrentBar");
+if (currentBarTransform != null)
+{
+    // Lấy Renderer và tắt nó
+    Renderer renderer = currentBarTransform.GetComponent<Renderer>();
+    if (renderer != null)
+    {
+        renderer.enabled = false;
+    }
+}
+else
+{
+    Debug.LogWarning("Không tìm thấy đối tượng con có tên 'CurrentBar'");
+}
         }
         if(timerHeal<=0){
         gameObject.GetComponent<Health>().Heal(heal);
@@ -597,7 +743,35 @@ private IEnumerator MoveToPosition(Vector3 targetPosition)
 
            gameObject.GetComponent<Renderer>().enabled = true; // Ẩn đối tượng
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
+           // Tìm đối tượng con
+Transform currentBarTransform = gameObject.transform.Find("CurrentBar");
+if (currentBarTransform != null)
+{
+    // Lấy Renderer và tắt nó
+    Renderer renderer = currentBarTransform.GetComponent<Renderer>();
+    if (renderer != null)
+    {
+        renderer.enabled = true;
+    }
+}
+else
+{
+    Debug.LogWarning("Không tìm thấy đối tượng con có tên 'CurrentBar'");
+}
          }
     }
-
+   
+    public void AttackByButton(){
+        // hàm này tìm kiếm mục tiêu
+        isAtkBtn=true;
+     // target
+    }
+    public GameObject GetChosenPlayer(){
+        Debug.Log("Game object này là"+ this.gameObject);
+       // playerHasBeenChosen=this.gameObject;
+        return playerHasBeenChosen;
+    }
+    public void SetID(string id){
+        this.id=id;
+    }
 }

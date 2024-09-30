@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CancelChosen : MonoBehaviour
 {
+    public GameObject OrderPanel_For_1_UnitsType;
+    public GameObject FunctionCanva;
     public void HandleButtonClick()
     {
         // Tìm tất cả các gameobject có tag "Player"
@@ -16,6 +18,8 @@ public class CancelChosen : MonoBehaviour
                 playerController.Set_CanChosen(true);
             }
         }
+        //tắt OrderCanva unit
+        
         offChosenPlayerCam();
         offJoyStickCanva();
     }
@@ -23,6 +27,8 @@ public class CancelChosen : MonoBehaviour
           GameObject BattleCanvas=GameObject.Find("BattleCanva");
           Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
           joyStickCanvaTransform.gameObject.SetActive(false);
+          OrderPanel_For_1_UnitsType.SetActive(false);
+        FunctionCanva.SetActive(false);
     }
     private void offChosenPlayerCam(){
         GameObject mainCamera= GameObject.Find("Main Camera");
