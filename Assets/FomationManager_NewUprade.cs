@@ -8,7 +8,7 @@ public class FomationManager_NewUprade : MonoBehaviour
 
     public List<UnitListOrder> unit = new List<UnitListOrder>();
     
-    public int Max_Unit_Per_Col=5; // 1 cột có tối đa 5 đơn vị
+    private int Max_Unit_Per_Col=4; // 1 cột có tối đa 5 đơn vị
     public float space_X_Btw_Col=1f; // khoảng cách giữa các cột với nhau
     private float space_X_Btw_Unit=1.2f;
     public   float space_X_In_Col=0.2f; // khoảng cách theo chiều ngang giữa các đơn vị trong 1 cột( để nghiêng nhìn cho dễ)

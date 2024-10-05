@@ -409,6 +409,7 @@ MonoBehaviour:
   def_Position: {x: 0, y: 0, z: 0}
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
   isAtkBtn: 0
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
@@ -517,6 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5578906763245018030}
   - component: {fileID: 7704855294647256416}
+  - component: {fileID: 1515069855480129336}
   m_Layer: 0
   m_Name: AttackArea
   m_TagString: Untagged
@@ -546,7 +548,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7589197865945337193}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -589,6 +591,47 @@ PolygonCollider2D:
       - {x: 0.09865435, y: -0.071682}
       - {x: 5.693731, y: -0.04711875}
   m_UseDelaunayMesh: 0
+--- !u!68 &1515069855480129336
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589197865945337193}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.11604738, y: -0.046823487}
+  - {x: 6.024459, y: -0.060976356}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &8848743357502748500
 GameObject:
   m_ObjectHideFlags: 0

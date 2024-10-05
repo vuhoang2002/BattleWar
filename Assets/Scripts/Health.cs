@@ -54,7 +54,7 @@ public class Health : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
         }
         this.health -= amount;
-
+        // MÁU CHO CASTLE 
         if (halfCastle != null && dieCastle != null)
         {
             if (health <= halfHealth)
@@ -64,7 +64,39 @@ public class Health : MonoBehaviour
             if (health <= 0)
             {
                 ShowDieCastle(); // for castle
-                gameObject.tag = "Dead";
+               // Tìm BattleCanva
+GameObject battleCanva = GameObject.Find("BattleCanva");
+
+if (battleCanva != null) {
+    if (gameObject.CompareTag("PlayerCastle")) {
+        // Tìm LoseUI trong BattleCanva
+        GameObject loseUI = battleCanva.transform.Find("LoseUI")?.gameObject;
+        
+        if (loseUI != null) {
+            loseUI.SetActive(true);
+            Time.timeScale = 0f; 
+
+        } else {
+            Debug.LogWarning("LoseUI not found in BattleCanva!");
+        }
+    } else if (gameObject.CompareTag("EnemyCastle")) {
+        // Tìm VictoryUI
+        GameObject victoryUI = battleCanva.transform.Find("VictoryUI")?.gameObject;
+        
+        if (victoryUI != null) {
+            victoryUI.SetActive(true);
+            Time.timeScale = 0f; 
+
+        } else {
+            Debug.LogWarning("VictoryUI not found!");
+        }
+    }
+    
+    // Đánh dấu lâu đài là đã chết
+    gameObject.tag = "Dead";
+} else {
+    Debug.LogWarning("BattleCanva not found!");
+}
             }
         }
         else if (health <= 0)

@@ -29,6 +29,7 @@ public class EnemyBehavius : MonoBehaviour
     private float positionSpawn_X;
     private int nextId = 1; // Khởi tạo ID
     public GameObject unitDef_Area;
+    public GameObject enemyList;
    // public FomationManager_NewUprade fm_upgrade;
    // public List<TagList> EunitTagLists = new List<TagList>();
 
@@ -44,6 +45,7 @@ public class EnemyBehavius : MonoBehaviour
             SetSpawnLocation();
         }
         CreateTagLists();
+        enemyList=Instantiate(enemyList);
     }
 
     private void CreateTagLists()
@@ -87,7 +89,7 @@ public class EnemyBehavius : MonoBehaviour
             if (enemyPrefab != null)
             {
                 GameObject newUnit = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity); // Spawn prefab
-
+                newUnit.transform.SetParent(enemyList.transform);
                 // Gán ID cho đơn vị mới
                 string creat_ID_For_Unit = "E" + nextId; // Tạo ID với chữ "E" trước
                 nextId++; // Tăng ID cho lần tạo tiếp theo
@@ -115,6 +117,25 @@ public class EnemyBehavius : MonoBehaviour
         Debug.LogWarning("Enemy name is null or empty.");
     }
 }   
+   public void SpawnEnemy(int enemyIndex, int count)
+{
+    // Kiểm tra chỉ số enemyIndex hợp lệ
+    if (enemyIndex < 0 || enemyIndex >= enemyType.Count)
+    {
+        Debug.LogWarning("Enemy index out of range.");
+        return ; // Trả về null nếu chỉ số không hợp lệ
+    }
+
+    // Lấy tên prefab của enemy
+    EnemyType enemy = enemyType[enemyIndex];
+    string enemyName;
+    if (enemy.isInCurrentMatch)
+    {
+        enemyName= enemy.enemyPrefab.name; // Trả về tên prefab
+        SpawnEnemy(enemyName, count);
+    }
+    
+}
     
   public void Create_DefUnitAreas(string unitName)
 {
@@ -165,6 +186,11 @@ public class EnemyBehavius : MonoBehaviour
             if (ec != null)
             {
                 ec.SetBehavius(atk_Order, def_Order, fallBack_Order);
+                // hazz, xẻm ra phải tạo holdPosition ở đây
+                if(hold_Order){
+                    ec.hold_Position=ec.transform.position;
+                }
+
             }
         }
     }
@@ -271,7 +297,7 @@ private IEnumerator DelayedKillSelf(GameObject prefab)
     }
 }
 
-    private void Set_eAtk()
+    public void Set_eAtk()
     {
         atk_Order = true;
         def_Order = false;
@@ -279,7 +305,7 @@ private IEnumerator DelayedKillSelf(GameObject prefab)
         hold_Order = false;
     }
 
-    private void Set_eDef()
+    public void Set_eDef()
     {
         atk_Order = false;
         def_Order = true;
@@ -287,7 +313,7 @@ private IEnumerator DelayedKillSelf(GameObject prefab)
         hold_Order = false;
     }
 
-    private void Set_eRetreat()
+    public void Set_eRetreat()
     {
         atk_Order = false;
         def_Order = false;
@@ -295,11 +321,12 @@ private IEnumerator DelayedKillSelf(GameObject prefab)
         hold_Order = false;
     }
 
-    private void Set_eHold()
+    public void Set_eHold()
     {
         atk_Order = false;
         def_Order = false;
         fallBack_Order = false;
         hold_Order = true;
+        // tạo hold_Position nữa
     }
 }

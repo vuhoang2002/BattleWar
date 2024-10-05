@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
    public Vector3 def_Position;// tọa độ phòng thủ
    public Vector3 retreat_Position; // tọa độ rút lui
    public Vector3 hold_Position;
-    private GameObject target;
+    public GameObject target;
     private Animator amt;
     public bool isAtkBtn=false;
     
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     public bool thisIsPlayer=true;
     public string findTarget="Enemy";
     public string aliesTarget="Player";
+    public string findTargetCastle="EnemyCastle";
     void Start()
     {
         final_Speed = moveSpeed;
@@ -145,9 +146,13 @@ public class PlayerController : MonoBehaviour
                     isDef_Force=false;
                 }
                 }
+                // hàm tìm kiếm kẻ địch
                 if (timerFindTarget <= 0)
-                {
+                {   if(transform.position.x< def_Position.x){
+                            FindClosestEnemy(searchRadius_Def);
+                }else{
                     FindClosestEnemy_ByFindPositon(searchRadius_Def, def_Position);
+                }
                     timerFindTarget = timeBwFindTarget;
                 }
 
@@ -174,35 +179,38 @@ public class PlayerController : MonoBehaviour
             }
             else if(isHold_Order){
                 //đứng yên
-                hold_Position=transform.position;
-                  
-               if(Vector3.Distance(transform.position, def_Position)>searchRadius_Def){
+               // hold_Position=transform.position;
+                if(Vector3.Distance(transform.position, hold_Position)>searchRadius_Def){
                     isDef_Force=true; //ép buộc lui về
                 }
-                if(hold_Position!=null && isDef_Hold){                
+                currentDirection = new Vector3(0, 0, 0);
+                // Logic phòng thủ
+                // Giữ nguyên vị trí, chỉ tấn công kẻ địch trong phạm vi vị trí đó, nếu kẻ địch rời khỏi phạm vi thì quay về
+                if(def_Position!=null && isDef_Hold ){                
                 if(Vector3.Distance(transform.position, hold_Position)>0.1f){
-                    moveToDefPosition();
+                    moveToPosition(hold_Position);
                 }else{
                     Flip_To_True_Direction();
-                    isDef_Hold=false;
+                    isDef_Hold=false;// cái này false đc phép tấn công
                     isDef_Force=false;
                 }
                 }
+                // hàm tìm kiếm kẻ địch
                 if (timerFindTarget <= 0)
-                {
+                {   
                     FindClosestEnemy_ByFindPositon(searchRadius_Def, hold_Position);
                     timerFindTarget = timeBwFindTarget;
                 }
 
-                if(!isDef_Hold && ! isDef_Force){//được phép tấn công
+                if(!isDef_Hold && !isDef_Force){//được phép tấn công
                 AttackCommandOrder();
                 }
 
                 if(target==null){
-                    isDef_Hold=true;
+                    isDef_Hold=true;// 
                 }
-                else{
-                    isDef_Hold=false;
+                else if(target!=null ){// có mục tiêu và không cưỡng chế rút lui
+                    isDef_Hold=false;//dược phép tấn công
                 }
             }
             }
@@ -365,25 +373,38 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement);
     }
 
-    void FindClosestEnemy(float searchRadius)
+   void FindClosestEnemy(float searchRadius)
+{
+    GameObject[] players = GameObject.FindGameObjectsWithTag(findTarget);
+   // GameObject[] playerTowers = GameObject.FindGameObjectsWithTag(findTargetCastle);
+
+    // Kết hợp hai mảng thành một danh sách
+//    GameObject[] targets = new GameObject[players.Length + playerTowers.Length];
+  //  players.CopyTo(targets, 0);
+    //playerTowers.CopyTo(targets, players.Length);
+
+    float closestDistance = Mathf.Infinity;
+    GameObject closestTarget = null;
+
+    foreach (GameObject target in players) // targets
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(findTarget);
-        float closestDistance = Mathf.Infinity;
-        GameObject closestEnemy = null;
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
 
-        foreach (GameObject enemy in enemies)
+        if (distanceToTarget < searchRadius && distanceToTarget < closestDistance)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-
-            if (distanceToEnemy < searchRadius && distanceToEnemy < closestDistance)
-            {
-                closestDistance = distanceToEnemy;
-                closestEnemy = enemy;
-            }
+            closestDistance = distanceToTarget;
+            closestTarget = target;
         }
-        target = closestEnemy;
-       
     }
+    target = closestTarget;
+    if(target!=null){
+    Debug.DrawRay(gameObject.transform.position,target.transform.position-gameObject.transform.position, Color.red, 1f);
+    }
+   // if(closestDistance<=1f){
+     //   isAttacking=true;
+    //}
+  //  Debug.Log("Target is "+ target);
+}
     
     void FindClosestEnemy_ByFindPositon(float searchRadius, Vector3 find_Position)
     {
@@ -402,7 +423,9 @@ public class PlayerController : MonoBehaviour
             }
         }
         target = closestEnemy;
-       
+     if(target!=null){
+    Debug.DrawRay(find_Position,target.transform.position-gameObject.transform.position, Color.blue, 1f);
+    }
     }
 
     void MoveTowardTarget()
@@ -410,6 +433,17 @@ public class PlayerController : MonoBehaviour
         if (target != null)
         {
             currentDirection = (target.transform.position - transform.position).normalized;
+            movement = currentDirection * moveSpeed * Time.deltaTime;
+            transform.Translate(movement);
+        }
+    }
+     void MoveTowardTarget_Y_Asis()
+    {
+        if (target != null)
+        {   
+
+            currentDirection = (target.transform.position - transform.position).normalized;
+            currentDirection= new Vector3(0, currentDirection.y, 0);
             movement = currentDirection * moveSpeed * Time.deltaTime;
             transform.Translate(movement);
         }
@@ -460,7 +494,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (target != null && !isAttacking)
         {// có thì đi về phía mục tiêu
+            if(GetComponent<Shot>()!=null){
+                MoveTowardTarget_Y_Asis();
+            }else{
             MoveTowardTarget();
+            }
         }
         if (target != null && isAttacking)// có mục tiêu và tiếp cận gần mục tiêu
         {
@@ -537,12 +575,21 @@ else
         this.canChosen = bl;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+     private void OnTriggerStay2D(Collider2D other)
     {
       //  Debug.Log("Va chạm với "+ other);
         // Xử lý va chạm
-          BoxCollider2D boxCollider = other.GetComponent<BoxCollider2D>();
-        if (other.gameObject.CompareTag(findTarget) && boxCollider!=null )
+       
+        BoxCollider2D boxCollider = other.GetComponent<BoxCollider2D>();
+          Collider2D thisCollider = GetComponent<Collider2D>();
+      //   if (other.gameObject.CompareTag(aliesTarget) || other.gameObject.CompareTag(findTarget) )
+    //{
+        // Vô hiệu hóa va chạm với đối tượng nà
+      //  Debug.Log("Vô hiệu hóa colider");
+          //  Physics2D.IgnoreCollision(boxCollider, thisCollider, true);
+    //}
+
+        if ((other.gameObject.CompareTag(findTarget)|| other.gameObject.CompareTag(findTargetCastle))  && boxCollider!=null )
         {
             isAttacking = true;
 
@@ -551,7 +598,7 @@ else
                foreach (var collider in playerColliders)
             {
                 // Kiểm tra nếu collider là BoxCollider2D
-                if (collider is PolygonCollider2D)
+             if (collider is PolygonCollider2D || collider is EdgeCollider2D)
                 {
                   
                      attackComponent.CallAttack(other.gameObject);    
@@ -562,6 +609,10 @@ else
 
         }
         }
+        if(other.gameObject.CompareTag(findTargetCastle)){
+           // Debug.Log("va chạm vs tower");
+            attackComponent.CallAttack(other.gameObject);
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D other) {
@@ -570,7 +621,7 @@ else
         {
             attackComponent.GetAttack_byBtn(other.gameObject);// nhận st
             Debug.Log("tấn công");
-            GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
+          //  GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
         }
     }
 

@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
+  id: 
   moveSpeed: 1.4
   searchRadius: 5
   attackCooldown: 0.7
@@ -519,10 +520,25 @@ MonoBehaviour:
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
+  isHold_Order: 0
+  heal: 5
+  def_Position: {x: 0, y: 0, z: 0}
+  retreat_Position: {x: 0, y: 0, z: 0}
+  hold_Position: {x: 0, y: 0, z: 0}
+  isAtkBtn: 0
+  currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 0
   timeBwFindTarget: 1
   timerFindTarget: 0
+  isRightWay: 1
   isAttacking: 0
+  isDef_Hold: 1
+  isDef_Force: 0
+  staticDirection: 0
+  thisIsPlayer: 0
+  findTarget: Enemy
+  aliesTarget: Player
+  findTargetCastle: EnemyCastle
 --- !u!50 &6930182581372496275
 Rigidbody2D:
   serializedVersion: 4
@@ -549,4 +565,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 5

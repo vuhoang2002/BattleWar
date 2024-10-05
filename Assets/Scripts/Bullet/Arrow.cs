@@ -30,13 +30,13 @@ public class Arrow : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D target)
     {
         
-        if (target.CompareTag("Enemy") && isGoodBullet)// dành cho player
+        if ((target.CompareTag("Enemy") || target.CompareTag("EnemyCastle")) && isGoodBullet)// dành cho player
         {
             Debug.Log("Bắn trúng địch " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);
             Destroy(gameObject); // Hủy mũi tên sau khi trúng đích
         }
-        else if (target.CompareTag("Player") && !isGoodBullet) // dành cho enemy
+        else if ((target.CompareTag("Player") || target.CompareTag("PlayerCastle"))  && !isGoodBullet) // dành cho enemy
         {
             Debug.Log("Bắn trúng " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);

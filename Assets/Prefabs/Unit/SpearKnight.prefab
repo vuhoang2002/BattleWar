@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
+  id: 
   moveSpeed: 1
   searchRadius: 5
   attackCooldown: 0.7
@@ -274,6 +275,8 @@ MonoBehaviour:
   heal: 5
   def_Position: {x: 0, y: 0, z: 0}
   retreat_Position: {x: 0, y: 0, z: 0}
+  hold_Position: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
   isAtkBtn: 0
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
@@ -281,6 +284,12 @@ MonoBehaviour:
   timerFindTarget: 0
   isRightWay: 1
   isAttacking: 0
+  isDef_Hold: 1
+  isDef_Force: 0
+  thisIsPlayer: 1
+  findTarget: Enemy
+  aliesTarget: Player
+  findTargetCastle: EnemyCastle
 --- !u!114 &7337487144968331927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +361,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.07521199, y: -0.86360806}

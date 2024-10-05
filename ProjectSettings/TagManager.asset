@@ -8,6 +8,7 @@ TagManager:
   - Dead
   - PlayerCastle
   - isHealing
+  - EnemyCastle
   layers:
   - Default
   - TransparentFX

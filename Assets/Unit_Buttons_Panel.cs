@@ -7,8 +7,13 @@ public class Unit_Buttons_Panel : MonoBehaviour
     public GameObject buttonPrefab; // Prefab của Button
     public Transform buttonContainer; // Panel để chứa các button
     private List<Button> buttonList = new List<Button>(); // Danh sách để lưu trữ các Button
-    
+    public GameObject playerList;
 
+  
+    void Start()
+    {
+       playerList=Instantiate(playerList); 
+    }
     // Hàm để tạo button mới
     public void CreateButton()
     {

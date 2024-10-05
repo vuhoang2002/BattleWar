@@ -26,7 +26,8 @@ public class HoldOrder : MonoBehaviour
 
         // Cập nhật isHold_Order thành true cho tất cả các PlayerController
         foreach (PlayerController playerController in playerControllers)
-        {
+        {   
+
             SetHoldActive(playerController);
             // Debug.Log("Hold Order!!!");
         }
@@ -72,10 +73,21 @@ public class HoldOrder : MonoBehaviour
     }
 
     public void SetHoldActive(PlayerController playerController)
+{
+    playerController.isHold_Order = true;  // Kích hoạt giữ
+    playerController.isAtk_Order = false;   // Tắt tấn công
+    playerController.isDef_Order = false;   // Tắt phòng thủ
+    playerController.isFallBack_Order = false; // Tắt rút lui
+    
+    // Lấy tọa độ của đối tượng cha và gán vào hold_Position
+    if (playerController.transform.parent != null) 
     {
-        playerController.isHold_Order = true;  // Kích hoạt giữ
-        playerController.isAtk_Order = false;   // Tắt tấn công
-        playerController.isDef_Order = false;   // Tắt phòng thủ
-        playerController.isFallBack_Order = false; // Tắt rút lui
+        playerController.hold_Position = playerController.transform.position;
     }
+    else
+    {
+        // Nếu không có cha, có thể gán hold_Position bằng Vector3.zero hoặc một giá trị khác
+        playerController.hold_Position = Vector3.zero;
+    }
+}
 }

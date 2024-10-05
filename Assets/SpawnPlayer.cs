@@ -28,6 +28,8 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private RectTransform rectTransform; // RectTransform của nút
     private string creat_ID_For_Unit; // Biến ID cho đơn vị
     private static int nextId = 1; // Biến static để theo dõi ID tiếp theo
+    public GameObject playerList;
+    
 
     private void Start()
     {
@@ -41,6 +43,9 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             GameObject ob = GameObject.Find("PUnit_List");
             unitListManager = ob.GetComponent<UnitListManager>();
         }
+       playerList= GameObject.Find("PlayerList(Clone)");
+            
+        
     }
     
     public void OnPointerDown(PointerEventData eventData)
@@ -172,10 +177,10 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 nextId++; // Tăng ID cho lần tạo tiếp theo
                 
                 // Thiết lập ID cho đơn vị
-                newUnit.GetComponent<PlayerController>().SetID(creat_ID_For_Unit);
-                
+                newUnit.GetComponent<PlayerController>().SetID(creat_ID_For_Unit);              
                 newUnit.GetComponent<PlayerController>().Set_BehaviusForPrefab(atk.isAtk_Active, def.isDef_Active, fbk.isFallBack_Active); // set bahavius
                 newUnit.GetComponent<PlayerController>().Set_Retreat_Position(spawnPosition);
+                newUnit.transform.SetParent(playerList.transform);
                 unitListManager.AddUnitToTagList(prefabToSpawn.name, newUnit,creat_ID_For_Unit);
                 // Sau khi được thêm, ta cần tạo cho nó 1 defposition
                 unitListManager.CreatDef(prefabToSpawn.name);
