@@ -9,6 +9,9 @@ public class UnitData
     public string unitTag; // Thẻ để phân biệt các đơn vị
     public GameObject prefab; // Prefab của đơn vị
     public Sprite prefabSprite;
+    public int unitPrice;//giá tiền
+    public float cdTimerUnit;//tg hồi
+    public bool isUnit;// là unit hay phép bổ trợ
 }
 
 [System.Serializable]
@@ -26,104 +29,107 @@ public class CardUnitManager : MonoBehaviour
 
     private void Start()
     {
-      //   GameObject cardArea = GameObject.Find("CardArea").transform; 
-       // ClearSelection();
+        //   GameObject cardArea = GameObject.Find("CardArea").transform; 
+        // ClearSelection();
         LoadSelectedUnits(); // Tải các đơn vị đã chọn khi bắt đầu
         LoadSavedUnits();
     }
-    
-    private void Update() {
-          ShowSelectedUnits();
+
+    private void Update()
+    {
+        ShowSelectedUnits();
     }
 
     public void SelectUnit(string unitTag, GameObject cardPrefab)
-{
-    // Kiểm tra xem thẻ đã được chọn hay chưa
-    if (!selectedUnitTags.Contains(unitTag))
     {
-        // Nếu chưa, thêm vào danh sách thẻ đã chọn
-        selectedUnitTags.Add(unitTag);
-
-        // Tạo bản sao và thêm vào SelectedPanel
-        GameObject selectedUnit = Instantiate(cardPrefab, selectedPanel.transform);
-        selectedUnit.GetComponent<CardUnit>().showOn_X_Button();
-       // selectedUnitReferences.Add(selectedUnit); // Lưu trữ bản sao để tham chiếu sau này
-        Debug.Log("Đã thêm đơn vị: " + unitTag + " vào SelectedPanel.");
-        SaveSelectedUnits();
-    }
-    else
-    {
-        Debug.Log("Đơn vị đã được chọn trước đó: " + unitTag);
-    }    
-}
-
-   public void LoadSavedUnits()
-{
-    string path = Application.persistentDataPath + "/savedata.dat"; // Đường dẫn đến file lưu
-
-    if (File.Exists(path))
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(path, FileMode.Open))
+        // Kiểm tra xem thẻ đã được chọn hay chưa
+        if (!selectedUnitTags.Contains(unitTag))
         {
-            SaveData data = formatter.Deserialize(stream) as SaveData;
-            if (data != null)
-            {
-                // Cập nhật selectedUnitTags với các thẻ đã lưu
-                selectedUnitTags = new List<string>(data.selectedUnitTags); 
+            // Nếu chưa, thêm vào danh sách thẻ đã chọn
+            selectedUnitTags.Add(unitTag);
 
-                foreach (string unitTag in selectedUnitTags)
+            // Tạo bản sao và thêm vào SelectedPanel
+            GameObject selectedUnit = Instantiate(cardPrefab, selectedPanel.transform);
+            selectedUnit.GetComponent<CardUnit>().showOn_X_Button();
+            // selectedUnitReferences.Add(selectedUnit); // Lưu trữ bản sao để tham chiếu sau này
+            Debug.Log("Đã thêm đơn vị: " + unitTag + " vào SelectedPanel.");
+            SaveSelectedUnits();
+        }
+        else
+        {
+            Debug.Log("Đơn vị đã được chọn trước đó: " + unitTag);
+        }
+    }
+
+    public void LoadSavedUnits()
+    {
+        string path = Application.persistentDataPath + "/savedata.dat"; // Đường dẫn đến file lưu
+
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                SaveData data = formatter.Deserialize(stream) as SaveData;
+
+                if (data != null)
                 {
-                    // Tạo bản sao của mỗi đơn vị và thêm vào SelectedPanel
-                    CardUnit unitPrefab = FindMatchingCardUnits(unitTag);
-                    if (unitPrefab != null) // Kiểm tra xem có tìm thấy prefab không
+                    // Cập nhật selectedUnitTags với các thẻ đã lưu
+                    selectedUnitTags = new List<string>(data.selectedUnitTags);
+
+                    foreach (string unitTag in selectedUnitTags)
                     {
-                        CardUnit selectedUnit = Instantiate(unitPrefab, selectedPanel.transform);
-                        selectedUnit.name = unitTag; // Đặt tên cho đối tượng
-                        selectedUnit.showOn_X_Button(); // Hiện nút X
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Không tìm thấy CardUnit với unitTag: " + unitTag);
+                        // Tạo bản sao của mỗi đơn vị và thêm vào SelectedPanel
+                        CardUnit unitPrefab = FindMatchingCardUnits(unitTag);
+
+                        if (unitPrefab != null) // Kiểm tra xem có tìm thấy prefab không
+                        {
+                            CardUnit selectedUnit = Instantiate(unitPrefab, selectedPanel.transform);
+                            selectedUnit.name = unitTag; // Đặt tên cho đối tượng
+                            selectedUnit.showOn_X_Button(); // Hiện nút X
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Không tìm thấy CardUnit với unitTag: " + unitTag);
+                        }
                     }
                 }
             }
+            Debug.Log("Đã tải dữ liệu từ file.");
         }
-        Debug.Log("Đã tải dữ liệu từ file.");
-    }
-    else
-    {
-        Debug.Log("Không tìm thấy file lưu.");
-    }
-}
-    public CardUnit FindMatchingCardUnits(string currentUnitTag)
-{
-    // Tìm CardArea trong Canvas
-    
-
-    // Lấy tất cả các CardUnit trong CardArea
-        
-    CardUnit[] cardUnits = cardArea.GetComponentsInChildren<CardUnit>();
-
-    // Kiểm tra và in ra các unitTag trùng khớp
-    foreach (CardUnit cardUnit in cardUnits)
-    {
-        if (cardUnit.unitTag == currentUnitTag)
+        else
         {
-            Debug.Log("Tìm thấy CardUnit trùng khớp với unitTag: " + currentUnitTag);
-            // Thực hiện hành động với cardUnit tìm thấy
-            return cardUnit;
+            Debug.Log("Không tìm thấy file lưu.");
         }
-        
     }
-    return null;
-}
+
+    public CardUnit FindMatchingCardUnits(string currentUnitTag)
+    {
+        // Tìm CardArea trong Canvas
+
+        // Lấy tất cả các CardUnit trong CardArea
+
+        CardUnit[] cardUnits = cardArea.GetComponentsInChildren<CardUnit>();
+
+        // Kiểm tra và in ra các unitTag trùng khớp
+        foreach (CardUnit cardUnit in cardUnits)
+        {
+            if (cardUnit.unitTag == currentUnitTag)
+            {
+                Debug.Log("Tìm thấy CardUnit trùng khớp với unitTag: " + currentUnitTag);
+                // Thực hiện hành động với cardUnit tìm thấy
+                return cardUnit;
+            }
+        }
+        return null;
+    }
+
     private void LoadSelectedUnits()
     {
-      
         string path = Application.persistentDataPath + "/savedata.dat";
-        Debug.Log("Path is:" +path);
-     //     Debug.Log("Dữ liệu được lưu ở: " + path);
+        Debug.Log("Path is:" + path);
+        //     Debug.Log("Dữ liệu được lưu ở: " + path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -161,30 +167,32 @@ public class CardUnitManager : MonoBehaviour
         SaveSelectedUnits();
         Debug.Log("Đã xóa tất cả lựa chọn đơn vị.");
     }
+
     public void ShowSelectedUnits()
-{
-    if (selectedUnitTags.Count > 0)
     {
-        string selectedUnits = string.Join(", ", selectedUnitTags);
-        Debug.Log("Danh sách các đơn vị đã chọn: " + selectedUnits);
+        if (selectedUnitTags.Count > 0)
+        {
+            string selectedUnits = string.Join(", ", selectedUnitTags);
+            Debug.Log("Danh sách các đơn vị đã chọn: " + selectedUnits);
+        }
+        else
+        {
+            Debug.Log("Không có đơn vị nào được chọn.");
+        }
     }
-    else
+
+    public void removeSelectCard(string unitName)
     {
-        Debug.Log("Không có đơn vị nào được chọn.");
+        if (selectedUnitTags.Contains(unitName))
+        {
+            selectedUnitTags.Remove(unitName);
+            SaveSelectedUnits();
+
+            Debug.Log($"Đã xóa '{unitName}' khỏi danh sách các đơn vị đã chọn.");
+        }
+        else
+        {
+            Debug.LogWarning($"'{unitName}' không có trong danh sách các đơn vị đã chọn.");
+        }
     }
-}
-public void removeSelectCard(string unitName)
-{
-    if (selectedUnitTags.Contains(unitName))
-    {   
-        selectedUnitTags.Remove(unitName);
-        SaveSelectedUnits();
-       
-        Debug.Log($"Đã xóa '{unitName}' khỏi danh sách các đơn vị đã chọn.");
-    }
-    else
-    {
-        Debug.LogWarning($"'{unitName}' không có trong danh sách các đơn vị đã chọn.");
-    }
-}
 }

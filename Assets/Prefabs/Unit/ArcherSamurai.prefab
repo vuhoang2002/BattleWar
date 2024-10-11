@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1435980614771620065}
   - component: {fileID: 5754745341764850182}
   - component: {fileID: 2016046580598568307}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ArcherSamurai
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -215,9 +215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
+  isRanger: 1
   id: 
   moveSpeed: 1
-  searchRadius: 5
+  searchRadius: 8
   attackCooldown: 2
   highPos: -4.5
   lowPos: -2.5
@@ -233,6 +234,8 @@ MonoBehaviour:
   hold_Position: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   isAtkBtn: 0
+  maxY: {fileID: 752450957347428507, guid: ecd4a39fbcc5df34fb397f37ce2e8fb6, type: 3}
+  minY: {fileID: 1134471018660337803, guid: f5455371276018247814ec3a9972e238, type: 3}
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
   timeBwFindTarget: 1
@@ -267,9 +270,10 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  isAbl1: 0
   timeToDealDmg: 1.6
   attackCooldown: 1
-  damage: 20
+  abl1: {fileID: 0}
 --- !u!114 &967353764837639969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +291,7 @@ MonoBehaviour:
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
   currentHealthBar: {fileID: 272629147350003625}
+  damePopUpPrefab: {fileID: 4549289727001127283, guid: 81f9bd1bc1f27984582edca5a610c7a1, type: 3}
 --- !u!114 &7501446110671176859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +366,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 3622957466471559262}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -410,7 +415,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004765041, y: 0.030081362}
+  m_Offset: {x: 0.0037627444, y: 0.018142492}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -421,7 +426,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24123223, y: 0.1554625}
+  m_Size: {x: 0.18324338, y: 0.08382921}
   m_EdgeRadius: 0
 --- !u!1 &4851230753256369701
 GameObject:
@@ -434,6 +439,7 @@ GameObject:
   - component: {fileID: 517126200871677939}
   - component: {fileID: 7551876187310737051}
   - component: {fileID: 5029599930012224652}
+  - component: {fileID: 8203136998173433976}
   m_Layer: 0
   m_Name: AtkArea
   m_TagString: Untagged
@@ -513,7 +519,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4851230753256369701}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -542,11 +548,56 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.11604738, y: -0.046823487}
-  - {x: 6.024459, y: -0.060976356}
+  - {x: 4.0860453, y: -0.072374575}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!61 &8203136998173433976
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851230753256369701}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.272682, y: 0.03790182}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.4308057, y: 0.15991342}
+  m_EdgeRadius: 0
 --- !u!1 &6589547026629266392
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2377237470876882846, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2377237470876882846, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_TagString
@@ -789,6 +840,10 @@ PrefabInstance:
     - target: {fileID: 2522665407710979415, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603644581560590512, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: maxArrowDistance
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Name

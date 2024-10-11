@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
+  isRanger: 0
   id: 
   moveSpeed: 1
   searchRadius: 5
@@ -230,6 +231,8 @@ MonoBehaviour:
   hold_Position: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   isAtkBtn: 1
+  maxY: {fileID: 752450957347428507, guid: ecd4a39fbcc5df34fb397f37ce2e8fb6, type: 3}
+  minY: {fileID: 1134471018660337803, guid: f5455371276018247814ec3a9972e238, type: 3}
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
   timeBwFindTarget: 1
@@ -264,9 +267,10 @@ MonoBehaviour:
   abl2_Cd: 0
   abl3_Atk: 0
   abl3_Cd: 0
+  isAbl1: 0
   timeToDealDmg: 0.5
   attackCooldown: 1
-  damage: 20
+  abl1: {fileID: 0}
 --- !u!114 &-7626012630617557650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +288,7 @@ MonoBehaviour:
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
   currentHealthBar: {fileID: 3553649930427974153}
+  damePopUpPrefab: {fileID: 4549289727001127283, guid: 81f9bd1bc1f27984582edca5a610c7a1, type: 3}
 --- !u!61 &5590799233741657938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -339,7 +344,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2662107906704322251}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -353,7 +358,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!60 &-2233678860468004488

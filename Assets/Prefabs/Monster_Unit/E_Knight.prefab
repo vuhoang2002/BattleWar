@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6145388792063241253}
   - component: {fileID: 2026013452076724921}
   - component: {fileID: -6223004891767660426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: E_Knight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -220,6 +220,7 @@ MonoBehaviour:
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
   currentHealthBar: {fileID: 7307530970991974413}
+  damePopUpPrefab: {fileID: 4549289727001127283, guid: 81f9bd1bc1f27984582edca5a610c7a1, type: 3}
 --- !u!114 &2026013452076724921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,9 +243,10 @@ MonoBehaviour:
   abl2_Cd: 0
   abl3_Atk: 0
   abl3_Cd: 0
+  isAbl1: 0
   timeToDealDmg: 0.5
   attackCooldown: 1
-  damage: 20
+  abl1: {fileID: 0}
 --- !u!50 &-6223004891767660426
 Rigidbody2D:
   serializedVersion: 4
@@ -350,6 +352,22 @@ PrefabInstance:
     - target: {fileID: 885698151123807655, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
       propertyPath: m_Name
       value: AttackArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045659832474144730, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: 0.9294521
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045659832474144730, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: 0.20196503
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045659832474144730, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
+      propertyPath: m_Points.Array.data[2].x
+      value: 0.94090575
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045659832474144730, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
+      propertyPath: m_Points.Array.data[2].y
+      value: -0.06491874
       objectReference: {fileID: 0}
     - target: {fileID: 9030425874890066536, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
       propertyPath: m_LocalPosition.x

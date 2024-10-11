@@ -42,4 +42,11 @@ public class SceneChanger : MonoBehaviour
     public void set_SceneNeedToMove(string name){
         this.current_sceneName=name;
     }
+    public void GoToLevelSelectedScene(){
+        LoadNewScene("LevelSelectScene");
+    }
+    public void GoToAgain(){
+         current_sceneName=SceneManager.GetActiveScene().name;
+         LoadNewScene(current_sceneName);
+    }
 }

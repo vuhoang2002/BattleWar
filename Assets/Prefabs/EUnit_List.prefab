@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: []
-  Max_Unit_Per_Col: 5
   space_X_Btw_Col: 1
   space_X_In_Col: 0.2
   maxPos: {x: 0, y: 0}
@@ -165,6 +164,8 @@ MonoBehaviour:
     isInCurrentMatch: 1
   - enemyPrefab: {fileID: 2627196932269546020, guid: e359e93b745204f4ca455466e52d12d4, type: 3}
     isInCurrentMatch: 1
+  - enemyPrefab: {fileID: 8275368642616864759, guid: 2388ec94ee44af045a9c4418b0a13cdb, type: 3}
+    isInCurrentMatch: 1
   unitTagLists: []
   atk_Order: 1
   def_Order: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   hold_Order: 0
   enemySpawnArea: {fileID: 0}
   unitDef_Area: {fileID: 758997243414039495}
+  enemyList: {fileID: 0}
 --- !u!114 &2423581820398693827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +192,8 @@ MonoBehaviour:
   is_Attack_Mod: 0
   is_War_Mod: 0
   is_Survival_Mod: 0
+  spawnTimer: []
   currentGold: 10000
-  timePlay: 0
   title: {fileID: 0}
+  timePlay: 0
+  elapsedTime: 0

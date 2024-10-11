@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro; // Đảm bảo bạn đã sử dụng TextMeshPro
 
 public class Health : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isDestroy = false;
     public SpriteRenderer currentHealthBar;
-
+    public GameObject damePopUpPrefab;
     float currentScaleX = 1.3f;
     string id;
 
@@ -39,12 +40,11 @@ public class Health : MonoBehaviour
         {
             currentScaleX = currentHealthBar.transform.localScale.x;
         }
-       
+        // damePopUpPrefab = Resources.Load<GameObject>("DamePopUp");
     }
 
     void Update()
     {
-        
     }
 
     public void TakeDamage(int amount)
@@ -54,6 +54,7 @@ public class Health : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
         }
         this.health -= amount;
+        ShowDamagePopup(amount);
         // MÁU CHO CASTLE 
         if (halfCastle != null && dieCastle != null)
         {
@@ -64,39 +65,49 @@ public class Health : MonoBehaviour
             if (health <= 0)
             {
                 ShowDieCastle(); // for castle
-               // Tìm BattleCanva
-GameObject battleCanva = GameObject.Find("BattleCanva");
+                                 // Tìm BattleCanva
+                GameObject battleCanva = GameObject.Find("BattleCanva");
 
-if (battleCanva != null) {
-    if (gameObject.CompareTag("PlayerCastle")) {
-        // Tìm LoseUI trong BattleCanva
-        GameObject loseUI = battleCanva.transform.Find("LoseUI")?.gameObject;
-        
-        if (loseUI != null) {
-            loseUI.SetActive(true);
-            Time.timeScale = 0f; 
+                if (battleCanva != null)
+                {
+                    if (gameObject.CompareTag("PlayerCastle"))
+                    {
+                        // Tìm LoseUI trong BattleCanva
+                        GameObject loseUI = battleCanva.transform.Find("LoseUI")?.gameObject;
 
-        } else {
-            Debug.LogWarning("LoseUI not found in BattleCanva!");
-        }
-    } else if (gameObject.CompareTag("EnemyCastle")) {
-        // Tìm VictoryUI
-        GameObject victoryUI = battleCanva.transform.Find("VictoryUI")?.gameObject;
-        
-        if (victoryUI != null) {
-            victoryUI.SetActive(true);
-            Time.timeScale = 0f; 
+                        if (loseUI != null)
+                        {
+                            loseUI.SetActive(true);
+                            Time.timeScale = 0f;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("LoseUI not found in BattleCanva!");
+                        }
+                    }
+                    else if (gameObject.CompareTag("EnemyCastle"))
+                    {
+                        // Tìm VictoryUI
+                        GameObject victoryUI = battleCanva.transform.Find("VictoryUI")?.gameObject;
 
-        } else {
-            Debug.LogWarning("VictoryUI not found!");
-        }
-    }
-    
-    // Đánh dấu lâu đài là đã chết
-    gameObject.tag = "Dead";
-} else {
-    Debug.LogWarning("BattleCanva not found!");
-}
+                        if (victoryUI != null)
+                        {
+                            victoryUI.SetActive(true);
+                            Time.timeScale = 0f;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("VictoryUI not found!");
+                        }
+                    }
+
+                    // Đánh dấu lâu đài là đã chết
+                    gameObject.tag = "Dead";
+                }
+                else
+                {
+                    Debug.LogWarning("BattleCanva not found!");
+                }
             }
         }
         else if (health <= 0)
@@ -104,6 +115,7 @@ if (battleCanva != null) {
             health = 0;
             Die();
         }
+
         UpdateHealthBar();
     }
 
@@ -121,23 +133,22 @@ if (battleCanva != null) {
 
     public void Die()
     {
-       
         if (gameObject.CompareTag("Player"))
         {
             GameObject list = GameObject.Find("PUnit_List");
             UnitListManager unitListManager = list.GetComponent<UnitListManager>();
-              id=GetComponent<PlayerController>().id;
+            id = GetComponent<PlayerController>().id;
             unitListManager.RemoveUnitFromTagList(gameObject.name, gameObject, id);
         }
         else if (gameObject.CompareTag("Enemy"))
         {
             GameObject list = GameObject.Find("EUnit_List");
             EnemyBehavius enemyBehavius = list.GetComponent<EnemyBehavius>();
-              id=GetComponent<EnemyController>().id;
+            id = GetComponent<EnemyController>().id;
             enemyBehavius.RemoveUnitFromTagList(gameObject.name, gameObject, id);
         }
         gameObject.tag = "Dead";
-        currentHealthBar.enabled=false;
+        currentHealthBar.enabled = false;
     }
 
     public void killSelf()
@@ -195,6 +206,43 @@ if (battleCanva != null) {
         {
             float healthPercentage = (float)this.health / MAX_HEALTH;
             currentHealthBar.transform.localScale = new Vector3(healthPercentage * currentScaleX, 1f, 1f);
+        }
+    }
+
+    // Kiểm tra prefab không null
+    public void ShowDamagePopup(int damage)
+    {
+        if (damePopUpPrefab != null)
+        {
+            // Tạo instance của damage pop-up
+            GameObject instance = Instantiate(damePopUpPrefab, transform.position, Quaternion.identity);
+
+            // Đặt instance là con của đối tượng hiện tại
+            instance.transform.SetParent(transform);
+
+            // Lấy component TextMeshPro từ instance
+            TextMeshPro textComponent = instance.GetComponentInChildren<TextMeshPro>();
+
+            if (textComponent != null)
+            {
+                textComponent.text = damage.ToString();
+            }
+            else
+            {
+                Debug.LogWarning("TextMeshPro component not found in the pop-up instance!");
+            }
+
+            // Bắt đầu animation (nếu cần)
+           // Animator animator = instance.GetComponent<Animator>();
+
+          //  if (animator != null)
+           // {
+             //   animator.SetTrigger("PlayAnimation"); // Trigger đã tạo trong Animator
+           // }
+        }
+        else
+        {
+            Debug.LogWarning("Damage pop-up prefab is not assigned!");
         }
     }
 }

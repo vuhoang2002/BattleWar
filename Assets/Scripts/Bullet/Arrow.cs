@@ -1,24 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq; 
 
 public class Arrow : MonoBehaviour
 {
     public int arow_Dmg; // basic_atk
-    public float speedArrow = 3f;
+    public float speedArrow = 2f;
     public bool isGoodBullet = true; // player là true
     private float distanceTravelled = 0f; // Khoảng cách đã bay
     private bool arrowDirection = true; // Hướng bay mũi tên
     public float maxArrowDistance=8f;
+    public bool isChangre=false;// chưởng
+    public bool isColide=false;
+    public string destroyName="FireBall_Destroy";
+    private Animator amt;
 
     void Start()
     {
-        // Có thể khởi tạo mũi tên ở đây nếu cần
+        // Có thể khởi tạo mũi tên ở đây nếu cần   
+            amt=GetComponent<Animator>();
+               if(amt!=null){
+                isChangre=true;
+          }
     }
 
     void Update()
     {
+        if(!isColide){
         ArrowFly();
+        }
     }
 
     public void SetArrowDmg_Direction(int basic_Dmg, bool direction)
@@ -34,13 +45,13 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("Bắn trúng địch " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);
-            Destroy(gameObject); // Hủy mũi tên sau khi trúng đích
+            OnDestroy(); // Hủy mũi tên sau khi trúng đích
         }
         else if ((target.CompareTag("Player") || target.CompareTag("PlayerCastle"))  && !isGoodBullet) // dành cho enemy
         {
             Debug.Log("Bắn trúng " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);
-            Destroy(gameObject); // Hủy mũi tên sau khi trúng đích
+            OnDestroy(); // Hủy mũi tên sau khi trúng đích
         }
     }
 
@@ -65,7 +76,28 @@ public class Arrow : MonoBehaviour
         // Kiểm tra xem mũi tên có bay quá 6f không
         if (distanceTravelled > maxArrowDistance)
         {
-            Destroy(gameObject); // Hủy mũi tên
+            OnDestroy(); // Hủy mũi tên
         }
+    }
+
+    public void OnDestroy()
+    {
+        isColide=true;
+        if (isChangre)// changre là chưởng ;v
+        {
+            amt.SetBool("Destroy", true); // Bắt đầu animation isDestroy
+            //StartCoroutine(DestroyAfterAnimation()); // Gọi coroutine để hủy sau khi animation hoàn tất 
+          
+            Invoke("DeleteSelf", 1f);
+            gameObject.GetComponent<Collider2D>().enabled=false;
+        }
+        else
+        {
+            Destroy(gameObject); // Nếu không có animation, hủy ngay lập tức
+        }
+    }
+
+    void DeleteSelf(){
+         Destroy(gameObject);
     }
 }

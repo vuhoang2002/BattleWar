@@ -224,9 +224,10 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  isAbl1: 0
   timeToDealDmg: 1.6
   attackCooldown: 1
-  damage: 20
+  abl1: {fileID: 0}
 --- !u!114 &8993532774257513600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +245,7 @@ MonoBehaviour:
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
   currentHealthBar: {fileID: 906406035900181930}
+  damePopUpPrefab: {fileID: 4549289727001127283, guid: 81f9bd1bc1f27984582edca5a610c7a1, type: 3}
 --- !u!114 &2663955702238992862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,11 +304,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 5.592355, y: 0.107799485}
+    - - {x: 4.3495126, y: 0.058085818}
       - {x: 0.63543123, y: 0.10235703}
       - {x: 0.13674973, y: 0.10005344}
       - {x: 0.09865435, y: -0.071682}
-      - {x: 5.693731, y: -0.04711875}
+      - {x: 4.212263, y: 0.002594918}
   m_UseDelaunayMesh: 0
 --- !u!50 &2592381921280674327
 Rigidbody2D:
@@ -367,7 +369,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004765041, y: 0.030081362}
+  m_Offset: {x: -0.004765041, y: 0.015310891}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -378,7 +380,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24123223, y: 0.1554625}
+  m_Size: {x: 0.24123223, y: 0.30316728}
   m_EdgeRadius: 0
 --- !u!114 &817115971102989610
 MonoBehaviour:

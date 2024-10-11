@@ -12,23 +12,24 @@ public class UnitPanelFunction : MonoBehaviour
     public GameObject UnitPanel;
     public GameObject cloneSpawnBtn;
     public GameObject mapSize;
+
     void Start()
     {
         GetSaveUnit();// lấy unit trong bộ bài
         Create_Spawn_Button();
-
     }
 
     // Update is called once per frame
-    void GetSaveUnit(){
-        selectedUnitTags = new List<string>(); 
+    void GetSaveUnit()
+    {
+        selectedUnitTags = new List<string>();
         LoadSelectedUnits();
     }
+
     public void LoadSelectedUnits()
     {
-      
         string path = Application.persistentDataPath + "/savedata.dat";
-     //     Debug.Log("Dữ liệu được lưu ở: " + path);
+        //     Debug.Log("Dữ liệu được lưu ở: " + path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -40,46 +41,52 @@ public class UnitPanelFunction : MonoBehaviour
             Debug.Log("Đã tải các đơn vị đã chọn: " + string.Join(", ", selectedUnitTags));
         }
     }
-    private void Create_Spawn_Button(){// dựa trên các thẻ đã lưu, tạo button
-        foreach(var save_unit in selectedUnitTags){
-                Create_Current_Button(save_unit);
+
+    private void Create_Spawn_Button()
+    {// dựa trên các thẻ đã lưu, tạo button
+        foreach (var save_unit in selectedUnitTags)
+        {
+            Create_Current_Button(save_unit);
         }
     }
+
     private void Create_Current_Button(string save_unit)
-{
-    // Tìm UnitData tương ứng với unitTag
-    UnitData unitDataEntry = unitData.Find(unit => unit.unitTag == save_unit);
-    Debug.LogWarning("save là"+ save_unit);
-    if (unitDataEntry != null)
     {
-            Debug.LogWarning("save có tồn tại"+ unitDataEntry.unitTag);
+        // Tìm UnitData tương ứng với unitTag
+        UnitData unitDataEntry = unitData.Find(unit => unit.unitTag == save_unit);
+        Debug.LogWarning("save là" + save_unit);
+        if (unitDataEntry != null)
+        {
+            Debug.LogWarning("save có tồn tại" + unitDataEntry.unitTag);
 
-        // Tạo nút từ prefab đã tạo sẵn (nếu có) hoặc tạo mới
-       // Tạo GameObject cho nút
-        GameObject crtSpawBtn=new GameObject();
-        
-        crtSpawBtn=Instantiate(cloneSpawnBtn, transform); // Spawn prefab
-           SpawnPlayer sp= crtSpawBtn.GetComponent<SpawnPlayer>();
-        sp.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize,  0);      
+            // Tạo nút từ prefab đã tạo sẵn (nếu có) hoặc tạo mới
+            // Tạo GameObject cho nút
+            GameObject crtSpawBtn = new GameObject();
 
-    
-       crtSpawBtn.name="Spawn"+ unitDataEntry.unitTag;
-         Debug.LogWarning("save đã spawn"+ crtSpawBtn.name);
-      // crtSpawBtn.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize,  0);
+            // thiết lập nút
+            crtSpawBtn = Instantiate(cloneSpawnBtn, transform); // Spawn prefab
+            SpawnPlayer sp = crtSpawBtn.GetComponent<SpawnPlayer>();
+            sp.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize, unitDataEntry.unitPrice,unitDataEntry.cdTimerUnit);
+
+            crtSpawBtn.name = "Spawn" + unitDataEntry.unitTag;
+            Debug.LogWarning("save đã spawn" + crtSpawBtn.name);
+            // crtSpawBtn.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize,  0);
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy UnitData cho unitTag: " + save_unit);
+        }
     }
-    else
+
+    private void OnButtonClick(UnitData unitDataEntry)
     {
-        Debug.LogWarning("Không tìm thấy UnitData cho unitTag: " + save_unit);
+        // Xử lý logic khi nút được nhấn, ví dụ:
+        Debug.Log("Nút đã được nhấn cho đơn vị: " + unitDataEntry.unitTag);
+        // Có thể thêm logic để spawn hoặc thực hiện hành động khác với unitDataEntry
     }
-}
 
-private void OnButtonClick(UnitData unitDataEntry)
-{
-    // Xử lý logic khi nút được nhấn, ví dụ:
-    Debug.Log("Nút đã được nhấn cho đơn vị: " + unitDataEntry.unitTag);
-    // Có thể thêm logic để spawn hoặc thực hiện hành động khác với unitDataEntry
-}
-    public int Get_UnitListCount(){
+    public int Get_UnitListCount()
+    {
         return selectedUnitTags.Count;
     }
     public List<string> SelectedUnitTags

@@ -1,8 +1,10 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro; // Thêm dòng này nếu chưa có
 
 public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
@@ -10,7 +12,13 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject mapSize; // Kích thước của bản đồ
     public GameObject prefabToSpawn; // Prefab để spawn
     public int priceUnit; // Giá tiền
-
+    //public float cd_Unit;// thời gian hồi
+    public Image cooldownImage; // Hình ảnh cho vòng tròn hồi chiêu
+    public float cooldownDuration = 5f; // Thời gian hồi chiêu
+    public Button priceButton;
+    public Button GOLD_Counter;
+    private TextMeshProUGUI buttonText;
+    public bool isSpawnReady = true;
     private Renderer renderer;
     private PlayerCountDisplay playerCountDisplay; // Tham chiếu đến PlayerCountDisplay
     private bool isMaxPlayer = false;
@@ -29,7 +37,8 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private string creat_ID_For_Unit; // Biến ID cho đơn vị
     private static int nextId = 1; // Biến static để theo dõi ID tiếp theo
     public GameObject playerList;
-    
+    public delegate void UnitSpawnedHandler(GameObject newUnit, string unitId);
+    public event UnitSpawnedHandler OnUnitSpawned;
 
     private void Start()
     {
@@ -37,17 +46,17 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         isMaxPlayer = playerCountDisplay.get_isMaxPlayer();
         setSpawnLocation(); // Gọi hàm để thiết lập vị trí spawn
         rectTransform = GetComponent<RectTransform>(); // Lấy RectTransform
-        GetComponent<Image>().sprite = unitAvatar; 
+        GetComponent<Image>().sprite = unitAvatar;
         if (unitListManager == null)
         {
             GameObject ob = GameObject.Find("PUnit_List");
             unitListManager = ob.GetComponent<UnitListManager>();
         }
-       playerList= GameObject.Find("PlayerList(Clone)");
-            
-        
+        playerList = GameObject.Find("PlayerList(Clone)");
+        this.OnUnitSpawned += HandleUnitSpawned;
+        cooldownImage.fillAmount = 0;
     }
-    
+
     public void OnPointerDown(PointerEventData eventData)
     {
         isHolding = true; // Đặt trạng thái ấn giữ thành true
@@ -94,6 +103,27 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
             yield return null; // Đợi frame tiếp theo
         }
+    }
+
+    private IEnumerator CooldownRoutine()
+    {
+        isSpawnReady = false;
+
+        float elapsedTime = 0f;
+
+        // Đặt lại giá trị fillAmount
+        cooldownImage.fillAmount = 1f;
+
+        while (elapsedTime < cooldownDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            cooldownImage.fillAmount = 1 - (elapsedTime / cooldownDuration); // Cập nhật giá trị fillAmount
+            yield return null; // Đợi frame tiếp theo
+        }
+        //  yield return new WaitForSeconds(cooldownDuration);
+
+        cooldownImage.fillAmount = 0; // Đặt lại khi hoàn thành
+        isSpawnReady = true;
     }
 
     private void ZoomIn()
@@ -147,7 +177,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    public void setUpButton(GameObject unitToSpawn, Sprite unitAvatar, GameObject mapSize, int price)
+    public void setUpButton(GameObject unitToSpawn, Sprite unitAvatar, GameObject mapSize, int price, float cd)
     {
         gameObject.SetActive(true);
         // Thiết lập nút cho đơn vị để spawn
@@ -156,13 +186,27 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         GetComponent<Image>().sprite = unitAvatar; // Thiết lập hình đại diện cho UI
         this.mapSize = mapSize; // Gán kích thước bản đồ
         this.priceUnit = price; // Gán giá
+        this.cooldownDuration = cd;
         setSpawnLocation(); // Gọi hàm để thiết lập vị trí spawn
+
+        // thiết lập giá tiền
+        buttonText = priceButton.GetComponentInChildren<TextMeshProUGUI>();
+        if(buttonText!=null){
+        buttonText.text = priceUnit.ToString();
+        }else{
+            Debug.Log("Không tạo đc price");
+        }
     }
 
     private void spawnUnit()
     {
         // Thiết lập vị trí spawn ngẫu nhiên
-        float positionSpawn_Y = Random.Range(lowest_Y, highest_Y); 
+        if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold<priceUnit)
+        {
+            return;
+        }
+
+        float positionSpawn_Y = Random.Range(lowest_Y, highest_Y);
         isMaxPlayer = playerCountDisplay.get_isMaxPlayer(); // Lấy thông tin về số lượng người chơi hiện tại
 
         if (!isMaxPlayer)
@@ -171,19 +215,22 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 Vector3 spawnPosition = new Vector3(positionSpawn_X, positionSpawn_Y, 0f);
                 GameObject newUnit = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); // Spawn prefab
-                
+
                 // Gán ID cho đơn vị mới
                 creat_ID_For_Unit = "P" + nextId; // Tạo ID với chữ "P" trước
                 nextId++; // Tăng ID cho lần tạo tiếp theo
-                
+
                 // Thiết lập ID cho đơn vị
-                newUnit.GetComponent<PlayerController>().SetID(creat_ID_For_Unit);              
+                newUnit.GetComponent<PlayerController>().SetID(creat_ID_For_Unit);
                 newUnit.GetComponent<PlayerController>().Set_BehaviusForPrefab(atk.isAtk_Active, def.isDef_Active, fbk.isFallBack_Active); // set bahavius
                 newUnit.GetComponent<PlayerController>().Set_Retreat_Position(spawnPosition);
                 newUnit.transform.SetParent(playerList.transform);
-                unitListManager.AddUnitToTagList(prefabToSpawn.name, newUnit,creat_ID_For_Unit);
+                unitListManager.AddUnitToTagList(prefabToSpawn.name, newUnit, creat_ID_For_Unit);
                 // Sau khi được thêm, ta cần tạo cho nó 1 defposition
                 unitListManager.CreatDef(prefabToSpawn.name);
+                OnUnitSpawned?.Invoke(newUnit, creat_ID_For_Unit);
+
+                StartCoroutine(CooldownRoutine());
             }
         }
         else
@@ -195,10 +242,16 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void setSpawnLocation()
     {
         renderer = mapSize.GetComponent<Renderer>();
+
         Vector3 min = renderer.bounds.min; // Tọa độ thấp nhất
         Vector3 max = renderer.bounds.max; // Tọa độ cao nhất
         highest_Y = max.y; // Lấy tọa độ Y cao nhất
         lowest_Y = min.y; // Lấy tọa độ Y thấp nhất
         positionSpawn_X = min.x; // Lấy tọa độ X thấp nhất
+    }
+
+    private void HandleUnitSpawned(GameObject newUnit, string unitId)
+    {
+        Debug.Log("Spawn");
     }
 }

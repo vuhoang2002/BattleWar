@@ -30,7 +30,7 @@ AnimationClip:
       value: {fileID: 1730314372, guid: 3ad915e24a2e5ac448842a20ad0fe0a0, type: 3}
     - time: 0.5
       value: {fileID: 1558086895, guid: 3ad915e24a2e5ac448842a20ad0fe0a0, type: 3}
-    - time: 0.6
+    - time: 0.65
       value: {fileID: -1204300171, guid: 3ad915e24a2e5ac448842a20ad0fe0a0, type: 3}
     - time: 0.75
       value: {fileID: 646050306, guid: 3ad915e24a2e5ac448842a20ad0fe0a0, type: 3}
@@ -87,4 +87,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.38333333
+    functionName: BasicAttackActive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShowExitCanva : MonoBehaviour
+public class ShowCanva : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject exitCanva;
+    public GameObject Canva;
     public bool show=true;
     void Start()
     {
@@ -14,6 +14,12 @@ public class ShowExitCanva : MonoBehaviour
 
     // Update is called once per frame
    public void  OnMouseDown(){
+    Canva.SetActive(show);
+     show = !show;
+
+
+  
+
    
-        exitCanva.SetActive(show);   }
+          }
 }

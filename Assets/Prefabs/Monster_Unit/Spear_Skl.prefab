@@ -441,7 +441,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0625872, y: 0.000000014901161}
+  m_Offset: {x: -0.0625872, y: -0.00406399}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -452,7 +452,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19515592, y: 0.17429379}
+  m_Size: {x: 0.19515592, y: 0.21493381}
   m_EdgeRadius: 0
 --- !u!114 &3389554123311337150
 MonoBehaviour:
@@ -471,6 +471,7 @@ MonoBehaviour:
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
   currentHealthBar: {fileID: 7683704039563191100}
+  damePopUpPrefab: {fileID: 4549289727001127283, guid: 81f9bd1bc1f27984582edca5a610c7a1, type: 3}
 --- !u!114 &6752782906354317183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,9 +494,10 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  isAbl1: 0
   timeToDealDmg: 0.3
   attackCooldown: 1
-  damage: 20
+  abl1: {fileID: 0}
 --- !u!114 &7319748340510650845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +527,7 @@ MonoBehaviour:
   def_Position: {x: 0, y: 0, z: 0}
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
   isAtkBtn: 0
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 0

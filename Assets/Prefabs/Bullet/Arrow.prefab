@@ -174,3 +174,7 @@ MonoBehaviour:
   arow_Dmg: 1
   speedArrow: 5
   isGoodBullet: 1
+  maxArrowDistance: 12
+  isChangre: 0
+  isColide: 0
+  destroyName: FireBall_Destroy
