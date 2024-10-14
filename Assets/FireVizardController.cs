@@ -9,18 +9,18 @@ public class FireVizardController : MonoBehaviour
     private int fireBallAtk;
     private bool arrowDirection; // Khai báo biến arrowDirection
    // private Animator amtFireBall;
-    public static bool isUpgrade = false;
+    public static bool isUpgrade = true;
 
     void Start()
     {   
         //isUpgrade=true;
         fireBallAtk = GetComponent<Attacks>().abl1_Atk;
    //     amtFireBall = fireBallAbl1.GetComponent<Animator>();
-        //OnUpgrade();
+        OnUpgrade();
     }
     void OnUpgrade(){
 
-         if(isUpgrade=true){
+         if(isUpgrade){
             gameObject.GetComponent<Animator>().SetBool("isUpgrade",true);
               fireBallAtk +=5;
         }

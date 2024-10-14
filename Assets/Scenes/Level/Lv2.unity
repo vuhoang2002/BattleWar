@@ -813,7 +813,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -4295,6 +4295,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2117364066538647343, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117364066538647343, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117364066538647343, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_FillMethod
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117364066538647343, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_FillClockwise
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117364066538647343, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2304021772404298954, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_SizeDelta.x
       value: 185.6358
@@ -4443,6 +4463,10 @@ PrefabInstance:
       propertyPath: FunctionCanva
       value: 
       objectReference: {fileID: 1698565175}
+    - target: {fileID: 4798680991977431320, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4798680991977431320, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

@@ -229,7 +229,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 // Sau khi được thêm, ta cần tạo cho nó 1 defposition
                 unitListManager.CreatDef(prefabToSpawn.name);
                 OnUnitSpawned?.Invoke(newUnit, creat_ID_For_Unit);
-
+                GOLD_Counter.GetComponent<GoldCount>().currentGold-=priceUnit;
                 StartCoroutine(CooldownRoutine());
             }
         }
