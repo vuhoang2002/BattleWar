@@ -695,7 +695,7 @@ public class PlayerController : MonoBehaviour
                 attackComponent.CallAttack(other.gameObject);
             }
         }
-        if (other.gameObject.CompareTag(findTargetCastle))
+        if (other.gameObject.CompareTag(findTargetCastle) && !isChosen)
         {
             // Debug.Log("va chạm vs tower");
             // Debug.Log("Tower");
@@ -708,8 +708,8 @@ public class PlayerController : MonoBehaviour
         // Debug.Log("Va chạm với "+ other);
         if (other.gameObject.CompareTag(findTarget) && isChosen)
         {
-            attackComponent.GetAttack_byBtn(other.gameObject);// nhận st
-            Debug.Log("tấn công");
+            //attackComponent.GetAttack_byBtn(other.gameObject);// nhận st
+            //Debug.Log("tấn công");
             //  GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
         }
     }
@@ -769,7 +769,7 @@ public class PlayerController : MonoBehaviour
         atkbtn.GetComponent<ButtonHandler>().setAttacks_Var(this.gameObject);//truyền attack vào ở đây
                                                                              // joyStickCanvaTransform.gameObject.GetComponent<ButtonHandler>().setAttacks_Var();
         gameObject.transform.Find("ChosenArea").gameObject.SetActive(false);
-        gameObject.transform.Find("AtkArea").gameObject.SetActive(false);
+        //gameObject.transform.Find("AtkArea").gameObject.SetActive(false);
         playerHasBeenChosen = this.gameObject;
         //joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
     }

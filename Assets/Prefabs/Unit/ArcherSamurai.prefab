@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArrow: {fileID: 1383853957236811008}
   spawnPoint: {fileID: 1786917340875688814}
+  extraDmg: 0
 --- !u!60 &1435980614771620065
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603644581560590512, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: maxArrowDistance
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Name

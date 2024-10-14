@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1375474092313933171}
   - component: {fileID: 5204666892807607643}
   - component: {fileID: 6482121372138721705}
+  - component: {fileID: -1660581032836878939}
   m_Layer: 0
   m_Name: Castle1
   m_TagString: PlayerCastle
@@ -248,6 +249,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.026094, y: 9.397217}
   m_EdgeRadius: 0
+--- !u!114 &-1660581032836878939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8380124802478897215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 2
+  extraDMGWeight: 0
+  unitRace: 0
 --- !u!1001 &2374556163432093724
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  deadthObject: {fileID: 0}
+  deadthObject: {fileID: 3810788133568609769, guid: fe33a87924aafea4591bc08d2bc69c7d, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
   currentHealthBar: {fileID: 7683704039563191100}
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abl_Count: 4
   basic_Atk: 10
-  basic_Cd: 2
+  basic_Cd: 1.4
   basic_Cd_Time: 0
   abl1_Atk: 0
   abl1_Cd: 1
@@ -499,7 +499,7 @@ MonoBehaviour:
   timeToDealDmg: 0.3
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 0
+  extraDmg: 10
 --- !u!114 &7319748340510650845
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -221,8 +221,8 @@ public class Attacks : MonoBehaviour
         {
             isRightWay = enemyController.isRightWay;
         }
-        int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
-        GetComponent<Shot>().Spawn_Arrow(damageToDeal, isRightWay);
+        // int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
+        GetComponent<Shot>().Spawn_Arrow(basic_Atk, isRightWay);//extra được thiết lập ở shot r
 
         //Debug.Log("Collider đã được tắt!");
     }
@@ -261,14 +261,15 @@ public class Attacks : MonoBehaviour
     }
     bool CheckTargetUnitClass_Weight(GameObject target)
     {
-        if (GetComponent<UnitClass>().extraDMGWeight == target.GetComponent<UnitClass>().unitWeight)
+        UnitClass extraDmgWeight = GetComponent<UnitClass>();
+        if ((extraDmgWeight.extraDMGWeight == target.GetComponent<UnitClass>().unitWeight))
         {
             return true;
         }
         return false;
     }
-    public void GetExtraDmg()
+    public bool Get_IsDealExtraDmg()
     {
-
+        return isDealExtraDamage;
     }
 }

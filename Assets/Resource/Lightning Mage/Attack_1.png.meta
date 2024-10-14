@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13e5f1c03b1753240aab318958b01bce
+guid: 24528d6f79dbc6d4bb559f7755d77e26
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,32 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -136,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dead_0
+      name: Attack_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a280ebf86d0ab664c822ba5eefb3d068
-      internalID: 1176955702
+      spriteID: b4b456adada47704ab831543915613a0
+      internalID: 848525366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_1
+      name: Attack_1_1
       rect:
         serializedVersion: 2
         x: 128
@@ -171,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95caf71dfeb33a74294600b5b2929259
-      internalID: 1008730523
+      spriteID: c4c85a50d337ac24a8285f5dccf9f4b6
+      internalID: 1081834615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_2
+      name: Attack_1_2
       rect:
         serializedVersion: 2
         x: 256
@@ -192,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dd0f3481a94e9a4598c83ade54633cf
-      internalID: 97510291
+      spriteID: a5eee6d457f11a64ead507434efa4b23
+      internalID: 1016605685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_3
+      name: Attack_1_3
       rect:
         serializedVersion: 2
         x: 384
@@ -213,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 292b7f24d290de24a90d555173a94ca1
-      internalID: -118980294
+      spriteID: 74b0a9a0182281b45bc2d41f99c57acf
+      internalID: 436794402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_4
+      name: Attack_1_4
       rect:
         serializedVersion: 2
         x: 512
@@ -234,8 +208,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59707d990386bee4083bab9d483e8d83
-      internalID: 1196022221
+      spriteID: 18b6953f15e042140b0026b9039449a6
+      internalID: -2102998180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_1_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aedf50e93ce82343a21944ad46db7b1
+      internalID: 1956848350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_1_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9747a46a47ceb5b4da0943ac89ca85ac
+      internalID: -471682200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_1_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7fd743cfff2f3408701d05eb727b65
+      internalID: -198754618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_1_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e304db9be1740f498035fa7c074dd17
+      internalID: 1854392386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_1_9
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1529c83d449f60408588927d0ec6413
+      internalID: 1434598895
       vertices: []
       indices: 
       edges: []
@@ -251,11 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dead_0: 1176955702
-      Dead_1: 1008730523
-      Dead_2: 97510291
-      Dead_3: -118980294
-      Dead_4: 1196022221
+      Attack_1_0: 848525366
+      Attack_1_1: 1081834615
+      Attack_1_2: 1016605685
+      Attack_1_3: 436794402
+      Attack_1_4: -2102998180
+      Attack_1_5: 1956848350
+      Attack_1_6: -471682200
+      Attack_1_7: -198754618
+      Attack_1_8: 1854392386
+      Attack_1_9: 1434598895
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

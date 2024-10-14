@@ -984,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6014556696874504367, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}
       propertyPath: maxArrowDistance
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7068233803343258169, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}
       propertyPath: m_Name

@@ -19,20 +19,22 @@ public class CancelChosen : MonoBehaviour
             }
         }
         //tắt OrderCanva unit
-        
+
         offChosenPlayerCam();
         offJoyStickCanva();
     }
-      private void offJoyStickCanva(){
-          GameObject BattleCanvas=GameObject.Find("BattleCanva");
-          Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
-          joyStickCanvaTransform.gameObject.SetActive(false);
-          OrderPanel_For_1_UnitsType.SetActive(false);
+    public void offJoyStickCanva()
+    {
+        GameObject BattleCanvas = GameObject.Find("BattleCanva");
+        Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
+        joyStickCanvaTransform.gameObject.SetActive(false);
+        OrderPanel_For_1_UnitsType.SetActive(false);
         FunctionCanva.SetActive(false);
     }
-    private void offChosenPlayerCam(){
-        GameObject mainCamera= GameObject.Find("Main Camera");
-        CameraControl cam= mainCamera.GetComponent<CameraControl>();
+    public void offChosenPlayerCam()
+    {
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        CameraControl cam = mainCamera.GetComponent<CameraControl>();
         cam.setChosenPlayer(null, false);
     }
 }

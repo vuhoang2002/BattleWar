@@ -15,7 +15,7 @@ public class Arrow : MonoBehaviour
     public bool isColide = false;
     public string destroyName = "FireBall_Destroy";
     private Animator amt;
-
+    private int extraDmg;
     void Start()
     {
         // Có thể khởi tạo mũi tên ở đây nếu cần   
@@ -24,6 +24,7 @@ public class Arrow : MonoBehaviour
         {
             isChangre = true;
         }
+
     }
 
     public void SetArrowMaxDistante(float newMax)

@@ -6,7 +6,7 @@ public class ButtonHandler : MonoBehaviour
     public Button myButton; // Tham chiếu đến button
 
     public Attacks attacks; // Tham chiếu đến Attacks
-  
+
     void Start()
     {
         // Nếu myButton chưa được gán qua Inspector, tìm component Button trên chính GameObject này
@@ -14,10 +14,10 @@ public class ButtonHandler : MonoBehaviour
         {
             myButton = GetComponent<Button>();
         }
-       
-      
-        
-       // setAttacks_Var();
+
+
+
+        // setAttacks_Var();
         // Đảm bảo rằng attacks cũng được gán
         if (attacks != null)
         {
@@ -37,13 +37,17 @@ public class ButtonHandler : MonoBehaviour
         }
     }
 
-  public void setAttacks_Var(GameObject chosenPlayer){
-     //GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
-     if(chosenPlayer!=null){
-                attacks=chosenPlayer.GetComponent<Attacks>();
+    public void setAttacks_Var(GameObject chosenPlayer)
+    {
+        //GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
+        if (chosenPlayer != null)
+        {
+            attacks = chosenPlayer.GetComponent<Attacks>();
 
-     }else{
-        Debug.Log("Ko có chosenPlayer");
-     }
-  }
+        }
+        else
+        {
+            Debug.Log("Ko có chosenPlayer");
+        }
+    }
 }

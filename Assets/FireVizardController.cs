@@ -8,21 +8,24 @@ public class FireVizardController : MonoBehaviour
     public Transform spawnFireBall; // Vị trí để spawn FireBall
     private int fireBallAtk;
     private bool arrowDirection; // Khai báo biến arrowDirection
-   // private Animator amtFireBall;
+                                 // private Animator amtFireBall;
     public static bool isUpgrade = true;
-
+    private int extraDmg = 0;
     void Start()
-    {   
+    {
         //isUpgrade=true;
         fireBallAtk = GetComponent<Attacks>().abl1_Atk;
-   //     amtFireBall = fireBallAbl1.GetComponent<Animator>();
+        //     amtFireBall = fireBallAbl1.GetComponent<Animator>();
+        extraDmg = GetComponent<Attacks>().extraDmg;
         OnUpgrade();
     }
-    void OnUpgrade(){
+    void OnUpgrade()
+    {
 
-         if(isUpgrade){
-            gameObject.GetComponent<Animator>().SetBool("isUpgrade",true);
-              fireBallAtk +=5;
+        if (isUpgrade)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isUpgrade", true);
+            fireBallAtk += 5;
         }
     }
 
@@ -49,6 +52,7 @@ public class FireVizardController : MonoBehaviour
 
     public void Spawn_FireBall()
     {
+        int deadDmg = fireBallAtk;
         var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<EnemyController>();
 
         if (controller != null)
@@ -60,19 +64,23 @@ public class FireVizardController : MonoBehaviour
         {
             // Spawn ra FireBall
             GameObject arrowInstance = Instantiate(fireBallAbl1, spawnFireBall.position, spawnFireBall.rotation);
-             if (isUpgrade)
+            if (isUpgrade)
             {
-               // arrowInstance.transform.localScale *= 3f; // Tăng kích thước gấp đôi
-               Animator amtFireBall=arrowInstance.GetComponent<Animator>();
-                amtFireBall.SetBool("isUpgrade",true);
+                // arrowInstance.transform.localScale *= 3f; // Tăng kích thước gấp đôi
+                Animator amtFireBall = arrowInstance.GetComponent<Animator>();
+                amtFireBall.SetBool("isUpgrade", true);
 
             }
             arrowInstance.SetActive(true);
-            arrowInstance.GetComponent<Arrow>().SetArrowDmg_Direction(fireBallAtk, arrowDirection);
+            if (GetComponent<Attacks>().Get_IsDealExtraDmg())
+            {
+                deadDmg += extraDmg;
+            }
+            arrowInstance.GetComponent<Arrow>().SetArrowDmg_Direction(deadDmg, arrowDirection);
             arrowInstance.transform.SetParent(transform);
 
             // Phóng to arrowInstance lên 2 lần nếu isUpgrade=true
-           
+
         }
         else
         {
