@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6145388792063241253}
   - component: {fileID: 2026013452076724921}
   - component: {fileID: -6223004891767660426}
+  - component: {fileID: -6246541241320194180}
   m_Layer: 6
   m_Name: E_Knight
   m_TagString: Enemy
@@ -274,6 +275,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-6246541241320194180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520483857507915414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 1
+  unitRace: 3
 --- !u!1001 &1846514149348407289
 PrefabInstance:
   m_ObjectHideFlags: 0

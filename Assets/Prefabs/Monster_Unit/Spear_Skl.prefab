@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 6752782906354317183}
   - component: {fileID: 7319748340510650845}
   - component: {fileID: 6930182581372496275}
+  - component: {fileID: 3662266005989959724}
   m_Layer: 0
   m_Name: Spear_Skl
   m_TagString: Enemy
@@ -498,6 +499,7 @@ MonoBehaviour:
   timeToDealDmg: 0.3
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 0
 --- !u!114 &7319748340510650845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,3 +571,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &3662266005989959724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667527969351417461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 0
+  extraDMGWeight: 1
+  unitRace: 3

@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 6090631115120297017}
   - component: {fileID: 3456044309212838159}
   - component: {fileID: -2978863358932520313}
+  - component: {fileID: -596678981083692593}
   m_Layer: 0
   m_Name: CmdSamurai
   m_TagString: Player
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abl_Count: 4
-  basic_Atk: 20
+  basic_Atk: 15
   basic_Cd: 1.5
   basic_Cd_Time: 0
   abl1_Atk: 0
@@ -174,6 +175,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 10
 --- !u!114 &8939832098719765203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +361,21 @@ PolygonCollider2D:
       - {x: -0.053702407, y: 0.008238921}
       - {x: 0.54455125, y: 0.006242318}
   m_UseDelaunayMesh: 0
+--- !u!114 &-596678981083692593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916172966324721739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 1
+  extraDMGWeight: 1
+  unitRace: 2
 --- !u!1 &7751464501825114516
 GameObject:
   m_ObjectHideFlags: 0

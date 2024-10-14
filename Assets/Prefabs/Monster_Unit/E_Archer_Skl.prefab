@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 2592381921280674327}
   - component: {fileID: 9213661040228689610}
   - component: {fileID: 817115971102989610}
+  - component: {fileID: -2936164614335090416}
   m_Layer: 6
   m_Name: E_Archer_Skl
   m_TagString: Enemy
@@ -228,6 +229,7 @@ MonoBehaviour:
   timeToDealDmg: 1.6
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 0
 --- !u!114 &8993532774257513600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +428,21 @@ MonoBehaviour:
   findTarget: Enemy
   aliesTarget: Player
   findTargetCastle: EnemyCastle
+--- !u!114 &-2936164614335090416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627196932269546020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 0
+  extraDMGWeight: 1
+  unitRace: 3
 --- !u!1 &5298082848579853834
 GameObject:
   m_ObjectHideFlags: 0

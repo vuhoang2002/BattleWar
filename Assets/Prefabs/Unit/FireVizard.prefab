@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 3508917133578239531}
   - component: {fileID: 5217933055285529881}
   - component: {fileID: 4529073013982512110}
+  - component: {fileID: 1537665093293965248}
   m_Layer: 7
   m_Name: FireVizard
   m_TagString: Player
@@ -348,6 +349,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 5
 --- !u!114 &2646033310234609122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,6 +565,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBallAbl1: {fileID: 7068233803343258169, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}
   spawnFireBall: {fileID: 2678447742828322024}
+--- !u!114 &1537665093293965248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460218703059110111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 0
+  extraDMGWeight: 1
+  unitRace: 2
 --- !u!1 &8891546442466285402
 GameObject:
   m_ObjectHideFlags: 0

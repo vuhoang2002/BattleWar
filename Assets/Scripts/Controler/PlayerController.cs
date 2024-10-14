@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
             findTarget = "Enemy";
             aliesTarget = "Player";
             staticDirection = true;
+            // thisIsPlayer = true;
         }
         else if (gameObject.CompareTag("Enemy"))
         {
@@ -416,6 +417,7 @@ public class PlayerController : MonoBehaviour
 
     void Check_MinMax_Position()
     {// ngăn chặn sự di chuyển của nhân vật khi đạt đến Maxy, min y
+     // ngăn cản trục tung
         if (movement.y > 0 && Mathf.Abs(highPos - transform.position.y) < 0.01f)
         {
             movement = new Vector2(joystick.Horizontal, 0).normalized * moveSpeed * Time.deltaTime;
@@ -428,6 +430,7 @@ public class PlayerController : MonoBehaviour
 
     void FindClosestEnemy(float searchRadius)
     {
+
         GameObject[] players = GameObject.FindGameObjectsWithTag(findTarget);
         // GameObject[] playerTowers = GameObject.FindGameObjectsWithTag(findTargetCastle);
 

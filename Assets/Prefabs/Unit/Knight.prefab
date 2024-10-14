@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5590799233741657938}
   - component: {fileID: 7492604664125764685}
   - component: {fileID: -2233678860468004488}
+  - component: {fileID: -4711996996860026326}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -271,6 +272,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 5
 --- !u!114 &-7626012630617557650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +412,21 @@ PolygonCollider2D:
       - {x: -0.053702407, y: 0.008238921}
       - {x: 0.54455125, y: 0.006242318}
   m_UseDelaunayMesh: 0
+--- !u!114 &-4711996996860026326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662107906704322251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 1
+  extraDMGWeight: 0
+  unitRace: 2
 --- !u!1 &2741910375080544766
 GameObject:
   m_ObjectHideFlags: 0

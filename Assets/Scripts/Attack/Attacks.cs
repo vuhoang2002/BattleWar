@@ -46,7 +46,9 @@ public class Attacks : MonoBehaviour
     bool isRightWay = true;
     bool isPlayer = true;
     public Abl1 abl1;
-
+    public int extraDmg = 5;
+    // sát thương thực tế= sát thương cơ bản +(sát thương thêm <nếu mục tiêu cùng loại vs targetWeight>)
+    private bool isDealExtraDamage;
     void Start()
     {
         //attackArea = transform.GetChild(0).gameObject;
@@ -67,6 +69,7 @@ public class Attacks : MonoBehaviour
 
         // timeToDealDmg*=Time.deltaTime;
         //this.isChosen=playerController.isChosen;
+
     }
 
     void FixedUpdate()
@@ -110,6 +113,15 @@ public class Attacks : MonoBehaviour
         // Tính toán khoảng cách giữa player và enemy
         // distanceTo_Target = Vector3.Distance(transform.position, target.transform.position);
 
+        // Debug.Log("Weight mục tiêu là " + target.GetComponent<UnitClass>().unitWeight + "Của tôi là: " + GetComponent<UnitClass>().extraDMGWeight);
+        if (CheckTargetUnitClass_Weight(target))
+        {
+            isDealExtraDamage = true;
+        }
+        else
+        {
+            isDealExtraDamage = false;
+        }
         if (abl1 != null && abl1_Cd_Time <= 0 && isAbl1)
         {
             StartCoroutine(Abl1Attack());
@@ -132,23 +144,24 @@ public class Attacks : MonoBehaviour
         // Kiểm tra xem target có component Health không
 
         // amt.SetBool("isRunning", false);
-
+        //CheckTargetUnitClass_Weight();
         if (GetComponent<Shot>() == null)
         {
             amt.SetTrigger("isAttack");
-           // Invoke("BasicAttackActive", timeToDealDmg); // nhận st đúng thời điểm vũ khí tấn công trúng mục tiêu
+            // Invoke("BasicAttackActive", timeToDealDmg); // nhận st đúng thời điểm vũ khí tấn công trúng mục tiêu
         }
         else
         {
             //isRightWay=playerController.isRightWay;
             amt.SetTrigger("isShot");
-           // StartCoroutine(ShotAttack(basic_Atk));
+            // StartCoroutine(ShotAttack(basic_Atk));
         }
         // Thời gian hồi chiêu
         basic_Cd_Time = basic_Cd;
         if (target != null)
         {
             targetHealth = target.GetComponent<Health>();
+
         }
         isAttacking = true;
     }
@@ -157,8 +170,9 @@ public class Attacks : MonoBehaviour
     {
         if (targetHealth != null)
         {//mục tiêu mà chết quá sớm sẽ ko ảnh hừng gì
-            targetHealth.TakeDamage(basic_Atk);
-          //  Debug.Log("Gây " + basic_Atk + "dmg");
+
+            int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
+            targetHealth.TakeDamage(damageToDeal);
         }
     }
 
@@ -179,7 +193,7 @@ public class Attacks : MonoBehaviour
             if (GetComponent<Shot>() == null)
             {
                 amt.SetTrigger("isAttack");
-               // StartCoroutine(MeleeAttack(0.2f));
+                // StartCoroutine(MeleeAttack(0.2f));
             }
             else
             {
@@ -207,7 +221,8 @@ public class Attacks : MonoBehaviour
         {
             isRightWay = enemyController.isRightWay;
         }
-        GetComponent<Shot>().Spawn_Arrow(basic_Atk, isRightWay);
+        int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
+        GetComponent<Shot>().Spawn_Arrow(damageToDeal, isRightWay);
 
         //Debug.Log("Collider đã được tắt!");
     }
@@ -243,5 +258,17 @@ public class Attacks : MonoBehaviour
         GetComponent<Abl1>().active_Abl(abl1_Atk, isRightWay);
 
         //Debug.Log("Collider đã được tắt!");
+    }
+    bool CheckTargetUnitClass_Weight(GameObject target)
+    {
+        if (GetComponent<UnitClass>().extraDMGWeight == target.GetComponent<UnitClass>().unitWeight)
+        {
+            return true;
+        }
+        return false;
+    }
+    public void GetExtraDmg()
+    {
+
     }
 }

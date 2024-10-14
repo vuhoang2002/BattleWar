@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -782973349911396331}
   - component: {fileID: 8271858124747008988}
   - component: {fileID: 2307325236067783028}
+  - component: {fileID: 7876401741735214627}
   m_Layer: 0
   m_Name: BasicSamurai
   m_TagString: Player
@@ -277,6 +278,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 3
 --- !u!60 &2307325236067783028
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -326,6 +328,21 @@ PolygonCollider2D:
       - {x: -0.053702407, y: 0.008238921}
       - {x: 0.54455125, y: 0.006242318}
   m_UseDelaunayMesh: 0
+--- !u!114 &7876401741735214627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877152860383863476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 0
+  extraDMGWeight: 0
+  unitRace: 2
 --- !u!1001 &409478230889874267
 PrefabInstance:
   m_ObjectHideFlags: 0

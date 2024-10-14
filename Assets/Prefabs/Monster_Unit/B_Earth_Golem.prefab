@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -448563238530684208}
   - component: {fileID: 6466770467190807954}
   - component: {fileID: -7590877025822355329}
+  - component: {fileID: 7665413448057054534}
   m_Layer: 0
   m_Name: B_Earth_Golem
   m_TagString: Enemy
@@ -201,6 +202,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 0
 --- !u!61 &6466770467190807954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,6 +275,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7665413448057054534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447399120621047007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90f6d0c58158004db14f53b1e41e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitWeight: 1
+  extraDMGWeight: 2
+  unitRace: 0
 --- !u!1 &2920496012972785735
 GameObject:
   m_ObjectHideFlags: 0

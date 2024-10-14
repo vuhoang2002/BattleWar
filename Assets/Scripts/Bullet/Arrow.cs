@@ -37,7 +37,7 @@ public class Arrow : MonoBehaviour
         {
             ArrowFly();
         }
-    }
+    } //ss
 
     public void SetArrowDmg_Direction(int basic_Dmg, bool direction)
     {
@@ -55,7 +55,7 @@ public class Arrow : MonoBehaviour
         }
         else if ((target.CompareTag("Player") || target.CompareTag("PlayerCastle")) && !isGoodBullet) // dành cho enemy
         {
-            Debug.Log("Bắn trúng " + target);
+            //   Debug.Log("Bắn trúng " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);
             OnDestroy(); // Hủy mũi tên sau khi trúng đích
         }
@@ -92,8 +92,6 @@ public class Arrow : MonoBehaviour
         if (isChangre)// changre là chưởng ;v
         {
             amt.SetBool("Destroy", true); // Bắt đầu animation isDestroy
-                                          //StartCoroutine(DestroyAfterAnimation()); // Gọi coroutine để hủy sau khi animation hoàn tất 
-
             Invoke("DeleteSelf", 1f);
             gameObject.GetComponent<Collider2D>().enabled = false;
         }
