@@ -7,6 +7,7 @@ public class Shot : MonoBehaviour
     // Start is called before the first frame update
     public GameObject spawnArrow;
     public Transform spawnPoint;
+    
     void Start()
     {
         

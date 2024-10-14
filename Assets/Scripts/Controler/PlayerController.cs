@@ -1,4 +1,4 @@
-
+//using System.Threading.Tasks.Dataflow;
 using System;
 using UnityEngine;
 using System.Collections;
@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     private float searchRadius_Def = 8f;
     public float attackCooldown = 0.7f;
 
-    public float highPos = -4.5f; // Giá trị Y khi prefab đạt kích thước lớn nhất
-    public float lowPos = -2.5f;  // Giá trị Y khi prefab đạt kích thước nhỏ nhất
+    public float highPos = -2.5f; // Giá trị Y khi prefab đạt kích thước lớn nhất
+    public float lowPos = -4.5f;  // Giá trị Y khi prefab đạt kích thước nhỏ nhất
     public float minScale = 0.85f; // Kích thước nhỏ nhất
     public float maxScale = 1.5f; // Kích thước lớn nhất
     public bool isAtk_Order = false;
@@ -112,8 +112,8 @@ public class PlayerController : MonoBehaviour
         // chỉnh hightPos và lowPos
         if (maxY != null && minY != null)
         {
-            highPos = maxY.position.y;
-            lowPos = minY.position.y;
+            highPos = minY.position.y;// chỗ này đặt sai tên thôi kệ z :v
+            lowPos = maxY.position.y;
         }
     }
 
@@ -404,12 +404,26 @@ public class PlayerController : MonoBehaviour
 
     void MoveByJoystick()
     {
-        movement = new Vector2(joystick.Horizontal, joystick.Vertical) * moveSpeed * Time.deltaTime;
-        //currentDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+        movement = new Vector2(joystick.Horizontal, joystick.Vertical).normalized * moveSpeed * Time.deltaTime;
 
-        // Cập nhật currentDirection với tốc độ di chuyển
-        // currentDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical).normalized * moveSpeed * Time.deltaTime;
+        // In ra giá trị của movement vào bảng điều khiển
+        Debug.Log($"Movement: {movement.x:F2}, {movement.y:F2}");
+
+        // Kiểm tra xem movement.x có gần bằng 0.01 hay không
+        Check_MinMax_Position();
         transform.Translate(movement);
+    }
+
+    void Check_MinMax_Position()
+    {// ngăn chặn sự di chuyển của nhân vật khi đạt đến Maxy, min y
+        if (movement.y > 0 && Mathf.Abs(highPos - transform.position.y) < 0.01f)
+        {
+            movement = new Vector2(joystick.Horizontal, 0).normalized * moveSpeed * Time.deltaTime;
+        }
+        else if (movement.y < 0 && Mathf.Abs(lowPos - transform.position.y) < 0.01f)
+        {
+            movement = new Vector2(joystick.Horizontal, 0).normalized * moveSpeed * Time.deltaTime;
+        }
     }
 
     void FindClosestEnemy(float searchRadius)
@@ -488,32 +502,35 @@ public class PlayerController : MonoBehaviour
             currentDirection = new Vector3(0, target.transform.position.y - transform.position.y, 0);
             movement = currentDirection * moveSpeed * Time.deltaTime;
             transform.Translate(movement);
-        }else{
-            if(!isAttacking){
-            Flip_To_Target_Direction();
+        }
+        else
+        {
+            if (!isAttacking)
+            {
+                Flip_To_Target_Direction();
             }
         }
     }
-    void Flip_To_Target_Direction(){
-      
+
+    void Flip_To_Target_Direction()
+    {
         //    Flip();//ko có va chạm thì quay ra đằng sau
-        if ( target.transform.position.x> transform.position.x) // Di chuyển sang phải
+        if (target.transform.position.x > transform.position.x) // Di chuyển sang phải
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = true;
         }
-        else if ( target.transform.position.x< transform.position.x) // Di chuyển sang trái
+        else if (target.transform.position.x < transform.position.x) // Di chuyển sang trái
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = false;// tức là nhân vật đang quay sang trái, nó có tác dụng trong hàm scale
         }
-       
     }
 
     void ScaleMovement()
     {
         // Tính toán tỉ lệ scale dựa trên tọa độ Y
-        scale = Mathf.Lerp(minScale, maxScale, Mathf.InverseLerp(lowPos, highPos, currentY));
+        scale = Mathf.Lerp(minScale, maxScale, Mathf.InverseLerp(highPos, lowPos, currentY));
         // nên ta có hàm này ;v
         if (isRightWay)
         {// nếu nhân vật đang quay sang phải
@@ -527,7 +544,7 @@ public class PlayerController : MonoBehaviour
 
     void SetOrderLayer()
     {
-        orderLayer = (int)Mathf.Lerp(minOrderLayer, maxOrderLayer, Mathf.InverseLerp(lowPos, highPos, currentY));
+        orderLayer = (int)Mathf.Lerp(minOrderLayer, maxOrderLayer, Mathf.InverseLerp(highPos, lowPos, currentY));
         rend.sortingOrder = orderLayer;
     }
 
@@ -578,7 +595,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
     }
 
     void OnMouseDown()
@@ -670,7 +686,7 @@ public class PlayerController : MonoBehaviour
         if ((other.gameObject.CompareTag(findTarget) || (other.gameObject.CompareTag(findTargetCastle))) && boxCollider != null)
         {
             isAttacking = true;
-            target=other.gameObject;
+            target = other.gameObject;
             if (GetComponent<Shot>() != null)
             {
                 attackComponent.CallAttack(other.gameObject);
@@ -685,8 +701,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {   
-        
+    {
         // Debug.Log("Va chạm với "+ other);
         if (other.gameObject.CompareTag(findTarget) && isChosen)
         {

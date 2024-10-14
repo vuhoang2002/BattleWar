@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
     private float distanceTravelled = 0f; // Khoảng cách đã bay
     private bool arrowDirection = true; // Hướng bay mũi tên
     public float maxArrowDistance = 8f;
-    public bool isChangre = false;// chưởng
+    public bool isChangre = false;// chưởng thì có animation destroy
     public bool isColide = false;
     public string destroyName = "FireBall_Destroy";
     private Animator amt;

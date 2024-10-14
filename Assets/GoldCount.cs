@@ -21,9 +21,9 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
         }
     }
 
- void FixedUpdate()
-{
-   if (currentGold > MAX_GOLD)
+    void FixedUpdate()
+    {
+        if (currentGold > MAX_GOLD)
         {
             currentGold = MAX_GOLD;
         }
@@ -51,16 +51,17 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        time_add_gold_TIMER += Time.deltaTime;   
-}
+        time_add_gold_TIMER += Time.deltaTime;
+    }
+
     void Update()
     {
-      
     }
 
     // Xử lý sự kiện khi người dùng chạm vào Button
     public void OnPointerClick(PointerEventData eventData)
-    {Debug.Log("Nút đc nhấn");
+    {
+        Debug.Log("Nút đc nhấn");
         if (currentGold == MAX_GOLD)
         {
             currentGold = 0;
