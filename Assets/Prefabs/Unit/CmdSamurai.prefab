@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 3456044309212838159}
   - component: {fileID: -2978863358932520313}
   - component: {fileID: -596678981083692593}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CmdSamurai
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  abl1_Cd_Time: 1
   isAbl1: 0
   timeToDealDmg: 0.5
   attackCooldown: 1
@@ -265,14 +266,14 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.073041566, y: 0.08222741}
+  m_Offset: {x: -0.016977305, y: 0.08233269}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -283,7 +284,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15117456, y: 0.16445482}
+  m_Size: {x: 0.13702138, y: 0.15142302}
   m_EdgeRadius: 0
 --- !u!50 &3456044309212838159
 Rigidbody2D:

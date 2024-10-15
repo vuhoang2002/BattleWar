@@ -20,7 +20,7 @@ public class Attacks : MonoBehaviour
     public int abl3_Atk = 0;
     public float abl3_Cd = 1f;
 
-    private float abl1_Cd_Time = 1f;
+    public float abl1_Cd_Time = 1f;
     private float abl2_Cd_Time = 1f;
     private float abl3_Cd_Time = 1f;
     public bool isAbl1 = false;
@@ -113,7 +113,7 @@ public class Attacks : MonoBehaviour
         // Tính toán khoảng cách giữa player và enemy
         // distanceTo_Target = Vector3.Distance(transform.position, target.transform.position);
 
-        // Debug.Log("Weight mục tiêu là " + target.GetComponent<UnitClass>().unitWeight + "Của tôi là: " + GetComponent<UnitClass>().extraDMGWeight);
+        // ("Weight mục tiêu là " + target.GetComponent<UnitClass>().unitWeight + "Của tôi là: " + GetComponent<UnitClass>().extraDMGWeight);
         if (CheckTargetUnitClass_Weight(target))
         {
             isDealExtraDamage = true;
@@ -122,17 +122,21 @@ public class Attacks : MonoBehaviour
         {
             isDealExtraDamage = false;
         }
-        if (abl1 != null && abl1_Cd_Time <= 0 && isAbl1)
+        // tấn công 
+        if (abl1_Cd_Time <= 0 && abl1 != null && isAbl1)
         {
-            StartCoroutine(Abl1Attack());
+            Abl1Attack();
             abl1_Cd_Time = abl1_Cd;
+        }
+        else if (basic_Cd_Time <= 0 && GetComponent<Shot>() != null)
+        {
+            amt.SetTrigger("isShot");
+
         }
         else if (basic_Cd_Time <= 0 && !isAbl1)
         {
-            Debug.Log("Đánh thường" + isAbl1);
-            //if(target!=null){
             useBasicAttack(target);
-            //}
+
         }
         else
         {
@@ -154,7 +158,7 @@ public class Attacks : MonoBehaviour
         {
             //isRightWay=playerController.isRightWay;
             amt.SetTrigger("isShot");
-            // StartCoroutine(ShotAttack(basic_Atk));
+
         }
         // Thời gian hồi chiêu
         basic_Cd_Time = basic_Cd;
@@ -224,7 +228,7 @@ public class Attacks : MonoBehaviour
         // int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
         GetComponent<Shot>().Spawn_Arrow(basic_Atk, isRightWay);//extra được thiết lập ở shot r
 
-        //Debug.Log("Collider đã được tắt!");
+        //("Collider đã được tắt!");
     }
 
     private IEnumerator MeleeAttack(float duration)
@@ -235,17 +239,15 @@ public class Attacks : MonoBehaviour
         yield return new WaitForSeconds(timeToDealDmg);
         //attackArea.SetActive(true); // Tắt collider
         GetComponent<PolygonCollider2D>().enabled = true;
-        Debug.Log("Collider đã được bật!");
         yield return new WaitForSeconds(duration); // Chờ trong khoảng thời gian đã chỉ định
         //attackArea.SetActive(false);
         GetComponent<PolygonCollider2D>().enabled = false;
 
-        Debug.Log("Collider đã được tắt!");
     }
 
-    private IEnumerator Abl1Attack()
+    private void Abl1Attack()
     {
-        yield return new WaitForSeconds(timeToDealDmg);
+        //  yield return new WaitForSeconds(0f);
         //spawn ra cung tên
         if (isPlayer || GetComponent<PlayerController>() != null)
         {
@@ -257,7 +259,7 @@ public class Attacks : MonoBehaviour
         }
         GetComponent<Abl1>().active_Abl(abl1_Atk, isRightWay);
 
-        //Debug.Log("Collider đã được tắt!");
+        //("Collider đã được tắt!");
     }
     bool CheckTargetUnitClass_Weight(GameObject target)
     {
@@ -271,5 +273,13 @@ public class Attacks : MonoBehaviour
     public bool Get_IsDealExtraDmg()
     {
         return isDealExtraDamage;
+    }
+    public float SpaceToMyTarget()
+    {
+        float space = 0f;
+
+
+        return space;
+
     }
 }

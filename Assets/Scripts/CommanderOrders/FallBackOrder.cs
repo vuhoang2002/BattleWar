@@ -33,7 +33,6 @@ public class FallBackOrder : MonoBehaviour
     public void OrderOneUnitType()
     {
         GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
-        Debug.Log("chosen là " + chosenPlayer);
 
         // Tìm instance của UnitListManager
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
@@ -50,7 +49,7 @@ public class FallBackOrder : MonoBehaviour
         {
             if (unit.prefab == chosenPlayer)
             {
-               // continue; // Bỏ qua chosenPlayer
+                // continue; // Bỏ qua chosenPlayer
             }
 
             PlayerController pl = unit.prefab.GetComponent<PlayerController>();

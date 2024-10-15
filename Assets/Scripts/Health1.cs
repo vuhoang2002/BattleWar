@@ -16,12 +16,12 @@ public class Health1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-         //   Damage(10);
+            //   Damage(10);
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-           // Heal(10);
+            // Heal(10);
         }
     }
 
@@ -58,9 +58,8 @@ public class Health1 : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Death");
         Destroy(gameObject);
     }
 
-   
+
 }

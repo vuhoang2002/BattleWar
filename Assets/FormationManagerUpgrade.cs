@@ -54,7 +54,6 @@ public class FormationManagerUpgrade : MonoBehaviour
             }
             if (playerBattleArea == null)
             {
-                Debug.Log("Không có PlayerBattleArea");
             }
         }
 
@@ -86,8 +85,6 @@ public class FormationManagerUpgrade : MonoBehaviour
             maxPos = renderer.bounds.max;
             minPos = renderer.bounds.min;
 
-            Debug.Log("Tọa độ thấp nhất: " + minPos);
-            Debug.Log("Tọa độ cao nhất: " + maxPos);
             minY = minPos.y;
             maxY = maxPos.y;
             toaDoX = maxPos.x;
@@ -121,18 +118,14 @@ public class FormationManagerUpgrade : MonoBehaviour
 
         for (int col = 1; col <= totalColum; col++)
         { //xét các cột
-            Debug.Log(preX + "," + preY + "," + minY);
             // xem cột 1 có bao nhiêu unit
-            Debug.Log("Xét cột " + col + " có số vị trí là: " + unitPerCol[col - 1]);
             float spaceBtwUnitIn_Col = lenghtUnits / (unitPerCol[col - 1] + 1);
             for (int i = 0; i < unitPerCol[col - 1]; i++)
             {// thiết lập tọa độ vị trị 
-             //Debug.Log("Điểm thứ  "+ i);
+             //("Điểm thứ  "+ i);
                 position = new Vector2(preX - space_X_In_Col, preY - spaceBtwUnitIn_Col * (i + 1));
-                Debug.Log("Thêm tọa độ vào điểm thứ " + i + " cột" + col + "tọa độ" + position);
                 targetPositions.Add(position);
             }
-            Debug.Log("Trừ toaDoX");
             preX = preX - space_X_Btw_Col;
             preY = maxY;
         }
@@ -185,7 +178,7 @@ public class FormationManagerUpgrade : MonoBehaviour
             UpdateUnitList_Info(true, unit.name);
 
             //  ArrangeFormation();  // Cập nhật lại formation sau khi thêm đơn vị
-            //  Debug.Log("Thêm unit thành công");
+            //  ("Thêm unit thành công");
         }
     }
     // xóa unit khỏi units(khi units diea á)
@@ -203,7 +196,6 @@ public class FormationManagerUpgrade : MonoBehaviour
     public void ClearUnits()
     {
         units.Clear();
-        Debug.Log("Danh sách units đã được xóa.");
     }
 
 }

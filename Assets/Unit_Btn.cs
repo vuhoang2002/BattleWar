@@ -19,10 +19,10 @@ public class Unit_Btn : MonoBehaviour
     public float lowest_Y = -2.5f;
     public float positionSpawn_X = 2;
     public string prefabName;
-    Renderer renderer ;
+    Renderer renderer;
     PlayerCountDisplay PlayerCountDisplay;
-    private bool isMaxPlayer=false;
-    
+    private bool isMaxPlayer = false;
+
 
 
     void Start()
@@ -63,12 +63,11 @@ public class Unit_Btn : MonoBehaviour
             // highest_Y = GetHighestY();
             //lowest_Y = GetLowestY();
             //positionSpawn_X = GetLeftMostX();
-            Debug.Log("Tọa độ spawn" + highest_Y + "," + lowest_Y + ", " + positionSpawn_X);
         }
-       // Player_Count= transform.parent.transform.Find("PlayerCount").gameObject;
-       // playerCount=GetComponent<PlayerCountDisplay>();
+        // Player_Count= transform.parent.transform.Find("PlayerCount").gameObject;
+        // playerCount=GetComponent<PlayerCountDisplay>();
         PlayerCountDisplay = Player_Count.GetComponent<PlayerCountDisplay>();
-        isMaxPlayer=PlayerCountDisplay.get_isMaxPlayer();
+        isMaxPlayer = PlayerCountDisplay.get_isMaxPlayer();
     }
 
     public void Set_Unit_Button(string prefabName_Unit)
@@ -101,26 +100,27 @@ public class Unit_Btn : MonoBehaviour
     public void OnButtonClick()
     {
 
-        Debug.Log("Nút đã được click!");
         this.Spawn();
     }
 
     void Spawn()
     {
-        isMaxPlayer=PlayerCountDisplay.get_isMaxPlayer();
-        if(!isMaxPlayer){
-        // Tìm prefab theo tên (ví dụ, tìm "Minion")
-        GameObject prefabToSpawn = FindPrefabByName(this.prefabName);
-
-        if (prefabToSpawn != null)
+        isMaxPlayer = PlayerCountDisplay.get_isMaxPlayer();
+        if (!isMaxPlayer)
         {
-            float randomY = Random.Range(lowest_Y, highest_Y);
-            Vector3 spawnPosition = new Vector3(positionSpawn_X, randomY, 0f);
+            // Tìm prefab theo tên (ví dụ, tìm "Minion")
+            GameObject prefabToSpawn = FindPrefabByName(this.prefabName);
 
-            Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            if (prefabToSpawn != null)
+            {
+                float randomY = Random.Range(lowest_Y, highest_Y);
+                Vector3 spawnPosition = new Vector3(positionSpawn_X, randomY, 0f);
+
+                Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            }
         }
-        }else{
-            Debug.Log("Số lượng Player đã đạt tối đa");
+        else
+        {
         }
     }
 

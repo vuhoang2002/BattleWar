@@ -33,7 +33,6 @@ public class FormationManager : MonoBehaviour
             }
             if (playerBattleArea == null)
             {
-                Debug.Log("Không có PlayerBattleArea");
             }
         }
 
@@ -67,12 +66,9 @@ public class FormationManager : MonoBehaviour
                 maxPos = new Vector2(max.x, max.y);
                 minPos = new Vector2(min.x, min.y);
 
-                Debug.Log("Tọa độ thấp nhất: " + min);
-                Debug.Log("Tọa độ cao nhất: " + max);
             }
             else
             {
-                Debug.LogError("Không tìm thấy Renderer trên GameObject này.");
             }
         }
 
@@ -87,7 +83,7 @@ public class FormationManager : MonoBehaviour
         float currentX = maxPos.x;  // Bắt đầu từ vị trí của điểm maxHeight trên trục X
         float currentY = maxPos.y;  // Bắt đầu từ maxHeight trên trục Y
         float preY = 0f;
-         float preX = currentX;
+        float preX = currentX;
 
 
         int unitIndex = 0;  // Chỉ số của unit trong danh sách
@@ -96,18 +92,16 @@ public class FormationManager : MonoBehaviour
         for (int row = 0; row < totalRows && unitIndex < units.Count; row++)
         {
             // Thêm đơn vị vào hàng dọc cho tới khi đạt số lượng tối đa cho một cột
-                preX=currentX;
+            preX = currentX;
             for (int i = 0; i < maxUnitsPerColumn && unitIndex < units.Count; i++)
             {
                 position = new Vector2(preX - spaceing_Btw_Y, currentY);
-                Debug.Log(position);
                 targetPositions.Add(position);
                 currentY -= spacingY;  // Di chuyển xuống theo trục Y
                 unitIndex++;
                 preX = position.x;
                 // preY=currentY;
             }
-            Debug.Log("Amen"+ currentX);
             // Sau khi hoàn thành một cột, di chuyển sang cột tiếp theo trên trục X và đặt lại vị trí Y
             currentX -= spacingX;  // Di chuyển sang tría theo trục X
             currentY = maxPos.y;  // Đặt lại vị trí Y cho cột tiếp theo
@@ -163,7 +157,6 @@ public class FormationManager : MonoBehaviour
         {
             units.Add(unit);
             ArrangeFormation();  // Cập nhật lại formation sau khi thêm đơn vị
-            Debug.Log("Thêm unit thành công");
         }
     }
     // xóa unit khỏi units(khi units diea á)
@@ -179,6 +172,5 @@ public class FormationManager : MonoBehaviour
     public void ClearUnits()
     {
         units.Clear();
-        Debug.Log("Danh sách units đã được xóa.");
     }
 }

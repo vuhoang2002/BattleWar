@@ -9,9 +9,9 @@ public class knight_attack : MonoBehaviour
     private float timeToAttack = 1f;
     private float timer = 0f;
     private Animator amt;
-    private float attackCooldown = 1f; 
+    private float attackCooldown = 1f;
     private float cooldownTimer = 0f;
-    public int damage =20;
+    public int damage = 20;
     void Start()
     {
         attackArea = transform.GetChild(0).gameObject;
@@ -25,12 +25,12 @@ public class knight_attack : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
         }
 
-       // if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0) 
-      //{
-      //      Debug.Log("Attack");
-       //     Attack();
-       //     amt.SetBool("isAtk", true); // Set the boolean parameter to true
-       //     cooldownTimer = attackCooldown; 
+        // if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0) 
+        //{
+        //      ("Attack");
+        //     Attack();
+        //     amt.SetBool("isAtk", true); // Set the boolean parameter to true
+        //     cooldownTimer = attackCooldown; 
         //}
 
         if (isAttacking)
@@ -46,18 +46,17 @@ public class knight_attack : MonoBehaviour
         }
     }
 
-   public void Attack(GameObject target)
-{
-    Debug.Log("Attack");
-    amt.SetBool("isAtk", true); // Set the boolean parameter to true
-    cooldownTimer = attackCooldown;
-
-    // Tìm và lấy component Health của đối tượng bị tấn công
-    Health targetHealth = target.GetComponent<Health>();
-    if (targetHealth != null)
+    public void Attack(GameObject target)
     {
-        // Gọi hàm Damage() trên component Health của đối tượng bị tấn công
-        targetHealth.TakeDamage(damage);
+        amt.SetBool("isAtk", true); // Set the boolean parameter to true
+        cooldownTimer = attackCooldown;
+
+        // Tìm và lấy component Health của đối tượng bị tấn công
+        Health targetHealth = target.GetComponent<Health>();
+        if (targetHealth != null)
+        {
+            // Gọi hàm Damage() trên component Health của đối tượng bị tấn công
+            targetHealth.TakeDamage(damage);
+        }
     }
-}
 }

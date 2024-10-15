@@ -18,10 +18,10 @@ TagManager:
   - UI
   - EnemyLayer
   - PlayerLayer
-  - 
-  - 
-  - 
-  - 
+  - PlayerBullet
+  - EnemyBullet
+  - PlayerAtkArea
+  - EnemyAtkArea
   - 
   - 
   - 

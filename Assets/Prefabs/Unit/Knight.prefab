@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7492604664125764685}
   - component: {fileID: -2233678860468004488}
   - component: {fileID: -4711996996860026326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -268,6 +268,7 @@ MonoBehaviour:
   abl2_Cd: 0
   abl3_Atk: 0
   abl3_Cd: 0
+  abl1_Cd_Time: 1
   isAbl1: 0
   timeToDealDmg: 0.5
   attackCooldown: 1

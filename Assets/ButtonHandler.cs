@@ -47,7 +47,7 @@ public class ButtonHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("Ko có chosenPlayer");
+            //("Ko có chosenPlayer");
         }
     }
 }

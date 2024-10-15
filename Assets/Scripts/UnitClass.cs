@@ -15,6 +15,5 @@ public class UnitClass : MonoBehaviour
     // Phương thức để hiển thị thông tin
     public void DisplayUnitInfo()
     {
-        Debug.Log($"Unit Weight: {unitWeight}, Unit Race: {unitRace}");
     }
 }

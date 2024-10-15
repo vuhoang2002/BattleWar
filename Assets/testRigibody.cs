@@ -6,13 +6,11 @@ public class testRigibody : MonoBehaviour
 {
     // Start is called before the first frame update
     void OnTriggerStay2D(Collider2D other)
-{
-    Debug.Log("On Collision");
-}
+    {
+    }
 
-void OnTriggerExit2D(Collider2D other)
-{
-    Debug.Log("Off Collision");
-}
+    void OnTriggerExit2D(Collider2D other)
+    {
+    }
 
 }

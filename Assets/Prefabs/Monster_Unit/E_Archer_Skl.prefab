@@ -225,6 +225,7 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  abl1_Cd_Time: 1
   isAbl1: 0
   timeToDealDmg: 1.6
   attackCooldown: 1
@@ -262,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArrow: {fileID: 1698257806202398176}
   spawnPoint: {fileID: 5552683082138052166}
+  extraDmg: 0
 --- !u!60 &6237394972929926187
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -538,7 +540,7 @@ GameObject:
   - component: {fileID: 5578906763245018030}
   - component: {fileID: 7704855294647256416}
   - component: {fileID: 1515069855480129336}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,6 +890,10 @@ PrefabInstance:
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Name
       value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_IsActive

@@ -57,12 +57,9 @@ public class ButtonZoomControl : MonoBehaviour, IPointerDownHandler, IPointerUpH
             return; // Không thực hiện hành động gì khi đang ấn giữ
         }
 
-        // Nếu không ấn giữ, bạn có thể gọi sự kiện hay hành động của nút ở đây
         if (Input.GetButtonDown("Fire1")) // Thay "Fire1" bằng input của bạn
         {
-            // Gọi sự kiện khi nút được nhấn
-            Debug.Log("Nút đã được nhấn!");
-            // Thực hiện các hành động khác ở đây
+
         }
     }
 }

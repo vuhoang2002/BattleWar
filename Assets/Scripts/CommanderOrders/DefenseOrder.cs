@@ -33,13 +33,11 @@ public class DefenseOrder : MonoBehaviour
     public void OrderOneUnitType()
     {
         GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
-        Debug.Log("chosen là " + chosenPlayer);
 
         // Tìm instance của UnitListManager
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
         if (unitListManager == null)
         {
-            Debug.LogError("Không tìm thấy UnitListManager trong scene.");
             return;
         }
 
@@ -50,7 +48,7 @@ public class DefenseOrder : MonoBehaviour
         {
             if (unit.prefab == chosenPlayer)
             {
-              //  continue; // Bỏ qua chosenPlayer
+                //  continue; // Bỏ qua chosenPlayer
             }
 
             PlayerController pl = unit.prefab.GetComponent<PlayerController>();

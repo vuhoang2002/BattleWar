@@ -408,7 +408,6 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(joystick.Horizontal, joystick.Vertical).normalized * moveSpeed * Time.deltaTime;
 
         // In ra giá trị của movement vào bảng điều khiển
-        Debug.Log($"Movement: {movement.x:F2}, {movement.y:F2}");
 
         // Kiểm tra xem movement.x có gần bằng 0.01 hay không
         Check_MinMax_Position();
@@ -460,7 +459,7 @@ public class PlayerController : MonoBehaviour
         // if(closestDistance<=1f){
         //   isAttacking=true;
         //}
-        //  Debug.Log("Target is "+ target);
+        //  ("Target is "+ target);
     }
 
     void FindClosestEnemy_ByFindPositon(float searchRadius, Vector3 find_Position)
@@ -553,7 +552,7 @@ public class PlayerController : MonoBehaviour
 
     void AttackCommandOrder()
     {
-        // Debug.Log("Target là: "+target+" isAttacking là: "+ isAttacking);
+        // ("Target là: "+target+" isAttacking là: "+ isAttacking);
 
         if (target != null && isAttacking)// có mục tiêu và tiếp cận gần mục tiêu
         {
@@ -590,7 +589,6 @@ public class PlayerController : MonoBehaviour
                 if (isRanger)
                 {
                     MoveTowardTarget_Y_Asis();
-                    Debug.Log("Di chuyển về trục y");
                 }
                 else
                 {
@@ -651,12 +649,12 @@ public class PlayerController : MonoBehaviour
 
         if (mainCamera != null)
         {
-            //     Debug.Log("Found Camera");
+            //     ("Found Camera");
             CameraControl cam = mainCamera.GetComponent<CameraControl>();
 
             if (cam != null)
             {
-                //   Debug.Log("Found Cam Controller");
+                //   ("Found Cam Controller");
 
                 cam.setChosenPlayer(this.gameObject, true);
             }
@@ -674,19 +672,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //  Debug.Log("Va chạm với "+ other);
-        // Xử lý va chạm
 
         BoxCollider2D boxCollider = other.GetComponent<BoxCollider2D>();
         Collider2D thisCollider = GetComponent<Collider2D>();
-        //   if (other.gameObject.CompareTag(aliesTarget) || other.gameObject.CompareTag(findTarget) )
-        //{
-        // Vô hiệu hóa va chạm với đối tượng nà
-        //  Debug.Log("Vô hiệu hóa colider");
-        //  Physics2D.IgnoreCollision(boxCollider, thisCollider, true);
-        //}
-
-        if ((other.gameObject.CompareTag(findTarget) || (other.gameObject.CompareTag(findTargetCastle))) && boxCollider != null)
+        if (!isChosen && (other.gameObject.CompareTag(findTarget) || (other.gameObject.CompareTag(findTargetCastle))) && boxCollider != null)
         {
             isAttacking = true;
             target = other.gameObject;
@@ -697,19 +686,20 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag(findTargetCastle) && !isChosen)
         {
-            // Debug.Log("va chạm vs tower");
-            // Debug.Log("Tower");
+            // ("va chạm vs tower");
+            // ("Tower");
             attackComponent.CallAttack(other.gameObject);
         }
+        // ("Va chạm với" + other);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("Va chạm với "+ other);
+        // ("Va chạm với "+ other);
         if (other.gameObject.CompareTag(findTarget) && isChosen)
         {
             //attackComponent.GetAttack_byBtn(other.gameObject);// nhận st
-            //Debug.Log("tấn công");
+            //("tấn công");
             //  GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
         }
     }
@@ -852,7 +842,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Chưa thiết lập retreat_Postion");
         }
     }
 
@@ -944,7 +933,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject GetChosenPlayer()
     {
-        Debug.Log("Game object này là" + this.gameObject);
         // playerHasBeenChosen=this.gameObject;
         return playerHasBeenChosen;
     }

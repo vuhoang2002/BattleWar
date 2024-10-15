@@ -11,7 +11,7 @@ namespace TMPro.Examples
     {
         // Since this script is used for debugging, we exclude it from builds.
         // TODO: Rework this script to make it into an editor utility.
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         public bool ShowCharacters;
         public bool ShowWords;
         public bool ShowLinks;
@@ -195,64 +195,64 @@ namespace TMPro.Examples
                 DrawCrosshair(advancePosition, 0.0125f / m_ScaleMultiplier, Color.yellow);
 
                 // Draw text labels for metrics
-               if (m_HandleSize < 0.5f)
-               {
-                   GUIStyle style = new GUIStyle(GUI.skin.GetStyle("Label"));
-                   style.normal.textColor = new Color(0.6f, 0.6f, 0.6f, 1.0f);
-                   style.fontSize = 12;
-                   style.fixedWidth = 200;
-                   style.fixedHeight = 20;
+                if (m_HandleSize < 0.5f)
+                {
+                    GUIStyle style = new GUIStyle(GUI.skin.GetStyle("Label"));
+                    style.normal.textColor = new Color(0.6f, 0.6f, 0.6f, 1.0f);
+                    style.fontSize = 12;
+                    style.fixedWidth = 200;
+                    style.fixedHeight = 20;
 
-                   Vector3 labelPosition;
-                   float center = (origin + advance) / 2;
+                    Vector3 labelPosition;
+                    float center = (origin + advance) / 2;
 
-                   //float baselineMetrics = 0;
-                   //float ascentlineMetrics = ascentline - baseline;
-                   //float caplineMetrics = capline - baseline;
-                   //float meanlineMetrics = meanline - baseline;
-                   //float descentlineMetrics = descentline - baseline;
+                    //float baselineMetrics = 0;
+                    //float ascentlineMetrics = ascentline - baseline;
+                    //float caplineMetrics = capline - baseline;
+                    //float meanlineMetrics = meanline - baseline;
+                    //float descentlineMetrics = descentline - baseline;
 
-                   // Ascent Line
-                   labelPosition = m_Transform.TransformPoint(new Vector3(center, ascentline, 0));
-                   style.alignment = TextAnchor.UpperCenter;
-                   Handles.Label(labelPosition, "Ascent Line", style);
-                   //Handles.Label(labelPosition, "Ascent Line (" + ascentlineMetrics.ToString("f3") + ")" , style);
+                    // Ascent Line
+                    labelPosition = m_Transform.TransformPoint(new Vector3(center, ascentline, 0));
+                    style.alignment = TextAnchor.UpperCenter;
+                    Handles.Label(labelPosition, "Ascent Line", style);
+                    //Handles.Label(labelPosition, "Ascent Line (" + ascentlineMetrics.ToString("f3") + ")" , style);
 
-                   // Base Line
-                   labelPosition = m_Transform.TransformPoint(new Vector3(center, baseline, 0));
-                   Handles.Label(labelPosition, "Base Line", style);
-                   //Handles.Label(labelPosition, "Base Line (" + baselineMetrics.ToString("f3") + ")" , style);
+                    // Base Line
+                    labelPosition = m_Transform.TransformPoint(new Vector3(center, baseline, 0));
+                    Handles.Label(labelPosition, "Base Line", style);
+                    //Handles.Label(labelPosition, "Base Line (" + baselineMetrics.ToString("f3") + ")" , style);
 
-                   // Descent line
-                   labelPosition = m_Transform.TransformPoint(new Vector3(center, descentline, 0));
-                   Handles.Label(labelPosition, "Descent Line", style);
-                   //Handles.Label(labelPosition, "Descent Line (" + descentlineMetrics.ToString("f3") + ")" , style);
+                    // Descent line
+                    labelPosition = m_Transform.TransformPoint(new Vector3(center, descentline, 0));
+                    Handles.Label(labelPosition, "Descent Line", style);
+                    //Handles.Label(labelPosition, "Descent Line (" + descentlineMetrics.ToString("f3") + ")" , style);
 
-                   if (characterInfo.isVisible)
-                   {
-                       // Cap Line
-                       labelPosition = m_Transform.TransformPoint(new Vector3(center, capline, 0));
-                       style.alignment = TextAnchor.UpperCenter;
-                       Handles.Label(labelPosition, "Cap Line", style);
-                       //Handles.Label(labelPosition, "Cap Line (" + caplineMetrics.ToString("f3") + ")" , style);
+                    if (characterInfo.isVisible)
+                    {
+                        // Cap Line
+                        labelPosition = m_Transform.TransformPoint(new Vector3(center, capline, 0));
+                        style.alignment = TextAnchor.UpperCenter;
+                        Handles.Label(labelPosition, "Cap Line", style);
+                        //Handles.Label(labelPosition, "Cap Line (" + caplineMetrics.ToString("f3") + ")" , style);
 
-                       // Mean Line
-                       labelPosition = m_Transform.TransformPoint(new Vector3(center, meanline, 0));
-                       style.alignment = TextAnchor.UpperCenter;
-                       Handles.Label(labelPosition, "Mean Line", style);
-                       //Handles.Label(labelPosition, "Mean Line (" + ascentlineMetrics.ToString("f3") + ")" , style);
+                        // Mean Line
+                        labelPosition = m_Transform.TransformPoint(new Vector3(center, meanline, 0));
+                        style.alignment = TextAnchor.UpperCenter;
+                        Handles.Label(labelPosition, "Mean Line", style);
+                        //Handles.Label(labelPosition, "Mean Line (" + ascentlineMetrics.ToString("f3") + ")" , style);
 
-                       // Origin
-                       labelPosition = m_Transform.TransformPoint(new Vector3(origin, baseline, 0));
-                       style.alignment = TextAnchor.UpperRight;
-                       Handles.Label(labelPosition, "Origin ", style);
+                        // Origin
+                        labelPosition = m_Transform.TransformPoint(new Vector3(origin, baseline, 0));
+                        style.alignment = TextAnchor.UpperRight;
+                        Handles.Label(labelPosition, "Origin ", style);
 
-                       // Advance
-                       labelPosition = m_Transform.TransformPoint(new Vector3(advance, baseline, 0));
-                       style.alignment = TextAnchor.UpperLeft;
-                       Handles.Label(labelPosition, "  Advance", style);
-                   }
-               }
+                        // Advance
+                        labelPosition = m_Transform.TransformPoint(new Vector3(advance, baseline, 0));
+                        style.alignment = TextAnchor.UpperLeft;
+                        Handles.Label(labelPosition, "  Advance", style);
+                    }
+                }
             }
         }
 
@@ -301,7 +301,7 @@ namespace TMPro.Examples
                         bottomLeft = new Vector3(currentCharInfo.bottomLeft.x, currentCharInfo.descender, 0);
                         topLeft = new Vector3(currentCharInfo.bottomLeft.x, currentCharInfo.ascender, 0);
 
-                        //Debug.Log("Start Word Region at [" + currentCharInfo.character + "]");
+                        //("Start Word Region at [" + currentCharInfo.character + "]");
 
                         // If Word is one character
                         if (wInfo.characterCount == 1)
@@ -316,7 +316,7 @@ namespace TMPro.Examples
                             // Draw Region
                             DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
 
-                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            //("End Word Region at [" + currentCharInfo.character + "]");
                         }
                     }
 
@@ -333,7 +333,7 @@ namespace TMPro.Examples
                         // Draw Region
                         DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
 
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //("End Word Region at [" + currentCharInfo.character + "]");
                     }
                     // If Word is split on more than one line.
                     else if (isBeginRegion && currentLine != m_TextInfo.characterInfo[characterIndex + 1].lineNumber)
@@ -347,14 +347,14 @@ namespace TMPro.Examples
 
                         // Draw Region
                         DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //("End Word Region at [" + currentCharInfo.character + "]");
                         maxAscender = -Mathf.Infinity;
                         minDescender = Mathf.Infinity;
 
                     }
                 }
 
-                //Debug.Log(wInfo.GetWord(m_TextMeshPro.textInfo.characterInfo));
+                //(wInfo.GetWord(m_TextMeshPro.textInfo.characterInfo));
             }
 
 
@@ -407,7 +407,7 @@ namespace TMPro.Examples
                         bottomLeft = new Vector3(currentCharInfo.bottomLeft.x, currentCharInfo.descender, 0);
                         topLeft = new Vector3(currentCharInfo.bottomLeft.x, currentCharInfo.ascender, 0);
 
-                        //Debug.Log("Start Word Region at [" + currentCharInfo.character + "]");
+                        //("Start Word Region at [" + currentCharInfo.character + "]");
 
                         // If Link is one character
                         if (linkInfo.linkTextLength == 1)
@@ -422,7 +422,7 @@ namespace TMPro.Examples
                             // Draw Region
                             DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
 
-                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            //("End Word Region at [" + currentCharInfo.character + "]");
                         }
                     }
 
@@ -439,7 +439,7 @@ namespace TMPro.Examples
                         // Draw Region
                         DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
 
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //("End Word Region at [" + currentCharInfo.character + "]");
                     }
                     // If Link is split on more than one line.
                     else if (isBeginRegion && currentLine != textInfo.characterInfo[characterIndex + 1].lineNumber)
@@ -456,11 +456,11 @@ namespace TMPro.Examples
 
                         maxAscender = -Mathf.Infinity;
                         minDescender = Mathf.Infinity;
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //("End Word Region at [" + currentCharInfo.character + "]");
                     }
                 }
 
-                //Debug.Log(wInfo.GetWord(m_TextMeshPro.textInfo.characterInfo));
+                //(wInfo.GetWord(m_TextMeshPro.textInfo.characterInfo));
             }
         }
 
@@ -646,7 +646,7 @@ namespace TMPro.Examples
             UnityEditor.Handles.DrawDottedLine(tr, br, dotSpacing);
             UnityEditor.Handles.DrawDottedLine(br, bl, dotSpacing);
         }
-        #endif
+#endif
     }
 }
 

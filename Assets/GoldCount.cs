@@ -61,7 +61,6 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
     // Xử lý sự kiện khi người dùng chạm vào Button
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Nút đc nhấn");
         if (currentGold == MAX_GOLD)
         {
             currentGold = 0;

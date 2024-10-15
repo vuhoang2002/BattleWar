@@ -37,17 +37,17 @@ namespace Tayx.Graphy.Utils
         {
             get
             {
-                lock( _lock )
+                lock (_lock)
                 {
-                    if( _instance == null )
+                    if (_instance == null)
                     {
                         Debug.Log
-                        (
-                            "[Singleton] An instance of " + typeof( T ) +
-                            " is trying to be accessed, but it wasn't initialized first. " +
-                            "Make sure to add an instance of " + typeof( T ) + " in the scene before " +
-                            " trying to access it."
-                        );
+                       (
+                           "[Singleton] An instance of " + typeof(T) +
+                           " is trying to be accessed, but it wasn't initialized first. " +
+                           "Make sure to add an instance of " + typeof(T) + " in the scene before " +
+                           " trying to access it."
+                       );
                     }
 
                     return _instance;
@@ -61,9 +61,9 @@ namespace Tayx.Graphy.Utils
 
         void Awake()
         {
-            if( _instance != null )
+            if (_instance != null)
             {
-                Destroy( gameObject );
+                Destroy(gameObject);
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Tayx.Graphy.Utils
 
         void OnDestroy()
         {
-            if( _instance == this )
+            if (_instance == this)
             {
                 _instance = null;
             }

@@ -271,6 +271,7 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  abl1_Cd_Time: 1
   isAbl1: 0
   timeToDealDmg: 1.6
   attackCooldown: 1
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 7551876187310737051}
   - component: {fileID: 5029599930012224652}
   - component: {fileID: 8203136998173433976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AtkArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,6 +867,10 @@ PrefabInstance:
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Name
       value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_IsActive

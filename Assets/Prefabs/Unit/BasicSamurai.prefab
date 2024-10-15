@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8271858124747008988}
   - component: {fileID: 2307325236067783028}
   - component: {fileID: 7876401741735214627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicSamurai
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -274,6 +274,7 @@ MonoBehaviour:
   abl2_Cd: 1
   abl3_Atk: 0
   abl3_Cd: 1
+  abl1_Cd_Time: 1
   isAbl1: 0
   timeToDealDmg: 0.5
   attackCooldown: 1
@@ -354,6 +355,10 @@ PrefabInstance:
     - target: {fileID: 4215132673789263055, guid: b19500cfafc6362428b42c72c008b265, type: 3}
       propertyPath: m_Name
       value: AtkArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215132673789263055, guid: b19500cfafc6362428b42c72c008b265, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5433326249982040832, guid: b19500cfafc6362428b42c72c008b265, type: 3}
       propertyPath: m_LocalPosition.x

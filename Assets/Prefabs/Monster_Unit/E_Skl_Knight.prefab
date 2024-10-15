@@ -248,6 +248,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
+  extraDmg: 2
 --- !u!50 &2697606822737507160
 Rigidbody2D:
   serializedVersion: 4
@@ -288,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWeight: 1
+  extraDMGWeight: 0
   unitRace: 3
 --- !u!1001 &1566114217318657467
 PrefabInstance:

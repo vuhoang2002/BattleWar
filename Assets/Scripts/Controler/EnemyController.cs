@@ -442,7 +442,7 @@ public class EnemyController : MonoBehaviour
         //  if(closestDistance<=1f){
         //      isAttacking=true;
         //  }
-        //  Debug.Log("Target is "+ target);
+        //  ("Target is "+ target);
     }
 
     void FindClosestEnemy_ByFindPositon(float searchRadius, Vector3 find_Position)
@@ -502,7 +502,7 @@ public class EnemyController : MonoBehaviour
 
     void AttackCommandOrder()
     {
-        // Debug.Log("Target là: "+target+" isAttacking là: "+ isAttacking);
+        // ("Target là: "+target+" isAttacking là: "+ isAttacking);
         if (target == null && !isAttacking && isAtk_Order)
         {// ko tìm thấy ai thì đi về phía trc
             if (!staticDirection)// cái này là cho enemy
@@ -583,11 +583,11 @@ public class EnemyController : MonoBehaviour
         GameObject mainCamera = GameObject.Find("Main Camera");
         if (mainCamera != null)
         {
-            //     Debug.Log("Found Camera");
+            //     ("Found Camera");
             CameraControl cam = mainCamera.GetComponent<CameraControl>();
             if (cam != null)
             {
-                //   Debug.Log("Found Cam Controller");
+                //   ("Found Cam Controller");
 
                 cam.setChosenPlayer(this.gameObject, true);
             }
@@ -605,7 +605,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //  Debug.Log("Va chạm với "+ other);
+        //  ("Va chạm với "+ other);
         // Xử lý va chạm
 
         BoxCollider2D boxCollider = other.GetComponent<BoxCollider2D>();
@@ -639,7 +639,7 @@ public class EnemyController : MonoBehaviour
         }
         if (other.gameObject.CompareTag(findTargetCastle))
         {
-            // Debug.Log("va chạm vs tower");
+            // ("va chạm vs tower");
             attackComponent.CallAttack(other.gameObject);
         }
 
@@ -647,11 +647,11 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("Va chạm với "+ other);
+        // ("Va chạm với "+ other);
         if (other.gameObject.CompareTag(findTarget) && isChosen)
         {
             // attackComponent.GetAttack_byBtn(other.gameObject);// nhận st
-            // Debug.Log("tấn công");
+            // ("tấn công");
             // GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
         }
     }
@@ -791,7 +791,6 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Chưa thiết lập retreat_Postion");
 
         }
 
@@ -879,7 +878,6 @@ public class EnemyController : MonoBehaviour
     }
     public GameObject GetChosenPlayer()
     {
-        Debug.Log("Game object này là" + this.gameObject);
         // playerHasBeenChosen=this.gameObject;
         return playerHasBeenChosen;
     }

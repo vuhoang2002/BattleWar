@@ -46,10 +46,10 @@ public class Player : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
-     
-           
-    
-        
+
+
+
+
     }
 
     private void Chase()
@@ -82,7 +82,6 @@ public class Player : MonoBehaviour
             // Thực hiện tấn công
             knightAttack.Attack(enemy);
             lastAttackTime = Time.time; // Cập nhật thời gian tấn công cuối cùng
-            Debug.Log("Player Attacked Enemy");
         }
     }
 
@@ -92,7 +91,6 @@ public class Player : MonoBehaviour
         {
             isColliding = true;
             // Thêm xử lý khi va chạm với Enemy ở đây
-            Debug.Log("Player Bắt đầu va chạm với " + collision.gameObject.name);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
@@ -106,7 +104,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             isColliding = false;
-            Debug.Log("Kết thúc va chạm với " + collision.gameObject.name);
             animator.SetBool("isAtk", false);
         }
     }
@@ -114,7 +111,6 @@ public class Player : MonoBehaviour
     public void OnEnemyDestroyed()
     {
         isEnemyAlive = false;
-        Debug.Log("Player Đã Tiêu Diệt Enemy");
         GameObject newEnemy = GameObject.FindGameObjectWithTag("Enemy");
         if (newEnemy != null)
         {

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5204666892807607643}
   - component: {fileID: 6482121372138721705}
   - component: {fileID: -1660581032836878939}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Castle1
   m_TagString: PlayerCastle
   m_Icon: {fileID: 0}

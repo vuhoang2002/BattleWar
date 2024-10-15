@@ -29,7 +29,7 @@ public class UnitPanelFunction : MonoBehaviour
     public void LoadSelectedUnits()
     {
         string path = Application.persistentDataPath + "/savedata.dat";
-        //     Debug.Log("Dữ liệu được lưu ở: " + path);
+        //     ("Dữ liệu được lưu ở: " + path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -38,7 +38,6 @@ public class UnitPanelFunction : MonoBehaviour
             stream.Close();
 
             selectedUnitTags = data.selectedUnitTags; // Khôi phục danh sách thẻ đơn vị đã chọn
-            Debug.Log("Đã tải các đơn vị đã chọn: " + string.Join(", ", selectedUnitTags));
         }
     }
 
@@ -66,7 +65,7 @@ public class UnitPanelFunction : MonoBehaviour
             // thiết lập nút
             crtSpawBtn = Instantiate(cloneSpawnBtn, transform); // Spawn prefab
             SpawnPlayer sp = crtSpawBtn.GetComponent<SpawnPlayer>();
-            sp.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize, unitDataEntry.unitPrice,unitDataEntry.cdTimerUnit);
+            sp.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize, unitDataEntry.unitPrice, unitDataEntry.cdTimerUnit);
 
             crtSpawBtn.name = "Spawn" + unitDataEntry.unitTag;
             Debug.LogWarning("save đã spawn" + crtSpawBtn.name);
@@ -81,7 +80,6 @@ public class UnitPanelFunction : MonoBehaviour
     private void OnButtonClick(UnitData unitDataEntry)
     {
         // Xử lý logic khi nút được nhấn, ví dụ:
-        Debug.Log("Nút đã được nhấn cho đơn vị: " + unitDataEntry.unitTag);
         // Có thể thêm logic để spawn hoặc thực hiện hành động khác với unitDataEntry
     }
 

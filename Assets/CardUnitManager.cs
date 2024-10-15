@@ -52,12 +52,12 @@ public class CardUnitManager : MonoBehaviour
             GameObject selectedUnit = Instantiate(cardPrefab, selectedPanel.transform);
             selectedUnit.GetComponent<CardUnit>().showOn_X_Button();
             // selectedUnitReferences.Add(selectedUnit); // Lưu trữ bản sao để tham chiếu sau này
-            Debug.Log("Đã thêm đơn vị: " + unitTag + " vào SelectedPanel.");
+            //Debug.Log("Đã thêm đơn vị: " + unitTag + " vào SelectedPanel.");
             SaveSelectedUnits();
         }
         else
         {
-            Debug.Log("Đơn vị đã được chọn trước đó: " + unitTag);
+            //Debug.Log("Đơn vị đã được chọn trước đó: " + unitTag);
         }
     }
 
@@ -91,16 +91,16 @@ public class CardUnitManager : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogWarning("Không tìm thấy CardUnit với unitTag: " + unitTag);
+                            //Debug.LogWarning("Không tìm thấy CardUnit với unitTag: " + unitTag);
                         }
                     }
                 }
             }
-            Debug.Log("Đã tải dữ liệu từ file.");
+            //Debug.Log("Đã tải dữ liệu từ file.");
         }
         else
         {
-            Debug.Log("Không tìm thấy file lưu.");
+            //Debug.Log("Không tìm thấy file lưu.");
         }
     }
 
@@ -117,7 +117,7 @@ public class CardUnitManager : MonoBehaviour
         {
             if (cardUnit.unitTag == currentUnitTag)
             {
-                Debug.Log("Tìm thấy CardUnit trùng khớp với unitTag: " + currentUnitTag);
+                //Debug.Log("Tìm thấy CardUnit trùng khớp với unitTag: " + currentUnitTag);
                 // Thực hiện hành động với cardUnit tìm thấy
                 return cardUnit;
             }
@@ -128,8 +128,8 @@ public class CardUnitManager : MonoBehaviour
     private void LoadSelectedUnits()
     {
         string path = Application.persistentDataPath + "/savedata.dat";
-        Debug.Log("Path is:" + path);
-        //     Debug.Log("Dữ liệu được lưu ở: " + path);
+        //Debug.Log("Path is:" + path);
+        //     //Debug.Log("Dữ liệu được lưu ở: " + path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -138,7 +138,7 @@ public class CardUnitManager : MonoBehaviour
             stream.Close();
 
             selectedUnitTags = data.selectedUnitTags; // Khôi phục danh sách thẻ đơn vị đã chọn
-            Debug.Log("Đã tải các đơn vị đã chọn: " + string.Join(", ", selectedUnitTags));
+            //Debug.Log("Đã tải các đơn vị đã chọn: " + string.Join(", ", selectedUnitTags));
         }
     }
 
@@ -153,7 +153,7 @@ public class CardUnitManager : MonoBehaviour
         formatter.Serialize(stream, data);
         stream.Close();
 
-        Debug.Log("Đã lưu các đơn vị đã chọn.");
+        //Debug.Log("Đã lưu các đơn vị đã chọn.");
     }
 
     private void OnApplicationQuit()
@@ -165,7 +165,7 @@ public class CardUnitManager : MonoBehaviour
     {
         selectedUnitTags.Clear();
         SaveSelectedUnits();
-        Debug.Log("Đã xóa tất cả lựa chọn đơn vị.");
+        //Debug.Log("Đã xóa tất cả lựa chọn đơn vị.");
     }
 
     public void ShowSelectedUnits()
@@ -188,11 +188,11 @@ public class CardUnitManager : MonoBehaviour
             selectedUnitTags.Remove(unitName);
             SaveSelectedUnits();
 
-            Debug.Log($"Đã xóa '{unitName}' khỏi danh sách các đơn vị đã chọn.");
+            //   Debug.Log($"Đã xóa '{unitName}' khỏi danh sách các đơn vị đã chọn.");
         }
         else
         {
-            Debug.LogWarning($"'{unitName}' không có trong danh sách các đơn vị đã chọn.");
+            // Debug.LogWarning($"'{unitName}' không có trong danh sách các đơn vị đã chọn.");
         }
     }
 }

@@ -191,17 +191,19 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         // thiết lập giá tiền
         buttonText = priceButton.GetComponentInChildren<TextMeshProUGUI>();
-        if(buttonText!=null){
-        buttonText.text = priceUnit.ToString();
-        }else{
-            Debug.Log("Không tạo đc price");
+        if (buttonText != null)
+        {
+            buttonText.text = priceUnit.ToString();
+        }
+        else
+        {
         }
     }
 
     private void spawnUnit()
     {
         // Thiết lập vị trí spawn ngẫu nhiên
-        if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold<priceUnit)
+        if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold < priceUnit)
         {
             return;
         }
@@ -229,13 +231,12 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 // Sau khi được thêm, ta cần tạo cho nó 1 defposition
                 unitListManager.CreatDef(prefabToSpawn.name);
                 OnUnitSpawned?.Invoke(newUnit, creat_ID_For_Unit);
-                GOLD_Counter.GetComponent<GoldCount>().currentGold-=priceUnit;
+                GOLD_Counter.GetComponent<GoldCount>().currentGold -= priceUnit;
                 StartCoroutine(CooldownRoutine());
             }
         }
         else
         {
-            Debug.Log("Số lượng Player đã đạt tối đa");
         }
     }
 
@@ -252,6 +253,5 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void HandleUnitSpawned(GameObject newUnit, string unitId)
     {
-        Debug.Log("Spawn");
     }
 }

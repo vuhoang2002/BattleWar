@@ -13,7 +13,7 @@ public class Arrow : MonoBehaviour
     public float maxArrowDistance = 8f;
     public bool isChangre = false;// chưởng thì có animation destroy
     public bool isColide = false;
-    public string destroyName = "FireBall_Destroy";
+    // public string destroyName = "IceBall_Destroy";
     private Animator amt;
     private int extraDmg;
     void Start()
@@ -50,13 +50,12 @@ public class Arrow : MonoBehaviour
     {
         if ((target.CompareTag("Enemy") || target.CompareTag("EnemyCastle")) && isGoodBullet)// dành cho player
         {
-            Debug.Log("Bắn trúng địch " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);
             OnDestroy(); // Hủy mũi tên sau khi trúng đích
         }
         else if ((target.CompareTag("Player") || target.CompareTag("PlayerCastle")) && !isGoodBullet) // dành cho enemy
         {
-            //   Debug.Log("Bắn trúng " + target);
+            //   ("Bắn trúng " + target);
             target.GetComponent<Health>().TakeDamage(arow_Dmg);
             OnDestroy(); // Hủy mũi tên sau khi trúng đích
         }
@@ -106,4 +105,5 @@ public class Arrow : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }

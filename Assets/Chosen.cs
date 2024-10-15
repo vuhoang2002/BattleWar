@@ -15,11 +15,11 @@ public class Chosen : MonoBehaviour
 
         if (playerController != null)
         {
-           // Debug.Log("Tìm thấy PlayerController trong đối tượng cha.");
+            // ("Tìm thấy PlayerController trong đối tượng cha.");
         }
-        if(playerController==null)
+        if (playerController == null)
         {
-           // Debug.LogError("Không tìm thấy PlayerController trong đối tượng cha.");
+            // Debug.LogError("Không tìm thấy PlayerController trong đối tượng cha.");
         }
     }
 
@@ -27,7 +27,7 @@ public class Chosen : MonoBehaviour
     {
         if (playerController != null && playerController.canChosen)
         {
-             Debug.Log("Nhân vật đã được click bời cái thứ 2!!");
+            // ("Nhân vật đã được click bời cái thứ 2!!");
             Collider collider = GetComponent<Collider>();
             playerController.isChosen = true;
 
@@ -43,22 +43,23 @@ public class Chosen : MonoBehaviour
                 }
             }
             // khi click thành công, đồng thời ta phải set JoyStick hiện
-          
+
         }
         else
         {
-           // Debug.LogWarning("PlayerController không tìm thấy hoặc canChosen không phải true.");
+            // Debug.LogWarning("PlayerController không tìm thấy hoặc canChosen không phải true.");
         }
     }
     // hiện JoyStickCanva
-    private void showJoyStickCanva(){
-          BattleCanvas=GameObject.Find("BattleCanva");
-          Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
-          joyStickCanvaTransform.gameObject.SetActive(true);
-          // tìm order unittype
-         joyStickCanvaTransform = BattleCanvas.transform.Find("OrderCanva");
-         joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
-         joyStickCanvaTransform.gameObject.SetActive(true);
+    private void showJoyStickCanva()
+    {
+        BattleCanvas = GameObject.Find("BattleCanva");
+        Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
+        joyStickCanvaTransform.gameObject.SetActive(true);
+        // tìm order unittype
+        joyStickCanvaTransform = BattleCanvas.transform.Find("OrderCanva");
+        joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
+        joyStickCanvaTransform.gameObject.SetActive(true);
 
     }
 

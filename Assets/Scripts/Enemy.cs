@@ -52,8 +52,8 @@ public class Enemy : MonoBehaviour
             animator.SetBool("isRunning", false);
             FindNewPlayer();
         }
-        
-    // Tính toán giá trị scale mới dựa trên y
+
+        // Tính toán giá trị scale mới dựa trên y
 
     }
 
@@ -88,7 +88,6 @@ public class Enemy : MonoBehaviour
             // Thực hiện tấn công
             knightAttack.Attack(player);
             lastAttackTime = Time.time; // Cập nhật thời gian tấn công cuối cùng
-            Debug.Log("Enemy Attacked Player");
         }
     }
 
@@ -98,7 +97,6 @@ public class Enemy : MonoBehaviour
         {
             isColliding = true;
             // Thêm xử lý khi va chạm với Player ở đây
-            Debug.Log("Enemy bắt đầu va chạm với " + collision.gameObject.name);
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -112,7 +110,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isColliding = false;
-            Debug.Log("Kết thúc va chạm với " + collision.gameObject.name);
             animator.SetBool("isAtk", false);
             FindNewPlayer(); // Tìm Player mới khi kết thúc va chạm
         }
@@ -122,7 +119,6 @@ public class Enemy : MonoBehaviour
     {
         isPlayerAlive = false;
         animator.SetBool("isAtk", false); // Đặt lại isAtk thành false
-        Debug.Log("Enemy đã tiêu diệt player");
         FindNewPlayer(); // Tìm Player mới sau khi tiêu diệt
     }
 
@@ -135,12 +131,10 @@ public class Enemy : MonoBehaviour
             player = newPlayer;
             previousPlayerPositionX = player.transform.position.x;
             isPlayerAlive = true;
-            Debug.Log("Enemy đã tìm thấy Player mới: " + player.name);
         }
         else
         {
             // Không tìm thấy Player mới, Enemy sẽ dừng hoạt động
-            Debug.Log("Không tìm thấy Player mới");
             animator.SetBool("isRunning", false);
         }
     }

@@ -51,7 +51,6 @@ public class UnitListManager : MonoBehaviour
         {
             LoadSelectedUnits();
 
-            Debug.Log("tag là: " + string.Join(", ", selectedUnitTags));
             foreach (string tag in selectedUnitTags)
             {
                 // Tạo danh sách tương ứng với unitTag
@@ -60,7 +59,7 @@ public class UnitListManager : MonoBehaviour
                     tagName = tag // Gán tên tag cho danh sách
                 };
                 unitTagLists.Add(newTagList);
-              //  Create_DefUnitAreas(tag);
+                //  Create_DefUnitAreas(tag);
             }
 
             // Tìm tất cả các GameObject có tag "Player"
@@ -69,16 +68,16 @@ public class UnitListManager : MonoBehaviour
             foreach (GameObject player in players)
             {
                 // Thêm object vào danh sách
-              //  AddUnitToTagList(player.name, player, player.GetComponent<PlayerController>().id);
+                //  AddUnitToTagList(player.name, player, player.GetComponent<PlayerController>().id);
             }
-             foreach (string tag in selectedUnitTags)
+            foreach (string tag in selectedUnitTags)
             {
                 // Tạo danh sách tương ứng với unitTag
-               
+
                 Create_DefUnitAreas(tag);
             }
         }
-      
+
     }
 
     void Update()
@@ -104,12 +103,11 @@ public class UnitListManager : MonoBehaviour
             {
                 SaveData data = formatter.Deserialize(stream) as SaveData;
                 selectedUnitTags = data.selectedUnitTags; // Khôi phục danh sách thẻ đơn vị đã chọn
-                Debug.Log("Đã tải các đơn vị đã chọn: " + string.Join(", ", selectedUnitTags));
             }
         }
     }
 
-    public void AddUnitToTagList(string unitTag, GameObject prefab,string create_id)
+    public void AddUnitToTagList(string unitTag, GameObject prefab, string create_id)
     {
         // Tìm TagList có tagName tương ứng
         TagList tagList = unitTagLists.Find(tagList => tagList.tagName == unitTag);
@@ -124,7 +122,7 @@ public class UnitListManager : MonoBehaviour
             {
                 prefab = prefab,
                 currentOrder = currentOrder, // Gán currentOrder từ PlayerController
-                id=create_id
+                id = create_id
             };
 
             // Thêm đối tượng vào danh sách units của TagList
@@ -133,7 +131,6 @@ public class UnitListManager : MonoBehaviour
             // Cập nhật số lượng đơn vị
             tagList.unitCount++;
 
-            Debug.Log($"Đã thêm unit vào tag '{unitTag}': {prefab.name} với order: {currentOrder}");
         }
         else
         {
@@ -141,134 +138,131 @@ public class UnitListManager : MonoBehaviour
         }
         //chỉnh sửa position
     }
-public void Create_DefUnitAreas(string unitName)
-{
-    // Tìm TagList với tagName tương ứng
-    TagList tagList = unitTagLists.Find(tagList => tagList.tagName == unitName);
+    public void Create_DefUnitAreas(string unitName)
+    {
+        // Tìm TagList với tagName tương ứng
+        TagList tagList = unitTagLists.Find(tagList => tagList.tagName == unitName);
         // Lấy danh sách my_Units
-    List<UnitListOrder> myUnits = tagList.my_Units;
+        List<UnitListOrder> myUnits = tagList.my_Units;
 
         // Thực hiện các thao tác với myUnits nếu cần
-    // Tiếp tục với việc tạo khu vực phòng thủ
-    float totalLength = unitDef_Area.GetComponent<Renderer>().bounds.size.x; // Lấy chiều dài theo trục x
+        // Tiếp tục với việc tạo khu vực phòng thủ
+        float totalLength = unitDef_Area.GetComponent<Renderer>().bounds.size.x; // Lấy chiều dài theo trục x
 
-    GameObject newArea = Instantiate(unitDef_Area, gameObject.transform);
-    newArea.SetActive(true);
-    
-    // Truyền các unit vào các area con nếu cần
+        GameObject newArea = Instantiate(unitDef_Area, gameObject.transform);
+        newArea.SetActive(true);
 
-    newArea.GetComponent<FomationManager_NewUprade>().SetUnitForArea(myUnits);
-  //  newArea.GetComponent<FomationManager_NewUprade>().GetRenderAreaNew();
-     newArea.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+        // Truyền các unit vào các area con nếu cần
 
-    newArea.name = unitName + "_DefArea";
-}
-    public void CreatDef(string unitName ){
+        newArea.GetComponent<FomationManager_NewUprade>().SetUnitForArea(myUnits);
+        //  newArea.GetComponent<FomationManager_NewUprade>().GetRenderAreaNew();
+        newArea.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+
+        newArea.name = unitName + "_DefArea";
+    }
+    public void CreatDef(string unitName)
+    {
         //tạo defposition cho unit đo
-        Transform childArea = transform.Find(unitName+"_DefArea");
+        Transform childArea = transform.Find(unitName + "_DefArea");
         childArea.gameObject.GetComponent<FomationManager_NewUprade>().Create_defPosition();
     }
-public bool RemoveUnitFromTagList(string unitTag, GameObject prefab, string id)
-{   
-    string prefabName = unitTag;
-    int index = prefabName.IndexOf('(');
-    if (index >= 0)
+    public bool RemoveUnitFromTagList(string unitTag, GameObject prefab, string id)
     {
-        prefabName = prefabName.Substring(0, index).Trim(); // Cắt chuỗi từ đầu đến dấu (
-    }
-    Debug.Log("Unit sắp xóa tên: " + prefabName);
-
-    // Tìm TagList có tagName tương ứng
-    TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
-
-    if (tagList != null)
-    {
-        UnitListOrder unitToRemove = tagList.my_Units.Find(unit => unit.id == id);
-        
-        if (unitToRemove != null)
+        string prefabName = unitTag;
+        int index = prefabName.IndexOf('(');
+        if (index >= 0)
         {
-            // Xóa unit khỏi danh sách
-            tagList.my_Units.Remove(unitToRemove);
-            Debug.Log($"Đã xóa unit '{prefab.name}' khỏi tag '{unitTag}'");
+            prefabName = prefabName.Substring(0, index).Trim(); // Cắt chuỗi từ đầu đến dấu (
+        }
 
-            // Cập nhật số lượng đơn vị
-            tagList.unitCount--;
+        // Tìm TagList có tagName tương ứng
+        TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
 
-            // Tìm Transform của khu vực và tạo lại
-            Transform childArea = transform.Find(prefabName + "_DefArea");
-            if (childArea != null)
+        if (tagList != null)
+        {
+            UnitListOrder unitToRemove = tagList.my_Units.Find(unit => unit.id == id);
+
+            if (unitToRemove != null)
             {
-                childArea.gameObject.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+                // Xóa unit khỏi danh sách
+                tagList.my_Units.Remove(unitToRemove);
+
+                // Cập nhật số lượng đơn vị
+                tagList.unitCount--;
+
+                // Tìm Transform của khu vực và tạo lại
+                Transform childArea = transform.Find(prefabName + "_DefArea");
+                if (childArea != null)
+                {
+                    childArea.gameObject.GetComponent<FomationManager_NewUprade>().Create_defPosition();
+                }
+
+                // Đợi cho đến khi UnitListOrder bị xóa thì mới tiến hành killSelf
+                // Sử dụng Coroutine để delay việc gọi killSelf
+                StartCoroutine(DelayedKillSelf2(prefab));
+
+                return true;
             }
-
-            // Đợi cho đến khi UnitListOrder bị xóa thì mới tiến hành killSelf
-            // Sử dụng Coroutine để delay việc gọi killSelf
-            StartCoroutine(DelayedKillSelf2(prefab));
-
-            return true;
+            else
+            {
+                Debug.LogWarning($"Không tìm thấy unit '{prefab.name}' trong tag '{unitTag}'");
+            }
         }
         else
         {
-            Debug.LogWarning($"Không tìm thấy unit '{prefab.name}' trong tag '{unitTag}'");
+            Debug.LogWarning($"Không tìm thấy TagList với '{unitTag}'");
+        }
+
+        return false;
+    }
+
+    // Coroutine để delay việc killSelf
+    private IEnumerator DelayedKillSelf2(GameObject prefab)
+    {
+        // Kiểm tra xem prefab có phải là null không
+        if (prefab == null)
+        {
+            Debug.LogWarning("Prefab là null, không thể gọi killSelf.");
+            yield break; // Kết thúc coroutine nếu prefab là null
+        }
+
+        // Chờ một khoảng thời gian trước khi gọi killSelf
+        yield return new WaitForEndOfFrame(); // Có thể thay đổi thành WaitForSeconds(0.5f) nếu muốn trì hoãn lâu hơn
+
+        // Lấy component Health và gọi killSelf
+        Health healthComponent = prefab.GetComponent<Health>();
+        if (healthComponent != null)
+        {
+            healthComponent.killSelf();
+        }
+        else
+        {
+            Debug.LogWarning("Prefab không có component Health.");
         }
     }
-    else
+    public List<UnitListOrder> FindUnitsByName(string prefabName)
     {
-        Debug.LogWarning($"Không tìm thấy TagList với '{unitTag}'");
-    }
-    
-    return false;
-}
+        // Cắt tên prefab đến dấu '('
+        int index = prefabName.IndexOf('(');
+        if (index >= 0)
+        {
+            prefabName = prefabName.Substring(0, index).Trim(); // Cắt chuỗi từ đầu đến dấu '('
+        }
 
-// Coroutine để delay việc killSelf
-private IEnumerator DelayedKillSelf2(GameObject prefab)
-{
-    // Kiểm tra xem prefab có phải là null không
-    if (prefab == null)
-    {
-        Debug.LogWarning("Prefab là null, không thể gọi killSelf.");
-        yield break; // Kết thúc coroutine nếu prefab là null
-    }
+        List<UnitListOrder> foundUnits = new List<UnitListOrder>();
+        // Duyệt qua tất cả các TagList
 
-    // Chờ một khoảng thời gian trước khi gọi killSelf
-    yield return new WaitForEndOfFrame(); // Có thể thay đổi thành WaitForSeconds(0.5f) nếu muốn trì hoãn lâu hơn
+        TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
+        foundUnits = tagList.my_Units;
 
-    // Lấy component Health và gọi killSelf
-    Health healthComponent = prefab.GetComponent<Health>();
-    if (healthComponent != null)
-    {
-        healthComponent.killSelf();
-    }
-    else
-    {
-        Debug.LogWarning("Prefab không có component Health.");
-    }
-}
-public List<UnitListOrder> FindUnitsByName(string prefabName)
-{
-    // Cắt tên prefab đến dấu '('
-    int index = prefabName.IndexOf('(');
-    if (index >= 0)
-    {
-        prefabName = prefabName.Substring(0, index).Trim(); // Cắt chuỗi từ đầu đến dấu '('
-    }
+        if (foundUnits.Count == 0)
+        {
+            Debug.LogWarning($"Không tìm thấy unit nào với tên '{prefabName}'");
+        }
+        else
+        {
+        }
 
-    List<UnitListOrder> foundUnits = new List<UnitListOrder>();
-    Debug.Log("Tìm unit tên:"+prefabName+":");
-    // Duyệt qua tất cả các TagList
-
-    TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
-    foundUnits=tagList.my_Units;
-
-    if (foundUnits.Count == 0)
-    {
-        Debug.LogWarning($"Không tìm thấy unit nào với tên '{prefabName}'");
+        return foundUnits; // Trả về danh sách các unit tìm thấy
     }
-    else
-    {
-        Debug.Log($"Đã tìm thấy {foundUnits.Count} unit(s) với tên '{prefabName}'");
-    }
-    
-    return foundUnits; // Trả về danh sách các unit tìm thấy
-}
 }

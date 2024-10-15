@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5433326249982040832}
   - component: {fileID: 5518319929491345922}
   - component: {fileID: 6454333290864025266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AtkArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

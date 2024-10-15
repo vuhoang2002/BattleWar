@@ -82,7 +82,7 @@ public class Health : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogWarning("LoseUI not found in BattleCanva!");
+                            // Debug.LogWarning("LoseUI not found in BattleCanva!");
                         }
                     }
                     else if (gameObject.CompareTag("EnemyCastle"))
@@ -97,7 +97,7 @@ public class Health : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogWarning("VictoryUI not found!");
+                            // Debug.LogWarning("VictoryUI not found!");
                         }
                     }
 
@@ -106,7 +106,7 @@ public class Health : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("BattleCanva not found!");
+                    // Debug.LogWarning("BattleCanva not found!");
                 }
             }
         }
@@ -233,16 +233,16 @@ public class Health : MonoBehaviour
             }
 
             // Bắt đầu animation (nếu cần)
-           // Animator animator = instance.GetComponent<Animator>();
+            // Animator animator = instance.GetComponent<Animator>();
 
-          //  if (animator != null)
-           // {
-             //   animator.SetTrigger("PlayAnimation"); // Trigger đã tạo trong Animator
-           // }
+            //  if (animator != null)
+            // {
+            //   animator.SetTrigger("PlayAnimation"); // Trigger đã tạo trong Animator
+            // }
         }
         else
         {
-            Debug.LogWarning("Damage pop-up prefab is not assigned!");
+            //.LogWarning("Damage pop-up prefab is not assigned!");
         }
     }
 }

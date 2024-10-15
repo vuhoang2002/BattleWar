@@ -13,19 +13,19 @@ public class CameraControl : MonoBehaviour
     private Vector3 worldMinPosition;
     private Vector3 worldMaxPosition;
     //public bool isChosen = false;
-     public float cameraOffsetX = 1.0f; 
+    public float cameraOffsetX = 1.0f;
 
     void Start()
     {
         // Lấy tọa độ thế giới của minPosition và maxPosition
-        worldMinPosition = minPosition.transform.position; 
-        worldMaxPosition = maxPosition.transform.position; 
+        worldMinPosition = minPosition.transform.position;
+        worldMaxPosition = maxPosition.transform.position;
     }
 
     void Update()
     {
-        if ( chosenPlayer == null) 
-        { 
+        if (chosenPlayer == null)
+        {
             FreeCamera();
         }
         else
@@ -34,7 +34,7 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-      private void LockCamera()
+    private void LockCamera()
     {
         if (chosenPlayer != null) // Kiểm tra xem chosenPlayer có null không
         {
@@ -93,7 +93,6 @@ public class CameraControl : MonoBehaviour
                     transform.position = newPosition; // Cập nhật vị trí camera
 
                     // Debug thông tin
-                    Debug.Log($"Camera Position touch: {transform.position.x}, Min: {worldMinPosition.x}, Max: {worldMaxPosition.x}");
                     break;
             }
         }
@@ -117,16 +116,18 @@ public class CameraControl : MonoBehaviour
             transform.position = newPosition; // Cập nhật vị trí camera
 
             // Debug thông tin
-            Debug.Log($"Camera Position mouse: {transform.position.x}, Min: {worldMinPosition.x}, Max: {worldMaxPosition.x}");
         }
     }
-    public void setChosenPlayer(GameObject chosen, bool flag){
-        Debug.Log("Thiết lập chosen");
-        if(flag=true){//chosen
-        chosenPlayer=chosen;
-        }else{
-            chosen=null;// canel chosen
+    public void setChosenPlayer(GameObject chosen, bool flag)
+    {
+        if (flag = true)
+        {//chosen
+            chosenPlayer = chosen;
+        }
+        else
+        {
+            chosen = null;// canel chosen
         }
     }
-    
+
 }

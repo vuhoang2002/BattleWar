@@ -26,10 +26,10 @@ public class HoldOrder : MonoBehaviour
 
         // Cập nhật isHold_Order thành true cho tất cả các PlayerController
         foreach (PlayerController playerController in playerControllers)
-        {   
+        {
 
             SetHoldActive(playerController);
-            // Debug.Log("Hold Order!!!");
+            // ("Hold Order!!!");
         }
     }
 
@@ -37,7 +37,6 @@ public class HoldOrder : MonoBehaviour
     {
         // Chỉ điều khiển cho tất cả đơn vị đội quan cùng loại
         GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
-        Debug.Log("chosen là " + chosenPlayer);
 
         // Tìm instance của UnitListManager
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
@@ -56,7 +55,7 @@ public class HoldOrder : MonoBehaviour
             // So sánh với prefab của unit
             if (unit.prefab == chosenPlayer)
             {
-              //  continue; // Bỏ qua chosenPlayer
+                //  continue; // Bỏ qua chosenPlayer
             }
 
             // Lấy PlayerController từ prefab
@@ -73,21 +72,21 @@ public class HoldOrder : MonoBehaviour
     }
 
     public void SetHoldActive(PlayerController playerController)
-{
-    playerController.isHold_Order = true;  // Kích hoạt giữ
-    playerController.isAtk_Order = false;   // Tắt tấn công
-    playerController.isDef_Order = false;   // Tắt phòng thủ
-    playerController.isFallBack_Order = false; // Tắt rút lui
-    
-    // Lấy tọa độ của đối tượng cha và gán vào hold_Position
-    if (playerController.transform.parent != null) 
     {
-        playerController.hold_Position = playerController.transform.position;
+        playerController.isHold_Order = true;  // Kích hoạt giữ
+        playerController.isAtk_Order = false;   // Tắt tấn công
+        playerController.isDef_Order = false;   // Tắt phòng thủ
+        playerController.isFallBack_Order = false; // Tắt rút lui
+
+        // Lấy tọa độ của đối tượng cha và gán vào hold_Position
+        if (playerController.transform.parent != null)
+        {
+            playerController.hold_Position = playerController.transform.position;
+        }
+        else
+        {
+            // Nếu không có cha, có thể gán hold_Position bằng Vector3.zero hoặc một giá trị khác
+            playerController.hold_Position = Vector3.zero;
+        }
     }
-    else
-    {
-        // Nếu không có cha, có thể gán hold_Position bằng Vector3.zero hoặc một giá trị khác
-        playerController.hold_Position = Vector3.zero;
-    }
-}
 }

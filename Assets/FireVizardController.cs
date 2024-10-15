@@ -9,7 +9,7 @@ public class FireVizardController : MonoBehaviour
     private int fireBallAtk;
     private bool arrowDirection; // Khai báo biến arrowDirection
                                  // private Animator amtFireBall;
-    public static bool isUpgrade = true;
+    public static bool isUpgrade = false;
     private int extraDmg = 0;
     void Start()
     {
@@ -69,7 +69,8 @@ public class FireVizardController : MonoBehaviour
                 // arrowInstance.transform.localScale *= 3f; // Tăng kích thước gấp đôi
                 Animator amtFireBall = arrowInstance.GetComponent<Animator>();
                 amtFireBall.SetBool("isUpgrade", true);
-
+                SpriteRenderer spriteRenderer = arrowInstance.GetComponent<SpriteRenderer>();
+                spriteRenderer.color = Color.red;
             }
             arrowInstance.SetActive(true);
             if (GetComponent<Attacks>().Get_IsDealExtraDmg())
