@@ -118,7 +118,7 @@ public class Level1 : MonoBehaviour
 
                 // Gọi hàm SpawnEnemy với số lượng kẻ địch tương ứng
                 eB.SpawnEnemy(spawn.enemyName, spawn.spawnCount);
-
+                //eB.Set_eAtk();
                 // Loại bỏ mục khỏi danh sách sau khi đã spawn
                 spawnTimer.RemoveAt(i);
                 i--; // Giảm chỉ số để tránh bỏ sót mục tiếp theo

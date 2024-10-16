@@ -137,7 +137,7 @@ public class FormationManager : MonoBehaviour
 
             if (playerController != null)
             {
-                playerController.Flip_To_True_Direction();  // Xoay nhân vật
+                playerController.Flip_To_Default_Direction();  // Xoay nhân vật
             }
         }
     }

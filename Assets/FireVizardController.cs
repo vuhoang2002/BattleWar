@@ -53,11 +53,11 @@ public class FireVizardController : MonoBehaviour
     public void Spawn_FireBall()
     {
         int deadDmg = fireBallAtk;
-        var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<EnemyController>();
+        var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<PlayerController>();
 
         if (controller != null)
         {
-            arrowDirection = controller is PlayerController player ? player.isRightWay : ((EnemyController)controller).isRightWay;
+            arrowDirection = controller is PlayerController player ? player.isRightWay : ((PlayerController)controller).isRightWay;
         }
 
         if (fireBallAbl1 != null && spawnFireBall != null) // Kiểm tra prefab và vị trí không null
@@ -78,14 +78,10 @@ public class FireVizardController : MonoBehaviour
                 deadDmg += extraDmg;
             }
             arrowInstance.GetComponent<Arrow>().SetArrowDmg_Direction(deadDmg, arrowDirection);
-            arrowInstance.transform.SetParent(transform);
+            //arrowInstance.transform.SetParent(transform);
 
             // Phóng to arrowInstance lên 2 lần nếu isUpgrade=true
 
-        }
-        else
-        {
-            Debug.LogError("FireBall hoặc spawnFireBall chưa được thiết lập!");
         }
     }
 }

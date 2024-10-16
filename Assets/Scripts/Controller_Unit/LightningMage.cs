@@ -84,12 +84,12 @@ public class LightningMageControllder : MonoBehaviour
     private IEnumerator SpawnThunderStrikesCoroutine()
     {
         int deadDmg = thunderAtk;
-        var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<EnemyController>();
+        var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<PlayerController>();
         bool arrowDirection = false;
 
         if (controller != null)
         {
-            arrowDirection = controller is PlayerController player ? player.isRightWay : ((EnemyController)controller).isRightWay;
+            arrowDirection = controller is PlayerController player ? player.isRightWay : ((PlayerController)controller).isRightWay;
         }
 
         // Spawn tia sét với thời gian trễ

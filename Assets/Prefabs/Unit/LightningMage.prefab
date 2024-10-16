@@ -247,8 +247,7 @@ MonoBehaviour:
   isRanger: 1
   id: 
   moveSpeed: 0.5
-  searchRadius: 5
-  attackCooldown: 0.7
+  searchRadius: 3
   highPos: -4.5
   lowPos: -2.5
   minScale: 0.85
@@ -262,15 +261,14 @@ MonoBehaviour:
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
-  isAtkBtn: 0
   maxY: {fileID: 752450957347428507, guid: ecd4a39fbcc5df34fb397f37ce2e8fb6, type: 3}
   minY: {fileID: 1134471018660337803, guid: f5455371276018247814ec3a9972e238, type: 3}
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
   timeBwFindTarget: 1
-  timerFindTarget: 0
+  timer_FindTarget: 0
   isRightWay: 1
-  isAttacking: 0
+  isColliding: 0
   isDef_Hold: 1
   isDef_Force: 0
   thisIsPlayer: 1
@@ -366,7 +364,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!60 &81873128059591161
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -585,6 +583,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6102729149197835337}
     m_Modifications:
+    - target: {fileID: 482809907774492256, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482809907774492256, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.03222192
+      objectReference: {fileID: 0}
+    - target: {fileID: 482809907774492256, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2016780190474202321, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -653,6 +663,22 @@ PrefabInstance:
       propertyPath: thunerDmg
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4988268431197678375, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988268431197678375, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.010029434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988268431197678375, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111111559853714514, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: magicster
+      value: 
+      objectReference: {fileID: 5799506397286250514}
     - target: {fileID: 7111111559853714514, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
       propertyPath: thunerDmg
       value: 9

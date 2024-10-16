@@ -95,7 +95,7 @@ public class EnemyBehavius : MonoBehaviour
                     nextId++; // Tăng ID cho lần tạo tiếp theo
 
                     // Nếu cần, có thể gán ID cho đối tượng mới
-                    EnemyController enemyController = newUnit.GetComponent<EnemyController>();
+                    PlayerController enemyController = newUnit.GetComponent<PlayerController>();
                     if (enemyController != null)
                     {
                         enemyController.id = creat_ID_For_Unit; // Gán ID cho enemy
@@ -182,7 +182,7 @@ public class EnemyBehavius : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {
-            EnemyController ec = enemy.GetComponent<EnemyController>();
+            PlayerController ec = enemy.GetComponent<PlayerController>();
             if (ec != null)
             {
                 ec.SetBehavius(atk_Order, def_Order, fallBack_Order);
@@ -278,7 +278,7 @@ public class EnemyBehavius : MonoBehaviour
         lowest_Y = min.y; // Lấy tọa độ Y thấp nhất
         positionSpawn_X = min.x; // Lấy tọa độ X thấp nhất
     }
-    private void AddUnitToTagList(string enemyName, EnemyController enemyController, GameObject enemyPrefab)
+    private void AddUnitToTagList(string enemyName, PlayerController enemyController, GameObject enemyPrefab)
     {
         TagList tagList = unitTagLists.Find(tag => tag.tagName == enemyName);
         if (tagList != null)

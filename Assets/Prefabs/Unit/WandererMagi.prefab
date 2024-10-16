@@ -148,7 +148,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 30
+  extraDmg: 15
 --- !u!114 &291363965469236116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,8 +165,7 @@ MonoBehaviour:
   isRanger: 1
   id: 
   moveSpeed: 0.5
-  searchRadius: 5
-  attackCooldown: 0.7
+  searchRadius: 4
   highPos: -4.5
   lowPos: -2.5
   minScale: 0.85
@@ -180,15 +179,14 @@ MonoBehaviour:
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
-  isAtkBtn: 0
   maxY: {fileID: 752450957347428507, guid: ecd4a39fbcc5df34fb397f37ce2e8fb6, type: 3}
   minY: {fileID: 1134471018660337803, guid: f5455371276018247814ec3a9972e238, type: 3}
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
   timeBwFindTarget: 1
-  timerFindTarget: 0
+  timer_FindTarget: 0
   isRightWay: 1
-  isAttacking: 0
+  isColliding: 0
   isDef_Hold: 1
   isDef_Force: 0
   thisIsPlayer: 1
@@ -284,7 +282,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!60 &5048360879461402886
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -753,7 +751,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5518319929491345922, guid: b19500cfafc6362428b42c72c008b265, type: 3}
+    - {fileID: 6454333290864025266, guid: b19500cfafc6362428b42c72c008b265, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -803,7 +803,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.0519805, y: 0.03790182}
+  m_Offset: {x: 1.5111053, y: 0.03790182}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -814,7 +814,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9894028, y: 0.15991342}
+  m_Size: {x: 2.907652, y: 0.15991342}
   m_EdgeRadius: 0
 --- !u!1001 &5731051681824456143
 PrefabInstance:
@@ -893,6 +893,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7111111559853714514, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: extraDmg
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111111559853714514, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
+      propertyPath: magicster
+      value: 
+      objectReference: {fileID: 3974870113231231300}
+    - target: {fileID: 7111111559853714514, guid: 1a8dc17162d18c74b86bcb38a9df5a5a, type: 3}
       propertyPath: thunerDmg
       value: 9
       objectReference: {fileID: 0}
@@ -923,6 +931,10 @@ PrefabInstance:
     - target: {fileID: 635982480399149376, guid: 6de95df174fa22347b4bbfeea19cbf62, type: 3}
       propertyPath: m_Name
       value: IceSpear
+      objectReference: {fileID: 0}
+    - target: {fileID: 635982480399149376, guid: 6de95df174fa22347b4bbfeea19cbf62, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 635982480399149376, guid: 6de95df174fa22347b4bbfeea19cbf62, type: 3}
       propertyPath: m_IsActive

@@ -32,7 +32,7 @@ public class DefenseOrder : MonoBehaviour
 
     public void OrderOneUnitType()
     {
-        GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
+        GameObject chosenPlayer = PlayerController.chosenPlayer;
 
         // Tìm instance của UnitListManager
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
@@ -61,7 +61,42 @@ public class DefenseOrder : MonoBehaviour
                 Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
             }
         }
+        ShowOffThisCanva();
     }
+    public void OrderThisUnit()
+    {
+        GameObject chosenPlayer = PlayerController.chosenPlayer;
+
+        // Tìm instance của UnitListManager
+        UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
+        if (unitListManager == null)
+        {
+            return;
+        }
+
+        string unitNameToFind = chosenPlayer.name;
+        List<UnitListOrder> units = unitListManager.FindUnitsByName(unitNameToFind);
+
+        foreach (UnitListOrder unit in units)
+        {
+            if (unit.prefab == chosenPlayer)
+            {
+                PlayerController pl = unit.prefab.GetComponent<PlayerController>();
+                if (pl != null)
+                {
+                    SetDefActive(pl);
+                }
+                else
+                {
+                    Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
+                }
+            }
+        }
+        ShowOffThisCanva();
+        CancelChosen();
+    }
+
+
 
     public void SetDefActive(PlayerController playerController)
     {
@@ -70,4 +105,22 @@ public class DefenseOrder : MonoBehaviour
         playerController.isHold_Order = false;  // Tắt giữ
         playerController.isFallBack_Order = false; // Tắt rút lui
     }
+    public void ShowOffThisCanva()
+    {
+        GameObject BattleCanva = GameObject.Find("BattleCanva");
+        Transform orderCanva = BattleCanva.transform.Find("OrderCanva");
+        Transform childCanva = orderCanva.transform.Find("PanelOrder_UnitType");
+        childCanva.gameObject.SetActive(false);
+        childCanva = orderCanva.transform.Find("PanelOrder_OneUnit");
+        childCanva.gameObject.SetActive(false);
+        childCanva = orderCanva.transform.Find("SelectUnit_Btn");
+        childCanva.gameObject.SetActive(false);
+
+    }
+    public void CancelChosen()
+    {
+        CancelChosen cancelChosen = new CancelChosen();
+        cancelChosen.HandleButtonClick();
+    }
+
 }

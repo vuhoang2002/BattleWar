@@ -8,10 +8,20 @@ public class Thunder : MonoBehaviour
     Animator amtParnet;
     public int thunerDmg = 8;
     public int extraDmg = 30;
+    public GameObject magicster;
     void Start()
     {
         amtParnet = GetComponentInParent<Animator>();
         //thunerDmg = GetComponent<Attacks>().abl1_Atk;
+        SetOrderLayerForBullet();
+    }
+    public void SetOrderLayerForBullet()
+    {
+        if (magicster != null)
+        {
+            Renderer rend = GetComponent<Renderer>();
+            rend.sortingOrder = magicster.GetComponent<PlayerController>().GetOrderLayer();
+        }
     }
 
     public void ThunderAttack()

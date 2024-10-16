@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
@@ -14,6 +15,8 @@ public class CameraControl : MonoBehaviour
     private Vector3 worldMaxPosition;
     //public bool isChosen = false;
     public float cameraOffsetX = 1.0f;
+    private bool isMoving;// di chuyển mục tiêu
+    public static Vector3 myPosition;
 
     void Start()
     {
@@ -22,8 +25,29 @@ public class CameraControl : MonoBehaviour
         worldMaxPosition = maxPosition.transform.position;
     }
 
+    public Vector3 positionSelect; // Thêm biến này nếu bạn chưa có
+
     void Update()
     {
+        if (isMoving)
+        {
+            // Di chuyển camera
+            float desiredPositionX = myPosition.x; // Thêm offset
+
+            // Kiểm tra giới hạn
+            desiredPositionX = CheckBounds(desiredPositionX, worldMinPosition.x, worldMaxPosition.x);
+
+            Vector3 smoothedPosition = new Vector3(desiredPositionX, transform.position.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, smoothedPosition, 0.01f);
+
+            // Kiểm tra nếu đã gần đến vị trí
+            if (Vector3.Distance(transform.position, smoothedPosition) < 0.1f)
+            {
+                isMoving = false; // Dừng di chuyển
+                StartCoroutine(OffMovingCam()); // Gọi coroutine để tắt trạng thái di chuyển
+            }
+        }
+
         if (chosenPlayer == null)
         {
             FreeCamera();
@@ -31,7 +55,14 @@ public class CameraControl : MonoBehaviour
         else
         {
             LockCamera();
+            isMoving = false; // Kết thúc di chuyển nếu có player được chọn
         }
+    }
+
+    private IEnumerator OffMovingCam()
+    {
+        yield return new WaitForSeconds(1.5f); // Sử dụng chữ hoa ở "WaitForSeconds"
+        isMoving = false; // Đặt lại trạng thái di chuyển
     }
 
     private void LockCamera()
@@ -66,6 +97,13 @@ public class CameraControl : MonoBehaviour
         return newPositionX; // Không thay đổi
     }
 
+    public void MoveCameraToPosition(Vector3 position)
+    {
+        // Lấy vị trí mới trên trục X
+        myPosition = position;
+        isMoving = true;
+
+    }
     private void FreeCamera()
     {
         // Kiểm tra touch hoặc chuột

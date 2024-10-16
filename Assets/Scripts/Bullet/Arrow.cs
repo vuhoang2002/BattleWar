@@ -24,7 +24,13 @@ public class Arrow : MonoBehaviour
         {
             isChangre = true;
         }
-
+        //thiết lập orderlayout cho nó
+        SetOrderLayerForBullet();
+    }
+    public void SetOrderLayerForBullet()
+    {
+        Renderer rend = GetComponent<Renderer>();
+        rend.sortingOrder = GetComponent<PlayerController>().GetOrderLayer();
     }
 
     public void SetArrowMaxDistante(float newMax)

@@ -28,8 +28,14 @@ public class CancelChosen : MonoBehaviour
         GameObject BattleCanvas = GameObject.Find("BattleCanva");
         Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
         joyStickCanvaTransform.gameObject.SetActive(false);
-        OrderPanel_For_1_UnitsType.SetActive(false);
+        if (FunctionCanva == null)
+        {
+            FunctionCanva = BattleCanvas.transform.Find("FunctionCanva").gameObject;
+        }
+
         FunctionCanva.SetActive(false);
+        OrderPanel_For_1_UnitsType.SetActive(false);
+
     }
     public void offChosenPlayerCam()
     {

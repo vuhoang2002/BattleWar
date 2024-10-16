@@ -41,7 +41,7 @@ public class Attacks : MonoBehaviour
     private float distanceTo_Target;
     private Health targetHealth;
     private PlayerController playerController;
-    private EnemyController enemyController;
+
     // bool isChosen=false;
     bool isRightWay = true;
     bool isPlayer = true;
@@ -60,7 +60,7 @@ public class Attacks : MonoBehaviour
         abl2_Cd_Time = 0;
         abl3_Cd_Time = 0;
         playerController = GetComponent<PlayerController>();
-        enemyController = GetComponent<EnemyController>();
+
         if (playerController == null)
         {
             isPlayer = false;
@@ -221,10 +221,7 @@ public class Attacks : MonoBehaviour
         {
             isRightWay = playerController.isRightWay;
         }
-        else if (!isPlayer || GetComponent<EnemyController>() != null)
-        {
-            isRightWay = enemyController.isRightWay;
-        }
+
         // int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
         GetComponent<Shot>().Spawn_Arrow(basic_Atk, isRightWay);//extra được thiết lập ở shot r
 
@@ -253,10 +250,7 @@ public class Attacks : MonoBehaviour
         {
             isRightWay = playerController.isRightWay;
         }
-        else if (!isPlayer || GetComponent<EnemyController>() != null)
-        {
-            isRightWay = enemyController.isRightWay;
-        }
+
         GetComponent<Abl1>().active_Abl(abl1_Atk, isRightWay);
 
         //("Collider đã được tắt!");

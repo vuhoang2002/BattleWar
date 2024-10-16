@@ -36,7 +36,7 @@ public class HoldOrder : MonoBehaviour
     public void OrderOneUnitType()
     {
         // Chỉ điều khiển cho tất cả đơn vị đội quan cùng loại
-        GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
+        GameObject chosenPlayer = PlayerController.chosenPlayer;
 
         // Tìm instance của UnitListManager
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
@@ -62,13 +62,56 @@ public class HoldOrder : MonoBehaviour
             PlayerController pl = unit.prefab.GetComponent<PlayerController>();
             if (pl != null)
             {
-                SetHoldActive(pl); // Kích hoạt giữ
+                SetHoldActive(pl);
             }
             else
             {
                 Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
             }
         }
+        ShowOffThisCanva();
+
+    }
+    public void CancelChosen()
+    {
+        CancelChosen cancelChosen = new CancelChosen();
+        cancelChosen.HandleButtonClick();
+    }
+
+    public void OrderThisUnit()
+    {
+        // Chỉ điều khiển cho tất cả đơn vị đội quan cùng loại
+        GameObject chosenPlayer = PlayerController.chosenPlayer;
+
+        // Tìm instance của UnitListManager
+        UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
+        if (unitListManager == null)
+        {
+            return;
+        }
+
+        // Tìm list
+        string unitNameToFind = chosenPlayer.name; // Sử dụng tên của chosenPlayer
+        List<UnitListOrder> units = unitListManager.FindUnitsByName(unitNameToFind);
+
+        foreach (UnitListOrder unit in units)
+        {
+            // So sánh với prefab của unit
+            if (unit.prefab == chosenPlayer)
+            {
+                PlayerController pl = unit.prefab.GetComponent<PlayerController>();
+                if (pl != null)
+                {
+                    SetHoldActive(pl); // Kích hoạt giữ
+                }
+                else
+                {
+                    Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
+                } //  continue; // Bỏ qua chosenPlayer
+            }
+        }
+        ShowOffThisCanva();
+        CancelChosen();
     }
 
     public void SetHoldActive(PlayerController playerController)
@@ -88,5 +131,17 @@ public class HoldOrder : MonoBehaviour
             // Nếu không có cha, có thể gán hold_Position bằng Vector3.zero hoặc một giá trị khác
             playerController.hold_Position = Vector3.zero;
         }
+    }
+    public void ShowOffThisCanva()
+    {
+        GameObject BattleCanva = GameObject.Find("BattleCanva");
+        Transform orderCanva = BattleCanva.transform.Find("OrderCanva");
+        Transform childCanva = orderCanva.transform.Find("PanelOrder_UnitType");
+        childCanva.gameObject.SetActive(false);
+        childCanva = orderCanva.transform.Find("PanelOrder_OneUnit");
+        childCanva.gameObject.SetActive(false);
+        childCanva = orderCanva.transform.Find("SelectUnit_Btn");
+        childCanva.gameObject.SetActive(false);
+
     }
 }

@@ -32,7 +32,7 @@ public class FallBackOrder : MonoBehaviour
 
     public void OrderOneUnitType()
     {
-        GameObject chosenPlayer = PlayerController.playerHasBeenChosen;
+        GameObject chosenPlayer = PlayerController.chosenPlayer;
 
         // Tìm instance của UnitListManager
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
@@ -62,7 +62,48 @@ public class FallBackOrder : MonoBehaviour
                 Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
             }
         }
+        ShowOffThisCanva();
     }
+    public void OrderThisUnit()
+    {
+        GameObject chosenPlayer = PlayerController.chosenPlayer;
+
+        // Tìm instance của UnitListManager
+        UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
+        if (unitListManager == null)
+        {
+            Debug.LogError("Không tìm thấy UnitListManager trong scene.");
+            return;
+        }
+
+        string unitNameToFind = chosenPlayer.name;
+        List<UnitListOrder> units = unitListManager.FindUnitsByName(unitNameToFind);
+
+        foreach (UnitListOrder unit in units)
+        {
+            if (unit.prefab == chosenPlayer)
+            {
+                PlayerController pl = unit.prefab.GetComponent<PlayerController>();
+                if (pl != null)
+                {
+                    SetFallBackActive(pl);
+                }
+                else
+                {
+                    Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
+                }
+            }
+
+            ShowOffThisCanva();
+            CancelChosen();
+        }
+    }
+    public void CancelChosen()
+    {
+        CancelChosen cancelChosen = new CancelChosen();
+        cancelChosen.HandleButtonClick();
+    }
+
 
     public void SetFallBackActive(PlayerController playerController)
     {
@@ -70,5 +111,17 @@ public class FallBackOrder : MonoBehaviour
         playerController.isAtk_Order = false;       // Tắt tấn công
         playerController.isDef_Order = false;       // Tắt phòng thủ
         playerController.isHold_Order = false;      // Tắt giữ
+    }
+    public void ShowOffThisCanva()
+    {
+        GameObject BattleCanva = GameObject.Find("BattleCanva");
+        Transform orderCanva = BattleCanva.transform.Find("OrderCanva");
+        Transform childCanva = orderCanva.transform.Find("PanelOrder_UnitType");
+        childCanva.gameObject.SetActive(false);
+        childCanva = orderCanva.transform.Find("PanelOrder_OneUnit");
+        childCanva.gameObject.SetActive(false);
+        childCanva = orderCanva.transform.Find("SelectUnit_Btn");
+        childCanva.gameObject.SetActive(false);
+
     }
 }

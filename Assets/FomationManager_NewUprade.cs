@@ -108,7 +108,7 @@ public class FomationManager_NewUprade : MonoBehaviour
                 }
                 else if (unitIndex < unit.Count && unit[unitIndex].prefab.CompareTag("Enemy"))
                 {
-                    unit[unitIndex].prefab.GetComponent<EnemyController>().Set_Def_Position(position);
+                    unit[unitIndex].prefab.GetComponent<PlayerController>().Set_Def_Position(position);
                     unit[unitIndex].currentOrder = "def" + position; // Cập nhật currentOrder
                 }
                 // ("Thêm tọa độ vào điểm thứ "+i+" cột"+col+"tọa độ"+position);

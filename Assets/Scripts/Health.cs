@@ -144,7 +144,7 @@ public class Health : MonoBehaviour
         {
             GameObject list = GameObject.Find("EUnit_List");
             EnemyBehavius enemyBehavius = list.GetComponent<EnemyBehavius>();
-            id = GetComponent<EnemyController>().id;
+            id = GetComponent<PlayerController>().id;
             enemyBehavius.RemoveUnitFromTagList(gameObject.name, gameObject, id);
         }
         gameObject.tag = "Dead";
