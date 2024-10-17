@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPointerClickHandler
 {
     public bool isChosen = false;
     private bool isSelect = false;
@@ -119,8 +119,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        player = chosenPlayer;
+        //player = chosenPlayer;
         // moveSpeed = UnityEngine.Random.Range(final_Speed - 0.75f, final_Speed + 0.75f);
+
         if (isChosen)
         {
             MoveByJoystick();
@@ -525,41 +526,25 @@ public class PlayerController : MonoBehaviour
             Collider collider = GetComponent<Collider>();
             //isChosen = true;
             isSelect = true;
-            // GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            // // Duyệt qua tất cả các gameobject "Player" và thiết lập isChosen = false
-            // foreach (GameObject player in players)
-            // {
-            //     if (player.TryGetComponent(out PlayerController playerController))
-            //     {
-            //         playerController.canChosen = false;
-            //     }
-            // }
+
+            MoveCamToSelectUnit();
+            showJoyStickCanva();
+        }
+    }
+    public void OnSelect()
+    {
+        if (canChosen)
+        {
+            Collider collider = GetComponent<Collider>();
+            //isChosen = true;
+            isSelect = true;
+
             MoveCamToSelectUnit();
             showJoyStickCanva();
         }
     }
     // hoặc
-    void OnPointerClick(PointerEventData eventData)
-    {
-        // Kiểm tra nếu đối tượng có thể được chọn
-        if (canChosen)
-        {
-            isChosen = true;
 
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-            // Duyệt qua tất cả các gameobject "Player" và thiết lập canChosen = false
-            foreach (GameObject player in players)
-            {
-                if (player.TryGetComponent(out PlayerController playerController))
-                {
-                    playerController.canChosen = false;
-                }
-            }
-            MoveCamToSelectUnit();
-            showJoyStickCanva();// show Joystick
-        }
-    }
 
     private void MoveCamToSelectUnit()
     {
@@ -805,5 +790,11 @@ public class PlayerController : MonoBehaviour
         this.isAtk_Order = atk;
         this.isDef_Order = def;
         this.isFallBack_Order = fck;
+    }
+
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    {
+        //throw new NotImplementedException();
+        Debug.Log("hihi");
     }
 }

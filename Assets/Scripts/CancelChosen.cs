@@ -31,6 +31,7 @@ public class CancelChosen : MonoBehaviour
         if (FunctionCanva == null)
         {
             FunctionCanva = BattleCanvas.transform.Find("FunctionCanva").gameObject;
+
         }
 
         FunctionCanva.SetActive(false);

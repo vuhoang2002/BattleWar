@@ -72,7 +72,6 @@ public class FallBackOrder : MonoBehaviour
         UnitListManager unitListManager = FindObjectOfType<UnitListManager>();
         if (unitListManager == null)
         {
-            Debug.LogError("Không tìm thấy UnitListManager trong scene.");
             return;
         }
 
@@ -93,10 +92,9 @@ public class FallBackOrder : MonoBehaviour
                     Debug.LogWarning($"Không tìm thấy PlayerController trên prefab '{unit.prefab.name}'");
                 }
             }
-
-            ShowOffThisCanva();
-            CancelChosen();
         }
+        ShowOffThisCanva();
+        CancelChosen();
     }
     public void CancelChosen()
     {

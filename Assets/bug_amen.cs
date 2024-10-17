@@ -1,37 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class bug_amen : MonoBehaviour
-
-
+public class bug_amen : MonoBehaviour, IPointerClickHandler
 {
-  private bool isAtk = false;
-  // Start is called before the first frame update
-  void Start()
+  public void OnPointerClick(PointerEventData eventData)
   {
-    isAtk = false;
-    //(isAtk);
-
+    Debug.Log("GameObject clicked: " + gameObject.name);
   }
 
-  // Update is called once per frame
   void Update()
   {
-    //(isAtk);
+    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+    {
+      Vector2 touchPosition = Input.GetTouch(0).position;
+      Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+      RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-
-  }
-  private void OnTriggerStay2D(Collider2D other)
-  {
-    isAtk = true;
-
-
-  }
-  private void OnTriggerExit2D(Collider2D other)
-  {
-    isAtk = false;
-
-
+      if (hit.collider != null && hit.collider.gameObject == gameObject)
+      {
+        Debug.Log("GameObject clicked via touch: " + gameObject.name);
+      }
+    }
   }
 }

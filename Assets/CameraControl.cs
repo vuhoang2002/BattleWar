@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public float moveSpeed = 0.1f; // Tốc độ di chuyển camera
-    public float smoothSpeed = 0.05f; // Tốc độ mượt mà khi di chuyển camera
+    public float smoothSpeed = 0.02f; // Tốc độ mượt mà khi di chuyển camera
     private Vector3 lastTouchPosition;
     public GameObject chosenPlayer; // Đối tượng người chơi
 

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
+public class SelectBtn : MonoBehaviour, IPointerClickHandler
 {
     // Start is called before the first frame update
     public GameObject choSen;
@@ -17,7 +16,6 @@ public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
     }
     public void ShowJoyStickCanva()
     {   //joytick
-
         GameObject BattleCanvas = GameObject.Find("BattleCanva");
         Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
         joyStickCanvaTransform.gameObject.SetActive(true);
@@ -40,14 +38,14 @@ public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
         // child = joyStickCanvaTransform.transform.Find("PanelOrder_OneUnit");
         //child.SetActive(false);
         gameObject.SetActive(false);
-
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         // Ngăn chặn sự kiện click tiếp tục xuống dưới
         eventData.Use();
-        ShowJoyStickCanva();
-        // Thực hiện hành động UI của bạn
+        // ShowJoyStickCanva();
+
+
         Debug.Log("Clicked on UI!");
     }
     private void LockCamForTheChosen(GameObject chosen)

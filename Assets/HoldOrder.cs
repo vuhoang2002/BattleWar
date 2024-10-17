@@ -8,6 +8,7 @@ public class HoldOrder : MonoBehaviour
     public GameObject attack_Child;
     public bool isHold_Active;
 
+
     void Start()
     {
         // Tìm đối tượng con bằng tên
@@ -112,6 +113,7 @@ public class HoldOrder : MonoBehaviour
         }
         ShowOffThisCanva();
         CancelChosen();
+
     }
 
     public void SetHoldActive(PlayerController playerController)
