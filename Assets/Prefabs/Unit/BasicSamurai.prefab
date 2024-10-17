@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8251940733170115949}
   - component: {fileID: -782973349911396331}
   - component: {fileID: 8271858124747008988}
-  - component: {fileID: 2307325236067783028}
   - component: {fileID: 7876401741735214627}
   - component: {fileID: 5320249214457036565}
   - component: {fileID: 9158789260626718695}
@@ -83,11 +82,11 @@ MonoBehaviour:
   isColliding: 0
   isDef_Hold: 1
   isDef_Force: 0
+  player: {fileID: 0}
   thisIsPlayer: 1
   findTarget: Enemy
   aliesTarget: Player
   findTargetCastle: EnemyCastle
-  myRender: {fileID: 0}
 --- !u!114 &7166971093134727805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,10 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abl_Count: 4
   basic_Atk: 15
   basic_Cd: 1
-  basic_Cd_Time: 0
   abl1_Atk: 0
   abl1_Cd: 1
   abl2_Atk: 0
@@ -206,55 +203,6 @@ MonoBehaviour:
   attackCooldown: 1
   abl1: {fileID: 0}
   extraDmg: 3
---- !u!60 &2307325236067783028
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2877152860383863476}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.5538834, y: 0.16478981}
-      - {x: -0.03458178, y: 0.16549528}
-      - {x: -0.053702407, y: 0.008238921}
-      - {x: 0.54455125, y: 0.006242318}
-  m_UseDelaunayMesh: 0
 --- !u!114 &7876401741735214627
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -99,6 +99,8 @@ public class EnemyBehavius : MonoBehaviour
                     if (enemyController != null)
                     {
                         enemyController.id = creat_ID_For_Unit; // Gán ID cho enemy
+                        // chuyển hóa đối tượng thành enemy
+                        enemyController.Change_Prefab_To_Enemy();
                     }
 
                     // Thêm đơn vị vào danh sách của TagList tương ứng

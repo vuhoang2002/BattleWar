@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6032600402333371694}
   m_Layer: 6
   m_Name: IceSpear
-  m_TagString: Untagged
+  m_TagString: RangerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26129726, y: -0.6583096}
+  m_Offset: {x: -0.35144514, y: -0.6583096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.117405474, y: 0.97179437}
+  m_Size: {x: 1.3428904, y: 0.97179437}
   m_EdgeRadius: 0
 --- !u!50 &718985759913195348
 Rigidbody2D:
@@ -174,11 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arow_Dmg: 1
   speedArrow: 3
-  isGoodBullet: 1
   maxArrowDistance: 8
   isChangre: 0
   isColide: 0
-  destroyName: FireBall_Destroy
 --- !u!95 &6032600402333371694
 Animator:
   serializedVersion: 5

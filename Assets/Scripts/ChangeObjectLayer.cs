@@ -12,6 +12,6 @@ public class ChangeObjectLayer : MonoBehaviour
         {
             gameObject.layer = newLayer;
         }
-
     }
+
 }

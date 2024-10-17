@@ -20,6 +20,13 @@ public enum RaceUnit
     Human,
     Undead
 }
+public enum AbilityUnit
+{
+    Zero,
+    One,
+    Two,
+    Three
+}
 
 
 

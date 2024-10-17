@@ -42,9 +42,8 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     private float currentScale;
     float currentY;// vị trí y hiện tại
     float scale = 1f;
-    float truePossitionY;
+    float truePositionY;
     int orderLayer = 0;
-
     private int minOrderLayer = 0;
     private int maxOrderLayer = 20;
 
@@ -104,10 +103,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         }
         else if (gameObject.CompareTag("Enemy"))
         {
-            findTarget = "Player";
-            aliesTarget = "Enemy";
-            defaultDirection = false;
-            thisIsPlayer = false;
+            ChangePlayerToEnemy();
         }
         // chỉnh hightPos và lowPos
         if (maxY != null && minY != null)
@@ -115,6 +111,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             highPos = minY.position.y;// chỗ này đặt sai tên thôi kệ z :v
             lowPos = maxY.position.y;
         }
+        //Change_Prefab_To_Enemy();
     }
 
     void Update()
@@ -184,6 +181,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
                 if (!isDef_Hold && !isDef_Force)
                 {//được phép tấn công
                     AttackCommandOrder();
+
                 }
 
                 if (target == null)
@@ -210,6 +208,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             }
             else if (isHold_Order)
             {
+
                 //đứng yên
                 if (Vector3.Distance(transform.position, hold_Position) > searchRadius_Def)
                 {
@@ -261,7 +260,6 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
 
         currentY = transform.position.y;
         ScaleMovement();// chỉnh scale char
-                        //    UpdateCharacterDirection();// chỉnh hướng char
         SetOrderLayer();// chỉnh Layer char
         //isRunning(currentDirection);
         CheckMovement();
@@ -278,6 +276,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         {
             findTarget = "Player";
             aliesTarget = "Enemy";
+            findTargetCastle = "PlayerCastle";
             defaultDirection = false;
             thisIsPlayer = false;
         }
@@ -518,35 +517,34 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    void OnMouseDown()
-    {
-        // Kiểm tra nếu đối tượng có tag là "Player"
-        if (canChosen)
-        {
-            Collider collider = GetComponent<Collider>();
-            //isChosen = true;
-            isSelect = true;
+    // void OnMouseDown()
+    // {
+    //     // Kiểm tra nếu đối tượng có tag là "Player"
+    //     if (gameObject.CompareTag("Player"))
+    //     {
+    //         if (canChosen)
+    //         {
+    //             Collider collider = GetComponent<Collider>();
+    //             //isChosen = true;
+    //             isSelect = true;
+    //             MoveCamToSelectUnit();
+    //             Show_OrderCanva();
+    //         }
+    //     }
+    // }
+    // public void OnSelect()
+    // {
+    //     if (canChosen)
+    //     {
+    //         Collider collider = GetComponent<Collider>();
+    //         //isChosen = true;
+    //         isSelect = true;
 
-            MoveCamToSelectUnit();
-            showJoyStickCanva();
-        }
-    }
-    public void OnSelect()
-    {
-        if (canChosen)
-        {
-            Collider collider = GetComponent<Collider>();
-            //isChosen = true;
-            isSelect = true;
-
-            MoveCamToSelectUnit();
-            showJoyStickCanva();
-        }
-    }
-    // hoặc
-
-
-    private void MoveCamToSelectUnit()
+    //         MoveCamToSelectUnit();
+    //         Show_OrderCanva();
+    //     }
+    // }
+    public void MoveCamToSelectUnit()
     {
         // Tìm kiếm camera
         GameObject mainCamera = GameObject.Find("Main Camera");
@@ -600,22 +598,9 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         attackComponent.setAttack(false);
         isColliding = false;
     }
-    private void showJoyStickCanva()
+    public void Show_OrderCanva()
     {
         //hiện tất cả cái gì cần hiện
-        /*    GameObject BattleCanvas = GameObject.Find("BattleCanva");
-           Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
-           joyStickCanvaTransform.gameObject.SetActive(true);
-           // tìm order unittype
-           joyStickCanvaTransform = BattleCanvas.transform.Find("OrderCanva");
-           joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
-           joyStickCanvaTransform.gameObject.SetActive(true);
-           joyStickCanvaTransform = BattleCanvas.transform.Find("FunctionCanva");
-           joyStickCanvaTransform.gameObject.SetActive(true);
-           GameObject atkbtn = joyStickCanvaTransform.Find("Atck_Btn").gameObject;
-           atkbtn.GetComponent<ButtonHandler>().setAttacks_Var(this.gameObject);//truyền attack vào ở đây
-           gameObject.transform.Find("ChosenArea").gameObject.SetActive(false); */
-
         //code mới:
         GameObject BattleCanvas = GameObject.Find("BattleCanva");
         Transform canva = BattleCanvas.transform.Find("OrderCanva");
@@ -787,7 +772,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public void SetBehavius(bool atk, bool def, bool fck)
     {
         // thiết lập trạng thái ngay khi vừa được spawn cho unit
-        this.isAtk_Order = atk;
+        isAtk_Order = atk;
         this.isDef_Order = def;
         this.isFallBack_Order = fck;
     }
@@ -797,4 +782,29 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         //throw new NotImplementedException();
         Debug.Log("hihi");
     }
+    // thay đổi layer và tag của đối tượng thành enemy
+    public void Change_Prefab_To_Enemy()
+    {
+        // thay đổi layer và màu sắc thanh máu
+        ChangeObjectLayer changeObjectLayer = new ChangeObjectLayer();
+        gameObject.tag = "Enemy";
+        changeObjectLayer.ChangeLayer(this.gameObject, "EnemyLayer");
+        changeObjectLayer.ChangeLayer(gameObject.transform.Find("AtkArea").gameObject, "EnemyAtkArea");
+        Transform[] children = GetComponentsInChildren<Transform>();
+
+        foreach (Transform child in children)
+        {
+            if (child.CompareTag("RangerBullet"))
+            {
+                changeObjectLayer.ChangeLayer(child.gameObject, "EnemyBullet");
+            }
+            if (child.name.CompareTo("HealthBar") == 0)
+            {
+                SpriteRenderer childSpriteRenderer = child.GetChild(1).GetComponent<SpriteRenderer>();
+                childSpriteRenderer.color = Color.red;
+            }
+        }
+        ChangePlayerToEnemy();
+    }
+
 }

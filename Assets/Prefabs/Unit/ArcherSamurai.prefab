@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 5754745341764850182}
   - component: {fileID: 2016046580598568307}
   - component: {fileID: -5350413007710032234}
+  - component: {fileID: 2581605686247847557}
+  - component: {fileID: 7535699304821735540}
   m_Layer: 7
   m_Name: ArcherSamurai
   m_TagString: Player
@@ -110,16 +112,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2253761852589760510
-Transform:
+--- !u!224 &2253761852589760510
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3622957466471559262}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.06, y: 0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -130,6 +131,11 @@ Transform:
   - {fileID: 2573355466182963496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3.9677608, y: -3.262386}
+  m_SizeDelta: {x: 1.28, y: 1.28}
+  m_Pivot: {x: 0.5, y: -0}
 --- !u!212 &5700150002495912327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -220,7 +226,6 @@ MonoBehaviour:
   id: 
   moveSpeed: 0.8
   searchRadius: 8
-  attackCooldown: 2
   highPos: -4.5
   lowPos: -2.5
   minScale: 0.75
@@ -234,17 +239,17 @@ MonoBehaviour:
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
-  isAtkBtn: 0
   maxY: {fileID: 752450957347428507, guid: ecd4a39fbcc5df34fb397f37ce2e8fb6, type: 3}
   minY: {fileID: 1134471018660337803, guid: f5455371276018247814ec3a9972e238, type: 3}
   currentDirection: {x: 0, y: 0, z: 0}
   canChosen: 1
   timeBwFindTarget: 1
-  timerFindTarget: 0
+  timer_FindTarget: 0
   isRightWay: 1
-  isAttacking: 0
+  isColliding: 0
   isDef_Hold: 1
   isDef_Force: 0
+  player: {fileID: 0}
   thisIsPlayer: 1
   findTarget: Enemy
   aliesTarget: Player
@@ -261,10 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abl_Count: 4
   basic_Atk: 10
   basic_Cd: 1.7
-  basic_Cd_Time: 0
   abl1_Atk: 0
   abl1_Cd: 1
   abl2_Atk: 0
@@ -447,6 +450,46 @@ MonoBehaviour:
   unitWeight: 0
   extraDMGWeight: 0
   unitRace: 2
+--- !u!223 &2581605686247847557
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3622957466471559262}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &7535699304821735540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3622957466471559262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4851230753256369701
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,6 +895,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2253761852589760510}
     m_Modifications:
+    - target: {fileID: -4682819047769320455, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: parentObject
+      value: 
+      objectReference: {fileID: 3622957466471559262}
     - target: {fileID: 922155786145812465, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Enabled
       value: 1

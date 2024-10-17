@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Chosen : MonoBehaviour
+public class Chosen : MonoBehaviour, IPointerClickHandler
 {
     // Khai báo PlayerController
     private PlayerController playerController;
@@ -10,57 +12,77 @@ public class Chosen : MonoBehaviour
 
     void Start()
     {
-        // Tìm và gán PlayerController từ đối tượng cha
-        playerController = GetComponentInParent<PlayerController>();
-
-        if (playerController != null)
-        {
-            // ("Tìm thấy PlayerController trong đối tượng cha.");
-        }
-        if (playerController == null)
-        {
-            // Debug.LogError("Không tìm thấy PlayerController trong đối tượng cha.");
-        }
     }
-
-    void OnMouseDown()
+    void Update()
     {
-        if (playerController != null && playerController.canChosen)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            // ("Nhân vật đã được click bời cái thứ 2!!");
-            Collider collider = GetComponent<Collider>();
-            playerController.isChosen = true;
+            Vector2 touchPosition = Input.GetTouch(0).position;
 
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-            // Duyệt qua tất cả các gameobject "Player" và thiết lập isChosen = false
-            foreach (GameObject player in players)
+            // Kiểm tra xem có chạm vào UI hay không
+            if (IsPointerOverButton(touchPosition))
             {
-                if (player.TryGetComponent(out PlayerController pc))
+                return; // Không xử lý nếu chạm vào một button
+            }
+            //Vector2 touchPosition = Input.GetTouch(0).position;
+            Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            {
+                GameObject player = transform.parent.gameObject;
+                Debug.Log("GameObject clicked via touch: " + gameObject.name);
+                if (player.gameObject.CompareTag("Player"))
                 {
-                    pc.canChosen = false;
-                    showJoyStickCanva();
+                    if (player.GetComponent<PlayerController>().canChosen)
+                    {
+                        Collider collider = GetComponent<Collider>();
+                        //isChosen = true;
+                        player.GetComponent<PlayerController>().MoveCamToSelectUnit();
+                        player.GetComponent<PlayerController>().Show_OrderCanva();
+                        Debug.Log(" Đã chạm " + gameObject);
+                    }
                 }
             }
-            // khi click thành công, đồng thời ta phải set JoyStick hiện
-
-        }
-        else
-        {
-            // Debug.LogWarning("PlayerController không tìm thấy hoặc canChosen không phải true.");
         }
     }
-    // hiện JoyStickCanva
-    private void showJoyStickCanva()
+
+    private bool IsPointerOverButton(Vector2 touchPosition)
     {
-        BattleCanvas = GameObject.Find("BattleCanva");
-        Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
-        joyStickCanvaTransform.gameObject.SetActive(true);
-        // tìm order unittype
-        joyStickCanvaTransform = BattleCanvas.transform.Find("OrderCanva");
-        joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
-        joyStickCanvaTransform.gameObject.SetActive(true);
+        // Tạo một PointerEventData từ vị trí chạm
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = touchPosition
+        };
 
+        // Danh sách các raycast hit
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        // Kiểm tra xem có button nào trong danh sách không
+        foreach (var result in results)
+        {
+            if (result.gameObject.GetComponent<Button>() != null)
+            {
+                return true; // Chạm vào một button
+            }
+        }
+        return false; // Không chạm vào button nào
     }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            if (GetComponent<PlayerController>().canChosen)
+            {
+                Collider collider = GetComponent<Collider>();
+                //isChosen = true;
+                // MoveCamToSelectUnit();
+                // Show_OrderCanva();
+                Debug.Log(" Đã chạm vào" + gameObject);
+            }
+        }
+    }
+
 
 }

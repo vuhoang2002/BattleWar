@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 468646697266475133}
   m_Layer: 6
   m_Name: IceBall
-  m_TagString: Untagged
+  m_TagString: RangerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

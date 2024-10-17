@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 2278358774675513669}
   - component: {fileID: 6090631115120297017}
   - component: {fileID: 3456044309212838159}
-  - component: {fileID: -2978863358932520313}
   - component: {fileID: -596678981083692593}
   - component: {fileID: 6269299737612755414}
   - component: {fileID: 3753196011554143810}
@@ -168,10 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abl_Count: 4
   basic_Atk: 15
   basic_Cd: 1.5
-  basic_Cd_Time: 0
   abl1_Atk: 0
   abl1_Cd: 1
   abl2_Atk: 0
@@ -319,55 +316,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &-2978863358932520313
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2916172966324721739}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 0.56, y: 0.92}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.5538834, y: 0.16478981}
-      - {x: -0.03458178, y: 0.16549528}
-      - {x: -0.053702407, y: 0.008238921}
-      - {x: 0.54455125, y: 0.006242318}
-  m_UseDelaunayMesh: 0
 --- !u!114 &-596678981083692593
 MonoBehaviour:
   m_ObjectHideFlags: 0

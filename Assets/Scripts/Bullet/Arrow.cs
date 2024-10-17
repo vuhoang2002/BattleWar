@@ -7,7 +7,6 @@ public class Arrow : MonoBehaviour
 {
     public int arow_Dmg; // basic_atk
     public float speedArrow = 2f;
-    public bool isGoodBullet = true; // player là true
     private float distanceTravelled = 0f; // Khoảng cách đã bay
     private bool arrowDirection = true; // Hướng bay mũi tên
     public float maxArrowDistance = 8f;
@@ -20,18 +19,14 @@ public class Arrow : MonoBehaviour
     {
         // Có thể khởi tạo mũi tên ở đây nếu cần   
         amt = GetComponent<Animator>();
-        if (amt != null)
-        {
-            isChangre = true;
-        }
+        // if (amt != null)
+        // {
+        //     isChangre = true;
+        // }
         //thiết lập orderlayout cho nó
-        SetOrderLayerForBullet();
+        //SetOrderLayerForBullet();
     }
-    public void SetOrderLayerForBullet()
-    {
-        Renderer rend = GetComponent<Renderer>();
-        rend.sortingOrder = GetComponent<PlayerController>().GetOrderLayer();
-    }
+
 
     public void SetArrowMaxDistante(float newMax)
     {
@@ -54,17 +49,9 @@ public class Arrow : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D target)
     {
-        if ((target.CompareTag("Enemy") || target.CompareTag("EnemyCastle")) && isGoodBullet)// dành cho player
-        {
-            target.GetComponent<Health>().TakeDamage(arow_Dmg);
-            OnDestroy(); // Hủy mũi tên sau khi trúng đích
-        }
-        else if ((target.CompareTag("Player") || target.CompareTag("PlayerCastle")) && !isGoodBullet) // dành cho enemy
-        {
-            //   ("Bắn trúng " + target);
-            target.GetComponent<Health>().TakeDamage(arow_Dmg);
-            OnDestroy(); // Hủy mũi tên sau khi trúng đích
-        }
+
+        target.GetComponent<Health>().TakeDamage(arow_Dmg);
+        OnDestroy(); // Hủy mũi tên sau khi trúng đích
     }
 
     public void ArrowFly()

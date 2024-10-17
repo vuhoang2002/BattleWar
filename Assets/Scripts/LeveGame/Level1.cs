@@ -92,7 +92,7 @@ public class Level1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (elapsedTime == 15)
+        if (elapsedTime == 30)
         {
             eB.Set_eAtk();
             eB.SetAllEnemyBehavius();

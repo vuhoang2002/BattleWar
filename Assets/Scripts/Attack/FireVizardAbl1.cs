@@ -30,25 +30,5 @@ public class Abl1 : MonoBehaviour
         {
             amt.SetTrigger(amtActiveName);
         }
-
-
     }
-
-
-    // public void FireBallSpawn(int basic_Atk, bool arrowDirection)
-    // {
-
-
-    //     if (fireBall != null && spawnFireBall != null) // Kiểm tra prefab và vị trí không null
-    //     {
-    //         // Spawn ra cung tên
-    //         GameObject arrowInstance = Instantiate(fireBall, spawnFireBall.position, spawnFireBall.rotation);
-    //         arrowInstance.SetActive(true);
-    //         arrowInstance.GetComponent<Arrow>().SetArrowDmg_Direction(basic_Atk, arrowDirection);
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("FireBall or spawnFireBall is not set!");
-    //     }
-    // }
 }

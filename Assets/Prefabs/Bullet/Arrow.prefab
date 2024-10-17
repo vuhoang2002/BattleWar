@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 922155786145812465}
   - component: {fileID: 8013479569315503649}
   - component: {fileID: 3603644581560590512}
+  - component: {fileID: -4682819047769320455}
   m_Layer: 6
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: RangerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,4 +178,15 @@ MonoBehaviour:
   maxArrowDistance: 12
   isChangre: 0
   isColide: 0
-  destroyName: FireBall_Destroy
+--- !u!114 &-4682819047769320455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462975264719562789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f768c131809f041bfd37f9026d41bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

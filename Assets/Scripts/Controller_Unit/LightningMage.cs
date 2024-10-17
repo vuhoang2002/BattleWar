@@ -34,53 +34,16 @@ public class LightningMageControllder : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        // Kiểm tra xem collider va chạm có phải là Enemy hay EnemyCastle không
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyCastle"))
-        {
-            if (other.GetComponent<BoxCollider2D>() != null)
-            {
-                GetComponent<Attacks>().isAbl1 = Vector3.Distance(other.transform.position, transform.position) >= 1f;
-            }
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        // Nếu ra ngoài BoxCollider, đặt lại trạng thái isAbl1
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyCastle"))
-        {
-            GetComponent<Attacks>().isAbl1 = false; // Đặt lại trạng thái
-        }
-    }
-
-    public void Spawn_ThunderStrike()
-    {
-        StartCoroutine(SpawnThunderStrikesCoroutine());
-        // int deadDmg = thunderAtk;
-        // var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<EnemyController>();
-        // if (controller != null)
-        // {
-        //     arrowDirection = controller is PlayerController player ? player.isRightWay : ((EnemyController)controller).isRightWay;
-        // }
-        // //spawn sấm sét đến mục tiêu
-        // for (int i = 0; i < thunerCount; i++)
-        // {
-        //     Vector3 newSpawn = new Vector3(i, 0, 0);
-        //     GameObject thunderStrikeInstane = Instantiate(thunerStrike, spawnLocation.position + newSpawn, Quaternion.identity);
-
-        //     thunderStrikeInstane.SetActive(true);
-        // }
-
-    }
-
     void SpawceToTarget(GameObject target)
     {
         // ko cần nx
         // StartCoroutine(SpawnThunderStrikesCoroutine());
     }
 
+    public void Spawn_ThunderStrike()
+    {
+        StartCoroutine(SpawnThunderStrikesCoroutine());
+    }
     private IEnumerator SpawnThunderStrikesCoroutine()
     {
         int deadDmg = thunderAtk;
@@ -91,11 +54,19 @@ public class LightningMageControllder : MonoBehaviour
         {
             arrowDirection = controller is PlayerController player ? player.isRightWay : ((PlayerController)controller).isRightWay;
         }
-
         // Spawn tia sét với thời gian trễ
-        for (int i = 0; i < thunerCount; i++)
+        for (int i = 1; i <= thunerCount; i++)
         {
-            Vector3 newSpawn = new Vector3(i, 0, 0);
+            Vector3 newSpawn;
+            if (GetComponent<PlayerController>().isRightWay)
+            {
+                newSpawn = new Vector3(i, 0, 0);
+            }
+            else
+            {
+                newSpawn = new Vector3(-i, 0, 0);
+            }
+
             GameObject thunderStrikeInstance = Instantiate(thunerStrike, spawnLocation.position + newSpawn, Quaternion.identity);
             thunderStrikeInstance.SetActive(true);
 

@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 2697606822737507160}
   - component: {fileID: 1882777439586231922}
   - component: {fileID: 9087275755747226572}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: E_Skl_Knight
-  m_TagString: Enemy
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,10 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abl_Count: 4
   basic_Atk: 7
   basic_Cd: 1.5
-  basic_Cd_Time: 0
   abl1_Atk: 0
   abl1_Cd: 0
   abl2_Atk: 0
@@ -314,8 +312,8 @@ MonoBehaviour:
   lowPos: -4.5
   minScale: 0.85
   maxScale: 1.5
-  isAtk_Order: 1
-  isDef_Order: 0
+  isAtk_Order: 0
+  isDef_Order: 1
   isFallBack_Order: 0
   isHold_Order: 0
   heal: 5
@@ -333,6 +331,7 @@ MonoBehaviour:
   isColliding: 0
   isDef_Hold: 1
   isDef_Force: 0
+  player: {fileID: 0}
   thisIsPlayer: 1
   findTarget: Enemy
   aliesTarget: Player
@@ -389,6 +388,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8991914284720107508, guid: 0758a62817c4550478c14518990984c7, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991914284720107508, guid: 0758a62817c4550478c14518990984c7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991914284720107508, guid: 0758a62817c4550478c14518990984c7, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -414,7 +425,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 885698151123807655, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
       propertyPath: m_Name
-      value: AttackArea
+      value: AtkArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 885698151123807655, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8045659832474144730, guid: 7c74f7d43b8093e4eb156c7a2f62fdaf, type: 3}
       propertyPath: m_Points.Array.data[0].x
@@ -560,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2377237470876882846, guid: de2ff10b274599146961ee4a19dfc673, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

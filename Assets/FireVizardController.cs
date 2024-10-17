@@ -32,22 +32,13 @@ public class FireVizardController : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // Kiểm tra xem collider va chạm có phải là Enemy hay EnemyCastle không
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyCastle"))
-        {
-            if (other.GetComponent<BoxCollider2D>() != null)
-            {
-                GetComponent<Attacks>().isAbl1 = Vector3.Distance(other.transform.position, transform.position) >= 1f;
-            }
-        }
+        GetComponent<Attacks>().isAbl1 = Vector3.Distance(other.transform.position, transform.position) >= 1f;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         // Nếu ra ngoài BoxCollider, đặt lại trạng thái isAbl1
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyCastle"))
-        {
-            GetComponent<Attacks>().isAbl1 = false; // Đặt lại trạng thái
-        }
+        GetComponent<Attacks>().isAbl1 = false; // Đặt lại trạng thái
     }
 
     public void Spawn_FireBall()

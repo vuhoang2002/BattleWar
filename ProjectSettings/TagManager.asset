@@ -9,6 +9,7 @@ TagManager:
   - PlayerCastle
   - isHealing
   - EnemyCastle
+  - RangerBullet
   layers:
   - Default
   - TransparentFX

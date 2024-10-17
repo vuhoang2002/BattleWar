@@ -1445,7 +1445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6482121372138721705, guid: 7a943d65dd15cdf4097addde43b3c75d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8380124802478897215, guid: 7a943d65dd15cdf4097addde43b3c75d, type: 3}
       propertyPath: m_Name
@@ -1481,11 +1481,6 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4434339728405869076, guid: 7a943d65dd15cdf4097addde43b3c75d, type: 3}
   m_PrefabInstance: {fileID: 1342464412}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1381504037 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5672372414727353541, guid: c36edaae88affcb40be605da908eb447, type: 3}
-  m_PrefabInstance: {fileID: 1454186248}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1454186248
 PrefabInstance:
@@ -2276,10 +2271,9 @@ PrefabInstance:
     - {fileID: 7740859720545717607, guid: c36edaae88affcb40be605da908eb447, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7730825679941512086, guid: c36edaae88affcb40be605da908eb447, type: 3}
+    - {fileID: 5503897972564831162, guid: c36edaae88affcb40be605da908eb447, type: 3}
+    - {fileID: 6889076658270843900, guid: c36edaae88affcb40be605da908eb447, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5672372414727353541, guid: c36edaae88affcb40be605da908eb447, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2036588440}
     - targetCorrespondingSourceObject: {fileID: 2304021772404298954, guid: c36edaae88affcb40be605da908eb447, type: 3}
       insertIndex: -1
       addedObject: {fileID: 363935092}
@@ -2482,81 +2476,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myButton: {fileID: 0}
   attacks: {fileID: 0}
---- !u!1 &2036588439
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2036588440}
-  - component: {fileID: 2036588442}
-  - component: {fileID: 2036588441}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &2036588440
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036588439}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1381504037}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -196.52515, y: 155.30525}
-  m_SizeDelta: {x: 1548.9498, y: 310.6105}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2036588441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036588439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2036588442
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036588439}
-  m_CullTransparentMesh: 1
 --- !u!212 &2141574263 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6646658125385775080, guid: 7a943d65dd15cdf4097addde43b3c75d, type: 3}
