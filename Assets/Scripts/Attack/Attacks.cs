@@ -223,4 +223,12 @@ public class Attacks : MonoBehaviour
         float space = 0f;
         return space;
     }
+    public float GetAtk1_Cd()
+    {
+        return abl1_Cd_Time;
+    }
+    public void SetAtk1_CdFullTime()
+    {
+        abl1_Cd_Time = abl1_Cd;
+    }
 }

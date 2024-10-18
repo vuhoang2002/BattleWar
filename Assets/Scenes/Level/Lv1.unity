@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[4].enemyName
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[0].spawnCount
@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 639614000}
     - target: {fileID: 6727502043344947679, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6727502043344947679, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[0].enemyPrefab
@@ -406,7 +406,7 @@ PrefabInstance:
     - target: {fileID: 6727502043344947679, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[5].enemyPrefab
       value: 
-      objectReference: {fileID: 3974870113231231300, guid: 21bb67c390ccabe4b815fde3f8813ea7, type: 3}
+      objectReference: {fileID: 7688900732844524521, guid: d525257c51e723744b93694160d11c2e, type: 3}
     - target: {fileID: 6727502043344947679, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[6].enemyPrefab
       value: 
@@ -1412,6 +1412,14 @@ PrefabInstance:
       propertyPath: mapSize
       value: 
       objectReference: {fileID: 1352302768}
+    - target: {fileID: 5510420103966153078, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: unitData.Array.data[7].unitPrice
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510420103966153078, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: unitData.Array.data[7].cdTimerUnit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5789067265130393849, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 822
@@ -1642,6 +1650,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyCastle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1840521203005494482, guid: bdebeacedaf35fc47bd08282230fc8c2, type: 3}
+      propertyPath: m_Size.x
+      value: 11.57917
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840521203005494482, guid: bdebeacedaf35fc47bd08282230fc8c2, type: 3}
+      propertyPath: m_Offset.x
+      value: -7.5676155
+      objectReference: {fileID: 0}
     - target: {fileID: 4536048998436837252, guid: bdebeacedaf35fc47bd08282230fc8c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.1
@@ -1681,6 +1697,14 @@ PrefabInstance:
     - target: {fileID: 4536048998436837252, guid: bdebeacedaf35fc47bd08282230fc8c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591520327766700482, guid: bdebeacedaf35fc47bd08282230fc8c2, type: 3}
+      propertyPath: m_Size.x
+      value: 12.156403
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591520327766700482, guid: bdebeacedaf35fc47bd08282230fc8c2, type: 3}
+      propertyPath: m_Offset.x
+      value: -7.2789993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

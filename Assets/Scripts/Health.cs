@@ -133,6 +133,17 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        if (gameObject.GetComponent<SummondToken>() != null)
+        {
+            //nếu đối tượng là 1 vật thể triệu hồi
+            killSelf();
+            return;
+        }
+        if (GetComponent<PlayerCardControl>().isShowOnCard)
+        {
+            killSelf();
+            return;
+        }
         if (gameObject.CompareTag("Player"))
         {
             GameObject list = GameObject.Find("PUnit_List");
@@ -176,6 +187,7 @@ public class Health : MonoBehaviour
         {
             GameObject instantiatedObject = Instantiate(deadthObject, transform.position, Quaternion.identity);
             instantiatedObject.transform.localScale = transform.localScale; // Đảm bảo deadthObject quay cùng hướng
+            GetComponent<Renderer>().sortingOrder = GetComponent<PlayerController>().GetOrderLayer();
         }
         Destroy(gameObject);
     }
@@ -244,5 +256,9 @@ public class Health : MonoBehaviour
         {
             //.LogWarning("Damage pop-up prefab is not assigned!");
         }
+    }
+    public void Heal_Full_Hp()
+    {
+        health = MAX_HEALTH;
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireVizardController : MonoBehaviour
@@ -8,25 +6,37 @@ public class FireVizardController : MonoBehaviour
     public Transform spawnFireBall; // Vị trí để spawn FireBall
     private int fireBallAtk;
     private bool arrowDirection; // Khai báo biến arrowDirection
-                                 // private Animator amtFireBall;
-    public static bool isUpgrade = false;
+    private UpgradeUnit upgradeUnit;
+
     private int extraDmg = 0;
+
     void Start()
     {
-        //isUpgrade=true;
         fireBallAtk = GetComponent<Attacks>().abl1_Atk;
-        //     amtFireBall = fireBallAbl1.GetComponent<Animator>();
         extraDmg = GetComponent<Attacks>().extraDmg;
+        upgradeUnit = GetComponent<UpgradeUnit>();
+
+        if (upgradeUnit != null)
+        {
+            upgradeUnit.OnUpgrade += HandleUpgrade; // Đăng ký sự kiện
+        }
+
+    }
+
+    private void HandleUpgrade()
+    {
+        // Gọi phương thức OnUpgrade từ UpgradeUnit
         OnUpgrade();
     }
+
     void OnUpgrade()
     {
-
-        if (isUpgrade)
-        {
-            gameObject.GetComponent<Animator>().SetBool("isUpgrade", true);
-            fireBallAtk += 5;
-        }
+        // Thiết lập biến isUpgrade trong UpgradeUnit
+        upgradeUnit.isUpgrade = true; // Đảm bảo sử dụng biến từ UpgradeUnit
+        Debug.Log("Unit được nâng cấp");
+        // Thực hiện các thay đổi khác
+        gameObject.GetComponent<Animator>().SetBool("isUpgrade", true);
+        fireBallAtk += 5;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -43,6 +53,7 @@ public class FireVizardController : MonoBehaviour
 
     public void Spawn_FireBall()
     {
+        // upgradeUnit.Upgrade();
         int deadDmg = fireBallAtk;
         var controller = GetComponent<PlayerController>() ?? (Component)GetComponent<PlayerController>();
 
@@ -55,24 +66,22 @@ public class FireVizardController : MonoBehaviour
         {
             // Spawn ra FireBall
             GameObject arrowInstance = Instantiate(fireBallAbl1, spawnFireBall.position, spawnFireBall.rotation);
-            if (isUpgrade)
+
+            // Sử dụng biến isUpgrade từ UpgradeUnit
+            if (upgradeUnit.isUpgrade) // Kiểm tra biến từ UpgradeUnit
             {
-                // arrowInstance.transform.localScale *= 3f; // Tăng kích thước gấp đôi
                 Animator amtFireBall = arrowInstance.GetComponent<Animator>();
                 amtFireBall.SetBool("isUpgrade", true);
                 SpriteRenderer spriteRenderer = arrowInstance.GetComponent<SpriteRenderer>();
                 spriteRenderer.color = Color.red;
             }
+
             arrowInstance.SetActive(true);
             if (GetComponent<Attacks>().Get_IsDealExtraDmg())
             {
                 deadDmg += extraDmg;
             }
             arrowInstance.GetComponent<Arrow>().SetArrowDmg_Direction(deadDmg, arrowDirection);
-            //arrowInstance.transform.SetParent(transform);
-
-            // Phóng to arrowInstance lên 2 lần nếu isUpgrade=true
-
         }
     }
 }

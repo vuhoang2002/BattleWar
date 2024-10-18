@@ -187,7 +187,7 @@ public class EnemyBehavius : MonoBehaviour
             PlayerController ec = enemy.GetComponent<PlayerController>();
             if (ec != null)
             {
-                ec.SetBehavius(atk_Order, def_Order, fallBack_Order);
+                ec.SetBehavius(atk_Order, def_Order, fallBack_Order, hold_Order);
                 // hazz, xẻm ra phải tạo holdPosition ở đây
                 if (hold_Order)
                 {

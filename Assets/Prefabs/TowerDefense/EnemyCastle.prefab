@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3000
+  health: 2995
   deadthObject: {fileID: 0}
   halfCastle: {fileID: -250154302, guid: 0bd4b37fb1272044ca7d2a263fedb8ce, type: 3}
   dieCastle: {fileID: 1485181140, guid: 161a11c135cfafe43bd8ff6751e1bd0c, type: 3}
@@ -369,6 +369,10 @@ PrefabInstance:
     - target: {fileID: 6963674979329753369, guid: 0758a62817c4550478c14518990984c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403092413609248392, guid: 0758a62817c4550478c14518990984c7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 38.935
       objectReference: {fileID: 0}
     - target: {fileID: 8403092413609248392, guid: 0758a62817c4550478c14518990984c7, type: 3}
       propertyPath: m_LocalScale.y

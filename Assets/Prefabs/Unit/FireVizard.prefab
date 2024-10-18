@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 5217933055285529881}
   - component: {fileID: 4529073013982512110}
   - component: {fileID: 1537665093293965248}
+  - component: {fileID: 4612677446827444663}
   m_Layer: 7
   m_Name: FireVizard
   m_TagString: Player
@@ -510,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBallAbl1: {fileID: 462407194499924068}
   spawnFireBall: {fileID: 2678447742828322024}
+  isUpgrade: 0
 --- !u!114 &1537665093293965248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +527,19 @@ MonoBehaviour:
   unitWeight: 0
   extraDMGWeight: 1
   unitRace: 2
+--- !u!114 &4612677446827444663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460218703059110111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c725877bbcb8747429c1b75b067d41ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isUpgrade: 0
 --- !u!1 &8891546442466285402
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,13 +973,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7068233803343258169, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6458084734470229009}
   m_SourcePrefab: {fileID: 100100000, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}
 --- !u!1 &462407194499924068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7068233803343258169, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}
   m_PrefabInstance: {fileID: 7241126111544746589}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6458084734470229009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462407194499924068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f768c131809f041bfd37f9026d41bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 8460218703059110111}
 --- !u!4 &2678447742828322024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4708064614801522357, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}

@@ -832,6 +832,7 @@ MonoBehaviour:
   selectedPanel: {fileID: 1338960292}
   cardArea: {fileID: 944938905}
   selectedUnitTags: []
+  selectCard: {fileID: 0}
 --- !u!114 &592943382
 MonoBehaviour:
   m_ObjectHideFlags: 0

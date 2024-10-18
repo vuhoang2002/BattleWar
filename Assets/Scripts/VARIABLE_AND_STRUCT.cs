@@ -27,6 +27,12 @@ public enum AbilityUnit
     Two,
     Three
 }
+public enum CardType
+{
+    Unit,
+    Spell,
+    Enhancement
+}
 
 
 

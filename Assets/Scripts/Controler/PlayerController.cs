@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour, IPointerClickHandler
 {
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public string findTarget = "Enemy";
     public string aliesTarget = "Player";
     public string findTargetCastle = "EnemyCastle";
+    private bool isShowOnCard = false;
 
 
     void Start()
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void ChangePlayerToEnemy()
+    private void ChangePlayerToEnemy()
     {
         if (gameObject.CompareTag("Enemy"))
         {
@@ -769,12 +771,13 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     {
         this.id = id;
     }
-    public void SetBehavius(bool atk, bool def, bool fck)
+    public void SetBehavius(bool atk, bool def, bool fck, bool hold)
     {
         // thiết lập trạng thái ngay khi vừa được spawn cho unit
         isAtk_Order = atk;
         this.isDef_Order = def;
         this.isFallBack_Order = fck;
+        this.isHold_Order = hold;
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
@@ -806,5 +809,16 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         }
         ChangePlayerToEnemy();
     }
+    public void Set_DefPosition(Vector3 def_Pos)
+    {
+        def_Position = def_Pos;
+    }
+
+    public void Set_RetreatPosition(Vector3 retreat_Pos)
+    {
+        retreat_Position = retreat_Pos;
+    }
+    // hiển thị unit lên trên
+
 
 }

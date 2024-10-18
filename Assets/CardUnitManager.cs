@@ -26,11 +26,10 @@ public class CardUnitManager : MonoBehaviour
     public GameObject selectedPanel;
     public GameObject cardArea;
     public List<string> selectedUnitTags = new List<string>(); // Lưu trữ các thẻ đơn vị đã chọn
+    public SelectCard selectCard;
 
     private void Start()
     {
-        //   GameObject cardArea = GameObject.Find("CardArea").transform; 
-        // ClearSelection();
         LoadSelectedUnits(); // Tải các đơn vị đã chọn khi bắt đầu
         LoadSavedUnits();
     }
@@ -42,22 +41,20 @@ public class CardUnitManager : MonoBehaviour
 
     public void SelectUnit(string unitTag, GameObject cardPrefab)
     {
-        // Kiểm tra xem thẻ đã được chọn hay chưa
-        if (!selectedUnitTags.Contains(unitTag))
+        if (!selectCard.CheckCountOfCard_IsMax())
         {
-            // Nếu chưa, thêm vào danh sách thẻ đã chọn
-            selectedUnitTags.Add(unitTag);
-
-            // Tạo bản sao và thêm vào SelectedPanel
-            GameObject selectedUnit = Instantiate(cardPrefab, selectedPanel.transform);
-            selectedUnit.GetComponent<CardUnit>().showOn_X_Button();
-            // selectedUnitReferences.Add(selectedUnit); // Lưu trữ bản sao để tham chiếu sau này
-            //Debug.Log("Đã thêm đơn vị: " + unitTag + " vào SelectedPanel.");
-            SaveSelectedUnits();
+            // Kiểm tra xem thẻ đã được chọn hay chưa
+            if (!selectedUnitTags.Contains(unitTag))
+            {
+                selectedUnitTags.Add(unitTag);
+                GameObject selectedUnit = Instantiate(cardPrefab, selectedPanel.transform);
+                selectedUnit.GetComponent<CardUnit>().showOn_X_Button();
+                SaveSelectedUnits();
+            }
         }
         else
         {
-            //Debug.Log("Đơn vị đã được chọn trước đó: " + unitTag);
+            Debug.LogError("Đã có đủ số lượng card tối đa");
         }
     }
 
