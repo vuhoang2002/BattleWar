@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4377617214783373726}
   - component: {fileID: 8879379051772774068}
-  - component: {fileID: 7013410703436402405}
   - component: {fileID: 9084785111919937853}
   - component: {fileID: 6102697907705448444}
   - component: {fileID: 261873793502513851}
@@ -19,7 +18,7 @@ GameObject:
   - component: {fileID: 1882777439586231922}
   - component: {fileID: 9087275755747226572}
   m_Layer: 7
-  m_Name: E_Skl_Knight
+  m_Name: SkeletonWarrior
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,50 +94,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7013410703436402405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8275368642616864759}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4606cbb5f7a5481489b4666653320fc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isChosen: 0
-  isRanger: 0
-  id: 
-  moveSpeed: 1.2
-  searchRadius: 2
-  highPos: -4.5
-  lowPos: -2.5
-  minScale: 0.85
-  maxScale: 1.5
-  isAtk_Order: 0
-  isDef_Order: 1
-  isFallBack_Order: 0
-  isHold_Order: 0
-  heal: 5
-  def_Position: {x: 0, y: 0, z: 0}
-  retreat_Position: {x: 0, y: 0, z: 0}
-  hold_Position: {x: 0, y: 0, z: 0}
-  target: {fileID: 0}
-  maxY: {fileID: 0}
-  minY: {fileID: 0}
-  currentDirection: {x: 0, y: 0, z: 0}
-  canChosen: 0
-  timeBwFindTarget: 1
-  timer_FindTarget: 0
-  isRightWay: 1
-  isColliding: 0
-  isDef_Hold: 1
-  isDef_Force: 0
-  thisIsPlayer: 0
-  findTarget: Enemy
-  aliesTarget: Player
-  findTargetCastle: EnemyCastle
 --- !u!95 &9084785111919937853
 Animator:
   serializedVersion: 5

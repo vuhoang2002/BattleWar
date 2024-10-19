@@ -140,8 +140,38 @@ MonoBehaviour:
     isUnit: 0
   - unitTag: Skl_Mage
     prefab: {fileID: 7688900732844524521, guid: d525257c51e723744b93694160d11c2e, type: 3}
+    prefabSprite: {fileID: 21300000, guid: 5d998be3ed3209c4ea604932183a5f09, type: 3}
+    unitPrice: 125
+    cdTimerUnit: 20
+    isUnit: 1
+  - unitTag: GMedusa
+    prefab: {fileID: 395389567526222890, guid: 589e6998e7620524993c7f56b10e516a, type: 3}
+    prefabSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    unitPrice: 40
+    cdTimerUnit: 20
+    isUnit: 1
+  - unitTag: SkeletonWarrior
+    prefab: {fileID: 8275368642616864759, guid: 2388ec94ee44af045a9c4418b0a13cdb, type: 3}
+    prefabSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    unitPrice: 50
+    cdTimerUnit: 20
+    isUnit: 1
+  - unitTag: SkeletonSpearMan
+    prefab: {fileID: 8667527969351417461, guid: fa2cf0ca9febc4149b667ced742b237f, type: 3}
     prefabSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     unitPrice: 300
+    cdTimerUnit: 20
+    isUnit: 1
+  - unitTag: SkeletonArcher
+    prefab: {fileID: 2627196932269546020, guid: e359e93b745204f4ca455466e52d12d4, type: 3}
+    prefabSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    unitPrice: 90
+    cdTimerUnit: 20
+    isUnit: 1
+  - unitTag: EarthGolem
+    prefab: {fileID: 447399120621047007, guid: 12e4366bbe5402f4f96922922b2cefff, type: 3}
+    prefabSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    unitPrice: 200
     cdTimerUnit: 20
     isUnit: 1
   selectedUnitTags: []

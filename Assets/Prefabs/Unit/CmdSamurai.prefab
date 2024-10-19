@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 15
+  basic_Atk: 20
   basic_Cd: 1.5
   abl1_Atk: 0
   abl1_Cd: 1
@@ -180,7 +180,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 10
+  extraDmg: 6
 --- !u!114 &8939832098719765203
 MonoBehaviour:
   m_ObjectHideFlags: 0

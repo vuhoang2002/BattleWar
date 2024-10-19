@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +17,7 @@ public class Card_Detail : MonoBehaviour
     static GameObject clone3;
     void Start()
     {
-        // unitData = unitPanelFunction.unitData;
+
     }
 
     // Update is called once per frame
@@ -52,16 +51,18 @@ public class Card_Detail : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-        clone1 = Instantiate(unitDataEntry.prefab, new Vector3(4.37f, -0.7f, 0f), Quaternion.identity);
-        clone1.GetComponent<PlayerController>().def_Position = new Vector3(4.37f, -0.7f, 0f);
+        Vector3 space2 = new Vector3(transform.position.x, transform.position.y - 1f, 0);
+        Vector3 space = new Vector3(2, 0, 0);
+        clone1 = Instantiate(unitDataEntry.prefab, space2 - space, Quaternion.identity);
+        clone1.GetComponent<PlayerController>().def_Position = space2 - space;
         clone1.AddComponent<PlayerCardControl>();
         clone1.transform.SetParent(playerList.transform);
 
         if (unitDataEntryBefore != null)
         {// tạo đối thủ
-            clone2 = Instantiate(unitDataEntryBefore.prefab, new Vector3(8.24f, -0.7f, 0f), Quaternion.identity);
+            clone2 = Instantiate(unitDataEntryBefore.prefab, space2 + space, Quaternion.identity);
             clone2.GetComponent<PlayerController>().Change_Prefab_To_Enemy();
-            clone2.GetComponent<PlayerController>().def_Position = new Vector3(8.24f, -0.7f, 0f);
+            clone2.GetComponent<PlayerController>().def_Position = space2 + space;
             clone2.AddComponent<PlayerCardControl>();
             clone2.transform.SetParent(playerList.transform);
             //

@@ -139,7 +139,7 @@ public class Health : MonoBehaviour
             killSelf();
             return;
         }
-        if (GetComponent<PlayerCardControl>().isShowOnCard)
+        if (GetComponent<PlayerCardControl>() != null)
         {
             killSelf();
             return;

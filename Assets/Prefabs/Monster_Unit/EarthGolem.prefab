@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7665413448057054534}
   - component: {fileID: -5625746903622123534}
   m_Layer: 7
-  m_Name: B_Earth_Golem
+  m_Name: EarthGolem
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

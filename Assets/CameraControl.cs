@@ -38,14 +38,15 @@ public class CameraControl : MonoBehaviour
             desiredPositionX = CheckBounds(desiredPositionX, worldMinPosition.x, worldMaxPosition.x);
 
             Vector3 smoothedPosition = new Vector3(desiredPositionX, transform.position.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, smoothedPosition, 0.01f);
+            transform.position = Vector3.Lerp(transform.position, smoothedPosition, 0.1f);
 
             // Kiểm tra nếu đã gần đến vị trí
-            if (Vector3.Distance(transform.position, smoothedPosition) < 0.1f)
+            if (Vector3.Distance(transform.position, smoothedPosition) < 0.5f)
             {
                 isMoving = false; // Dừng di chuyển
-                StartCoroutine(OffMovingCam()); // Gọi coroutine để tắt trạng thái di chuyển
+                ; // Gọi coroutine để tắt trạng thái di chuyển
             }
+            StartCoroutine(OffMovingCam());
         }
 
         if (chosenPlayer == null)
@@ -61,7 +62,7 @@ public class CameraControl : MonoBehaviour
 
     private IEnumerator OffMovingCam()
     {
-        yield return new WaitForSeconds(1.5f); // Sử dụng chữ hoa ở "WaitForSeconds"
+        yield return new WaitForSeconds(2f);
         isMoving = false; // Đặt lại trạng thái di chuyển
     }
 
