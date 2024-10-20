@@ -9,36 +9,17 @@ using System;
 using System;
 using UnityEngine;
 
-[Serializable]
-public class UnitListOrder
-{
-    public string id; // Thêm trường ID
-    public GameObject prefab; // Cho phép gán trong Inspector
-    public string currentOrder; // Hành vi hiện tại của unit đó
-
-    // Constructor để khởi tạo ID
-    public void Set_Id(string id)
-    {
-        this.id = id;
-    }
-}
-
-[Serializable]
-public class TagList
-{
-    public string tagName; // Tên tag cho danh sách
-    public List<UnitListOrder> my_Units = new List<UnitListOrder>(); // Danh sách các đơn vị tương ứng
-    public int unitCount; // Số lượng đơn vị
-}
-
 public class UnitListManager : MonoBehaviour
 {
     public GameObject unitDef_Area;// là player battle cũ đổi tên cho sang // khu vực phòng thủ
     public List<string> selectedUnitTags;
     public UnitPanelFunction unitPanelFunction;
+    public int unitCountAll;
+    public int unitStrength;
 
     // Danh sách để lưu trữ các tag và danh sách tương ứng
     public List<TagList> unitTagLists = new List<TagList>();
+    private PlayerCountDisplay playerCountDisplay;
 
     void Start()
     {
@@ -79,6 +60,12 @@ public class UnitListManager : MonoBehaviour
         }
 
     }
+    public void Caculate_UnitCountAll(bool flag)
+    {
+        unitCountAll += flag ? 1 : -1;
+        playerCountDisplay.playerCount = unitCountAll;
+
+    }
 
     void Update()
     {
@@ -91,6 +78,9 @@ public class UnitListManager : MonoBehaviour
         Transform unitCanvas = battleCanvas.transform.Find("UnitCanva");
         Transform panel = unitCanvas.Find("Panel");
         unitPanelFunction = panel.GetComponent<UnitPanelFunction>();
+        panel = unitCanvas.Find("Population");
+        panel = panel.Find("PlayerCount");
+        playerCountDisplay = panel.GetComponent<PlayerCountDisplay>();
     }
 
     public void LoadSelectedUnits()
@@ -130,6 +120,8 @@ public class UnitListManager : MonoBehaviour
 
             // Cập nhật số lượng đơn vị
             tagList.unitCount++;
+            Caculate_UnitCountAll(true);
+
 
         }
         else
@@ -189,6 +181,7 @@ public class UnitListManager : MonoBehaviour
 
                 // Cập nhật số lượng đơn vị
                 tagList.unitCount--;
+                Caculate_UnitCountAll(false);
 
                 // Tìm Transform của khu vực và tạo lại
                 Transform childArea = transform.Find(prefabName + "_DefArea");
@@ -206,12 +199,16 @@ public class UnitListManager : MonoBehaviour
             else
             {
                 Debug.LogWarning($"Không tìm thấy unit '{prefab.name}' trong tag '{unitTag}'");
+                // ko có id túc là
+
+
             }
         }
         else
         {
             Debug.LogWarning($"Không tìm thấy TagList với '{unitTag}'");
         }
+
 
         return false;
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Skl_Mage_Controller : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Skl_Mage_Controller : MonoBehaviour
     private int maxSummondCount = 2;
     private Attacks attacks;
     private Animator animator;
+    public GameObject skullOne;
+    public GameObject skullTwo;
     void Start()
     {
         attacks = GetComponent<Attacks>();
@@ -37,13 +40,32 @@ public class Skl_Mage_Controller : MonoBehaviour
             int xAxisSummond = direction ? 1 : -1;
             GameObject summondSkull_Ins = Instantiate(summondSkull, transform.position + new Vector3(xAxisSummond, 0, 0), Quaternion.identity);
             summondCount++;
-
+            if (summondCount == 1)
+            {
+                skullOne = summondSkull_Ins;
+            }
+            else if (summondCount == 2)
+            {
+                skullTwo = summondSkull_Ins;
+            }
             summondSkull_Ins.SetActive(true);
             string parentName = gameObject.CompareTag("Player") ? "PlayerList(Clone)" : "EnemyList(Clone)";
             // Đặt parent cho summondSkull_Ins
-
             Transform parent = GameObject.Find(parentName).transform;
             summondSkull_Ins.transform.SetParent(parent);
         }
     }
+    public void KillMySummondToken()
+    {
+        if (skullOne != null)
+        {
+            skullOne.GetComponent<SummondToken>().DestroyWithMaster();
+        }
+        if (skullTwo != null)
+        {
+            skullTwo.GetComponent<SummondToken>().DestroyWithMaster();
+        }
+        Debug.Log("Die with me skull");
+    }
+
 }

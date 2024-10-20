@@ -28,8 +28,6 @@ public class FomationManager_NewUprade : MonoBehaviour
     void Start()
     {
         GetRenderArea();
-        //GetRenderAreaNew();//thử nghiệm
-        // Create_defPosition();// tạo defense với các unit ban đầu
         if (thisIsEnemy)
         {
             changeVaule_Col();//đổi dấu  - sang +

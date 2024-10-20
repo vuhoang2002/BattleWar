@@ -6,7 +6,7 @@ using TMPro; // Đảm bảo bạn đã sử dụng TextMeshPro
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] public int health = 100;
     private int MAX_HEALTH = 100;
 
     private Animator animator;
@@ -133,6 +133,13 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        // Debug.Log("id is" + GetComponent<PlayerController>().id);
+        if (GetComponent<PlayerController>().id == "")
+        {
+            Debug.Log("id là null");
+            killSelf();
+            return;
+        }
         if (gameObject.GetComponent<SummondToken>() != null)
         {
             //nếu đối tượng là 1 vật thể triệu hồi
@@ -154,7 +161,7 @@ public class Health : MonoBehaviour
         else if (gameObject.CompareTag("Enemy"))
         {
             GameObject list = GameObject.Find("EUnit_List");
-            EnemyBehavius enemyBehavius = list.GetComponent<EnemyBehavius>();
+            EnemyManager enemyBehavius = list.GetComponent<EnemyManager>();
             id = GetComponent<PlayerController>().id;
             enemyBehavius.RemoveUnitFromTagList(gameObject.name, gameObject, id);
         }
@@ -260,5 +267,9 @@ public class Health : MonoBehaviour
     public void Heal_Full_Hp()
     {
         health = MAX_HEALTH;
+    }
+    public int Get_MaxHealth()
+    {
+        return MAX_HEALTH;
     }
 }

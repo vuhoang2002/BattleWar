@@ -251,6 +251,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0

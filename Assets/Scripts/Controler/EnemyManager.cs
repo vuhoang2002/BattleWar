@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine;
 using System;
 
-public class EnemyBuild : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     [System.Serializable]
     public class EnemyType
@@ -30,8 +30,9 @@ public class EnemyBuild : MonoBehaviour
     private int nextId = 1; // Khởi tạo ID
     public GameObject unitDef_Area;
     public GameObject enemyList;
-    // public FomationManager_NewUprade fm_upgrade;
-    // public List<TagList> EunitTagLists = new List<TagList>();
+    public int enemyCountAll;
+    public int enemyStrength;
+
 
     void Start()
     {
@@ -220,6 +221,7 @@ public class EnemyBuild : MonoBehaviour
 
                 // Cập nhật số lượng đơn vị
                 tagList.unitCount--;
+                enemyCountAll--;
 
                 // Tìm Transform của khu vực và tạo lại
                 Transform childArea = transform.Find(prefabName + "_DefArea");
@@ -295,6 +297,7 @@ public class EnemyBuild : MonoBehaviour
             };
             tagList.my_Units.Add(unitOrder); // Thêm đơn vị vào danh sách
             tagList.unitCount++; // Cập nhật số lượng đơn vị
+            enemyCountAll++;
         }
     }
 

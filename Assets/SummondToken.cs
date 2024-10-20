@@ -56,4 +56,10 @@ public class SummondToken : MonoBehaviour
         }
         pl.SetID(masterOfToken.GetComponent<PlayerController>().id + numberType);
     }
+    public void DestroyWithMaster()
+    {
+        //khi master die, tiêu diệt chính nó
+        GetComponent<Health>().killSelf();
+        Debug.Log("Tự sát");
+    }
 }

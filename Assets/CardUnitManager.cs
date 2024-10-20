@@ -30,6 +30,7 @@ public class CardUnitManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         LoadSelectedUnits(); // Tải các đơn vị đã chọn khi bắt đầu
         LoadSavedUnits();
     }

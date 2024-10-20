@@ -14,14 +14,14 @@ public class SpawnTimer
 
 public class Level1 : MonoBehaviour
 {
-    public int modPlay; // 0 classic, 1 defense, 2 attack, 3 attack with current gold, 4 sinh tồn
+    public GameMod gameMod; // 0 classic, 1 defense, 2 attack, 3 attack with current gold, 4 sinh tồn
     public bool is_Classic_Mod;
     public bool is_Defense_Mod = true;
     public bool is_Attack_Mod;
     public bool is_War_Mod;
     public bool is_Survival_Mod;
     public List<SpawnTimer> spawnTimer = new List<SpawnTimer>();
-    private EnemyBehavius eB;
+    private EnemyManager eB;
     public int currentGold = 10000;
     public Text title;
     public int timePlay;
@@ -55,7 +55,7 @@ public class Level1 : MonoBehaviour
             }
         }
 
-        eB = GetComponent<EnemyBehavius>();
+        eB = GetComponent<EnemyManager>();
 
         // Khởi tạo Timer
         //  timer = new Timer(1000); // 1 giây
@@ -94,8 +94,8 @@ public class Level1 : MonoBehaviour
     {
         if (elapsedTime == 30)
         {
-            eB.Set_eAtk();
-            eB.SetAllEnemyBehavius();
+            //eB.Set_eAtk();
+            // eB.SetAllEnemyBehavius();
         }
     }
 

@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 10
+  basic_Atk: 13
   basic_Cd: 1.7
   abl1_Atk: 0
   abl1_Cd: 1
@@ -279,7 +279,7 @@ MonoBehaviour:
   timeToDealDmg: 1.6
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 3
+  extraDmg: 5
 --- !u!114 &967353764837639969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWeight: 0
-  extraDMGWeight: 0
+  extraDMGWeight: 1
   unitRace: 2
 --- !u!223 &2581605686247847557
 Canvas:

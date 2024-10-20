@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public float lowPos = -4.5f;  // Giá trị Y khi prefab đạt kích thước nhỏ nhất
     public float minScale = 0.85f; // Kích thước nhỏ nhất
     public float maxScale = 1.5f; // Kích thước lớn nhất
+    public UnitOrder order;
     public bool isAtk_Order = false;
     public bool isDef_Order = true;
     public bool isFallBack_Order = false;
@@ -112,8 +113,10 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         {
             highPos = minY.position.y;// chỗ này đặt sai tên thôi kệ z :v
             lowPos = maxY.position.y;
+            //def_Position = new Vector3(0, (highPos + lowPos) / 2, 0);
         }
         //Change_Prefab_To_Enemy();
+
     }
 
     void Update()
@@ -283,6 +286,19 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             thisIsPlayer = false;
         }
     }
+    private void checkMyOrder()
+    {
+        switch (order)
+        {
+            case UnitOrder.Attack:
+
+                break;
+            default:
+
+                break;
+        }
+    }
+
     void ActiveChild()
     {
         transform.Find("AtkArea").gameObject.SetActive(true);
@@ -818,6 +834,29 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     {
         retreat_Position = retreat_Pos;
     }
+    public void Set_CurrentOrder(UnitOrder unitOrder)
+    {
+        switch (unitOrder)
+        {
+            case UnitOrder.Attack:
+                SetBehavius(true, false, false, false);
+                break;
+            case UnitOrder.Defend:
+                SetBehavius(false, true, false, false);
+                break;
+            case UnitOrder.Retreat:
+                SetBehavius(false, false, true, false);
+                break;
+            case UnitOrder.Hold:
+                SetBehavius(false, false, false, true);
+                break;
+            default:
+
+                break;
+        }
+    }
+
+
     // hiển thị unit lên trên
 
 

@@ -15,6 +15,11 @@ public class Card_Detail : MonoBehaviour
     GameObject clone1;
     GameObject clone2;
     static GameObject clone3;
+    public TextMeshProUGUI unitClassDetail;
+    public TextMeshProUGUI textTitle;
+    public TextMeshProUGUI hp;
+    public TextMeshProUGUI atk;
+    public TextMeshProUGUI coid_and_cd;
     void Start()
     {
 
@@ -25,7 +30,7 @@ public class Card_Detail : MonoBehaviour
     {
 
     }
-    public void SetUp_CardDetail(string unitTagRe)
+    public void SetUp_CardDetail(string unitTagRe, string title)
     {
         unitDataEntry = unitPanelFunction.unitData.Find(unit => unit.unitTag == unitTagRe);
 
@@ -34,6 +39,7 @@ public class Card_Detail : MonoBehaviour
             Debug.Log("unitdata bắt đầu");
             SetUp_CardHeader();
             SetUp_Prefab();
+            SetUp_Infomation_Of_Deatail_Unit(title);
         }
     }
     private void SetUp_CardHeader()
@@ -85,6 +91,41 @@ public class Card_Detail : MonoBehaviour
 
                 break;
         }
+    }
+
+    private void SetUp_Infomation_Of_Deatail_Unit(string title)
+    {
+        Attacks attacks = unitDataEntry.prefab.GetComponent<Attacks>();
+        UnitClass unitClass = unitDataEntry.prefab.GetComponent<UnitClass>();
+        unitClassDetail.text = unitClass.unitWeight + "/" + unitClass.unitRace;
+        textTitle.text = title;
+        hp.text = unitDataEntry.prefab.GetComponent<Health>().health.ToString();
+        atk.text = attacks.basic_Atk.ToString() + "+(" + attacks.extraDmg + changWeightToOneChar(unitClass.extraDMGWeight) + ")";
+        coid_and_cd.text = unitDataEntry.unitPrice.ToString() + "/" + unitDataEntry.cdTimerUnit.ToString() + "s";
+
+    }
+
+    private string changWeightToOneChar(WeightUnit weightUnit)
+    {
+        string weightChar = "Error";
+        switch (weightUnit)
+        {
+            case WeightUnit.Light:
+                weightChar = "L";
+                break;
+            case WeightUnit.Heavy:
+                weightChar = "H";
+                break;
+            case WeightUnit.Rock:
+                weightChar = "R";
+                break;
+            default:
+                weightChar = "Error";
+                break;
+        }
+
+
+        return weightChar;
     }
     private void FireUpgradeSetUp()
     {

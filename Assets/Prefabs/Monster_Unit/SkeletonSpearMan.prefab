@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 200
   deadthObject: {fileID: 3810788133568609769, guid: fe33a87924aafea4591bc08d2bc69c7d, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basic_Atk: 10
-  basic_Cd: 1.4
+  basic_Cd: 0
   abl1_Atk: 0
   abl1_Cd: 1
   abl2_Atk: 0

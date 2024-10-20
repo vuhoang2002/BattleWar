@@ -19,7 +19,7 @@ public class CardUnit : MonoBehaviour
     {
         // Gọi hàm chọn đơn vị và truyền chính đối tượng CardUnit
         cardUnitManager.SelectUnit(unitTag, gameObject);
-        card_in4.GetComponent<Card_Detail>().SetUp_CardDetail(unitTag);
+        card_in4.GetComponent<Card_Detail>().SetUp_CardDetail(unitTag, GetComponent<CardClass>().title);
 
     }
     public void showOff_X_Button()
