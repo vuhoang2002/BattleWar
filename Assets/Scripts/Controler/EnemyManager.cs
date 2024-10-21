@@ -46,7 +46,14 @@ public class EnemyManager : MonoBehaviour
             SetSpawnLocation();
         }
         CreateTagLists();
-        enemyList = Instantiate(enemyList);
+        if (enemyList != null)
+        {
+            enemyList = Instantiate(enemyList);
+        }
+        else
+        {
+            enemyList = GameObject.Find("EnemyList(Clone)");
+        }
     }
 
     private void CreateTagLists()

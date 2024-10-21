@@ -4,7 +4,7 @@ using TMPro;
 public class PlayerCountDisplay : MonoBehaviour
 {
     public TextMeshProUGUI playerCountText; // Tham chiếu đến TextMeshPro để hiển thị số lượng player
-    private int MAX_PLAYER_COUNT = 50;
+    private int MAX_PLAYER_COUNT = 30;
     public bool isMaxPlayer = false;
     public int playerCount;
 

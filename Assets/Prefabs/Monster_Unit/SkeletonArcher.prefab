@@ -312,6 +312,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.75
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -357,7 +358,7 @@ MonoBehaviour:
   abl3_Atk: 0
   abl3_Cd: 1
   abl1_Cd_Time: 1
-  isAbl1: 1
+  isAbl1: 0
   timeToDealDmg: 1.6
   attackCooldown: 1
   abl1: {fileID: 0}

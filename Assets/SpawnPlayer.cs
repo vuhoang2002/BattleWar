@@ -39,6 +39,8 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject playerList;
     public delegate void UnitSpawnedHandler(GameObject newUnit, string unitId);
     public event UnitSpawnedHandler OnUnitSpawned;
+    public Level_War_Mod levelWarMod;
+    public bool isWarMod = false;
 
     private void Start()
     {
@@ -55,6 +57,33 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         playerList = GameObject.Find("PlayerList(Clone)");
         this.OnUnitSpawned += HandleUnitSpawned;
         cooldownImage.fillAmount = 0;
+        // đăng kí sk war mod
+
+    }
+    void Awake()
+    {
+        GameObject gameManager = GameObject.Find("GAME_MANAGER");
+        levelWarMod = gameManager.GetComponentInChildren<Level_War_Mod>();
+        if (levelWarMod.gameMod == GameMod.War)
+        {
+            levelWarMod.OnGameModeChanged_War += HandleGameModeChanged_War;
+            // mod = GameMod.War;
+        }
+    }
+
+
+    private void HandleGameModeChanged_War()
+    {
+        Debug.Log("Chạy war mode timer");
+        StartCoroutine(On_WarModeActive());
+    }
+
+    IEnumerator On_WarModeActive()
+    {
+        yield return new WaitForSeconds(levelWarMod.timePlay);
+        isWarMod = true;
+        cooldownImage.fillAmount = 1f;
+        Debug.Log("Chế độ chiến tranh đã được kích hoạt.");
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -107,8 +136,8 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private IEnumerator CooldownRoutine()
     {
-        isSpawnReady = false;
 
+        isSpawnReady = false;
         float elapsedTime = 0f;
 
         // Đặt lại giá trị fillAmount
@@ -177,7 +206,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    public void setUpButton(GameObject unitToSpawn, Sprite unitAvatar, GameObject mapSize, int price, float cd)
+    public void setUpButton(GameObject unitToSpawn, Sprite unitAvatar, GameObject mapSize, int price, float cd, GameMod mod)
     {
         gameObject.SetActive(true);
         // Thiết lập nút cho đơn vị để spawn
@@ -186,7 +215,14 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         GetComponent<Image>().sprite = unitAvatar; // Thiết lập hình đại diện cho UI
         this.mapSize = mapSize; // Gán kích thước bản đồ
         this.priceUnit = price; // Gán giá
-        this.cooldownDuration = cd;
+        if (mod == GameMod.War)
+        {
+            this.cooldownDuration = cd * (0.1f);// giảm 90% duration
+        }
+        else
+        {
+            this.cooldownDuration = cd;
+        }
         setSpawnLocation(); // Gọi hàm để thiết lập vị trí spawn
 
         // thiết lập giá tiền
@@ -203,7 +239,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void spawnUnit()
     {
         // Thiết lập vị trí spawn ngẫu nhiên
-        if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold < priceUnit)
+        if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold < priceUnit || isWarMod)
         {
             return;
         }
@@ -215,6 +251,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             if (prefabToSpawn != null)
             {
+
                 Vector3 spawnPosition = new Vector3(positionSpawn_X, positionSpawn_Y, 0f);
                 GameObject newUnit = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity); // Spawn prefab
 
@@ -233,6 +270,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 OnUnitSpawned?.Invoke(newUnit, creat_ID_For_Unit);
                 GOLD_Counter.GetComponent<GoldCount>().currentGold -= priceUnit;
                 StartCoroutine(CooldownRoutine());
+
             }
         }
         else

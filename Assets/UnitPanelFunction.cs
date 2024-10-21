@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -12,12 +13,32 @@ public class UnitPanelFunction : MonoBehaviour
     public GameObject UnitPanel;
     public GameObject cloneSpawnBtn;
     public GameObject mapSize;
+    private Level_War_Mod levelWarMod;
+    public GameMod mod;
 
     void Start()
     {
         GetSaveUnit();// lấy unit trong bộ bài
         Create_Spawn_Button();
+
     }
+    void Awake()
+    {
+        GameObject gameManager = GameObject.Find("GAME_MANAGER");
+        levelWarMod = gameManager.GetComponentInChildren<Level_War_Mod>();
+        if (levelWarMod.gameMod == GameMod.War)
+        {
+            levelWarMod.OnGameModeChanged_War += HandleGameModeChanged_War;
+            mod = GameMod.War;
+        }
+    }
+
+    private void HandleGameModeChanged_War()
+    {
+        //throw new NotImplementedException();
+        mod = GameMod.War;
+    }
+
 
     // Update is called once per frame
     void GetSaveUnit()
@@ -65,7 +86,7 @@ public class UnitPanelFunction : MonoBehaviour
             // thiết lập nút
             crtSpawBtn = Instantiate(cloneSpawnBtn, transform); // Spawn prefab
             SpawnPlayer sp = crtSpawBtn.GetComponent<SpawnPlayer>();
-            sp.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize, unitDataEntry.unitPrice, unitDataEntry.cdTimerUnit);
+            sp.setUpButton(unitDataEntry.prefab, unitDataEntry.prefabSprite, mapSize, unitDataEntry.unitPrice, unitDataEntry.cdTimerUnit, mod);
 
             crtSpawBtn.name = "Spawn" + unitDataEntry.unitTag;
             Debug.LogWarning("save đã spawn" + crtSpawBtn.name);

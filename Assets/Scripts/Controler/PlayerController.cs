@@ -302,7 +302,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     void ActiveChild()
     {
         transform.Find("AtkArea").gameObject.SetActive(true);
-        transform.Find("ChosenArea").gameObject.SetActive(true);
+        //        transform.Find("ChosenArea").gameObject.SetActive(true);
     }
 
     void FixedUpdate()

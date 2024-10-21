@@ -11,7 +11,8 @@ public class UnitData
     public Sprite prefabSprite;
     public int unitPrice;//giá tiền
     public float cdTimerUnit;//tg hồi
-    public bool isUnit;// là unit hay phép bổ trợ
+    public int unitStrength;
+    public CardType isUnit;// là unit hay phép bổ trợ
 }
 
 [System.Serializable]

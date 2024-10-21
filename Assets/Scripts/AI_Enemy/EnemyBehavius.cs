@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehavius : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameMod gameMod;
     public EnemyManager enemyManager;
     public UnitListManager playerManager;
     // public List<EnemyType> enemyType;
@@ -44,30 +45,54 @@ public class EnemyBehavius : MonoBehaviour
     {
         while (true)
         {
-            //UpdateEnemyTroopCount(); // Cập nhật số lượng quân địch nếu cần
-
-            // CheckOrderTransition(); // Kiểm tra điều kiện chuyển đổi lệnh
-
-            switch (enemyOrder)
+            if (gameMod == GameMod.War)
             {
-                case UnitOrder.Attack:
-                    HandleAttack();
-
-                    break;
-                case UnitOrder.Defend:
-                    HandleDefend();
-                    break;
-                case UnitOrder.Retreat:
-                    HandleRetreat();
-                    break;
-                case UnitOrder.Hold:
-                    HandleHold();
-                    break;
-
+                yield break;// dừng coroutine ở chế độ chiến tranh
+                // hành vi được dựa trên cod bên WarMod
             }
-            Debug.Log("unit order is:" + enemyOrder);
-
+            //UpdateEnemyTroopCount(); // Cập nhật số lượng quân địch nếu cần
+            // CheckOrderTransition(); // Kiểm tra điều kiện chuyển đổi lệnh
+            CurrentEnemyOrder();
             yield return new WaitForSeconds(checkInterval); // Kiểm tra hành vi theo khoảng thời gian
+        }
+    }
+
+    void CurrentEnemyOrder()
+    {
+        switch (enemyOrder)
+        {
+            case UnitOrder.Attack:
+                HandleAttack();
+
+                break;
+            case UnitOrder.Defend:
+                HandleDefend();
+                break;
+            case UnitOrder.Retreat:
+                HandleRetreat();
+                break;
+            case UnitOrder.Hold:
+                HandleHold();
+                break;
+        }
+    }
+    public void Current_EnemyOrder(UnitOrder orderFromOtherFile)
+    {
+        enemyOrder = orderFromOtherFile;
+        switch (enemyOrder)
+        {
+            case UnitOrder.Attack:
+                HandleAttack();
+                break;
+            case UnitOrder.Defend:
+                HandleDefend();
+                break;
+            case UnitOrder.Retreat:
+                HandleRetreat();
+                break;
+            case UnitOrder.Hold:
+                HandleHold();
+                break;
         }
     }
 
