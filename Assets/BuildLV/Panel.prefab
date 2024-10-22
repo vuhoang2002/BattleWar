@@ -93,7 +93,7 @@ MonoBehaviour:
   - unitTag: Knight
     prefab: {fileID: 2662107906704322251, guid: e932c9191ab72714fa2b45fed7e24483, type: 3}
     prefabSprite: {fileID: -736335142, guid: 172b7e1a6ed0a5049863bfd593fa9391, type: 3}
-    unitPrice: 45
+    unitPrice: 75
     cdTimerUnit: 6
     unitStrength: 5
     isUnit: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   - unitTag: EarthGolem
     prefab: {fileID: 447399120621047007, guid: 12e4366bbe5402f4f96922922b2cefff, type: 3}
     prefabSprite: {fileID: 21300000, guid: cc96b618da10b15458544fe238b5233a, type: 3}
-    unitPrice: 120
+    unitPrice: 170
     cdTimerUnit: 8
     unitStrength: 9
     isUnit: 0
@@ -185,13 +185,14 @@ MonoBehaviour:
     prefab: {fileID: 8460218703059110111, guid: ec3c0f4818b0a8845ae5dba011a8065c, type: 3}
     prefabSprite: {fileID: 21300000, guid: 3c8cce160b4d6f14aba2beed5b03da8a, type: 3}
     unitPrice: 160
-    cdTimerUnit: 75
+    cdTimerUnit: 6
     unitStrength: 7
     isUnit: 0
   selectedUnitTags: []
   UnitPanel: {fileID: 0}
   cloneSpawnBtn: {fileID: 0}
   mapSize: {fileID: 0}
+  mod: 0
 --- !u!114 &1243435315843118853
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,15 +7,15 @@ public class SceneController : MonoBehaviour
 
     public void StartGameplay()
     {
-        // Chuyển nhạc nền sang âm thanh mới
-        
-        
-        // Chuyển sang màn chơi
-      //  SceneManager.LoadScene("GameplayScene"); // Thay "GameplayScene" bằng tên scene của bạn
+        //  SceneManager.LoadScene("GameplayScene"); // Thay "GameplayScene" bằng tên scene của bạn
     }
-  
+
     void Start()
     {
-        MusicManager.instance.ChangeToGameplayMusic(gameplayMusic);
+        MusicManager.instance.ChangeAudioClip(gameplayMusic);
+        if (!MusicManager.isMuted)
+        {
+            MusicManager.instance.ChangeToGameplayMusic(gameplayMusic);
+        }
     }
 }

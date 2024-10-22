@@ -3,7 +3,12 @@ guid: f87d6ee2a31a2d540877c7b86e343e34
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - def_Child: {instanceID: 0}
+  - fallBack_Child: {instanceID: 0}
+  - hold_Child: {instanceID: 0}
+  - players: {instanceID: 0}
+  - iconOrderActive: {fileID: 3150590802993403629, guid: e6c438e48c15f24458f71819f63596fe, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5233412416526380353}
-  - component: {fileID: 6727502043344947679}
+  - component: {fileID: 5273809473902207877}
   - component: {fileID: 2423581820398693827}
+  - component: {fileID: 2065830386156406226}
   m_Layer: 0
   m_Name: EUnit_List
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   - {fileID: 5357235748228678323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6727502043344947679
+--- !u!114 &5273809473902207877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,30 +44,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2190498937109491095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fe63eaf72114fc48af843df8397ebd0, type: 3}
+  m_Script: {fileID: 11500000, guid: d31fef891b99b134dbe6a8014ff353c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType:
-  - enemyPrefab: {fileID: 2520483857507915414, guid: b4ca4ff1c751875459e14d394a377655, type: 3}
+  - enemyPrefab: {fileID: 2916172966324721739, guid: a29d890423538094cab9ed58c0e61204, type: 3}
+    isInCurrentMatch: 1
+  - enemyPrefab: {fileID: 3974870113231231300, guid: 21bb67c390ccabe4b815fde3f8813ea7, type: 3}
     isInCurrentMatch: 1
   - enemyPrefab: {fileID: 447399120621047007, guid: 12e4366bbe5402f4f96922922b2cefff, type: 3}
     isInCurrentMatch: 1
-  - enemyPrefab: {fileID: 8667527969351417461, guid: fa2cf0ca9febc4149b667ced742b237f, type: 3}
-    isInCurrentMatch: 0
-  - enemyPrefab: {fileID: 395389567526222890, guid: 589e6998e7620524993c7f56b10e516a, type: 3}
+  - enemyPrefab: {fileID: 7688900732844524521, guid: d525257c51e723744b93694160d11c2e, type: 3}
     isInCurrentMatch: 1
-  - enemyPrefab: {fileID: 2627196932269546020, guid: e359e93b745204f4ca455466e52d12d4, type: 3}
+  - enemyPrefab: {fileID: 3622957466471559262, guid: 4c44cbe0d7edfdc44bb3b4743035c228, type: 3}
     isInCurrentMatch: 1
-  - enemyPrefab: {fileID: 8275368642616864759, guid: 2388ec94ee44af045a9c4418b0a13cdb, type: 3}
-    isInCurrentMatch: 1
-  unitTagLists: []
   atk_Order: 1
   def_Order: 0
   fallBack_Order: 0
   hold_Order: 0
   enemySpawnArea: {fileID: 0}
   unitDef_Area: {fileID: 8457247598568974302}
-  enemyList: {fileID: 0}
+  enemyList: {fileID: 1716774622356495388, guid: c53d55c9d0a538c49addef5b8db21ba5, type: 3}
+  enemyCountAll: 0
+  enemyStrength: 0
 --- !u!114 &2423581820398693827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,17 +79,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc1dd199426a4942a2c0e23ff0685f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modPlay: 0
-  is_Classic_Mod: 0
-  is_Defense_Mod: 1
+  gameMod: 0
+  is_Classic_Mod: 1
+  is_Defense_Mod: 0
   is_Attack_Mod: 0
   is_War_Mod: 0
   is_Survival_Mod: 0
-  spawnTimer: []
+  spawnTimer:
+  - enemyName: 2
+    timerSpawn: 1
+    spawnCount: 2
+  - enemyName: 0
+    timerSpawn: 1
+    spawnCount: 10
+  - enemyName: 1
+    timerSpawn: 1
+    spawnCount: 5
+  - enemyName: 3
+    timerSpawn: 1
+    spawnCount: 3
+  - enemyName: 4
+    timerSpawn: 1
+    spawnCount: 10
   currentGold: 10000
   title: {fileID: 0}
-  timePlay: 0
+  timePlay: 1
   elapsedTime: 0
+--- !u!114 &2065830386156406226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190498937109491095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 0
 --- !u!1001 &4164639121278138230
 PrefabInstance:
   m_ObjectHideFlags: 0

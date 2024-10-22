@@ -194,7 +194,7 @@ public class Health : MonoBehaviour
         {
             GameObject instantiatedObject = Instantiate(deadthObject, transform.position, Quaternion.identity);
             instantiatedObject.transform.localScale = transform.localScale; // Đảm bảo deadthObject quay cùng hướng
-            GetComponent<Renderer>().sortingOrder = GetComponent<PlayerController>().GetOrderLayer();
+            instantiatedObject.GetComponent<Renderer>().sortingOrder = GetComponent<PlayerController>().GetOrderLayer();
         }
         Destroy(gameObject);
     }

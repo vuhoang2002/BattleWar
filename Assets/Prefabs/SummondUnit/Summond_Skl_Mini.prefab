@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 75
+  health: 50
   deadthObject: {fileID: 8453495641161066961, guid: b822b0cd1fa14fa449f6d8e619d5267a, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -268,6 +268,7 @@ MonoBehaviour:
   lowPos: -4.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0

@@ -4,7 +4,8 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance; // Đổi từ private sang public
     private AudioSource audioSource;
-    private bool isMuted = false; // Biến để theo dõi trạng thái âm thanh
+    public AudioClip audioClip;
+    public static bool isMuted = false; // Biến để theo dõi trạng thái âm thanh
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         audioSource.Play(); // Bắt đầu phát nhạc nền ban đầu
+        ChangeToGameplayMusic(audioClip);
     }
 
     public void ChangeToGameplayMusic(AudioClip gameplayMusic)
@@ -31,17 +33,25 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = gameplayMusic; // Đặt âm thanh mới
         audioSource.Play(); // Phát âm thanh mới
     }
+    public void ChangeAudioClip(AudioClip gameplayMusic)
+    {
+        audioSource.clip = gameplayMusic; // Đặt âm thanh mới
+
+    }
 
     public void Mute()
     {
         isMuted = true; // Đặt trạng thái là tắt âm
-        audioSource.mute = true; // Tắt âm thanh
+        //audioSource.mute = true; // Tắt âm thanh
+        audioSource.Stop();
     }
 
     public void Unmute()
     {
         isMuted = false; // Đặt trạng thái là bật âm
         audioSource.mute = false; // Mở âm thanh
+        audioSource.Play();
+
     }
 
     public void ToggleMute()

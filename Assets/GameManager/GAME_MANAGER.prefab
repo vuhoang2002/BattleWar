@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0d8ca411c684f41800ec358a3f71b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMod: 3
   enemyManager: {fileID: 0}
   playerManager: {fileID: 0}
-  enemyOrder: 0
+  enemyOrder: 1
   currentGold: 0
   MAX_GOLD: 0
   playerStrength: 0
@@ -68,8 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d43c055f0e397b4abad871725b883ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMod: 0
-  currentGold: 10000
+  gameMod: 3
+  currentGold: 2000
   title: {fileID: 0}
-  timePlay: 0
+  timePlay: 40
   elapsedTime: 0
+  unitDataPanel: {fileID: 5440324210385773804, guid: d5923fdf7bbe422419b605e14bbcb74f, type: 3}
+  currentMatchUnitData: []

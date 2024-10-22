@@ -32,6 +32,9 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyList;
     public int enemyCountAll;
     public int enemyStrength;
+    Level_War_Mod myLevelMode;
+    private bool isWarMode;
+    public GameObject victoryUi;
 
 
     void Start()
@@ -51,6 +54,25 @@ public class EnemyManager : MonoBehaviour
             enemyList = Instantiate(enemyList);
         }
         else
+        {
+            enemyList = GameObject.Find("EnemyList(Clone)");
+        }
+        GameObject gameManager = GameObject.Find("GAME_MANAGER");
+        myLevelMode = gameManager.GetComponent<Level_War_Mod>();
+        myLevelMode.OnBattleStart += HandleBattleStart;
+
+    }
+
+    private void HandleBattleStart()
+    {
+        // throw new NotImplementedException();
+        isWarMode = true;
+    }
+
+    public IEnumerator FindEnemyList()
+    {
+        yield return new WaitForEndOfFrame();
+        while (enemyList == null)
         {
             enemyList = GameObject.Find("EnemyList(Clone)");
         }
@@ -229,6 +251,11 @@ public class EnemyManager : MonoBehaviour
                 // Cập nhật số lượng đơn vị
                 tagList.unitCount--;
                 enemyCountAll--;
+                if (isWarMode && enemyCountAll <= 0)
+                {
+                    victoryUi.SetActive(true);
+                    Time.timeScale = 0f;
+                }
 
                 // Tìm Transform của khu vực và tạo lại
                 Transform childArea = transform.Find(prefabName + "_DefArea");

@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 10
+  basic_Atk: 11
   basic_Cd: 1.5
   abl1_Atk: 20
   abl1_Cd: 1.5
@@ -370,6 +370,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 160
   deadthObject: {fileID: 7058686841670332993, guid: 89e59e91ec8fe9c4ba2735f3058a45bf, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -511,7 +512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBallAbl1: {fileID: 462407194499924068}
   spawnFireBall: {fileID: 2678447742828322024}
-  isUpgrade: 0
 --- !u!114 &1537665093293965248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWeight: 0
-  extraDMGWeight: 1
+  extraDMGWeight: 0
   unitRace: 2
 --- !u!114 &4612677446827444663
 MonoBehaviour:

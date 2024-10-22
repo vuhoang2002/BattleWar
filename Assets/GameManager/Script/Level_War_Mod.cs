@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 //using System.Timers;
 using UnityEngine.UI;
@@ -23,6 +24,8 @@ public class Level_War_Mod : MonoBehaviour
     public List<UnitData> currentMatchUnitData;
     public delegate void GameModeChangedHandler_War();
     public event GameModeChangedHandler_War OnGameModeChanged_War;
+    public event GameModeChangedHandler_War OnBattleStart;
+    public GameObject WarUI;
 
 
     void Start()
@@ -35,8 +38,12 @@ public class Level_War_Mod : MonoBehaviour
             // chế độ WarMode có thay đổi về vàng
             Debug.Log("khai báo sk");
             OnGameModeChanged_War?.Invoke();
+            GameObject battleCanva = GameObject.Find("BattleCanva");
+            GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
+            War_UI.transform.SetParent(battleCanva.transform);
+            StartCoroutine(On_WarModeActive(timePlay, War_UI));
         }
-        StartCoroutine(On_WarModeActive(timePlay));
+
 
     }
     void Find_NecescaryObject()
@@ -68,10 +75,22 @@ public class Level_War_Mod : MonoBehaviour
             currentMatchUnitData.Add(data);
         }
     }
-    IEnumerator On_WarModeActive(float timeToBegin)
+    IEnumerator On_WarModeActive(float timeToBegin, GameObject warUI)
     {
-        yield return new WaitForSeconds(timeToBegin);
+        TextMeshProUGUI textUI = warUI.GetComponentInChildren<TextMeshProUGUI>();
+        for (int i = (int)timeToBegin; i >= 0; i--)
+        {
+            textUI.text = i + "s";
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(1f);
+        textUI.text = "Battle Start";
+        //yield return new WaitForSeconds(timeToBegin);
         GetComponent<EnemyBehavius>().Current_EnemyOrder(UnitOrder.Attack);
+        OnBattleStart?.Invoke();
+        Debug.Log("Khai báo sk OnBattleStart");
+        yield return new WaitForSeconds(3f);
+        Destroy(warUI);
     }
 
 

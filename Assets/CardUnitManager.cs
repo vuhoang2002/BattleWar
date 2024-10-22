@@ -38,7 +38,7 @@ public class CardUnitManager : MonoBehaviour
 
     private void Update()
     {
-        ShowSelectedUnits();
+        //ShowSelectedUnits();
     }
 
     public void SelectUnit(string unitTag, GameObject cardPrefab)
@@ -172,7 +172,7 @@ public class CardUnitManager : MonoBehaviour
         if (selectedUnitTags.Count > 0)
         {
             string selectedUnits = string.Join(", ", selectedUnitTags);
-            Debug.Log("Danh sách các đơn vị đã chọn: " + selectedUnits);
+            //  Debug.Log("Danh sách các đơn vị đã chọn: " + selectedUnits);
         }
         else
         {

@@ -63,6 +63,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 220
   deadthObject: {fileID: 8566543836101765333, guid: 885712ba978d3004f8cb8e20e47a0ca5, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 15
+  basic_Atk: 14
   basic_Cd: 1
   abl1_Atk: 0
   abl1_Cd: 1
@@ -202,7 +203,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 3
+  extraDmg: 2
 --- !u!114 &7876401741735214627
 MonoBehaviour:
   m_ObjectHideFlags: 0

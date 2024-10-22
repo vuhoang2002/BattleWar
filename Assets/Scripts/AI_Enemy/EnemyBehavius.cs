@@ -25,10 +25,7 @@ public class EnemyBehavius : MonoBehaviour
     {
         //enemyOrder = UnitOrder.Defend;
 
-        if (enemyList == null)
-        {
-            enemyList = GameObject.Find("EnemyList(Clone)");
-        }
+
         if (playerManager == null)
         {
             playerManager = GameObject.FindAnyObjectByType<UnitListManager>();
@@ -38,7 +35,19 @@ public class EnemyBehavius : MonoBehaviour
             enemyManager = GameObject.FindAnyObjectByType<EnemyManager>();
         }
         //enemyType = enemyManager.enemyType;
+        if (enemyList == null)
+        {
+            StartCoroutine(FindEneemyList());
+        }
         StartCoroutine(AIBehavior());
+    }
+    IEnumerator FindEneemyList()
+    {
+        while (enemyList == null)
+        {
+            enemyList = GameObject.Find("EnemyList(Clone)");
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     IEnumerator AIBehavior()
@@ -130,7 +139,23 @@ public class EnemyBehavius : MonoBehaviour
         Debug.Log("AI attacked all enemies!");
         foreach (Transform enemy in enemyList.transform)
         {
-            enemy.GetComponent<PlayerController>().Set_CurrentOrder(enemyOrder); // Tấn công từng kẻ thù
+            if (enemy != null)
+            {
+                Debug.Log("enemy is" + enemy + "??");
+                PlayerController playerController = enemy.GetComponent<PlayerController>();
+                if (playerController != null)
+                {
+                    playerController.Set_CurrentOrder(enemyOrder); // Tấn công từng kẻ thù
+                }
+                else
+                {
+                    Debug.Log("Ko có PlayerCOntroller cho enemy???");
+                }
+            }
+            else
+            {
+                Debug.Log("Không có enemy");
+            }
         }
 
     }

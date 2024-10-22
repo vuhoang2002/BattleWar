@@ -8,25 +8,58 @@ public class PlayerCountDisplay : MonoBehaviour
     public bool isMaxPlayer = false;
     public int playerCount;
 
+    //public GameObject gameManager; // Tham chiếu đến GameManager
+    public Level_War_Mod myLevelMode;
+    public bool isPlayerInWarMod = false;
+    public GameObject loseUi;
+
+    void Start()
+    {
+        // Tìm GameManager trong scene
+        //gameManager = GameObject.Find("GameManager");
+        //myLevelMode = gameManager.GetComponent<Level_War_Mod>();
+
+        myLevelMode.OnBattleStart += HandleBattleStart; // Đăng ký vào sự kiện
+        Debug.Log("Đăng kí sự kiện OnBattleStart");
+
+
+    }
+
     void Update()
     {
-        //int playerCount = GameObject.FindGameObjectsWithTag("Player").Length; // Tìm tất cả đối tượng có tag "Player"
-        playerCountText.text = $"{playerCount}" + "/" + MAX_PLAYER_COUNT; // Cập nhật Text với số lượng player
-        if (playerCount >= MAX_PLAYER_COUNT)
+        playerCountText.text = $"{playerCount}/{MAX_PLAYER_COUNT}"; // Cập nhật Text với số lượng player
+
+        // Cập nhật trạng thái isMaxPlayer
+        isMaxPlayer = playerCount >= MAX_PLAYER_COUNT;
+        if (isPlayerInWarMod)
         {
-            isMaxPlayer = true;// true thì ko thể spawn thêm
+            if (playerCount <= 0)
+            {
+                // thua
+                loseUi.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
-        else
-        {
-            isMaxPlayer = false;
-        }
+
     }
+
     public bool get_isMaxPlayer()
     {
         return isMaxPlayer;
     }
-    public void checkIsMaxPlayer()
-    {
 
+    private void HandleBattleStart()
+    {
+        isPlayerInWarMod = true;
+        // Kiểm tra số lượng người chơi khi trận chiến bắt đầu
     }
+
+    // void OnDestroy()
+    // {
+    //     // Hủy đăng ký sự kiện để tránh lỗi
+    //     if (nyLevelMode != null)
+    //     {
+    //         nyLevelMode.OnBattleStart -= HandleBattleStart;
+    //     }
+    // }
 }

@@ -230,6 +230,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.75
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -266,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 13
-  basic_Cd: 1.7
+  basic_Atk: 12
+  basic_Cd: 1.5
   abl1_Atk: 0
   abl1_Cd: 1
   abl2_Atk: 0
@@ -279,7 +280,7 @@ MonoBehaviour:
   timeToDealDmg: 1.6
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 5
+  extraDmg: 8
 --- !u!114 &967353764837639969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +423,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0037627444, y: 0.027254641}
+  m_Offset: {x: 0.0037627444, y: 0.009898961}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -433,7 +434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18324338, y: 0.22962373}
+  m_Size: {x: 0.18324338, y: 0.49001056}
   m_EdgeRadius: 0
 --- !u!114 &-5350413007710032234
 MonoBehaviour:
@@ -923,6 +924,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2522665407710979415, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3603644581560590512, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: maxArrowDistance
       value: 12
@@ -1009,6 +1014,10 @@ PrefabInstance:
     - target: {fileID: 20937572193683641, guid: 4733d7499d76c2242b7710f1b352a023, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20937572193683641, guid: 4733d7499d76c2242b7710f1b352a023, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6314462516357041074, guid: 4733d7499d76c2242b7710f1b352a023, type: 3}
       propertyPath: m_LocalPosition.x

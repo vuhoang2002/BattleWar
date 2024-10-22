@@ -3422,7 +3422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '-----------/--------
+  m_text: 'WeightClass / UnitRace
 
 '
   m_isRightToLeft: 0

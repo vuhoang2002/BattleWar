@@ -131,12 +131,13 @@ MonoBehaviour:
   isChosen: 0
   isRanger: 0
   id: 
-  moveSpeed: 1
+  moveSpeed: 0.9
   searchRadius: 5
   highPos: -4.5
   lowPos: -2.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -186,7 +187,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 5
+  extraDmg: 3
 --- !u!114 &-7626012630617557650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 400
   deadthObject: {fileID: 8418334740949948419, guid: ddc48407d9a2060489e525c4004cd2cf, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}

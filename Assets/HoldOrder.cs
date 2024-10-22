@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class HoldOrder : MonoBehaviour
 {
@@ -9,10 +10,33 @@ public class HoldOrder : MonoBehaviour
     public bool isHold_Active;
 
 
+    public GameObject players;
+    Player_ListObject player_ListObject;
+    List<PlayerController> playerControllers;
+    public GameObject iconOrderActive;
+
     void Start()
     {
-        // Tìm đối tượng con bằng tên
-        // def_Child = transform.parent.Find("Def_Btn");
+        players = GameObject.Find("PlayerList(Clone)");
+        player_ListObject = new Player_ListObject(); // Khởi tạo player_ListObject
+        StartCoroutine(WaitForPlayerList());
+    }
+
+
+
+
+    private IEnumerator WaitForPlayerList()
+    {
+        while (players == null)
+        {
+            players = GameObject.Find("PlayerList(Clone)");
+            yield return null; // Đợi một frame
+        }
+
+        // Khi tìm thấy GameObject
+        player_ListObject = new Player_ListObject();
+        playerControllers = player_ListObject.FindAllPlayerInList(players);
+        Debug.Log("Đã tìm thấy PlayerList(Clone) và khởi tạo player_ListObject.");
     }
 
     public void HandleButtonClick()
@@ -21,15 +45,13 @@ public class HoldOrder : MonoBehaviour
         def_Child.GetComponent<DefenseOrder>().isDef_Active = false;
         fallBack_Child.GetComponent<FallBackOrder>().isFallBack_Active = false;
         attack_Child.GetComponent<AttackOrder>().isAtk_Active = false;
-
-        // Tìm tất cả các PlayerController
-        PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
-
         // Cập nhật isHold_Order thành true cho tất cả các PlayerController
+        Debug.Log(playerControllers + "pl");
+        playerControllers = FindAllPlayerInList(players);
         foreach (PlayerController playerController in playerControllers)
         {
-
             SetHoldActive(playerController);
+            Show_IconOrderWhenActive(playerController);
             // ("Hold Order!!!");
         }
     }
@@ -64,6 +86,7 @@ public class HoldOrder : MonoBehaviour
             if (pl != null)
             {
                 SetHoldActive(pl);
+                Show_IconOrderWhenActive(pl);
             }
             else
             {
@@ -104,6 +127,7 @@ public class HoldOrder : MonoBehaviour
                 if (pl != null)
                 {
                     SetHoldActive(pl); // Kích hoạt giữ
+                    Show_IconOrderWhenActive(pl);
                 }
                 else
                 {
@@ -111,6 +135,7 @@ public class HoldOrder : MonoBehaviour
                 } //  continue; // Bỏ qua chosenPlayer
             }
         }
+
         ShowOffThisCanva();
         CancelChosen();
 
@@ -122,7 +147,7 @@ public class HoldOrder : MonoBehaviour
         playerController.isAtk_Order = false;   // Tắt tấn công
         playerController.isDef_Order = false;   // Tắt phòng thủ
         playerController.isFallBack_Order = false; // Tắt rút lui
-
+        Show_IconOrderWhenActive(playerController);
         // Lấy tọa độ của đối tượng cha và gán vào hold_Position
         if (playerController.transform.parent != null)
         {
@@ -145,5 +170,35 @@ public class HoldOrder : MonoBehaviour
         childCanva = orderCanva.transform.Find("SelectUnit_Btn");
         childCanva.gameObject.SetActive(false);
 
+    }
+    public void Show_IconOrderWhenActive(PlayerController playerController)
+    {
+        GameObject player = playerController.gameObject;
+        GameObject icon = Instantiate(iconOrderActive, player.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        icon.GetComponent<IconOrder>().SetIconOrder(playerController);
+    }
+    public List<PlayerController> FindAllPlayerInList(GameObject gameObject)
+    {
+        List<PlayerController> playerControllers = new List<PlayerController>();
+
+        // Kiểm tra xem gameObject có phải null không
+        if (gameObject == null)
+        {
+            Debug.LogWarning("GameObject truyền vào là null!");
+            return playerControllers; // Trả về danh sách rỗng
+        }
+
+        foreach (Transform child in gameObject.transform)
+        {
+            PlayerController playerController = child.gameObject.GetComponent<PlayerController>();
+            Debug.Log("pl là " + playerController + " và child: " + child);
+
+            if (playerController != null) // Kiểm tra nếu playerController không null
+            {
+                playerControllers.Add(playerController); // Thêm playerController vào danh sách
+            }
+        }
+
+        return playerControllers;
     }
 }

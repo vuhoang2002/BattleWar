@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3101589768851789864}
   - component: {fileID: 1595400263216099449}
   - component: {fileID: 4036627352614995351}
-  - component: {fileID: 8584019152673889656}
   - component: {fileID: 8121672198642394611}
   - component: {fileID: -448563238530684208}
   - component: {fileID: 6466770467190807954}
@@ -35,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4, y: 0, z: 0}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6710270963127042628}
@@ -116,50 +115,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8584019152673889656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447399120621047007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4606cbb5f7a5481489b4666653320fc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isChosen: 0
-  isRanger: 0
-  id: 
-  moveSpeed: 0.2
-  searchRadius: 5
-  highPos: -4.5
-  lowPos: -2.5
-  minScale: 0.85
-  maxScale: 1.5
-  isAtk_Order: 0
-  isDef_Order: 1
-  isFallBack_Order: 0
-  isHold_Order: 0
-  heal: 5
-  def_Position: {x: 0, y: 0, z: 0}
-  retreat_Position: {x: 0, y: 0, z: 0}
-  hold_Position: {x: 0, y: 0, z: 0}
-  target: {fileID: 0}
-  maxY: {fileID: 0}
-  minY: {fileID: 0}
-  currentDirection: {x: 0, y: 0, z: 0}
-  canChosen: 0
-  timeBwFindTarget: 1
-  timer_FindTarget: 0
-  isRightWay: 1
-  isColliding: 0
-  isDef_Hold: 1
-  isDef_Force: 0
-  thisIsPlayer: 0
-  findTarget: Enemy
-  aliesTarget: Player
-  findTargetCastle: EnemyCastle
 --- !u!114 &8121672198642394611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1500
+  health: 1000
   deadthObject: {fileID: 1396792524635016849, guid: 214da24b39f840b47b35ccdecc76bc48, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -190,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 50
+  basic_Atk: 5
   basic_Cd: 3
   abl1_Atk: 0
   abl1_Cd: 1
@@ -203,7 +158,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 10
+  extraDmg: 5
 --- !u!61 &6466770467190807954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -236,7 +191,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08735663, y: 0.041282184}
+  m_Offset: {x: 0.04938233, y: 0.041282177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -247,7 +202,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25762898, y: 0.35176045}
+  m_Size: {x: 0.69433355, y: 0.35176045}
   m_EdgeRadius: 0
 --- !u!50 &-7590877025822355329
 Rigidbody2D:
@@ -306,12 +261,13 @@ MonoBehaviour:
   isChosen: 0
   isRanger: 0
   id: 
-  moveSpeed: 0.3
+  moveSpeed: 0.5
   searchRadius: 5
   highPos: -2.5
   lowPos: -4.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0

@@ -229,7 +229,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 10
+  extraDmg: 7
 --- !u!114 &1520127181643132607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summondSkull: {fileID: 5361033150008790556}
   summondCount: 0
+  skullOne: {fileID: 0}
+  skullTwo: {fileID: 0}
 --- !u!1 &7710125100288304741
 GameObject:
   m_ObjectHideFlags: 0

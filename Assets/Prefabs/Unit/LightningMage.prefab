@@ -227,7 +227,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 30
+  extraDmg: 18
 --- !u!114 &8112936412830587153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +249,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 160
   deadthObject: {fileID: 1750195513629117230, guid: 628ac75a232dc98488d7a17a8b1e5702, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -638,6 +639,14 @@ PrefabInstance:
       propertyPath: parentObject
       value: 
       objectReference: {fileID: 5799506397286250514}
+    - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+      propertyPath: extraDmg
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+      propertyPath: thunerDmg
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 646784004252996486, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: m_Color.b
       value: 0.80166054

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basic_Atk: 8
-  basic_Cd: 2
+  basic_Cd: 2.5
   abl1_Atk: 10
   abl1_Cd: 9
   abl2_Atk: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abl1: {fileID: 0}
-  extraDmg: 15
+  extraDmg: 8
 --- !u!114 &291363965469236116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   lowPos: -2.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 200
   deadthObject: {fileID: 7135904980677899451, guid: 3487875d98059a04a95e6a9918e22302, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}
@@ -554,6 +555,10 @@ PrefabInstance:
       propertyPath: parentObject
       value: 
       objectReference: {fileID: 3974870113231231300}
+    - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+      propertyPath: extraDmg
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: magicsterOrderLayout
       value: 

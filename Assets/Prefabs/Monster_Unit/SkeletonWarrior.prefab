@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_Atk: 7
+  basic_Atk: 9
   basic_Cd: 1.5
   abl1_Atk: 0
   abl1_Cd: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   lowPos: -4.5
   minScale: 0.85
   maxScale: 1.5
+  order: 0
   isAtk_Order: 0
   isDef_Order: 1
   isFallBack_Order: 0

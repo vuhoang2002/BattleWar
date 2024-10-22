@@ -57,9 +57,21 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         playerList = GameObject.Find("PlayerList(Clone)");
         this.OnUnitSpawned += HandleUnitSpawned;
         cooldownImage.fillAmount = 0;
+        levelWarMod.OnBattleStart += HandleBattleStart;
         // đăng kí sk war mod
 
     }
+
+    private void HandleBattleStart()
+    {
+        //throw new System.NotImplementedException();
+        // yield return new WaitForSeconds(levelWarMod.timePlay);
+        isWarMod = true;
+        cooldownImage.fillAmount = 1f;
+        Debug.Log("Chế độ chiến tranh đã được kích hoạt.");
+
+    }
+
     void Awake()
     {
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
@@ -75,7 +87,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void HandleGameModeChanged_War()
     {
         Debug.Log("Chạy war mode timer");
-        StartCoroutine(On_WarModeActive());
+        //StartCoroutine(On_WarModeActive());
     }
 
     IEnumerator On_WarModeActive()

@@ -68,6 +68,32 @@ public class TagList
     public List<UnitListOrder> my_Units = new List<UnitListOrder>(); // Danh sách các đơn vị tương ứng
     public int unitCount; // Số lượng đơn vị
 }
+public class Player_ListObject
+{
+    public List<PlayerController> FindAllPlayerInList(GameObject gameObject)
+    {
+        List<PlayerController> playerControllers = new List<PlayerController>();
+        playerControllers.Clear();
+
+        foreach (Transform child in gameObject.transform)
+        {
+            try
+            {
+                PlayerController playerController = child.gameObject.GetComponent<PlayerController>();
+                if (playerController != null) // Kiểm tra nếu playerController không null
+                {
+                    playerControllers.Add(playerController); // Thêm playerController vào danh sách
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning("Lỗi khi xử lý GameObject: " + child.gameObject.name + ". Lỗi: " + ex.Message);
+                // Sa ca lay túc tiệp túc tiệp
+            }
+        }
+        return playerControllers;
+    }
+}
 
 
 

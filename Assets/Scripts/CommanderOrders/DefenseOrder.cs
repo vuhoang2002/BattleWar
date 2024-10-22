@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class DefenseOrder : MonoBehaviour
 {
@@ -7,10 +8,38 @@ public class DefenseOrder : MonoBehaviour
     public GameObject fallBack_Child;
     public GameObject hold_Child;
     public bool isDef_Active;
-
+    public GameObject players;
+    Player_ListObject player_ListObject = new Player_ListObject();
+    List<PlayerController> playerControllers;
+    public GameObject iconOrderActive;
+    public void Show_IconOrderWhenActive(PlayerController playerController)
+    {
+        GameObject player = playerController.gameObject;
+        GameObject icon = Instantiate(iconOrderActive, player.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        icon.GetComponent<IconOrder>().SetIconOrder(playerController);
+    }
     void Start()
     {
-        // Tìm đối tượng con bằng tên
+        players = GameObject.Find("PlayerList(Clone)");
+
+        StartCoroutine(WaitForPlayerList());
+    }
+
+
+
+
+    private IEnumerator WaitForPlayerList()
+    {
+        while (players == null)
+        {
+            players = GameObject.Find("PlayerList(Clone)");
+            yield return null; // Đợi một frame
+        }
+
+        // Khi tìm thấy GameObject
+        player_ListObject = new Player_ListObject();
+        playerControllers = player_ListObject.FindAllPlayerInList(players);
+        Debug.Log("Đã tìm thấy PlayerList(Clone) và khởi tạo player_ListObject.");
     }
 
     public void HandleButtonClick()
@@ -21,12 +50,13 @@ public class DefenseOrder : MonoBehaviour
         hold_Child.GetComponent<HoldOrder>().isHold_Active = false;
 
         // Tìm tất cả các PlayerController
-        PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
-
+        playerControllers = player_ListObject.FindAllPlayerInList(players);
         // Cập nhật isDef_Order thành true cho tất cả các PlayerController
         foreach (PlayerController playerController in playerControllers)
         {
             SetDefActive(playerController);
+            Show_IconOrderWhenActive(playerController);
+
         }
     }
 
@@ -55,6 +85,7 @@ public class DefenseOrder : MonoBehaviour
             if (pl != null)
             {
                 SetDefActive(pl);
+                Show_IconOrderWhenActive(pl);
             }
             else
             {
@@ -85,6 +116,7 @@ public class DefenseOrder : MonoBehaviour
                 if (pl != null)
                 {
                     SetDefActive(pl);
+                    Show_IconOrderWhenActive(pl);
                 }
                 else
                 {

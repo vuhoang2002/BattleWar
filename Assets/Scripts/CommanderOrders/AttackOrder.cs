@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 public class AttackOrder : MonoBehaviour
 {
     //public GameObject Def_Btn;  // Sử dụng GameObject thay vì Object
@@ -8,13 +9,58 @@ public class AttackOrder : MonoBehaviour
     public GameObject hold_Child;
     public bool isAtk_Active;
     public List<UnitListOrder> units;
+    public GameObject players;
+    Player_ListObject player_ListObject;
+    List<PlayerController> playerControllers;
+    public GameObject iconOrderActive;
+    public void Show_IconOrderWhenActive(PlayerController playerController)
+    {
+        if (iconOrderActive == null)
+        {
+            Debug.LogError("iconOrderActive chưa được gán trong Inspector!");
+            return; // Dừng thực hiện nếu iconOrderActive là null
+        }
 
+        if (playerController == null)
+        {
+            Debug.LogError("playerController là null!");
+            return; // Dừng thực hiện nếu playerController là null
+        }
+
+        GameObject icon = Instantiate(iconOrderActive, playerController.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        IconOrder iconOrderComponent = icon.GetComponent<IconOrder>();
+        if (iconOrderComponent != null)
+        {
+            iconOrderComponent.SetIconOrder(playerController);
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy IconOrder component trên icon.");
+        }
+    }
     void Start()
     {
-        // Tìm đối tượng con bằng tên
-        //def_Child= transform.parent.Find("Def_Btn");
+        players = GameObject.Find("PlayerList(Clone)");
+        player_ListObject = new Player_ListObject(); // Khởi tạo player_ListObject
+
+        StartCoroutine(WaitForPlayerList());
+    }
 
 
+
+
+    private IEnumerator WaitForPlayerList()
+    {
+        while (players == null)
+        {
+            players = GameObject.Find("PlayerList(Clone)");
+            yield return null; // Đợi một frame
+        }
+
+        // Khi tìm thấy GameObject
+        player_ListObject = new Player_ListObject();
+        playerControllers = player_ListObject.FindAllPlayerInList(players);
+        Debug.Log("Đã tìm thấy PlayerList(Clone) và khởi tạo player_ListObject.");
     }
 
     public void HandleButtonClick()
@@ -25,12 +71,13 @@ public class AttackOrder : MonoBehaviour
         hold_Child.GetComponent<HoldOrder>().isHold_Active = false;
 
         // Tìm tất cả các PlayerController
-        PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
-
+        // PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
+        playerControllers = player_ListObject.FindAllPlayerInList(players);
         // Cập nhật isAtk_Order thành true cho tất cả các PlayerController
         foreach (PlayerController playerController in playerControllers)
         {// toàn bộ player trên sân
             SetAttack_Active(playerController);
+            Show_IconOrderWhenActive(playerController);
             //   ("Attack Order!!!");
         }
     }
@@ -63,6 +110,7 @@ public class AttackOrder : MonoBehaviour
             if (pl != null)
             {
                 SetAttack_Active(pl); // Kích hoạt tấn công
+                Show_IconOrderWhenActive(pl);
             }
             else
             {
@@ -95,7 +143,8 @@ public class AttackOrder : MonoBehaviour
                 PlayerController pl = unit.prefab.GetComponent<PlayerController>();
                 if (pl != null)
                 {
-                    SetAttack_Active(pl); // Kích hoạt tấn công
+                    SetAttack_Active(pl);
+                    Show_IconOrderWhenActive(pl); // Kích hoạt tấn công
                 }
             }
         }
