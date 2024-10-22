@@ -15,7 +15,7 @@ public class Level_War_Mod : MonoBehaviour
     private EnemyManager enemyManager;
     private UnitListManager playerManager;
     public int currentGold = 10000;
-    public Text title;
+    public string title;
     public int timePlay;
     //public GameObject enemyList;
     public float elapsedTime = 0f; // Biến theo dõi thời gian đã trôi qua
@@ -26,11 +26,13 @@ public class Level_War_Mod : MonoBehaviour
     public event GameModeChangedHandler_War OnGameModeChanged_War;
     public event GameModeChangedHandler_War OnBattleStart;
     public GameObject WarUI;
+    public GameObject BeginUI;// mission to win
 
 
     void Start()
     {
         // Thiết lập tiêu đề
+        Time.timeScale = 0f;
         Find_NecescaryObject();
         Find_UnitEnemyInThisMath();
         if (gameMod == GameMod.War)
@@ -41,6 +43,9 @@ public class Level_War_Mod : MonoBehaviour
             GameObject battleCanva = GameObject.Find("BattleCanva");
             GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
             War_UI.transform.SetParent(battleCanva.transform);
+            GameObject beginUI_Ins = Instantiate(BeginUI, battleCanva.transform.position, Quaternion.identity);
+            beginUI_Ins.transform.SetParent(battleCanva.transform);
+            beginUI_Ins.GetComponent<BeginCanva>().SetTitleMissiton(title);
             StartCoroutine(On_WarModeActive(timePlay, War_UI));
         }
 
@@ -51,7 +56,7 @@ public class Level_War_Mod : MonoBehaviour
         gameMod = GameMod.War;
         if (title != null)
         {
-            title.text = "Chiến thắng với " + currentGold + " vàng";
+            title = "Chiến thắng với " + currentGold + " vàng";
         }
         // if (enemyList == null)
         // {

@@ -71,8 +71,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMod: 3
   currentGold: 2000
-  title: {fileID: 0}
-  timePlay: 40
+  title: 
+  timePlay: 5
   elapsedTime: 0
   unitDataPanel: {fileID: 5440324210385773804, guid: d5923fdf7bbe422419b605e14bbcb74f, type: 3}
   currentMatchUnitData: []
+  WarUI: {fileID: 2140477294476434926, guid: 8f24d0a5b7b081c418069c2a5ea473b2, type: 3}
+  BeginUI: {fileID: 8658224419033560344, guid: 33e7b17951c36dd48b47856b399d25a6, type: 3}

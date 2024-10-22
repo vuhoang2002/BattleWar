@@ -253,8 +253,11 @@ public class EnemyManager : MonoBehaviour
                 enemyCountAll--;
                 if (isWarMode && enemyCountAll <= 0)
                 {
-                    victoryUi.SetActive(true);
-                    Time.timeScale = 0f;
+                    // GameObject battleCanva = GameObject.Find("BattleCanva");
+                    // victoryUi = battleCanva.transform.Find("VictoryUI").gameObject;
+                    // victoryUi.SetActive(true);
+                    // Time.timeScale = 0f;
+                    new Victory_Or_Loss().Get_Victory();
                 }
 
                 // Tìm Transform của khu vực và tạo lại
