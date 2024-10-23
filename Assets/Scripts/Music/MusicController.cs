@@ -6,35 +6,42 @@ public class MusicController : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject unActiveImagine;
+    public bool isMusic;
     void Start()
     {
-        if (MusicManager.isMuted_Music)
+        if (isMusic)
         {
-            unActiveImagine.SetActive(true);
+            if (MusicManager.isMuted_Music)
+            {
+                unActiveImagine.SetActive(true);
+            }
+            else
+            {
+                unActiveImagine.SetActive(false);
+            }
         }
         else
         {
-            unActiveImagine.SetActive(false);
-        }
-    }
-    // Update is called once per frame
-    // public void Mute()
-    // {
-    //     MusicManager.instance.Mute(); // Tắt âm thanh
-    // }
 
-    // public void Unmute()
-    // {
-    //     MusicManager.instance.Unmute();
-    //     // audioSource.Play(); // Mở âm thanh
-    // }
+            if (MusicManager.isMuted_Sound)
+            {
+                unActiveImagine.SetActive(true);
+            }
+            else
+            {
+                unActiveImagine.SetActive(false);
+            }
+        }
+
+
+    }
 
     public void ToggleMute_Music()
     {
         MusicManager.musicTheme.ToggleMute();
         SetUIActive_Music();
     }
-    public void SetUIActive_Music()
+    private void SetUIActive_Music()
     {
         if (MusicManager.isMuted_Music)
         {
@@ -45,8 +52,9 @@ public class MusicController : MonoBehaviour
             unActiveImagine.SetActive(false);
         }
     }
-    public void SetUIActive_Sound()
+    private void SetUIActive_Sound()
     {
+        Debug.Log(MusicManager.isMuted_Sound + "Is mute sound");
         if (MusicManager.isMuted_Sound)
         {
             unActiveImagine.SetActive(true);
@@ -59,6 +67,6 @@ public class MusicController : MonoBehaviour
     public void ToggleMute_Sound()
     {
         MusicManager.soundTheme.ToggleMute_Sound();
-        SetUIActive_Music();
+        SetUIActive_Sound();
     }
 }

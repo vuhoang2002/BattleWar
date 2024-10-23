@@ -548,7 +548,8 @@ PrefabInstance:
       objectReference: {fileID: 899633302}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
-      value: "M\u1ED9t \xE1nh nh\xECn c\xF3 th\u1EC3 h\xF3a \u0111\xE1"
+      value: "M\u1ED9t \xE1nh nh\xECn c\xF3 th\u1EC3 h\xF3a \u0111\xE1/ th\u1EEBa
+        th\u1EDDi gian s\u1EBD l\xE0m/"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1449,7 +1450,7 @@ PrefabInstance:
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
       value: "Th\u1EBB n\xE0y c\u01B0\u1EDFng h\xF3a s\u1EE9c m\u1EA1nh c\u1EE7a
-        FireVizard"
+        FireVizard /\xFD t\u01B0\u1EDFng ph\xE1t tri\u1EC3n th\xEAm/"
       objectReference: {fileID: 0}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: cardType
@@ -2950,6 +2951,7 @@ GameObject:
   - component: {fileID: 1893316048}
   - component: {fileID: 1893316047}
   - component: {fileID: 1893316046}
+  - component: {fileID: 1893316050}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3045,6 +3047,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1893316050}
+        m_TargetAssemblyTypeName: SoundPlay, Assembly-CSharp
+        m_MethodName: PlayBtnSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 4ef22ed5d5b50cd448d377cfe9eb8b82, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1893316048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3083,6 +3097,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893316044}
   m_CullTransparentMesh: 1
+--- !u!114 &1893316050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893316044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d890444f6e0ed7469d1362647376a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip_Active: {fileID: 0}
+  audioClip_unActive: {fileID: 0}
 --- !u!1001 &1988538269
 PrefabInstance:
   m_ObjectHideFlags: 0

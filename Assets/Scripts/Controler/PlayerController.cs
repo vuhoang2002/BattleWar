@@ -128,9 +128,6 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
-        //player = chosenPlayer;
-        // moveSpeed = UnityEngine.Random.Range(final_Speed - 0.75f, final_Speed + 0.75f);
-
         if (isChosen)
         {
             MoveByJoystick();

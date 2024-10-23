@@ -934,7 +934,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1078367814}
+    m_TransformParent: {fileID: 592848321}
     m_Modifications:
     - target: {fileID: 742670195990582979, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: cum
@@ -958,7 +958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_AnchorMin.x
@@ -966,15 +966,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_LocalScale.x
@@ -1018,11 +1018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50.00006
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1050,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7091107583145133628, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: unitTag
-      value: Skl_Mage
+      value: SkeletonMagician
       objectReference: {fileID: 0}
     - target: {fileID: 7091107583145133628, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: isSelection
@@ -1949,7 +1949,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 244366819}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
 --- !u!224 &592848321 stripped
@@ -2758,7 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767535a5366a59248b051b5db198ac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenceLevel: Lv3
+  scenceLevel: Lv2
 --- !u!114 &928047508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,7 +2774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4995e88248dd4e49b75a45ca06ad81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_sceneName: Lv3
+  current_sceneName: Lv2
 --- !u!114 &928047509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3377,9 +3380,6 @@ PrefabInstance:
       addedObject: {fileID: 278854676}
     - targetCorrespondingSourceObject: {fileID: 5911695458081664105, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 244366819}
-    - targetCorrespondingSourceObject: {fileID: 5911695458081664105, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 134722913}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
@@ -3412,6 +3412,7 @@ GameObject:
   - component: {fileID: 1115084228}
   - component: {fileID: 1115084227}
   - component: {fileID: 1115084230}
+  - component: {fileID: 1115084231}
   m_Layer: 5
   m_Name: BackToStart
   m_TagString: Untagged
@@ -3494,6 +3495,18 @@ MonoBehaviour:
           m_StringArgument: StartScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1115084231}
+        m_TargetAssemblyTypeName: SoundPlay, Assembly-CSharp
+        m_MethodName: PlayBtnSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 4ef22ed5d5b50cd448d377cfe9eb8b82, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1115084228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3545,6 +3558,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current_sceneName: 
+--- !u!114 &1115084231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115084225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d890444f6e0ed7469d1362647376a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip_Active: {fileID: 0}
+  audioClip_unActive: {fileID: 0}
 --- !u!1001 &1159020050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3843,6 +3870,7 @@ GameObject:
   - component: {fileID: 1222687391}
   - component: {fileID: 1222687390}
   - component: {fileID: 1222687393}
+  - component: {fileID: 1222687394}
   m_Layer: 5
   m_Name: ChangeCard
   m_TagString: Untagged
@@ -3925,6 +3953,18 @@ MonoBehaviour:
           m_StringArgument: CardSelectionUnit
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1222687394}
+        m_TargetAssemblyTypeName: SoundPlay, Assembly-CSharp
+        m_MethodName: PlayBtnSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 4ef22ed5d5b50cd448d377cfe9eb8b82, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1222687391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3976,6 +4016,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current_sceneName: 
+--- !u!114 &1222687394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222687388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d890444f6e0ed7469d1362647376a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip_Active: {fileID: 0}
+  audioClip_unActive: {fileID: 0}
 --- !u!1 &1290399698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4375,7 +4429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767535a5366a59248b051b5db198ac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenceLevel: Lv2
+  scenceLevel: Lv3
 --- !u!114 &1407593702
 MonoBehaviour:
   m_ObjectHideFlags: 0

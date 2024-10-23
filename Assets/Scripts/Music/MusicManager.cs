@@ -67,14 +67,14 @@ public class MusicManager : MonoBehaviour
 
     }
 
-    public void Mute()
+    public void Mute_Music()
     {
         isMuted_Music = true; // Đặt trạng thái là tắt âm
         //audioSource.mute = true; // Tắt âm thanh
         audioSource.Stop();
     }
 
-    public void Unmute()
+    public void Unmute_Music()
     {
         isMuted_Music = false; // Đặt trạng thái là bật âm
         audioSource.mute = false; // Mở âm thanh
@@ -85,35 +85,41 @@ public class MusicManager : MonoBehaviour
     public void ToggleMute()
     {
         if (isMuted_Music)
-            Unmute(); // Nếu đang tắt, gọi Unmute
+            Unmute_Music(); // Nếu đang tắt, gọi Unmute
         else
-            Mute(); // Nếu đang bật, gọi Mute
+            Mute_Music(); // Nếu đang bật, gọi Mute
     }
     public void Mute_Sound()
     {
         isMuted_Sound = true; // Đặt trạng thái là tắt âm
-        //audioSource.mute = true; // Tắt âm thanh
-        audioSource.Stop();
+        soundTheme.audioSource.mute = true; // Tắt âm thanh
+                                            // audioSource.Stop();
+        Debug.Log("Mute");
     }
 
     public void Unmute_Sound()
     {
+        Debug.Log("un mute");
         isMuted_Sound = false; // Đặt trạng thái là bật âm
-        audioSource.mute = false; // Mở âm thanh
-        audioSource.Play();
-
+        soundTheme.audioSource.mute = false; // Mở âm thanh
+                                             //  audioSource.Play();
     }
 
     public void ToggleMute_Sound()
     {
+        Debug.Log("toggle mute" + isMuted_Sound);
         if (isMuted_Sound)
-            Unmute(); // Nếu đang tắt, gọi Unmute
+        {
+            Unmute_Sound(); // Nếu đang tắt, gọi Unmu
+        }
         else
-            Mute(); // Nếu đang bật, gọi Mute
+        {
+            Mute_Sound(); // Nếu đang bật, gọi Mute
+        }
     }
     public void PlaySound(AudioClip gameplaySound)
     {
-        soundTheme.audioSource.Stop(); // Dừng nhạc nền hiện tại
+        //soundTheme.audioSource.Stop(); // Dừng nhạc nền hiện tại
         soundTheme.audioSource.clip = gameplaySound; // Đặt âm thanh mới
         soundTheme.audioSource.Play(); // Phát âm thanh mới
     }
