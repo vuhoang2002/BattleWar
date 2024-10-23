@@ -5,9 +5,17 @@ using UnityEngine;
 public class MusicController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject unActiveImagine;
     void Start()
     {
-
+        if (MusicManager.isMuted_Music)
+        {
+            unActiveImagine.SetActive(true);
+        }
+        else
+        {
+            unActiveImagine.SetActive(false);
+        }
     }
     // Update is called once per frame
     // public void Mute()
@@ -21,8 +29,36 @@ public class MusicController : MonoBehaviour
     //     // audioSource.Play(); // Mở âm thanh
     // }
 
-    public void ToggleMute()
+    public void ToggleMute_Music()
     {
-        MusicManager.instance.ToggleMute();
+        MusicManager.musicTheme.ToggleMute();
+        SetUIActive_Music();
+    }
+    public void SetUIActive_Music()
+    {
+        if (MusicManager.isMuted_Music)
+        {
+            unActiveImagine.SetActive(true);
+        }
+        else
+        {
+            unActiveImagine.SetActive(false);
+        }
+    }
+    public void SetUIActive_Sound()
+    {
+        if (MusicManager.isMuted_Sound)
+        {
+            unActiveImagine.SetActive(true);
+        }
+        else
+        {
+            unActiveImagine.SetActive(false);
+        }
+    }
+    public void ToggleMute_Sound()
+    {
+        MusicManager.soundTheme.ToggleMute_Sound();
+        SetUIActive_Music();
     }
 }

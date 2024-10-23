@@ -12,10 +12,10 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        MusicManager.instance.ChangeAudioClip(gameplayMusic);
-        if (!MusicManager.isMuted)
+        MusicManager.musicTheme.ChangeAudioClip(gameplayMusic);
+        if (!MusicManager.isMuted_Music)
         {
-            MusicManager.instance.ChangeToGameplayMusic(gameplayMusic);
+            MusicManager.musicTheme.ChangeToGameplayMusic(gameplayMusic);
         }
     }
 }

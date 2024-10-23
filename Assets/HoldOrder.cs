@@ -14,6 +14,7 @@ public class HoldOrder : MonoBehaviour
     Player_ListObject player_ListObject;
     List<PlayerController> playerControllers;
     public GameObject iconOrderActive;
+    public AudioClip holdSound;
 
     void Start()
     {
@@ -53,6 +54,11 @@ public class HoldOrder : MonoBehaviour
             SetHoldActive(playerController);
             Show_IconOrderWhenActive(playerController);
             // ("Hold Order!!!");
+        }
+        if (holdSound != null)
+        {
+            // MusicManager.soundTheme.GetComponent<AudioSource>().PlayOneShot(attackSound);
+            MusicManager.soundTheme.ChangeToGameplayMusic(holdSound);
         }
     }
 

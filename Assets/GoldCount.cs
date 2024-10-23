@@ -19,7 +19,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
     public EnemyBehavius enemyBehavius;
     public TextMeshProUGUI upgradeGold_btn;
     public int goldAge = 0;
-    public Level_War_Mod levelWarMod;
+    public Level_Controller levelWarMod;
     public bool isWarMod = false;
 
 
@@ -33,7 +33,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
         enemyBehavius = FindAnyObjectByType<EnemyBehavius>();
         upgradeGold_btn.text = upgrade_Gold_Value.ToString();
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
-        levelWarMod = gameManager.GetComponentInChildren<Level_War_Mod>();
+        levelWarMod = gameManager.GetComponentInChildren<Level_Controller>();
         Debug.Log(levelWarMod.gameMod);
         if (levelWarMod.gameMod == GameMod.War)
         {
@@ -107,8 +107,12 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
                 // ChangeUpgradeGoldValue(old_Max_Gold);
                 upgrade_Gold_Value = (int)(MAX_GOLD * (0.75f));
                 upgradeGold_btn.text = upgrade_Gold_Value.ToString(); ;
-
+                GetComponent<SoundPlay>().PlayBtnSound(true);
                 goldAge++;
+            }
+            else
+            {
+                GetComponent<SoundPlay>().PlayBtnSound(false);
             }
         }
         else

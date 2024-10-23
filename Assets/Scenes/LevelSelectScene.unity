@@ -2758,7 +2758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767535a5366a59248b051b5db198ac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenceLevel: TestMoveControler
+  scenceLevel: Lv3
 --- !u!114 &928047508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4995e88248dd4e49b75a45ca06ad81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_sceneName: 
+  current_sceneName: Lv3
 --- !u!114 &928047509
 MonoBehaviour:
   m_ObjectHideFlags: 0

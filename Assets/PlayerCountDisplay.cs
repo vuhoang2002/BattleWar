@@ -9,7 +9,7 @@ public class PlayerCountDisplay : MonoBehaviour
     public int playerCount;
 
     public GameObject gameManager; // Tham chiếu đến GameManager
-    public Level_War_Mod myLevelMode;
+    public Level_Controller myLevelMode;
     public bool isPlayerInWarMod = false;
     public GameObject loseUi;
 
@@ -17,7 +17,7 @@ public class PlayerCountDisplay : MonoBehaviour
     {
         // Tìm GameManager trong scene
         gameManager = GameObject.Find("GAME_MANAGER");
-        myLevelMode = gameManager.GetComponent<Level_War_Mod>();
+        myLevelMode = gameManager.GetComponent<Level_Controller>();
 
         myLevelMode.OnBattleStart += HandleBattleStart; // Đăng ký vào sự kiện
         Debug.Log("Đăng kí sự kiện OnBattleStart");
@@ -36,6 +36,7 @@ public class PlayerCountDisplay : MonoBehaviour
             if (playerCount <= 0)
             {
                 // thua
+                Debug.Log("Thua");
                 new Victory_Or_Loss().Get_Loss();
             }
         }

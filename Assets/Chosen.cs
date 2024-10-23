@@ -31,23 +31,33 @@ public class Chosen : MonoBehaviour, IPointerClickHandler
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
                 GameObject player = transform.parent.gameObject;
-                Debug.Log("GameObject clicked via touch: " + gameObject.name);
+                //Debug.Log("GameObject clicked via touch: " + gameObject.name);
+
+
                 if (player.gameObject.CompareTag("Player"))
                 {
+                    PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+
+                    // Sử dụng vòng lặp foreach để duyệt qua từng PlayerController
+                    foreach (PlayerController playerController in playerControllers)
+                    {
+                        // Thực hiện hành động cần thiết với từng playerController
+                        playerController.Set_isSelect(false); // Giả sử bạn có phương thức PerformAction
+                    }
                     if (player.GetComponent<PlayerController>().canChosen)
                     {
                         Collider collider = GetComponent<Collider>();
                         //isChosen = true;
                         player.GetComponent<PlayerController>().MoveCamToSelectUnit();
                         player.GetComponent<PlayerController>().Show_OrderCanva();
-                        Debug.Log(" Đã chạm " + gameObject);
+                        player.GetComponent<PlayerController>().Set_isSelect(true);
                     }
                 }
             }
         }
     }
 
-    private bool IsPointerOverButton(Vector2 touchPosition)
+    public bool IsPointerOverButton(Vector2 touchPosition)
     {
         // Tạo một PointerEventData từ vị trí chạm
         PointerEventData pointerData = new PointerEventData(EventSystem.current)

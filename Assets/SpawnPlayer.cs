@@ -39,7 +39,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject playerList;
     public delegate void UnitSpawnedHandler(GameObject newUnit, string unitId);
     public event UnitSpawnedHandler OnUnitSpawned;
-    public Level_War_Mod levelWarMod;
+    public Level_Controller levelWarMod;
     public bool isWarMod = false;
 
     private void Start()
@@ -75,7 +75,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     void Awake()
     {
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
-        levelWarMod = gameManager.GetComponentInChildren<Level_War_Mod>();
+        levelWarMod = gameManager.GetComponentInChildren<Level_Controller>();
         if (levelWarMod.gameMod == GameMod.War)
         {
             levelWarMod.OnGameModeChanged_War += HandleGameModeChanged_War;
@@ -92,7 +92,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     IEnumerator On_WarModeActive()
     {
-        yield return new WaitForSeconds(levelWarMod.timePlay);
+        yield return new WaitForSeconds(levelWarMod.timer);
         isWarMod = true;
         cooldownImage.fillAmount = 1f;
         Debug.Log("Chế độ chiến tranh đã được kích hoạt.");
@@ -253,6 +253,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // Thiết lập vị trí spawn ngẫu nhiên
         if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold < priceUnit || isWarMod)
         {
+            GetComponent<SoundPlay>().PlayBtnSound(false);
             return;
         }
 
@@ -281,12 +282,14 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 unitListManager.CreatDef(prefabToSpawn.name);
                 OnUnitSpawned?.Invoke(newUnit, creat_ID_For_Unit);
                 GOLD_Counter.GetComponent<GoldCount>().currentGold -= priceUnit;
+                GetComponent<SoundPlay>().PlayBtnSound(true);
                 StartCoroutine(CooldownRoutine());
 
             }
         }
         else
         {
+            GetComponent<SoundPlay>().PlayBtnSound(false);
         }
     }
 

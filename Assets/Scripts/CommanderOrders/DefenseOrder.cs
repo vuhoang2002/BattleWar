@@ -12,6 +12,7 @@ public class DefenseOrder : MonoBehaviour
     Player_ListObject player_ListObject = new Player_ListObject();
     List<PlayerController> playerControllers;
     public GameObject iconOrderActive;
+    public AudioClip defendSound;
     public void Show_IconOrderWhenActive(PlayerController playerController)
     {
         GameObject player = playerController.gameObject;
@@ -57,6 +58,11 @@ public class DefenseOrder : MonoBehaviour
             SetDefActive(playerController);
             Show_IconOrderWhenActive(playerController);
 
+        }
+        if (defendSound != null)
+        {
+            // MusicManager.soundTheme.GetComponent<AudioSource>().PlayOneShot(attackSound);
+            MusicManager.soundTheme.ChangeToGameplayMusic(defendSound);
         }
     }
 

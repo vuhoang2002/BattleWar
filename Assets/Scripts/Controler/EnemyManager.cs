@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -32,7 +33,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyList;
     public int enemyCountAll;
     public int enemyStrength;
-    Level_War_Mod myLevelMode;
+    Level_Controller myLevelMode;
     private bool isWarMode;
     public GameObject victoryUi;
 
@@ -58,7 +59,7 @@ public class EnemyManager : MonoBehaviour
             enemyList = GameObject.Find("EnemyList(Clone)");
         }
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
-        myLevelMode = gameManager.GetComponent<Level_War_Mod>();
+        myLevelMode = gameManager.GetComponent<Level_Controller>();
         myLevelMode.OnBattleStart += HandleBattleStart;
 
     }
@@ -166,6 +167,77 @@ public class EnemyManager : MonoBehaviour
             enemyName = enemy.enemyPrefab.name; // Trả về tên prefab
             SpawnEnemy(enemyName, count);
         }
+    }
+    public GameObject SpawnEnemy2(int enemyIndex, int count)
+    {
+        // Kiểm tra chỉ số enemyIndex hợp lệ
+        if (enemyIndex < 0 || enemyIndex >= enemyType.Count)
+        {
+            Debug.LogWarning("Enemy index out of range.");
+            return null; // Trả về null nếu chỉ số không hợp lệ
+        }
+        GameObject enemySpawn = null;
+        // Lấy tên prefab của enemy
+        EnemyType enemy = enemyType[enemyIndex];
+        string enemyName;
+        if (enemy.isInCurrentMatch)
+        {
+            enemyName = enemy.enemyPrefab.name; // Trả về tên prefab
+            enemySpawn = SpawnEnemy2(enemyName, count);
+        }
+        return enemySpawn;
+    }
+
+    public GameObject SpawnEnemy2(string enemyName, int index)
+    {
+        // Kiểm tra nếu tên enemy hợp lệ
+        if (!string.IsNullOrEmpty(enemyName))
+        {
+            GameObject newUnit = null;
+            for (int i = 0; i < index; i++)
+            {
+                // Tính toán vị trí spawn Y ngẫu nhiên
+                float positionSpawn_Y = UnityEngine.Random.Range(lowest_Y, highest_Y);
+                Vector3 spawnPosition = new Vector3(positionSpawn_X, positionSpawn_Y, 0f);
+
+                // Spawn prefab enemy
+                GameObject enemyPrefab = GetEnemyPrefabByName(enemyName);
+
+                if (enemyPrefab != null)
+                {
+                    newUnit = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity); // Spawn prefab
+                    newUnit.transform.SetParent(enemyList.transform);
+                    // Gán ID cho đơn vị mới
+                    string creat_ID_For_Unit = "E" + nextId; // Tạo ID với chữ "E" trước
+                    nextId++; // Tăng ID cho lần tạo tiếp theo
+
+                    // Nếu cần, có thể gán ID cho đối tượng mới
+                    PlayerController enemyController = newUnit.GetComponent<PlayerController>();
+                    if (enemyController != null)
+                    {
+                        enemyController.id = creat_ID_For_Unit; // Gán ID cho enemy
+                        // chuyển hóa đối tượng thành enemy
+                        enemyController.Change_Prefab_To_Enemy();
+                    }
+
+                    // Thêm đơn vị vào danh sách của TagList tương ứng
+                    AddUnitToTagList(enemyName, enemyController, newUnit);
+                    // Gọi hàm để thêm đơn vị vào danh sách
+                }
+                else
+                {
+                    Debug.LogWarning($"No prefab found for enemy name: {enemyName}");
+                }
+            }
+            // Create_defPosition();
+            CreatDef(enemyName);
+            return newUnit;
+        }
+        else
+        {
+            Debug.LogWarning("Enemy name is null or empty.");
+        }
+        return null;
 
     }
 
@@ -253,10 +325,6 @@ public class EnemyManager : MonoBehaviour
                 enemyCountAll--;
                 if (isWarMode && enemyCountAll <= 0)
                 {
-                    // GameObject battleCanva = GameObject.Find("BattleCanva");
-                    // victoryUi = battleCanva.transform.Find("VictoryUI").gameObject;
-                    // victoryUi.SetActive(true);
-                    // Time.timeScale = 0f;
                     new Victory_Or_Loss().Get_Victory();
                 }
 
@@ -369,5 +437,29 @@ public class EnemyManager : MonoBehaviour
         fallBack_Order = false;
         hold_Order = true;
         // tạo hold_Position nữa
+    }
+    public GameObject SpawnUnit_ByPrefab(GameObject bossunit)
+    {
+        float positionSpawn_Y = UnityEngine.Random.Range(lowest_Y, highest_Y);
+        Vector3 spawnPosition = new Vector3(positionSpawn_X, positionSpawn_Y, 0f);
+        GameObject newUnit = Instantiate(bossunit, spawnPosition, Quaternion.identity); // Spawn prefab
+        newUnit.transform.SetParent(enemyList.transform);
+        // Gán ID cho đơn vị mới
+        string creat_ID_For_Unit = "E" + nextId; // Tạo ID với chữ "E" trước
+        nextId++; // Tăng ID cho lần tạo tiếp theo
+
+        // Nếu cần, có thể gán ID cho đối tượng mới
+        PlayerController enemyController = newUnit.GetComponent<PlayerController>();
+        if (enemyController != null)
+        {
+            enemyController.id = creat_ID_For_Unit; // Gán ID cho enemy
+                                                    // chuyển hóa đối tượng thành enemy
+            enemyController.Change_Prefab_To_Enemy();
+        }
+
+        // Thêm đơn vị vào danh sách của TagList tương ứng
+        AddUnitToTagList(bossunit.name, enemyController, newUnit);
+        // Gọi hàm để thêm đơn vị vào danh sách
+        return newUnit;
     }
 }

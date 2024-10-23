@@ -54,11 +54,12 @@ public class EnemyBehavius : MonoBehaviour
     {
         while (true)
         {
-            if (gameMod == GameMod.War)
+            if (gameMod == GameMod.War || gameMod == GameMod.Survival)
             {
                 yield break;// dừng coroutine ở chế độ chiến tranh
                 // hành vi được dựa trên cod bên WarMod
             }
+
             //UpdateEnemyTroopCount(); // Cập nhật số lượng quân địch nếu cần
             // CheckOrderTransition(); // Kiểm tra điều kiện chuyển đổi lệnh
             CurrentEnemyOrder();

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour, IPointerClickHandler
 {
     public bool isChosen = false;
-    private bool isSelect = false;
+    public bool isSelect = false;
     public bool isRanger = false;
     public string id; //id cho player
     public float moveSpeed = 1f;
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     private Vector2 previousPosition;
     //  private bool isTest;
     public static GameObject chosenPlayer;
+    public static GameObject selectPlayer;
     public GameObject player;
     //
     public bool thisIsPlayer = true;
@@ -76,6 +77,9 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public string aliesTarget = "Player";
     public string findTargetCastle = "EnemyCastle";
     private bool isShowOnCard = false;
+    public delegate void SelectionChangedEventHandler(bool isSelected);
+    public event SelectionChangedEventHandler OnSelectionChanged;
+    public GameObject cursorSelect;
 
 
     void Start()
@@ -115,9 +119,12 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             lowPos = maxY.position.y;
             //def_Position = new Vector3(0, (highPos + lowPos) / 2, 0);
         }
+        OnSelectionChanged += HandleSelectionChanged;
         //Change_Prefab_To_Enemy();
 
     }
+
+
 
     void Update()
     {
@@ -782,6 +789,11 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         // playerHasBeenChosen=this.gameObject;
         return chosenPlayer;
     }
+    public void SetChosenPlayer(GameObject gameObject)
+    {
+        // playerHasBeenChosen=this.gameObject;
+        chosenPlayer = gameObject;
+    }
 
     public void SetID(string id)
     {
@@ -858,6 +870,79 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
 
 
     // hiển thị unit lên trên
+    public GameObject Get_SelectPlayer()
+    {
+        //selectPlayer = this.gameObject;
+        return selectPlayer;
+    }
+    public GameObject Get_SelectPlayerIsThis()
+    {
+        selectPlayer = this.gameObject;
+        return selectPlayer;
+    }
+    public void Set_SelectPlayer(GameObject gameObject)
+    {
+        if (gameObject.GetComponent<PlayerController>() != null)
+        {
+            selectPlayer = gameObject;
+        }
+    }
+    public void Set_isSelect(bool flag)
+    {
+        if (isSelect != flag)
+        {
+            isSelect = flag;
+            OnSelectionChanged?.Invoke(isSelect);// chỉ gọi nếu có sự thay đổi
+        }
 
+        //OnSelectionChanged?.Invoke(isSelect);
+    }
+    //tạo sự kiện nếu có sự thay đổi về isSelect
+    // nếu isSelect true và nếu isSelect là false
+    private void HandleSelectionChanged(bool isSelected)
+    {
+        Debug.Log("Đăng kí sự kiện select");
+        Transform[] children = GetComponentsInChildren<Transform>();
+        //throw new NotImplementedException();
+        if (isSelect)
+        {
+
+            foreach (Transform child in children)
+            {
+
+                if (child.name.CompareTo("HealthBar") == 0)
+                {
+                    SpriteRenderer childSpriteRenderer = child.GetChild(1).GetComponent<SpriteRenderer>();
+                    childSpriteRenderer.color = Color.yellow;
+                    GameObject curSorSelect_Ins = Instantiate(this.cursorSelect, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
+                    curSorSelect_Ins.transform.SetParent(this.transform);
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in children)
+            {
+
+                if (child.name.CompareTo("HealthBar") == 0)
+                {
+                    SpriteRenderer childSpriteRenderer = child.GetChild(1).GetComponent<SpriteRenderer>();
+                    if (gameObject.CompareTag("Player"))
+                    {
+                        childSpriteRenderer.color = Color.green;
+                    }
+                    else if (gameObject.CompareTag("Enemy"))
+                    {
+                        childSpriteRenderer.color = Color.red;
+                    }
+                }
+                if (child.name.CompareTo("SelectCursor(Clone)") == 0)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+
+        }
+    }
 
 }

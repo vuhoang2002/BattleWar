@@ -7,6 +7,7 @@ public class CameraControl : MonoBehaviour
     public float smoothSpeed = 0.02f; // Tốc độ mượt mà khi di chuyển camera
     private Vector3 lastTouchPosition;
     public GameObject chosenPlayer; // Đối tượng người chơi
+    public bool isLockCamera;
 
     // Các GameObject đại diện cho vị trí bé nhất và lớn nhất
     public GameObject minPosition;
@@ -49,7 +50,7 @@ public class CameraControl : MonoBehaviour
             StartCoroutine(OffMovingCam());
         }
 
-        if (chosenPlayer == null)
+        if (isLockCamera == false)
         {
             FreeCamera();
         }
@@ -58,6 +59,8 @@ public class CameraControl : MonoBehaviour
             LockCamera();
             isMoving = false; // Kết thúc di chuyển nếu có player được chọn
         }
+        // nếu như mà ấn 1 lần vào màn hình( ngoài trừ UI) thì debug cho tôi
+
     }
 
     private IEnumerator OffMovingCam()
@@ -116,7 +119,26 @@ public class CameraControl : MonoBehaviour
             {
                 case TouchPhase.Began:
                     lastTouchPosition = touch.position;
+                    Debug.Log("Touched once at: " + lastTouchPosition);
+
+                    // Tạo raycast từ vị trí chạm
+                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                    RaycastHit2D hit2D = Physics2D.Raycast(ray.origin, ray.direction);
+
+
+                    // Kiểm tra xem raycast có chạm vào UI không
+
+                    if (new Chosen().IsPointerOverButton(touch.position))
+                    {
+                        Debug.Log("Raycast chạm button");
+                        return;
+
+                    }
+
+                    // Thực hiện hành động khi chỉ chạm một lần
+                    Check_Touch_To_Cancel_Select_Player();
                     break;
+
 
                 case TouchPhase.Moved:
                     Vector3 deltaPosition = new Vector3(touch.position.x, 0, 0) - new Vector3(lastTouchPosition.x, 0, 0);
@@ -159,13 +181,27 @@ public class CameraControl : MonoBehaviour
     }
     public void setChosenPlayer(GameObject chosen, bool flag)
     {
-        if (flag = true)
+        if (flag)
         {//chosen
             chosenPlayer = chosen;
         }
         else
         {
             chosen = null;// canel chosen
+        }
+    }
+    public void Set_IsLockCamera(bool flag)
+    {
+        isLockCamera = flag;
+    }
+    public void Check_Touch_To_Cancel_Select_Player()
+    {
+        GameObject playerList = new FindObjectAndUI().Find_PlayerList();
+        new CancelChosen().offSelectCanva();
+        Debug.Log("Raycast xóa UI select");
+        foreach (Transform childPlayer in playerList.transform)
+        {
+            childPlayer.gameObject.GetComponent<PlayerController>().Set_isSelect(false);
         }
     }
 

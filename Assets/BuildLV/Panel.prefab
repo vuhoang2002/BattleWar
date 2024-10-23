@@ -93,7 +93,7 @@ MonoBehaviour:
   - unitTag: Knight
     prefab: {fileID: 2662107906704322251, guid: e932c9191ab72714fa2b45fed7e24483, type: 3}
     prefabSprite: {fileID: -736335142, guid: 172b7e1a6ed0a5049863bfd593fa9391, type: 3}
-    unitPrice: 75
+    unitPrice: 60
     cdTimerUnit: 6
     unitStrength: 5
     isUnit: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   - unitTag: LightningMage
     prefab: {fileID: 5799506397286250514, guid: 0871296892d7538468b4c6efd01e34f1, type: 3}
     prefabSprite: {fileID: 21300000, guid: b006d5d265a14194da737161909f3245, type: 3}
-    unitPrice: 75
+    unitPrice: 90
     cdTimerUnit: 8
     unitStrength: 7
     isUnit: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   - unitTag: SkeletonArcher
     prefab: {fileID: 2627196932269546020, guid: e359e93b745204f4ca455466e52d12d4, type: 3}
     prefabSprite: {fileID: 21300000, guid: be614d7f113655d4fa2101c8debc79cb, type: 3}
-    unitPrice: 100
+    unitPrice: 75
     cdTimerUnit: 10
     unitStrength: 4
     isUnit: 0

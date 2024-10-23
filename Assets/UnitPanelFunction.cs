@@ -13,7 +13,7 @@ public class UnitPanelFunction : MonoBehaviour
     public GameObject UnitPanel;
     public GameObject cloneSpawnBtn;
     public GameObject mapSize;
-    private Level_War_Mod levelWarMod;
+    private Level_Controller levelWarMod;
     public GameMod mod;
 
     void Start()
@@ -25,7 +25,7 @@ public class UnitPanelFunction : MonoBehaviour
     void Awake()
     {
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
-        levelWarMod = gameManager.GetComponentInChildren<Level_War_Mod>();
+        levelWarMod = gameManager.GetComponentInChildren<Level_Controller>();
         if (levelWarMod.gameMod == GameMod.War)
         {
             levelWarMod.OnGameModeChanged_War += HandleGameModeChanged_War;

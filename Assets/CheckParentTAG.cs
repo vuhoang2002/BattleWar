@@ -7,8 +7,15 @@ public class CheckParentTAG : MonoBehaviour
 
     // Start is called before the first frame update
     public GameObject parentObject;
+    public bool isCursor;
     void Start()
     {
+        if (isCursor)
+        {
+            parentObject = transform.parent.gameObject;
+            SetOrderLayerForBullet();
+            return;
+        }
         ChangeObjectLayer changeObjectLayer = new ChangeObjectLayer();
         if (parentObject.transform.CompareTag("Enemy"))
         {
@@ -19,6 +26,7 @@ public class CheckParentTAG : MonoBehaviour
             changeObjectLayer.ChangeLayer(this.gameObject, "PlayerBullet");
         }
         SetOrderLayerForBullet();
+
     }
 
     // Update is called once per frame

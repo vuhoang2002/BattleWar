@@ -13,6 +13,7 @@ public class AttackOrder : MonoBehaviour
     Player_ListObject player_ListObject;
     List<PlayerController> playerControllers;
     public GameObject iconOrderActive;
+    public AudioClip attackSound;
     public void Show_IconOrderWhenActive(PlayerController playerController)
     {
         if (iconOrderActive == null)
@@ -69,7 +70,11 @@ public class AttackOrder : MonoBehaviour
         def_Child.GetComponent<DefenseOrder>().isDef_Active = false;
         fallBack_Child.GetComponent<FallBackOrder>().isFallBack_Active = false;
         hold_Child.GetComponent<HoldOrder>().isHold_Active = false;
-
+        if (attackSound != null)
+        {
+            // MusicManager.soundTheme.GetComponent<AudioSource>().PlayOneShot(attackSound);
+            MusicManager.soundTheme.ChangeToGameplayMusic(attackSound);
+        }
         // Tìm tất cả các PlayerController
         // PlayerController[] playerControllers = GameObject.FindObjectsOfType<PlayerController>();
         playerControllers = player_ListObject.FindAllPlayerInList(players);
@@ -79,6 +84,7 @@ public class AttackOrder : MonoBehaviour
             SetAttack_Active(playerController);
             Show_IconOrderWhenActive(playerController);
             //   ("Attack Order!!!");
+
         }
     }
     public void OrderOneUnitType()

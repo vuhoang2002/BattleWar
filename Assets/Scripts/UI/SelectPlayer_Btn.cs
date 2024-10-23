@@ -62,6 +62,7 @@ public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
             if (cam != null)
             {
                 cam.setChosenPlayer(chosen, true);
+                cam.Set_IsLockCamera(true);
                 //cam.MoveCameraToPosition(transform.position);
             }
         }
