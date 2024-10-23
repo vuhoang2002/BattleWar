@@ -1328,7 +1328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598755206}
   - component: {fileID: 598755205}
-  m_Layer: 1
+  m_Layer: 9
   m_Name: BoxColiderWallEmty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639614000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1473,7 +1473,7 @@ Transform:
   m_GameObject: {fileID: 639614000}
   serializedVersion: 2
   m_LocalRotation: {x: 0.022134911, y: -0, z: -0, w: 0.999755}
-  m_LocalPosition: {x: 38.89, y: -3.29, z: 0}
+  m_LocalPosition: {x: 42.2, y: -3.29, z: 0}
   m_LocalScale: {x: 0.05976569, y: 0.1507227, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3232,11 +3232,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSur: 300
   titleSur: 
+  enemyManager: {fileID: 0}
   minSpawnTime: 8
   maxSpawnTime: 16
   enemyTypeCount: 0
   bossUnit: {fileID: 447399120621047007, guid: 769c14f3235ab0343ab326c31ed5b19e, type: 3}
   timeCallingBoss: 90
+  WarUI: {fileID: 2140477294476434926, guid: 8f24d0a5b7b081c418069c2a5ea473b2, type: 3}
 --- !u!1001 &1342464412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5051,7 +5053,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8543317984392467609, guid: 8a28f507f3a59174bbdf7817e3edceb1, type: 3}
-      insertIndex: 2
+      insertIndex: -1
       addedObject: {fileID: 1300944753}
   m_SourcePrefab: {fileID: 100100000, guid: 8a28f507f3a59174bbdf7817e3edceb1, type: 3}
 --- !u!1001 &5071082855949005274
@@ -5379,7 +5381,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 7950259233582466975}
   - {fileID: 834223607}
-  - {fileID: 4565800707039301718}
   - {fileID: 1278778294}
   - {fileID: 8222848356909429673}
   - {fileID: 1342464412}
@@ -5391,3 +5392,4 @@ SceneRoots:
   - {fileID: 1454186248}
   - {fileID: 465920826}
   - {fileID: 598755206}
+  - {fileID: 4565800707039301718}

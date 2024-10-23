@@ -10,19 +10,29 @@ public class Level_Surival_Mode : MonoBehaviour
     public float timeSur;
     public string titleSur;
 
-    private EnemyManager enemyManager;
+    public EnemyManager enemyManager;
     public float minSpawnTime = 4f; // Thời gian tối thiểu giữa các lần spawn
     public float maxSpawnTime = 10f; // Thời gian tối đa giữa các lần spawn
     public int enemyTypeCount;
     public GameObject bossUnit;
     public float timeCallingBoss;
+    public GameObject WarUI;
 
 
     void Start()
     {
+        if (enemyManager == null)
+        {
+            enemyManager = new FindObjectAndUI().Find_EnemyManager();
+        }
         titleSur = "Sống sót trong vòng " + timeSur + "s";
-        enemyManager = GetComponent<Level_Controller>().Get_EnemyManager();
+        //enemyManager = GetComponent<Level_Controller>().Get_EnemyManager();
         enemyTypeCount = GetComponent<Level_Controller>().currentMatchUnitData.Count;
+
+        // GameObject battleCanva = GameObject.Find("BattleCanva");
+        // GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
+        // War_UI.transform.SetParent(battleCanva.transform);
+        //War_UI.
         StartCoroutine(SpawnRandomEnemy_RandomTime());
         StartCoroutine(SpawnBossAfterTime());
     }

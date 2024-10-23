@@ -50,4 +50,10 @@ public class FindObjectAndUI : MonoBehaviour
         // findCanva.gameObject.SetActive(false);
         return findCanva.gameObject;
     }
+    public EnemyManager Find_EnemyManager()
+    {
+        GameObject eUnitList = GameObject.Find("EUnit_List");
+        return eUnitList.GetComponent<EnemyManager>();
+
+    }
 }

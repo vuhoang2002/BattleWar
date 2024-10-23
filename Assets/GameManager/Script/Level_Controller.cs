@@ -12,7 +12,7 @@ public class Level_Controller : MonoBehaviour
 {
     [Header("Điều khiển chế độ")]
     public GameMod gameMod; // 0 classic, 1 defense, 2 attack, 3 attack with current gold, 4 sinh tồn
-    private EnemyManager enemyManager;
+    public EnemyManager enemyManager;
     private UnitListManager playerManager;
     public int currentGold = 10000;
     public string title;

@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
                 // hàm tìm kiếm kẻ địch
                 if (timer_FindTarget <= 0)
                 {
-                    FindClosestEnemy_ByFindPositon(searchRadius, hold_Position);
+                    FindClosestEnemy_ByFindPositon(2f, hold_Position);
                     timer_FindTarget = timeBwFindTarget;
                 }
 

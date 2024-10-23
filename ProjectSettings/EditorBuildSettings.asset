@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level/Lv3.unity
     guid: 5bc36377e3b175a47802d8a7c9dacefe
+  - enabled: 1
+    path: Assets/GameManager/SceneLevelBuild/SurivalModeScene.unity
+    guid: 2c0aa78aa307f4843aec2230af8bbf48
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 01494b49833d53948b0c7a3c92f91b2a, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: eb44a6a9a4e3c2946ae6d2d2ec2a0a55, type: 2}
