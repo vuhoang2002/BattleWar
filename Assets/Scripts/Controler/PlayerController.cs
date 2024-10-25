@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public string id; //id cho player
     public float moveSpeed = 1f;
     public float searchRadius = 5f;
-    private float searchRadius_Def = 8f;
+    private float searchRadius_Def = 7f;
     public float highPos = -2.5f; // Giá trị Y khi prefab đạt kích thước lớn nhất
     public float lowPos = -4.5f;  // Giá trị Y khi prefab đạt kích thước nhỏ nhất
     public float minScale = 0.85f; // Kích thước nhỏ nhất
@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public Vector3 currentDirection;
     private float currentScale;
     float currentY;// vị trí y hiện tại
-    float scale = 1f;
+    public float scale = 1f;
     float truePositionY;
     int orderLayer = 0;
-    private int minOrderLayer = 0;
+    private int minOrderLayer = 1;
     private int maxOrderLayer = 20;
 
     private Renderer rend;
@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
+        // player = selectPlayer;
         if (isChosen)
         {
             MoveByJoystick();
@@ -305,7 +306,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
 
     void ActiveChild()
     {
-        transform.Find("AtkArea").gameObject.SetActive(true);
+        //transform.Find("AtkArea").gameObject.SetActive(true);
         //        transform.Find("ChosenArea").gameObject.SetActive(true);
     }
 
@@ -433,6 +434,11 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     {
         if (target != null)
         {
+            if (Vector3.Distance(target.transform.position, transform.position) < 0.5f)
+            {
+                return;
+            }
+
             currentDirection = (target.transform.position - transform.position).normalized;
             movement = currentDirection * moveSpeed * Time.deltaTime;
             transform.Translate(movement);
@@ -452,6 +458,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         {
             if (!isColliding)
             {
+
                 Flip_To_Target_Direction();
             }
         }
@@ -818,6 +825,13 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         gameObject.tag = "Enemy";
         changeObjectLayer.ChangeLayer(this.gameObject, "EnemyLayer");
         changeObjectLayer.ChangeLayer(gameObject.transform.Find("AtkArea").gameObject, "EnemyAtkArea");
+        Transform meleeAttackTransform = gameObject.transform.Find("MeleAttack");
+        if (meleeAttackTransform != null)
+        {
+            // Thay đổi lớp của đối tượng "MeleAttack" thành "EnemyAtkArea"
+            changeObjectLayer.ChangeLayer(meleeAttackTransform.gameObject, "EnemyAtkArea");
+        }
+
         Transform[] children = GetComponentsInChildren<Transform>();
 
         foreach (Transform child in children)
@@ -913,6 +927,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
                     childSpriteRenderer.color = Color.yellow;
                     GameObject curSorSelect_Ins = Instantiate(this.cursorSelect, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
                     curSorSelect_Ins.transform.SetParent(this.transform);
+                    selectPlayer = this.gameObject;
                 }
             }
         }

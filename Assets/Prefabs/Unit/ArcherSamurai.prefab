@@ -245,6 +245,7 @@ MonoBehaviour:
   maxY: {fileID: 752450957347428507, guid: ecd4a39fbcc5df34fb397f37ce2e8fb6, type: 3}
   minY: {fileID: 1134471018660337803, guid: f5455371276018247814ec3a9972e238, type: 3}
   currentDirection: {x: 0, y: 0, z: 0}
+  scale: 1
   canChosen: 1
   timeBwFindTarget: 1
   timer_FindTarget: 0
@@ -270,8 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac301a32885ae941b75840c8c0bad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCount: 0
   basic_Atk: 12
   basic_Cd: 1.5
+  basic_Cd_Time: 0
   abl1_Atk: 0
   abl1_Cd: 1
   abl2_Atk: 0
@@ -282,8 +285,10 @@ MonoBehaviour:
   isAbl1: 0
   timeToDealDmg: 1.6
   attackCooldown: 1
-  abl1: {fileID: 0}
+  abiliity: {fileID: 0}
   extraDmg: 8
+  MeleAttack: {fileID: 0}
+  extraWeight: 0
 --- !u!114 &967353764837639969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +431,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0037627444, y: 0.009898961}
+  m_Offset: {x: 0.0037627444, y: 0.011638463}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -437,7 +442,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18324338, y: 0.49001056}
+  m_Size: {x: 0.18324338, y: 0.351359}
   m_EdgeRadius: 0
 --- !u!114 &-5350413007710032234
 MonoBehaviour:
@@ -522,7 +527,7 @@ Transform:
   m_GameObject: {fileID: 4851230753256369701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0.07, z: 0.016005715}
+  m_LocalPosition: {x: 0.07, y: 0.1, z: 0.016005715}
   m_LocalScale: {x: 0.8666667, y: 0.8666667, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -651,7 +656,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.6401017, y: 0.03790182}
+  m_Offset: {x: 3.4495952, y: -0.0065102875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -662,7 +667,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.165645, y: 0.15991342}
+  m_Size: {x: 6.784632, y: 0.07108921}
   m_EdgeRadius: 0
 --- !u!1 &6589547026629266392
 GameObject:
@@ -996,6 +1001,22 @@ PrefabInstance:
     - target: {fileID: 3603644581560590512, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: maxArrowDistance
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453917644156905054, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9948783
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453917644156905054, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_Size.y
+      value: 0.33355716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453917644156905054, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.18210582
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453917644156905054, guid: 9c350332544e5a54d93967a41109d352, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.7006938
       objectReference: {fileID: 0}
     - target: {fileID: 6462975264719562789, guid: 9c350332544e5a54d93967a41109d352, type: 3}
       propertyPath: m_Name

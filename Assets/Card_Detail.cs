@@ -20,9 +20,14 @@ public class Card_Detail : MonoBehaviour
     public TextMeshProUGUI hp;
     public TextMeshProUGUI atk;
     public TextMeshProUGUI coid_and_cd;
+    Vector3 space2;
+    Vector3 space;
+    GameObject playerList;
+
     void Start()
     {
 
+        playerList = GameObject.Find("PlayerList");
     }
 
     // Update is called once per frame
@@ -49,7 +54,7 @@ public class Card_Detail : MonoBehaviour
     }
     private void SetUp_Prefab()
     {
-        GameObject playerList = GameObject.Find("PlayerList");
+
         if (playerList != null)
         {//xóa bảng
             foreach (Transform child in playerList.transform)
@@ -57,50 +62,59 @@ public class Card_Detail : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-        Vector3 space2 = new Vector3(transform.position.x, transform.position.y - 1f, 0);
-        Vector3 space = new Vector3(2, 0, 0);
-        clone1 = Instantiate(unitDataEntry.prefab, space2 - space, Quaternion.identity);
-        clone1.GetComponent<PlayerController>().def_Position = space2 - space;
-        clone1.AddComponent<PlayerCardControl>();
-        clone1.transform.SetParent(playerList.transform);
+        space2 = new Vector3(transform.position.x, transform.position.y - 1f, 0);
+        space = new Vector3(2, 0, 0);
+        if (unitDataEntry.isUnit == CardType.Unit)
+        {
+
+            clone1 = Instantiate(unitDataEntry.prefab, space2 - space, Quaternion.identity);
+            clone1.GetComponent<PlayerController>().def_Position = space2 - space;
+            clone1.AddComponent<PlayerCardControl>();
+            clone1.transform.SetParent(playerList.transform);
+        }
+        else if (unitDataEntry.isUnit == CardType.Enhancement)
+        {
+            SetUp_Enhancement(unitDataEntry.unitTag, true);
+        }
 
         if (unitDataEntryBefore != null)
         {// tạo đối thủ
-            clone2 = Instantiate(unitDataEntryBefore.prefab, space2 + space, Quaternion.identity);
-            clone2.GetComponent<PlayerController>().Change_Prefab_To_Enemy();
-            clone2.GetComponent<PlayerController>().def_Position = space2 + space;
-            clone2.AddComponent<PlayerCardControl>();
-            clone2.transform.SetParent(playerList.transform);
-            //
-            //clone2
+            if (unitDataEntryBefore.isUnit == CardType.Unit)
+            {
+                clone2 = Instantiate(unitDataEntryBefore.prefab, space2 + space, Quaternion.identity);
+                clone2.GetComponent<PlayerController>().Change_Prefab_To_Enemy();
+                clone2.GetComponent<PlayerController>().def_Position = space2 + space;
+                clone2.AddComponent<PlayerCardControl>();
+                clone2.transform.SetParent(playerList.transform);
+                //
+                //clone2
+            }
+            else if (unitDataEntryBefore.isUnit == CardType.Enhancement)
+            {
+                SetUp_Enhancement(unitDataEntryBefore.unitTag, false);
+            }
 
         }
 
         // clone2 = clone1;
         unitDataEntryBefore = unitDataEntry;
     }
-    // Thiết lập card spell
-    private void SetUpSpellCard(string nameCard)
-    {
-        switch (nameCard)
-        {
-            case "FireUpgrade":
-                FireUpgradeSetUp();
-                break;
-            default:
-
-                break;
-        }
-    }
 
     private void SetUp_Infomation_Of_Deatail_Unit(string title)
     {
-        Attacks attacks = unitDataEntry.prefab.GetComponent<Attacks>();
-        UnitClass unitClass = unitDataEntry.prefab.GetComponent<UnitClass>();
-        unitClassDetail.text = unitClass.unitWeight + "/" + unitClass.unitRace;
-        textTitle.text = title;
-        hp.text = unitDataEntry.prefab.GetComponent<Health>().health.ToString();
-        atk.text = attacks.basic_Atk.ToString() + "+(" + attacks.extraDmg + changWeightToOneChar(unitClass.extraDMGWeight) + ")";
+        if (unitDataEntry.isUnit == CardType.Unit)
+        {
+            Attacks attacks = unitDataEntry.prefab.GetComponent<Attacks>();
+            UnitClass unitClass = unitDataEntry.prefab.GetComponent<UnitClass>();
+            unitClassDetail.text = unitClass.unitWeight + "/" + unitClass.unitRace;
+            textTitle.text = title;
+            hp.text = unitDataEntry.prefab.GetComponent<Health>().health.ToString();
+            atk.text = attacks.basic_Atk.ToString() + "+(" + attacks.extraDmg + changWeightToOneChar(unitClass.extraDMGWeight) + ")";
+        }
+        else if (unitDataEntry.isUnit == CardType.Unit)
+        {
+
+        }
         coid_and_cd.text = unitDataEntry.unitPrice.ToString() + "/" + unitDataEntry.cdTimerUnit.ToString() + "s";
 
     }
@@ -127,8 +141,26 @@ public class Card_Detail : MonoBehaviour
 
         return weightChar;
     }
-    private void FireUpgradeSetUp()
+    private void FireUpgradeSetUp(bool player)
     {
         // chời cho đến khi clone1 khác null
+
+        clone3 = Instantiate(unitDataEntry.prefab, space2 - space, Quaternion.identity);
+        clone3.GetComponent<PlayerController>().def_Position = space2 - space;
+        clone3.AddComponent<PlayerCardControl>();
+        clone3.transform.SetParent(playerList.transform);
+        clone3.GetComponent<FireVizardController>().OnUpgrade();
+        clone1 = clone3;
+        unitClassDetail.text = "Enchange";
+        textTitle.text = "Nâng cấp đòn cầu lửa và đòn đánh thường của FireVizard";
+        hp.text = "+0";
+        atk.text = "+5Dmg";
+    }
+    private void SetUp_Enhancement(string unitTagEnchange, bool plauer)
+    {
+        if (unitTagEnchange == "FireUpgrade")
+        {
+            FireUpgradeSetUp(plauer);
+        }
     }
 }

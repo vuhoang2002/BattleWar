@@ -15,16 +15,13 @@ public class Arrow : MonoBehaviour
     // public string destroyName = "IceBall_Destroy";
     private Animator amt;
     private int extraDmg;
+    CheckParentTAG checkParentTAG;
+
     void Start()
     {
         // Có thể khởi tạo mũi tên ở đây nếu cần   
         amt = GetComponent<Animator>();
-        // if (amt != null)
-        // {
-        //     isChangre = true;
-        // }
-        //thiết lập orderlayout cho nó
-        //SetOrderLayerForBullet();
+        //checkParentTAG
     }
 
 

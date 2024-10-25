@@ -317,6 +317,8 @@ MonoBehaviour:
   def: {fileID: 0}
   fbk: {fileID: 0}
   playerList: {fileID: 7796280412053183996, guid: 7d0fe38fdda9feb49bdfa9bcc060b841, type: 3}
+  levelWarMod: {fileID: 0}
+  isWarMod: 0
 --- !u!223 &3565501994915692149
 Canvas:
   m_ObjectHideFlags: 0
@@ -521,8 +523,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCountText: {fileID: 7083429719204208597}
-  MAX_PLAYER_COUNT: 25
   isMaxPlayer: 0
+  playerCount: 0
+  gameManager: {fileID: 0}
+  myLevelMode: {fileID: 0}
+  isPlayerInWarMod: 0
+  loseUi: {fileID: 0}
 --- !u!1 &5301730614470631569
 GameObject:
   m_ObjectHideFlags: 0

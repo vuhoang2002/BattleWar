@@ -1,10 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager musicTheme; // Đổi từ private sang public
     public static MusicManager soundTheme;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip audioClip;
     public static bool isMuted_Music = false; // Biến để theo dõi trạng thái âm thanh
     public static bool isMuted_Sound = false;
@@ -122,5 +123,43 @@ public class MusicManager : MonoBehaviour
         //soundTheme.audioSource.Stop(); // Dừng nhạc nền hiện tại
         soundTheme.audioSource.clip = gameplaySound; // Đặt âm thanh mới
         soundTheme.audioSource.Play(); // Phát âm thanh mới
+    }
+    public void SlideMusic(float targetVolume, float duration)
+    {
+        StartCoroutine(SlideVolume(targetVolume, duration));
+    }
+
+    private IEnumerator SlideVolume(float targetVolume, float duration)
+    {
+        float startVolume = audioSource.volume;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, targetVolume, timeElapsed / duration);
+            yield return null;
+        }
+
+        audioSource.volume = targetVolume; // Đảm bảo âm lượng cuối cùng là chính xác
+    }
+    public void SlideSoundAll(float targetVolume, float duration)
+    {
+        StartCoroutine(SlideSound(targetVolume, duration));
+    }
+
+    private IEnumerator SlideSound(float targetVolume, float duration)
+    {
+        float startVolume = audioSource.volume;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, targetVolume, timeElapsed / duration);
+            yield return null;
+        }
+
+        audioSource.volume = targetVolume; // Đảm bảo âm lượng cuối cùng là chính xác
     }
 }

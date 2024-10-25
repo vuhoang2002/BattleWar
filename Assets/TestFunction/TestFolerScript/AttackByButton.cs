@@ -1,33 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class AttackByButton : MonoBehaviour
-
+public class FunctionPanel : MonoBehaviour
 {
+  public Button myButtonBasic;
+  public Button myButtonBasic1;
+  public Button myButtonBasic2;
+  public Button myButtonBasic3; // Tham chiếu đến button
 
-  public GameObject hitBox;
+  public Attacks attacks; // Tham chiếu đến Attacks
+  public GameObject chosen;
 
-  // Start is called before the first frame update
-  void Start()
+  private void Start()
   {
-
+    // Đăng ký sự kiện cho các nút bấm
+    myButtonBasic.onClick.AddListener(OnBasicButtonClick);
+    myButtonBasic1.onClick.AddListener(OnAbility1ButtonClick);
+    myButtonBasic2.onClick.AddListener(OnAbility2ButtonClick);
+    myButtonBasic3.onClick.AddListener(OnAbility3ButtonClick);
   }
 
-  public void OnMouseDown()
+  private void OnBasicButtonClick()
   {
-    //hitBox.GetComponent<BoxCollider2D>().enabled = true;
-    StartCoroutine(ActivateColliderTemporarily(1f));
+    Debug.Log("Basic Attack Button clicked!");
+    if (attacks != null)
+    {
+      attacks.BasicAttackByBtn(); // Gọi hàm PerformAttack khi nhấn nút
+      //Debug.Log("nút basic được nhấn");
+    }
   }
-  private IEnumerator ActivateColliderTemporarily(float duration)
+
+  private void OnAbility1ButtonClick()
   {
-    hitBox.GetComponent<BoxCollider2D>().enabled = true; // Bật collider
-
-    yield return new WaitForSeconds(duration); // Chờ trong khoảng thời gian đã chỉ định
-
-    hitBox.GetComponent<BoxCollider2D>().enabled = false; // Tắt collider
+    //Debug.Log("Ability 1 Button clicked!");
+    if (attacks != null)
+    {
+      // attacks.Abl1_Active(); // Gọi hàm liên quan đến Ability 1
+      attacks.Abl1_AttackBtn();
+    }
   }
-  private void OnTriggerEnter2D(Collider2D other)
+
+  private void OnAbility2ButtonClick()
   {
+    //Debug.Log("Ability 2 Button clicked!");
+    if (attacks != null)
+    {
+      attacks.Abl2_AttackByBTn();
+    }
+  }
+
+  private void OnAbility3ButtonClick()
+  {
+    //Debug.Log("Ability 3 Button clicked!");
+    if (attacks != null)
+    {
+      attacks.Abl3_AttackByBTn();
+    }
   }
 }

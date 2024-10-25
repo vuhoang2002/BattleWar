@@ -27,7 +27,7 @@ public class Level_Surival_Mode : MonoBehaviour
         }
         titleSur = "Sống sót trong vòng " + timeSur + "s";
         //enemyManager = GetComponent<Level_Controller>().Get_EnemyManager();
-        enemyTypeCount = GetComponent<Level_Controller>().currentMatchUnitData.Count;
+        enemyTypeCount = enemyManager.enemyType.Count;
 
         // GameObject battleCanva = GameObject.Find("BattleCanva");
         // GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
@@ -65,7 +65,7 @@ public class Level_Surival_Mode : MonoBehaviour
                 // Spawn boss
                 GameObject bossUnit_Ins = enemyManager.SpawnUnit_ByPrefab(bossUnit);
                 bossUnit.GetComponent<PlayerController>().SetBehavius(true, false, false, false);
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     enemyManager.SpawnEnemy(get_RandomUnitIndex(), 1);
                 }

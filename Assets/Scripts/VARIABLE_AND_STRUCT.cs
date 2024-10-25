@@ -20,7 +20,7 @@ public enum RaceUnit
     Human,
     Undead
 }
-public enum AbilityUnit
+public enum AbilityCount
 {
     Zero,
     One,

@@ -1,54 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleAttack : MonoBehaviour
 {
-    private GameObject attackArea = default;
-    private bool isAttacking = false; 
-    //private float timeToAttack = 1f;
-    //private float timer = 0f;
-    private Animator amt;
-    public float attackCooldown = 1f; // thời gian hồi giữa các đòn tấn công
-    public int damage =10;
-    void Start()
-    {
-        attackArea = transform.GetChild(0).gameObject;
-        amt = GetComponent<Animator>();
-    }
+    public int damage;
+    public int extraDmg;
+    public WeightUnit myWeightExtra;
+    public bool isActive = false;
 
-    void FixedUpdate()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if ( attackCooldown > 0)
+        if (!isActive) return;
+
+        Health health = other.gameObject.GetComponent<Health>();
+        if (health != null)
         {
-            attackCooldown -= Time.deltaTime;
-        }else if(attackCooldown==0 ){
-
+            int totalDamage = damage + (CheckTargetUnitClass_Weight(other.gameObject, myWeightExtra) ? extraDmg : 0);
+            health.TakeDamage(totalDamage);
+            gameObject.SetActive(false);
+            isActive = false; // Đánh dấu là không còn hoạt động
         }
-
-       // if (isAttacking)
-        //{
-        ///    timer += Time.deltaTime;
-          //  if (timer >= timeToAttack)
-          //  {
-           //     timer = 0;
-           //     isAttacking = false;
-           //     attackArea.SetActive(isAttacking);
-           //     amt.SetBool("isAtk", false); // Set the boolean parameter to false
-           // }
-        }
-    
-
-   public void Attack(GameObject target)
-{
-    
-    amt.SetTrigger("isAttack"); // Set the boolean parameter to true
-    // Tìm và lấy component Health của đối tượng bị tấn công
-    Health targetHealth = target.GetComponent<Health>();
-    if (targetHealth != null)
-    {
-        // Gọi hàm Damage() trên component Health của đối tượng bị tấn công
-        targetHealth.TakeDamage(damage);
     }
-}
+
+    public void SetUp_MeleAttack(int damage, int extraDmg, WeightUnit weightUnitExtra)
+    {
+        this.damage = damage;
+        this.extraDmg = extraDmg;
+        this.myWeightExtra = weightUnitExtra;
+    }
+
+    private bool CheckTargetUnitClass_Weight(GameObject target, WeightUnit extraDmgWeight)
+    {
+        UnitClass targetUnitClass = target.GetComponent<UnitClass>();
+        return targetUnitClass != null && extraDmgWeight == targetUnitClass.unitWeight;
+    }
+    public void OnDestroyMeleAttack()
+    {
+        Object.Destroy(this.gameObject);
+    }
+    public void Off_MeleAttack()
+    {
+        gameObject.SetActive(false);
+    }
+    public void Active_MeleeAttack()
+    {
+        gameObject.SetActive(true);
+        isActive = true;
+    }
 }

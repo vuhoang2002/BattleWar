@@ -21,7 +21,7 @@ public class LightningMageControllder : MonoBehaviour
         thunderAtk = GetComponent<Attacks>().abl1_Atk;
         //     amtFireBall = fireBallAbl1.GetComponent<Animator>();
         extraDmg = GetComponent<Attacks>().extraDmg;
-        OnUpgrade();
+        //OnUpgrade();
         //lastPoint = spawnLocation.position.x + 6f;
     }
     void OnUpgrade()

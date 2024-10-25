@@ -54,6 +54,44 @@ public class FindObjectAndUI : MonoBehaviour
     {
         GameObject eUnitList = GameObject.Find("EUnit_List");
         return eUnitList.GetComponent<EnemyManager>();
-
+    }
+    public void Show_FunctionButton(AbilityCount abilityCount)
+    {
+        GameObject functionCanva = GameObject.Find("BattleCanva");
+        functionCanva = functionCanva.transform.Find("FunctionCanva").gameObject;
+        // Transform transformChild;
+        switch (abilityCount)
+        {
+            case AbilityCount.Three:
+                Support_For_FunctionCanva("Abl3_Btn", true, functionCanva);
+                Support_For_FunctionCanva("Abl2_Btn", true, functionCanva);
+                Support_For_FunctionCanva("Abl1_Btn", true, functionCanva);
+                break;
+                break;
+            case AbilityCount.Two:
+                Support_For_FunctionCanva("Abl2_Btn", true, functionCanva);
+                Support_For_FunctionCanva("Abl1_Btn", true, functionCanva);
+                break;
+            case AbilityCount.One:
+                Support_For_FunctionCanva("Abl1_Btn", true, functionCanva);
+                break;
+            case AbilityCount.Zero:
+                Support_For_FunctionCanva("Atck_Btn", true, functionCanva);
+                break;
+        }
+        Support_For_FunctionCanva("Atck_Btn", true, functionCanva);
+    }
+    private void Support_For_FunctionCanva(string nameObject, bool active, GameObject functionCanva)
+    {
+        Transform transformChild = functionCanva.transform.Find(nameObject);
+        transformChild.gameObject.SetActive(active);
+    }
+    public void Off_FunctionButton()
+    {
+        GameObject functionCanva = GameObject.Find("FunctionCanva");
+        Support_For_FunctionCanva("Abl3_Btn", false, functionCanva);
+        Support_For_FunctionCanva("Abl2_Btn", false, functionCanva);
+        Support_For_FunctionCanva("Abl1_Btn", false, functionCanva);
+        Support_For_FunctionCanva("Atck_Btn", false, functionCanva);
     }
 }

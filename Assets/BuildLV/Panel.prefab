@@ -115,20 +115,20 @@ MonoBehaviour:
     prefab: {fileID: 3622957466471559262, guid: 4c44cbe0d7edfdc44bb3b4743035c228, type: 3}
     prefabSprite: {fileID: 2094444279, guid: ddbad37a0ed4db645a85ad1be77e6cc8, type: 3}
     unitPrice: 75
-    cdTimerUnit: 6
+    cdTimerUnit: 8
     unitStrength: 3
     isUnit: 0
   - unitTag: LightningMage
     prefab: {fileID: 5799506397286250514, guid: 0871296892d7538468b4c6efd01e34f1, type: 3}
     prefabSprite: {fileID: 21300000, guid: b006d5d265a14194da737161909f3245, type: 3}
-    unitPrice: 90
+    unitPrice: 100
     cdTimerUnit: 8
     unitStrength: 7
     isUnit: 0
   - unitTag: WandererMagi
     prefab: {fileID: 3974870113231231300, guid: 21bb67c390ccabe4b815fde3f8813ea7, type: 3}
     prefabSprite: {fileID: 21300000, guid: cd31f13888b251344bf3907fc4efcf78, type: 3}
-    unitPrice: 100
+    unitPrice: 150
     cdTimerUnit: 10
     unitStrength: 7
     isUnit: 0
@@ -142,21 +142,21 @@ MonoBehaviour:
   - unitTag: SkeletonWarrior
     prefab: {fileID: 8275368642616864759, guid: 2388ec94ee44af045a9c4418b0a13cdb, type: 3}
     prefabSprite: {fileID: 21300000, guid: 92a1bcaf4f6e0ec4082babb5a6884029, type: 3}
-    unitPrice: 40
+    unitPrice: 45
     cdTimerUnit: 4
     unitStrength: 5
     isUnit: 0
   - unitTag: SkeletonSpearMan
     prefab: {fileID: 8667527969351417461, guid: fa2cf0ca9febc4149b667ced742b237f, type: 3}
     prefabSprite: {fileID: 21300000, guid: 69c5139027517284d980847b62474c98, type: 3}
-    unitPrice: 70
+    unitPrice: 60
     cdTimerUnit: 10
     unitStrength: 4
     isUnit: 0
   - unitTag: GreenMedusa
     prefab: {fileID: 395389567526222890, guid: 589e6998e7620524993c7f56b10e516a, type: 3}
     prefabSprite: {fileID: 21300000, guid: 34ce6578aacbd41489891d0e9043190d, type: 3}
-    unitPrice: 80
+    unitPrice: 50
     cdTimerUnit: 6
     unitStrength: 6
     isUnit: 0
@@ -174,20 +174,27 @@ MonoBehaviour:
     cdTimerUnit: 10
     unitStrength: 8
     isUnit: 0
+  - unitTag: WhiteWereWolf
+    prefab: {fileID: 3771389466485940781, guid: f3e9448579adc094cbeaa68a929b7673, type: 3}
+    prefabSprite: {fileID: -1151482996, guid: 75436b7f806e31a488edcbfbe989565f, type: 3}
+    unitPrice: 70
+    cdTimerUnit: 6
+    unitStrength: 7
+    isUnit: 0
+  - unitTag: FireVizard
+    prefab: {fileID: 8460218703059110111, guid: ec3c0f4818b0a8845ae5dba011a8065c, type: 3}
+    prefabSprite: {fileID: 21300000, guid: 3c8cce160b4d6f14aba2beed5b03da8a, type: 3}
+    unitPrice: 100
+    cdTimerUnit: 10
+    unitStrength: 7
+    isUnit: 0
   - unitTag: FireUpgrade
-    prefab: {fileID: 0}
+    prefab: {fileID: 8460218703059110111, guid: ec3c0f4818b0a8845ae5dba011a8065c, type: 3}
     prefabSprite: {fileID: 21300000, guid: 5ff6fec2c30569c4cac69c1e3c5217e0, type: 3}
     unitPrice: 200
     cdTimerUnit: 30
     unitStrength: 0
     isUnit: 2
-  - unitTag: FireVizard
-    prefab: {fileID: 8460218703059110111, guid: ec3c0f4818b0a8845ae5dba011a8065c, type: 3}
-    prefabSprite: {fileID: 21300000, guid: 3c8cce160b4d6f14aba2beed5b03da8a, type: 3}
-    unitPrice: 160
-    cdTimerUnit: 6
-    unitStrength: 7
-    isUnit: 0
   selectedUnitTags: []
   UnitPanel: {fileID: 0}
   cloneSpawnBtn: {fileID: 0}

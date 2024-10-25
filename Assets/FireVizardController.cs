@@ -7,6 +7,7 @@ public class FireVizardController : MonoBehaviour
     private int fireBallAtk;
     private bool arrowDirection; // Khai báo biến arrowDirection
     private UpgradeUnit upgradeUnit;
+    public bool isUpgrade;
 
     private int extraDmg = 0;
 
@@ -23,17 +24,18 @@ public class FireVizardController : MonoBehaviour
 
     }
 
-    private void HandleUpgrade()
+    public void HandleUpgrade()
     {
         // Gọi phương thức OnUpgrade từ UpgradeUnit
         OnUpgrade();
     }
 
-    void OnUpgrade()
+    public void OnUpgrade()
     {
         // Thiết lập biến isUpgrade trong UpgradeUnit
-        upgradeUnit.isUpgrade = true; // Đảm bảo sử dụng biến từ UpgradeUnit
+        //upgradeUnit.isUpgrade = true; // Đảm bảo sử dụng biến từ UpgradeUnit
         Debug.Log("Unit được nâng cấp");
+        isUpgrade = true;
         // Thực hiện các thay đổi khác
         gameObject.GetComponent<Animator>().SetBool("isUpgrade", true);
         fireBallAtk += 5;
@@ -68,7 +70,7 @@ public class FireVizardController : MonoBehaviour
             GameObject arrowInstance = Instantiate(fireBallAbl1, spawnFireBall.position, spawnFireBall.rotation);
 
             // Sử dụng biến isUpgrade từ UpgradeUnit
-            if (upgradeUnit.isUpgrade) // Kiểm tra biến từ UpgradeUnit
+            if (isUpgrade) // Kiểm tra biến từ UpgradeUnit
             {
                 Animator amtFireBall = arrowInstance.GetComponent<Animator>();
                 amtFireBall.SetBool("isUpgrade", true);

@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 72
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Light_charge_1
       rect:
         serializedVersion: 2
-        x: 138
-        y: 0
-        width: 139
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 144
+        y: 43
+        width: 64
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Light_charge_2
       rect:
         serializedVersion: 2
-        x: 276
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 265
+        y: 43
+        width: 68
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: Light_charge_3
       rect:
         serializedVersion: 2
-        x: 414
-        y: 0
-        width: 139
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 372
+        y: 60
+        width: 42
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: Light_charge_4
       rect:
         serializedVersion: 2
-        x: 552
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 516
+        y: 72
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: Light_charge_5
       rect:
         serializedVersion: 2
-        x: 690
-        y: 0
-        width: 139
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 656
+        y: 84
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: Light_charge_6
       rect:
         serializedVersion: 2
-        x: 828
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 778
+        y: 78
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: Light_charge_7
       rect:
         serializedVersion: 2
-        x: 966
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 912
+        y: 84
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: Light_charge_8
       rect:
         serializedVersion: 2
-        x: 1104
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1040
+        y: 84
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: Light_charge_9
       rect:
         serializedVersion: 2
-        x: 1242
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1168
+        y: 84
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: Light_charge_10
       rect:
         serializedVersion: 2
-        x: 1380
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1290
+        y: 78
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: Light_charge_11
       rect:
         serializedVersion: 2
-        x: 1518
-        y: 0
-        width: 138.66667
-        height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1424
+        y: 84
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,6 +357,783 @@ TextureImporter:
       bones: []
       spriteID: dfbd23c3f2ab0e74cbe7ef9f1e766d26
       internalID: -1157553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_12
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 78
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff230807d554330478d0e8b81ed9c5f0
+      internalID: -1496953860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_13
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 66
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbb97bdc5214764bb41ce3daeb97208
+      internalID: 925085553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_14
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 72
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 327995002d6d0f442890d5b8b6963b7d
+      internalID: 979340188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_15
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 72
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d80e9e6acf2ce43b07f29cfd2ed7d6
+      internalID: 2065085129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 63
+      alignment: 9
+      pivot: {x: 0.63194245, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2739d004fac7b744c963de2d7c8f2d07
+      internalID: -1282048162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_17
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 54
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f64569f5123c5e409ac6900e4ff7fed
+      internalID: -1953550768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 44
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5597215, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef03c4dde7c7deb4c9319618ed7fe731
+      internalID: -1375265526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 0
+        width: 57
+        height: 63
+      alignment: 9
+      pivot: {x: 0.34967524, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cbb03bac99e0647afff47d6b7b8fb6
+      internalID: 1467048122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 34
+        height: 63
+      alignment: 9
+      pivot: {x: 0.71914226, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2b5e0a91eda254b8f4c292b8622217
+      internalID: -21892661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_21
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 60
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f9e233670617942a682901aad9f357
+      internalID: -208770325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 0
+        width: 87
+        height: 62
+      alignment: 9
+      pivot: {x: 0.24307357, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab5d9189eaa765469d07067a66e3ddd
+      internalID: -652190426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_23
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 60
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672e767c07149e344868bd0fdbf3cba7
+      internalID: 18847927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 0
+        width: 117
+        height: 62
+      alignment: 9
+      pivot: {x: 0.17840263, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9eb6d974eb0b041bef6ce26493550e
+      internalID: -1722356502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 0
+        width: 117
+        height: 65
+      alignment: 9
+      pivot: {x: 0.18158689, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52050a3c1bb98441a3d1fd841ddf49a
+      internalID: 535387822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 8
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 0
+        width: 120
+        height: 66
+      alignment: 9
+      pivot: {x: 0.17092031, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68e5da3c3cfb9f4e8eb95511b208786
+      internalID: 1136550856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 9
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 0
+        width: 116
+        height: 62
+      alignment: 9
+      pivot: {x: 0.16278392, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a876dde1ab024e94cb1ce72c247a7516
+      internalID: -1494276138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 0
+        width: 114
+        height: 62
+      alignment: 9
+      pivot: {x: 0.16013591, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eb5cdd70352465459204c12a6feddc2
+      internalID: -1288959193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 11
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 0
+        width: 114
+        height: 62
+      alignment: 9
+      pivot: {x: 0.18301123, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ea58daede96e244810bda6cc8335e5
+      internalID: -1456670972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 12
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 0
+        width: 46
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21dca8c31944a8940870c6fd4fb426dd
+      internalID: -1336554169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_31
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 54
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7344acfe49cc7094eb292e34b4cad5c6
+      internalID: -653050558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_32
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 6
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0453c17a245ea344b1d59adba2c8999
+      internalID: 184366505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_33
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 0
+        width: 61
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a877847b587d5ff48977ca783d5949f4
+      internalID: -146353228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_34
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 36
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a79de32fa92fda449dc8e74850b965e
+      internalID: 1584319965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_35
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 13
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3ac4c8a67f5cd41b07838201d8bb75
+      internalID: -1481115942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_36
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 36
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a69406b15150e43846e9348f896200
+      internalID: 1454814902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_37
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 0
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37cfc984b3216b34baffbaed98b2699a
+      internalID: -2023337246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_38
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 29
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59e7fe4cc8c2d04b84283f3bae9207d
+      internalID: -1144082029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_39
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 0
+        width: 14
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dad9703549d64340bcbb2152cf2fa72
+      internalID: 1287451611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_40
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 13
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 564974f0bc90ade4ea89767e386fad5c
+      internalID: 1938300895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_41
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 13
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8efe6126510b51e449b442f2975dcbc0
+      internalID: -67126864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_42
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 0
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af4a22046d3f5243a58e5c1a5934636
+      internalID: 2077040682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_43
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 14
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ac0639817e2834c8af8415755eafae
+      internalID: 1663956748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_44
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 15
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91d927b11b26674db8be911cceb674c
+      internalID: -1943081250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_45
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 0
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6430d0f48bc26f4bac80210afbb6501
+      internalID: 2082389738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_46
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 6
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf90df7252109f147831836ea181583f
+      internalID: 1153939019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_47
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 6
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9decc81dd7f339a4ba4ceb3763c592be
+      internalID: -1270357983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light_charge_48
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9544e448386107f4290b3aa675277a33
+      internalID: -1918731269
       vertices: []
       indices: 
       edges: []
@@ -372,13 +1149,50 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      1: -1282048162
+      10: -1288959193
+      11: -1456670972
+      12: -1336554169
+      2: -1375265526
+      3: 1467048122
+      4: -21892661
+      5: -652190426
+      6: -1722356502
+      7: 535387822
+      8: 1136550856
+      9: -1494276138
       Light_charge_0: -1259558538
       Light_charge_1: -1860159003
       Light_charge_10: -34151458
       Light_charge_11: -1157553
+      Light_charge_12: -1496953860
+      Light_charge_13: 925085553
+      Light_charge_14: 979340188
+      Light_charge_15: 2065085129
+      Light_charge_17: -1953550768
       Light_charge_2: -2022221193
+      Light_charge_21: -208770325
+      Light_charge_23: 18847927
       Light_charge_3: -1368057409
+      Light_charge_31: -653050558
+      Light_charge_32: 184366505
+      Light_charge_33: -146353228
+      Light_charge_34: 1584319965
+      Light_charge_35: -1481115942
+      Light_charge_36: 1454814902
+      Light_charge_37: -2023337246
+      Light_charge_38: -1144082029
+      Light_charge_39: 1287451611
       Light_charge_4: 2031658607
+      Light_charge_40: 1938300895
+      Light_charge_41: -67126864
+      Light_charge_42: 2077040682
+      Light_charge_43: 1663956748
+      Light_charge_44: -1943081250
+      Light_charge_45: 2082389738
+      Light_charge_46: 1153939019
+      Light_charge_47: -1270357983
+      Light_charge_48: -1918731269
       Light_charge_5: -1631938247
       Light_charge_6: -835391946
       Light_charge_7: 701793893

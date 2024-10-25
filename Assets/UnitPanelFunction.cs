@@ -25,11 +25,14 @@ public class UnitPanelFunction : MonoBehaviour
     void Awake()
     {
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
-        levelWarMod = gameManager.GetComponentInChildren<Level_Controller>();
-        if (levelWarMod.gameMod == GameMod.War)
+        if (gameManager != null)
         {
-            levelWarMod.OnGameModeChanged_War += HandleGameModeChanged_War;
-            mod = GameMod.War;
+            levelWarMod = gameManager.GetComponentInChildren<Level_Controller>();
+            if (levelWarMod.gameMod == GameMod.War)
+            {
+                levelWarMod.OnGameModeChanged_War += HandleGameModeChanged_War;
+                mod = GameMod.War;
+            }
         }
     }
 

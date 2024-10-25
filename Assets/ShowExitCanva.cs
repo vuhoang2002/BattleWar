@@ -13,7 +13,7 @@ public class ShowCanva : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnMouseDown()
+    public void OnActiveButton()
     {
         Canva.SetActive(show);
         show = !show;

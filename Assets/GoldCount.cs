@@ -21,6 +21,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
     public int goldAge = 0;
     public Level_Controller levelWarMod;
     public bool isWarMod = false;
+    Image rend;
 
 
 
@@ -45,6 +46,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
             this.currentGold = MAX_GOLD;
             upgradeGold_btn.text = "WAR";
         }
+        rend = GetComponent<Image>();
     }
 
     private void HandleGameModeChanged_War()
@@ -58,9 +60,10 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
 
         if (!isWarMod)
         {
-            if (currentGold > MAX_GOLD)
+            if (currentGold >= MAX_GOLD)
             {
                 currentGold = MAX_GOLD;
+                rend.color = Color.red;
             }
 
             if (currentGold < MAX_GOLD)
@@ -69,18 +72,24 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
                 {
                     currentGold += gold_value;
                     time_add_gold_TIMER = 0;
+                    rend.color = Color.white;
                 }
             }
         }
-
-
         if (gold_Button != null)
         {
             TextMeshProUGUI buttonText = gold_Button.GetComponentInChildren<TextMeshProUGUI>();
 
             if (buttonText != null)
             {
-                buttonText.text = currentGold.ToString();
+                if (!isWarMod)
+                {
+                    buttonText.text = currentGold.ToString() + "/" + MAX_GOLD.ToString();
+                }
+                else
+                {
+                    buttonText.text = currentGold.ToString();
+                }
             }
             else
             {

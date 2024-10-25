@@ -29,12 +29,13 @@ public class CancelChosen : MonoBehaviour
         GameObject BattleCanvas = GameObject.Find("BattleCanva");
         Transform joyStickCanvaTransform = BattleCanvas.transform.Find("JoyStickCanva");
         joyStickCanvaTransform.gameObject.SetActive(false);
-        if (FunctionCanva == null)
-        {
-            FunctionCanva = BattleCanvas.transform.Find("FunctionCanva").gameObject;
+        // if (FunctionCanva == null)
+        // {
+        //     FunctionCanva = BattleCanvas.transform.Find("FunctionCanva").gameObject;
 
-        }
-        FunctionCanva.SetActive(false);
+        // }
+        // FunctionCanva.SetActive(false);
+        new FindObjectAndUI().Off_FunctionButton();
         if (OrderPanel_For_1_Unit == null)
         {
             OrderPanel_For_1_Unit = new FindObjectAndUI().Find_OrderPanel_OneUnit();

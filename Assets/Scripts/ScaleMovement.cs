@@ -1,7 +1,9 @@
+
 using UnityEngine;
 
 public class ScaleMovement : MonoBehaviour
 {
+    float currentScale;
     public void ScaleMovementActive(float minScale, float maxScale, float highPos, float lowPos, float currentY, bool isRightWay)
     {
         // Tính toán tỉ lệ scale dựa trên tọa độ Y
@@ -15,5 +17,11 @@ public class ScaleMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-scale, scale, scale);// nếu nhân vật quay sang trái thì cái này vẫn khiến nhân vật quay sang phải
         }
+    }
+    void Update()
+    {
+        //chỉ dùng cho healthbaR
+        float currentScaleX = transform.localScale.x;
+        transform.localScale = new Vector3(currentScaleX, 3f, 0);
     }
 }

@@ -12,10 +12,9 @@ public class TestBtn : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnMouseDown()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        eb.SpawnEnemy("E_Knight", 3);
-        eb.SpawnEnemy("E_Medusa", 3);
-        eb.SpawnEnemy("E_Archer_Skl", 5);
+        Debug.Log("Va chạm với " + other.gameObject);
     }
+
 }

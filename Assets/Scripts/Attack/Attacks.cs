@@ -7,9 +7,10 @@ public class Attacks : MonoBehaviour
 {
 
     // public Ability abl;
+    public AbilityCount abilityCount;
     public int basic_Atk = 1;
     public float basic_Cd = 1f;
-    private float basic_Cd_Time = 0f;
+    public float basic_Cd_Time = 0f;
     //basicAttack và ability
     public int abl1_Atk = 1;
     public float abl1_Cd = 1f;
@@ -36,10 +37,12 @@ public class Attacks : MonoBehaviour
 
     bool isRightWay = true;
     bool isPlayer = true;
-    public Abl1 abl1; //  un use
+    public AbilityUnit abiliity; //  un use
     public int extraDmg = 5;
     // sát thương thực tế= sát thương cơ bản +(sát thương thêm <nếu mục tiêu cùng loại vs targetWeight>)
     private bool isDealExtraDamage;
+    public GameObject MeleAttack;
+    public WeightUnit extraWeight;
     void Start()
     {
         //attackArea = transform.GetChild(0).gameObject;
@@ -56,7 +59,13 @@ public class Attacks : MonoBehaviour
         {
             isPlayer = false;
         }
-        abl1 = GetComponent<Abl1>();
+        abiliity = GetComponent<AbilityUnit>();
+        UnitClass extraDmgWeight = GetComponent<UnitClass>();
+        extraWeight = extraDmgWeight.extraDMGWeight;
+        if (MeleAttack != null)
+        {
+            MeleAttack.GetComponent<MeleAttack>().SetUp_MeleAttack(basic_Atk, extraDmg, extraWeight);
+        }
     }
 
     void FixedUpdate()
@@ -99,7 +108,7 @@ public class Attacks : MonoBehaviour
             isDealExtraDamage = false;
         }
         // tấn công 
-        if (abl1_Cd_Time <= 0 && abl1 != null && isAbl1)
+        if (abl1_Cd_Time <= 0 && abiliity != null && isAbl1)
         {
             Abl1Attack();
             abl1_Cd_Time = abl1_Cd;
@@ -107,6 +116,7 @@ public class Attacks : MonoBehaviour
         else if (basic_Cd_Time <= 0 && GetComponent<Shot>() != null)// dành cho đánh xa
         {
             amt.SetTrigger("isShot");
+            basic_Cd_Time = basic_Cd;
             // đánh xa vẫn chạm isAbl1=true;
         }
         else if (basic_Cd_Time <= 0 && !isAbl1)
@@ -138,11 +148,13 @@ public class Attacks : MonoBehaviour
 
     private void BasicAttackActive()
     {
-        if (targetHealth != null)
-        {//mục tiêu mà chết quá sớm sẽ ko ảnh hưởng gì
-            int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
-            targetHealth.TakeDamage(damageToDeal);
-        }
+
+        //mục tiêu mà chết quá sớm sẽ ko ảnh hưởng gì
+        // int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
+        //targetHealth.TakeDamage(damageToDeal);
+        MeleAttack.GetComponent<MeleAttack>().isActive = true;
+        MeleAttack.SetActive(true);
+
     }
 
     public void setAttack(bool value)
@@ -155,23 +167,6 @@ public class Attacks : MonoBehaviour
         return isAttacking;
     }
 
-    public void AttackByButton()
-    {
-        if (basic_Cd_Time <= 0)
-        {
-            if (GetComponent<Shot>() == null)
-            {
-                amt.SetTrigger("isAttack");
-                // StartCoroutine(MeleeAttack(0.2f));
-            }
-            else
-            {
-                amt.SetTrigger("isShot");
-                //StartCoroutine(ShotAttack());
-            }
-            basic_Cd_Time = basic_Cd;
-        }
-    }
 
     public void GetAttack_byBtn(GameObject myTarget)
     {
@@ -203,7 +198,7 @@ public class Attacks : MonoBehaviour
         {
             isRightWay = playerController.isRightWay;
         }
-        GetComponent<Abl1>().active_Abl(abl1_Atk, isRightWay);
+        GetComponent<AbilityUnit>().active_Abl_1(abl1_Atk, isRightWay);
     }
     public bool CheckTargetUnitClass_Weight(GameObject target)
     {
@@ -231,4 +226,57 @@ public class Attacks : MonoBehaviour
     {
         abl1_Cd_Time = abl1_Cd;
     }
+    public void OffMeleAttack()
+    {
+        // MeleAttack.GetComponent<MeleAttack>().isActive = false;
+        MeleAttack.SetActive(false);
+    }
+    public void BasicAttackByBtn()
+    {
+        if (basic_Cd_Time <= 0)
+        {
+            if (GetComponent<Shot>() == null)
+            {
+                amt.SetTrigger("isAttack");
+
+            }
+            else
+            {
+                amt.SetTrigger("isShot");
+                //StartCoroutine(ShotAttack());
+            }
+            basic_Cd_Time = basic_Cd;
+        }
+    }
+    public void Abl1_AttackBtn()
+    {
+        if (abl1_Cd_Time <= 0)
+        {
+
+            amt.SetTrigger("isAbl1");
+
+
+            abl1_Cd_Time = abl1_Cd;
+        }
+    }
+
+    public void Abl2_AttackByBTn()
+    {
+        if (abl2_Cd_Time <= 0)
+        {
+            amt.SetTrigger("isAbl2");
+            abl2_Cd_Time = abl2_Cd;
+        }
+    }
+    public void Abl3_AttackByBTn()
+    {
+        if (abl3_Cd_Time <= 0)
+        {
+            amt.SetTrigger("isAbl3");
+            abl3_Cd_Time = abl3_Cd;
+        }
+    }
+
+
+
 }

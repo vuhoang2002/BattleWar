@@ -56,7 +56,7 @@ public class CardUnitManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Đã có đủ số lượng card tối đa");
+            //Debug.LogError("Đã có đủ số lượng card tối đa");
         }
     }
 

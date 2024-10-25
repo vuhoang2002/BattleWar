@@ -143,6 +143,12 @@ MonoBehaviour:
   time_add_gold: 0.1
   gold_value: 1
   MAX_VALUE_GOLD: 50
+  upgrade_Gold_Value: 50
+  enemyBehavius: {fileID: 0}
+  upgradeGold_btn: {fileID: 0}
+  goldAge: 0
+  levelWarMod: {fileID: 0}
+  isWarMod: 0
 --- !u!114 &1973321751819166264
 MonoBehaviour:
   m_ObjectHideFlags: 0
