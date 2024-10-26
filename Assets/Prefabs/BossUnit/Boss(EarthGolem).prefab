@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7665413448057054534}
   - component: {fileID: -5625746903622123534}
   m_Layer: 7
-  m_Name: EarthGolemBoss
+  m_Name: Boss(EarthGolem)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce30abba273d34cb52a2126f642202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1800
+  health: 2000
   deadthObject: {fileID: 1396792524635016849, guid: 214da24b39f840b47b35ccdecc76bc48, type: 3}
   halfCastle: {fileID: 0}
   dieCastle: {fileID: 0}

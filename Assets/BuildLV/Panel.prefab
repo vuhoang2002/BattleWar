@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &3005519854163858882
 RectTransform:
@@ -121,7 +121,7 @@ MonoBehaviour:
   - unitTag: LightningMage
     prefab: {fileID: 5799506397286250514, guid: 0871296892d7538468b4c6efd01e34f1, type: 3}
     prefabSprite: {fileID: 21300000, guid: b006d5d265a14194da737161909f3245, type: 3}
-    unitPrice: 100
+    unitPrice: 110
     cdTimerUnit: 8
     unitStrength: 7
     isUnit: 0
@@ -163,14 +163,14 @@ MonoBehaviour:
   - unitTag: EarthGolem
     prefab: {fileID: 447399120621047007, guid: 12e4366bbe5402f4f96922922b2cefff, type: 3}
     prefabSprite: {fileID: 21300000, guid: cc96b618da10b15458544fe238b5233a, type: 3}
-    unitPrice: 170
+    unitPrice: 200
     cdTimerUnit: 8
     unitStrength: 9
     isUnit: 0
   - unitTag: SkeletonMagician
     prefab: {fileID: 7688900732844524521, guid: d525257c51e723744b93694160d11c2e, type: 3}
     prefabSprite: {fileID: 21300000, guid: 5d998be3ed3209c4ea604932183a5f09, type: 3}
-    unitPrice: 150
+    unitPrice: 120
     cdTimerUnit: 10
     unitStrength: 8
     isUnit: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   - unitTag: FireVizard
     prefab: {fileID: 8460218703059110111, guid: ec3c0f4818b0a8845ae5dba011a8065c, type: 3}
     prefabSprite: {fileID: 21300000, guid: 3c8cce160b4d6f14aba2beed5b03da8a, type: 3}
-    unitPrice: 100
+    unitPrice: 130
     cdTimerUnit: 10
     unitStrength: 7
     isUnit: 0
@@ -195,6 +195,13 @@ MonoBehaviour:
     cdTimerUnit: 30
     unitStrength: 0
     isUnit: 2
+  - unitTag: Yamabushi_tengu
+    prefab: {fileID: 4144577915487399735, guid: 7719ef93d0c89694184cca32e231a45b, type: 3}
+    prefabSprite: {fileID: 21300000, guid: e6f3b2e13b5d2b840a0e5cbba455232f, type: 3}
+    unitPrice: 75
+    cdTimerUnit: 10
+    unitStrength: 5
+    isUnit: 0
   selectedUnitTags: []
   UnitPanel: {fileID: 0}
   cloneSpawnBtn: {fileID: 0}

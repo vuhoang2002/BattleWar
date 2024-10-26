@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ac0fce830b36874db50f75c3535b75b
+guid: 4e4e1f8983f802949bce73ee124c3408
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,32 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -136,127 +110,232 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: Explosion_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 31
-        width: 26
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5a2088787783f34ba927b9a38232117
-      internalID: -635556704
+      spriteID: d98ecf72575624548824d449d1e7f176
+      internalID: -1290268903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: Explosion_1
       rect:
         serializedVersion: 2
-        x: 179
-        y: 31
-        width: 26
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f009bfb91f4e6414bb237273e88b71af
-      internalID: -2122203149
+      spriteID: 6a64148c393ed3c43a5a0c65c4087a86
+      internalID: 1221112062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: Explosion_2
       rect:
         serializedVersion: 2
-        x: 308
-        y: 31
-        width: 25
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2070a58b81f589344a9b112d00bc1273
-      internalID: -474877786
+      spriteID: 18151f51c5bbe294f9ac8a4c26c628b9
+      internalID: 5805176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: Explosion_3
       rect:
         serializedVersion: 2
-        x: 434
-        y: 30
-        width: 28
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2338719fe05860e41bea04b048a5eb3f
-      internalID: 1490344005
+      spriteID: bf73a1f07f1c94d4f89ab8c8c329754d
+      internalID: -1294571833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_4
+      name: Explosion_4
       rect:
         serializedVersion: 2
-        x: 561
-        y: 30
-        width: 29
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7de9ffc245596d46bebed0bf155d09b
-      internalID: -878735791
+      spriteID: 6266776f2aaf5e74386dfacd261b8c47
+      internalID: -1457309391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_5
+      name: Explosion_5
       rect:
         serializedVersion: 2
-        x: 690
-        y: 30
-        width: 27
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e190c8ea9633e748b3a57316da69047
-      internalID: 1539476308
+      spriteID: 92223c35637ddf64e8cdd465d6f1d821
+      internalID: 1641461848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1127ebf7205758f449a7919cb3890d17
+      internalID: -531812704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05f26be225995745bf4e70de9ca62aa
+      internalID: -664853914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7133a57f2f79a24fb6d1ff22d5a43c6
+      internalID: 635276892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_9
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff757c570b72c5949810160a305e05e5
+      internalID: 475682325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc5af3f35b284474986591efd0dc7989
+      internalID: 1347729516
       vertices: []
       indices: 
       edges: []
@@ -272,12 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_0: -635556704
-      Idle_1: -2122203149
-      Idle_2: -474877786
-      Idle_3: 1490344005
-      Idle_4: -878735791
-      Idle_5: 1539476308
+      Explosion_0: -1290268903
+      Explosion_1: 1221112062
+      Explosion_10: 1347729516
+      Explosion_2: 5805176
+      Explosion_3: -1294571833
+      Explosion_4: -1457309391
+      Explosion_5: 1641461848
+      Explosion_6: -531812704
+      Explosion_7: -664853914
+      Explosion_8: 635276892
+      Explosion_9: 475682325
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

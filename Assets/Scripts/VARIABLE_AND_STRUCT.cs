@@ -4,6 +4,11 @@ using UnityEngine;
 
 
 // Start is called before the first frame update
+
+
+public class VARIABLE_AND_STRUCT : MonoBehaviour
+{
+}
 public enum WeightUnit
 {// loại
     Light,
@@ -50,6 +55,7 @@ public enum UnitOrder
     Null
 }
 //dành cho việc sắp xếp
+[System.Serializable]
 public class UnitListOrder
 {
     public string id; // Thêm trường ID
@@ -62,12 +68,15 @@ public class UnitListOrder
         this.id = id;
     }
 }
+
+[System.Serializable]
 public class TagList
 {
     public string tagName; // Tên tag cho danh sách
     public List<UnitListOrder> my_Units = new List<UnitListOrder>(); // Danh sách các đơn vị tương ứng
     public int unitCount; // Số lượng đơn vị
 }
+[System.Serializable]
 public class Player_ListObject
 {
     public List<PlayerController> FindAllPlayerInList(GameObject gameObject)

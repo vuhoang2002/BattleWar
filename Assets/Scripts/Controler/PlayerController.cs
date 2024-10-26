@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class PlayerController : MonoBehaviour, IPointerClickHandler
 {
@@ -82,9 +84,10 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public GameObject cursorSelect;
 
 
+
     void Start()
     {
-        final_Speed = moveSpeed; // ko xài nx
+        //final_Speed = moveSpeed; // ko xài nx
         randomTime = UnityEngine.Random.Range(0.0f, randomTime);
         rend = GetComponent<Renderer>();// orderLayout
         amt = GetComponent<Animator>();
@@ -322,8 +325,8 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     {
         Vector2 currentPosition = transform.position;
         // Tính toán sự thay đổi tọa độ
-        currentDirection = currentPosition - previousPosition;
-
+        currentDirection.x = currentPosition.x - previousPosition.x;
+        // Debug.Log(currentDirection.x);
         // Kiểm tra sự thay đổi về tọa độ
         if (currentPosition != previousPosition)
         {
@@ -341,13 +344,17 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     {
         if (currentDirection.x > 0 && !isRightWay) // Di chuyển sang phải
         {
+            // Debug.Log("Phải Direction.x là" + movement.x + "is rightway là " + isRightWay);
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = true;
+            // Debug.Log("xoay phải");
         }
         else if (currentDirection.x < 0 && isRightWay) // Di chuyển sang trái
         {
+            // Debug.Log(" Trái Direction.x là" + movement.x + "is rightway là " + isRightWay);
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             isRightWay = false;// tức là nhân vật đang quay sang trái, nó có tác dụng trong hàm scale
+
         }
     }
 
@@ -691,7 +698,13 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         movement = currentDirection * moveSpeed * Time.deltaTime;
         transform.Translate(movement);
     }
-
+    public void moveToPosition_With_New_Move_Speed
+    (Vector3 position, float moveSpeed)
+    {
+        currentDirection = (position - transform.position).normalized;
+        movement = currentDirection * moveSpeed * Time.deltaTime;
+        transform.Translate(movement);
+    }
     public void moveToPosition(Vector2 position)
     {
         Vector3 position3 = new Vector3(position.x, position.y, 0);

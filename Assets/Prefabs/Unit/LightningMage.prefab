@@ -232,7 +232,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abiliity: {fileID: 0}
-  extraDmg: 18
+  extraDmg: 10
   MeleAttack: {fileID: 634242645506387576}
   extraWeight: 0
 --- !u!114 &8112936412830587153
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWeight: 0
-  extraDMGWeight: 2
+  extraDMGWeight: 0
   unitRace: 2
 --- !u!114 &5241475886154781199
 MonoBehaviour:

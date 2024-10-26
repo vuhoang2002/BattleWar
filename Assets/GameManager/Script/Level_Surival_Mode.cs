@@ -65,7 +65,7 @@ public class Level_Surival_Mode : MonoBehaviour
                 // Spawn boss
                 GameObject bossUnit_Ins = enemyManager.SpawnUnit_ByPrefab(bossUnit);
                 bossUnit.GetComponent<PlayerController>().SetBehavius(true, false, false, false);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     enemyManager.SpawnEnemy(get_RandomUnitIndex(), 1);
                 }

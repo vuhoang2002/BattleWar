@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8326689462647423823}
   - component: {fileID: 1728026356541355769}
   - component: {fileID: 6455931785304403783}
+  - component: {fileID: -4291778006231863749}
   m_Layer: 7
   m_Name: WhiteWereWolf
   m_TagString: Player
@@ -60,7 +61,7 @@ MonoBehaviour:
   isSelect: 0
   isRanger: 0
   id: 
-  moveSpeed: 1.7
+  moveSpeed: 1
   searchRadius: 13
   highPos: -4.5
   lowPos: -2.5
@@ -301,6 +302,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4291778006231863749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771389466485940781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7662bfbf3292f409764ed9a408c757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runMoveSpeed: 2
 --- !u!1001 &2615120933810976301
 PrefabInstance:
   m_ObjectHideFlags: 0

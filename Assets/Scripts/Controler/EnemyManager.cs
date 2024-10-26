@@ -102,6 +102,10 @@ public class EnemyManager : MonoBehaviour
 
             }
         }
+        TagList tagList2 = new TagList { tagName = "Boss" };
+        unitTagLists.Add(tagList2);
+        Create_DefUnitAreas("Boss");
+
     }
 
     public void SpawnEnemy(string enemyName, int index)
@@ -458,8 +462,10 @@ public class EnemyManager : MonoBehaviour
         }
 
         // Thêm đơn vị vào danh sách của TagList tương ứng
-        AddUnitToTagList(bossunit.name, enemyController, newUnit);
+        AddUnitToTagList("Boss", enemyController, newUnit);
         // Gọi hàm để thêm đơn vị vào danh sách
+        Transform childArea = transform.Find("Boss" + "_DefArea");
+        childArea.gameObject.GetComponent<FomationManager_NewUprade>().Create_defPosition();
         return newUnit;
     }
 }
