@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Thunder : MonoBehaviour
@@ -9,6 +10,7 @@ public class Thunder : MonoBehaviour
     public int thunerDmg = 8;
     public int extraDmg = 30;
     public GameObject magicsterOrderLayout;
+    public GameObject summondExplosion;// triệu hồi vụ nổ cho lightning mage
     void Start()
     {
         amtParnet = GetComponentInParent<Animator>();
@@ -44,4 +46,11 @@ public class Thunder : MonoBehaviour
     {
         thunerDmg = dmg;
     }
+
+    public void SummondExplolison()
+    {
+        GameObject summondEx = Instantiate(summondExplosion, transform.position + new Vector3(0, 0.2f, 0), Quaternion.identity);
+        summondEx.SetActive(true);
+    }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectCard : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int MAX_CARD = 5;
+    public static int MAX_CARD = 6;
     private bool isMaxCard = false;
     void Start()
     {

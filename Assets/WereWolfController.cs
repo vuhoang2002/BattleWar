@@ -5,11 +5,12 @@ using UnityEngine;
 public class WereWolfController : MonoBehaviour
 {
     // Start is called before the first frame update
-    float defaultMovespeed;
+    private float defaultMovespeed = 1f;
     public float runMoveSpeed = 1.7f;
     void Start()
     {
-        defaultMovespeed = GetComponent<PlayerController>().moveSpeed;
+        //defaultMovespeed = GetComponent<PlayerController>().moveSpeed;
+        defaultMovespeed = 1f;
     }
 
     // Update is called once per frame

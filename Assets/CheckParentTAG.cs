@@ -41,7 +41,7 @@ public class CheckParentTAG : MonoBehaviour
     {
         Renderer rend = GetComponent<Renderer>();
         PlayerController playerController = parentObject.GetComponent<PlayerController>();
-        rend.sortingOrder = playerController.GetOrderLayer();
+        rend.sortingOrder = playerController.GetOrderLayer() + 1;
         bool isRightWay = playerController.isRightWay;
 
         float scale = playerController.scale;

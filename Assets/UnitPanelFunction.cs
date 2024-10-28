@@ -115,4 +115,14 @@ public class UnitPanelFunction : MonoBehaviour
     {
         get { return selectedUnitTags; }
     }
+    public Sprite Find_UnitAvatar(string unitTagRef)
+    {
+        int index = unitTagRef.IndexOf('(');
+        if (index > 0)
+        {
+            unitTagRef = unitTagRef.Substring(0, index).Trim();
+        }
+        UnitData unitDataEntry = unitData.Find(unit => unit.unitTag == unitTagRef);
+        return unitDataEntry.prefabSprite;
+    }
 }

@@ -54,7 +54,7 @@ public class Health : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
         }
         this.health -= amount;
-        ShowDamagePopup(amount);
+        ShowDamagePopup(amount, false);
         // MÁU CHO CASTLE 
         if (halfCastle != null && dieCastle != null)
         {
@@ -121,13 +121,12 @@ public class Health : MonoBehaviour
 
     public void Heal(int amount)
     {
-        if (amount < 0)
+        if (amount < 0 || health >= MAX_HEALTH)
         {
-            throw new System.ArgumentOutOfRangeException("Cannot have negative healing");
+            return;
         }
-
-        // Ensure health doesn't exceed max health
         health = Mathf.Min(health + amount, MAX_HEALTH);
+        ShowDamagePopup(amount, true);
         UpdateHealthBar();
     }
 
@@ -188,6 +187,7 @@ public class Health : MonoBehaviour
         Invoke("DeleteSelf", deathDuration);
     }
 
+
     private void DeleteSelf()
     {
         if (deadthObject != null)
@@ -229,7 +229,7 @@ public class Health : MonoBehaviour
     }
 
     // Kiểm tra prefab không null
-    public void ShowDamagePopup(int damage)
+    public void ShowDamagePopup(int damage, bool isHealing)
     {
         if (damePopUpPrefab != null)
         {
@@ -245,23 +245,13 @@ public class Health : MonoBehaviour
             if (textComponent != null)
             {
                 textComponent.text = damage.ToString();
+                textComponent.color = isHealing ? Color.green : Color.red;
             }
             else
             {
                 Debug.LogWarning("TextMeshPro component not found in the pop-up instance!");
             }
 
-            // Bắt đầu animation (nếu cần)
-            // Animator animator = instance.GetComponent<Animator>();
-
-            //  if (animator != null)
-            // {
-            //   animator.SetTrigger("PlayAnimation"); // Trigger đã tạo trong Animator
-            // }
-        }
-        else
-        {
-            //.LogWarning("Damage pop-up prefab is not assigned!");
         }
     }
     public void Heal_Full_Hp()

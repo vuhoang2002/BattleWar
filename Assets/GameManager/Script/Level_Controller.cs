@@ -28,6 +28,8 @@ public class Level_Controller : MonoBehaviour
     public event GameModeChangedHandler_War OnGameModeChanged_War;
     public event GameModeChangedHandler_War OnBattleStart;
     public event GameModeChangedHandler_Survival OnGameModeChanged_Survival;
+    public event GameModeChangedHandler_Survival OnKillEnemyToWin;
+
     // public event GameModeChangedHandler_War OnBattleStart;
     public GameObject WarUI;
     public GameObject BeginUI;// mission to win
@@ -46,7 +48,6 @@ public class Level_Controller : MonoBehaviour
             // chế độ WarMode có thay đổi về vàng
             Debug.Log("khai báo sk");
             OnGameModeChanged_War?.Invoke();
-
             GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
             War_UI.transform.SetParent(battleCanva.transform);
             StartCoroutine(On_WarModeActive(timer, War_UI));
@@ -123,15 +124,23 @@ public class Level_Controller : MonoBehaviour
         {
             textUI.text = "Survival in: " + i + "s";
             yield return new WaitForSeconds(1f);
+            if (i == 60)
+            {
+
+            }
         }
         yield return new WaitForSeconds(1f);
         //yield return new WaitForSeconds(timeToBegin);
         GetComponent<EnemyBehavius>().Current_EnemyOrder(UnitOrder.Attack);
         // OnBattleStart?.Invoke();
         // Debug.Log("Khai báo sk OnBattleStart");
+        GetComponent<Level_Surival_Mode>().stopCallingMoster = true;
+
+        OnKillEnemyToWin?.Invoke();
+        warUI.GetComponentInChildren<TextMeshProUGUI>().text = "Kill All Enemy!";
         yield return new WaitForSeconds(1f);
         Destroy(warUI);
-        new Victory_Or_Loss().Get_Victory();
+        // new Victory_Or_Loss().Get_Victory();
     }
     public EnemyManager Get_EnemyManager()
     {

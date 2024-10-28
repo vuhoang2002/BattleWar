@@ -5,9 +5,10 @@ using UnityEngine;
 public class FindObjectAndUI : MonoBehaviour
 {
     // Start is called before the first frame update
+    GameObject BattleCanvas;
     void Start()
     {
-
+        BattleCanvas = GameObject.Find("BattleCanva");
     }
 
     // Update is called once per frame
@@ -50,6 +51,30 @@ public class FindObjectAndUI : MonoBehaviour
         // findCanva.gameObject.SetActive(false);
         return findCanva.gameObject;
     }
+    // public Sprite Find_UnitAvatar(string unitName)
+    // {// ko xài nx
+    //     Sprite unitAvatar = null;
+    //     return unitAvatar;
+    // }
+    public UnitListManager Find_UnitListManager()
+    {
+        GameObject PUnitList = GameObject.Find("PUnit_List");
+        UnitListManager unitListManager = PUnitList.GetComponent<UnitListManager>();
+        return unitListManager;
+    }
+    public UnitPanelFunction Find_UnitPanelFunction()
+    {
+        GameObject BattleCanvas = GameObject.Find("BattleCanva");
+        Transform findCanva = BattleCanvas.transform.Find("UnitCanva");
+        findCanva = findCanva.transform.Find("Panel");
+
+        // findCanva.gameObject.SetActive(false);
+        return findCanva.GetComponent<UnitPanelFunction>();
+        // Transform findCanva = BattleCanvas.transform.Find("UnitCanva");
+        // findCanva = findCanva.transform.Find("Panel");
+        // return findCanva.GetComponent<UnitPanelFunction>();
+    }
+
     public EnemyManager Find_EnemyManager()
     {
         GameObject eUnitList = GameObject.Find("EUnit_List");

@@ -17,7 +17,7 @@ public class Level_Surival_Mode : MonoBehaviour
     public GameObject bossUnit;
     public float timeCallingBoss;
     public GameObject WarUI;
-
+    public bool stopCallingMoster = false;
 
     void Start()
     {
@@ -46,18 +46,19 @@ public class Level_Surival_Mode : MonoBehaviour
     {
         //spawn kẻ địch ngẫu nhiên tại thời điẻm
         //gọi thời gian ngẫu nhiên, cứ cách 1 khoảng thời gian spawn ra 1 kẻ địch đi về phía trước
-        while (true)
+        while (!stopCallingMoster)
         {
             float randomTime = UnityEngine.Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(randomTime);
             int randomEnemyIndex = UnityEngine.Random.Range(0, enemyTypeCount - 1);
             GameObject enemySpawner = enemyManager.SpawnEnemy2(randomEnemyIndex, 1);
             enemySpawner.GetComponent<PlayerController>().Set_BehaviusForPrefab(true, false, false);
+
         }
     }
     private IEnumerator SpawnBossAfterTime()
     {
-        while (true)
+        while (!stopCallingMoster)
         {
             yield return new WaitForSeconds(timeCallingBoss);
             if (bossUnit != null)
@@ -65,7 +66,7 @@ public class Level_Surival_Mode : MonoBehaviour
                 // Spawn boss
                 GameObject bossUnit_Ins = enemyManager.SpawnUnit_ByPrefab(bossUnit);
                 bossUnit.GetComponent<PlayerController>().SetBehavius(true, false, false, false);
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     enemyManager.SpawnEnemy(get_RandomUnitIndex(), 1);
                 }

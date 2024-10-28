@@ -74,7 +74,7 @@ public class TagList
 {
     public string tagName; // Tên tag cho danh sách
     public List<UnitListOrder> my_Units = new List<UnitListOrder>(); // Danh sách các đơn vị tương ứng
-    public int unitCount; // Số lượng đơn vị
+    public byte unitCount; // Số lượng đơn vị
 }
 [System.Serializable]
 public class Player_ListObject

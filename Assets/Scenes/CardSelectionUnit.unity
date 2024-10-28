@@ -383,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 4889794194981756454, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 41afcea2b3cb39442b3f115aff0e96c3, type: 3}
+      objectReference: {fileID: 21300000, guid: ef49016df89dca848b6c0bf0087b854c, type: 3}
     - target: {fileID: 5735401286994626171, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -529,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 4889794194981756454, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cd31f13888b251344bf3907fc4efcf78, type: 3}
+      objectReference: {fileID: 21300000, guid: ab9a726e6750ba54bb6f5dd804522ef6, type: 3}
     - target: {fileID: 5735401286994626171, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -889,7 +889,7 @@ PrefabInstance:
     - target: {fileID: 4889794194981756454, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3c8cce160b4d6f14aba2beed5b03da8a, type: 3}
+      objectReference: {fileID: 21300000, guid: da96b98ec823b1642b1e4e3360f6cbb6, type: 3}
     - target: {fileID: 5735401286994626171, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1423,7 +1423,7 @@ PrefabInstance:
     - target: {fileID: 4889794194981756454, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1524097737, guid: 75436b7f806e31a488edcbfbe989565f, type: 3}
+      objectReference: {fileID: 21300000, guid: d4157ccfd68ceec498ae61d4eedcc58d, type: 3}
     - target: {fileID: 5735401286994626171, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2213,7 +2213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08dae382e4d7234092c7b8f0815b350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_CARD: 5
 --- !u!1 &1184570647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +2922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7091107583145133628, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: unitTag
-      value: Yamabushi_tengu
+      value: SkeletonMagician
       objectReference: {fileID: 0}
     - target: {fileID: 7091107583145133628, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: isSelection
@@ -3529,7 +3528,7 @@ PrefabInstance:
     - target: {fileID: 4889794194981756454, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b006d5d265a14194da737161909f3245, type: 3}
+      objectReference: {fileID: 21300000, guid: 566cb9e7567e6fb469db0c3a8aafb033, type: 3}
     - target: {fileID: 5735401286994626171, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4034,6 +4033,14 @@ PrefabInstance:
     - target: {fileID: 1066063735096236939, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472169119836130593, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
+      propertyPath: m_Spacing.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472169119836130593, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
+      propertyPath: m_CellSize.x
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1472169119836130593, guid: b7434025b1cb6db4fb5652f7aeae6a17, type: 3}
       propertyPath: m_Padding.m_Left

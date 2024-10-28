@@ -262,4 +262,15 @@ public class UnitListManager : MonoBehaviour
 
         return foundUnits; // Trả về danh sách các unit tìm thấy
     }
+    public byte Find_UnitCount(string prefabName)
+    {
+        // Cắt tên prefab đến dấu '('
+        int index = prefabName.IndexOf('(');
+        if (index >= 0)
+        {
+            prefabName = prefabName.Substring(0, index).Trim(); // Cắt chuỗi từ đầu đến dấu '('
+        }
+        TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
+        return tagList.unitCount;
+    }
 }

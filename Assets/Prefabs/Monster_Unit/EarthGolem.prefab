@@ -279,7 +279,6 @@ MonoBehaviour:
   isDef_Order: 1
   isFallBack_Order: 0
   isHold_Order: 0
-  heal: 5
   def_Position: {x: 0, y: 0, z: 0}
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
@@ -580,6 +579,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3101589768851789864}
     m_Modifications:
+    - target: {fileID: -6104845775828115395, guid: 30b28f934a8045e47a3664252d43036a, type: 3}
+      propertyPath: isAblity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1107766623144568883, guid: 30b28f934a8045e47a3664252d43036a, type: 3}
       propertyPath: m_Name
       value: MeleAttack

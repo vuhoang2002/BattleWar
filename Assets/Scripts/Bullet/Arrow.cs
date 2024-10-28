@@ -16,6 +16,8 @@ public class Arrow : MonoBehaviour
     private Animator amt;
     private int extraDmg;
     CheckParentTAG checkParentTAG;
+    private bool isActive = true;
+    public bool isAblity = false;
 
     void Start()
     {
@@ -46,8 +48,15 @@ public class Arrow : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D target)
     {
+        if (!isActive)
+            return;
 
         target.GetComponent<Health>().TakeDamage(arow_Dmg);
+        if (!isAblity)
+        {
+            gameObject.SetActive(false);
+            isActive = false; // Đánh dấu là không còn hoạt động
+        }
         OnDestroy(); // Hủy mũi tên sau khi trúng đích
     }
 

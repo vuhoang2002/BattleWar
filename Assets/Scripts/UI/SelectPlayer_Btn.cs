@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
+//using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
 {
     public delegate void SelectionChangedEventHandler();
     public event SelectionChangedEventHandler OnChosenPlayerSelect;
     public GameObject choSen;
+    public TextMeshProUGUI unitCount;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -31,10 +35,8 @@ public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
         GameObject functionCanva = battleCanvas.transform.Find("FunctionCanva").gameObject;
         functionCanva.GetComponent<FunctionPanel>().chosen = choSen;
         functionCanva.GetComponent<FunctionPanel>().attacks = choSen.GetComponent<Attacks>();
-
         MakeOtherPlayerCanNotSelect();
         LockCamForTheChosen(choSen);
-
         functionCanva = battleCanvas.transform.Find("OrderCanva").gameObject;
         joyStickCanvaTransform = functionCanva.transform.Find("PanelOrder_UnitType");
         joyStickCanvaTransform.gameObject.SetActive(false);
@@ -64,8 +66,13 @@ public class SelectPlayer_Btn : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void ToggleCanvasVisibility(GameObject parentCanvas, string childName, bool isVisible)
+    public void SetUp_SelectUnitButton(Sprite unitAvatar, byte uintCount)
     {
-
+        // Lấy component Image từ đối tượng hiện tại
+        Image imageComponent = GetComponent<Image>();
+        // Cập nhật sprite của Image
+        imageComponent.sprite = unitAvatar;
+        // Cập nhật số lượng hiển thị
+        unitCount.text = uintCount.ToString();
     }
 }

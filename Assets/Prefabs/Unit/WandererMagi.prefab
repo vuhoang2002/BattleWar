@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityCount: 1
-  basic_Atk: 8
-  basic_Cd: 2.5
+  basic_Atk: 13
+  basic_Cd: 2
   basic_Cd_Time: 0
   abl1_Atk: 10
   abl1_Cd: 9
@@ -148,7 +148,7 @@ MonoBehaviour:
   timeToDealDmg: 0.5
   attackCooldown: 1
   abiliity: {fileID: 0}
-  extraDmg: 8
+  extraDmg: 10
   MeleAttack: {fileID: 0}
   extraWeight: 0
 --- !u!114 &291363965469236116
@@ -566,6 +566,10 @@ PrefabInstance:
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: extraDmg
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+      propertyPath: thunerDmg
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: magicsterOrderLayout

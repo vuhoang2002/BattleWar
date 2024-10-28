@@ -124,6 +124,7 @@ MonoBehaviour:
   extraDmg: 16
   myWeightExtra: 2
   isActive: 1
+  isAblity: 1
 --- !u!61 &4955909889981746587
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
     public int enemyCountAll;
     public int enemyStrength;
     Level_Controller myLevelMode;
-    private bool isWarMode;
+    private bool is_War_Sur_Mode;
     public GameObject victoryUi;
 
 
@@ -60,14 +60,15 @@ public class EnemyManager : MonoBehaviour
         }
         GameObject gameManager = GameObject.Find("GAME_MANAGER");
         myLevelMode = gameManager.GetComponent<Level_Controller>();
-        myLevelMode.OnBattleStart += HandleBattleStart;
+        myLevelMode.OnBattleStart += Handle_Kill_All_Enemy_War_Sur;
+        myLevelMode.OnKillEnemyToWin += Handle_Kill_All_Enemy_War_Sur;
 
     }
 
-    private void HandleBattleStart()
+    private void Handle_Kill_All_Enemy_War_Sur()
     {
         // throw new NotImplementedException();
-        isWarMode = true;
+        is_War_Sur_Mode = true;
     }
 
     public IEnumerator FindEnemyList()
@@ -305,6 +306,8 @@ public class EnemyManager : MonoBehaviour
     }
     public bool RemoveUnitFromTagList(string unitTag, GameObject prefab, string id)
     {
+
+
         string prefabName = unitTag;
         int index = prefabName.IndexOf('(');
         if (index >= 0)
@@ -327,7 +330,7 @@ public class EnemyManager : MonoBehaviour
                 // Cập nhật số lượng đơn vị
                 tagList.unitCount--;
                 enemyCountAll--;
-                if (isWarMode && enemyCountAll <= 0)
+                if (is_War_Sur_Mode && enemyCountAll <= 0)
                 {
                     new Victory_Or_Loss().Get_Victory();
                 }

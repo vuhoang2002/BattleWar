@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MeleAttack : MonoBehaviour
+public class Explosion : MonoBehaviour
 {
     public int damage;
     public int extraDmg;
     public WeightUnit myWeightExtra;
     public bool isActive = false;
-    public bool isAblity;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,11 +19,8 @@ public class MeleAttack : MonoBehaviour
         {
             int totalDamage = damage + (CheckTargetUnitClass_Weight(other.gameObject, myWeightExtra) ? extraDmg : 0);
             health.TakeDamage(totalDamage);
-            if (!isAblity)
-            {
-                gameObject.SetActive(false);
-                isActive = false; // Đánh dấu là không còn hoạt động
-            }
+            gameObject.SetActive(false);
+            isActive = false; // Đánh dấu là không còn hoạt động
         }
     }
 
@@ -53,5 +49,4 @@ public class MeleAttack : MonoBehaviour
         gameObject.SetActive(true);
         isActive = true;
     }
-
 }

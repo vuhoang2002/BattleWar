@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, IPointerClickHandler
 {
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public bool isDef_Order = true;
     public bool isFallBack_Order = false;
     public bool isHold_Order = false;
-    public int heal = 5;
+    public static int heal = 10;// máu hồi phục khi ở tower
     private float timerHeal = 0f;
     private float time_Heal = 2f;
     //  public string unitTag=Knight;
@@ -645,10 +646,23 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         canvaChil = canva.Find("PanelOrder_OneUnit");
         canvaChil.gameObject.SetActive(true);
         canvaChil = canva.Find("SelectUnit_Btn");
+        //canvaChil.GetComponent<SelectPlayer_Btn>().SetUp_SelectUnitButton();
+        Find_UnitAvatar_And_UnitCount(canvaChil.gameObject);
+
         canvaChil.gameObject.SetActive(true);
         chosenPlayer = this.gameObject;
         //joyStickCanvaTransform = joyStickCanvaTransform.Find("PanelOrder_UnitType");
     }
+    public void Find_UnitAvatar_And_UnitCount(GameObject selectButton)
+    {
+        UnitListManager unitListManager = new FindObjectAndUI().Find_UnitListManager();
+        byte unitCount = unitListManager.Find_UnitCount(gameObject.name);
+        UnitPanelFunction unitPanelFunction = new FindObjectAndUI().Find_UnitPanelFunction();
+        Sprite unitAvatar = unitPanelFunction.Find_UnitAvatar(gameObject.name);
+        selectButton.GetComponent<SelectPlayer_Btn>().SetUp_SelectUnitButton(unitAvatar, unitCount);
+
+    }
+
 
     public string Get_Current_Order_toString()
     {
@@ -756,10 +770,15 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             gameObject.tag = "isHealing";
             gameObject.GetComponent<Renderer>().enabled = false; // Ẩn đối tượng
             gameObject.GetComponent<BoxCollider2D>().enabled = false; // Ngừng tương tác vật lý
-            Transform currentBarTransform = gameObject.transform.Find("CurrentBar");
+            Transform currentBarTransform = gameObject.transform.Find("HealthBar");
+
             if (currentBarTransform != null)
             {
-                // Lấy Renderer và tắt nó
+                currentBarTransform.gameObject.SetActive(false);
+            }
+            currentBarTransform = gameObject.transform.Find("Shadow");
+            if (currentBarTransform != null)
+            {
                 Renderer renderer = currentBarTransform.GetComponent<Renderer>();
                 if (renderer != null)
                 {
@@ -789,7 +808,13 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             gameObject.GetComponent<Renderer>().enabled = true; // Ẩn đối tượng
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             // Tìm đối tượng con
-            Transform currentBarTransform = gameObject.transform.Find("CurrentBar");
+            Transform currentBarTransform = gameObject.transform.Find("HealthBar");
+            if (currentBarTransform != null)
+            {
+                // Lấy Renderer và tắt nó
+                currentBarTransform.gameObject.SetActive(true);
+            }
+            currentBarTransform = gameObject.transform.Find("Shadow");
             if (currentBarTransform != null)
             {
                 // Lấy Renderer và tắt nó

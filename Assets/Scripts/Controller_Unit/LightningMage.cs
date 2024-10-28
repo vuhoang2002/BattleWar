@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightningMageControllder : MonoBehaviour
 {
     [Header("Abl1: ThunderStrike")]
-    public GameObject thunerStrike; // Prefab của FireBall
+    public GameObject thunderStrike; // Prefab của FireBall
     public Transform spawnLocation; // Vị trí để spawn FireBall
     public int thunerCount = 6;// số lượng tia sét
 
@@ -15,12 +15,14 @@ public class LightningMageControllder : MonoBehaviour
     public static bool isUpgrade = false;
     private int extraDmg = 0;
     public float spaceBtwThunder;
+    PlayerController pl;
     void Start()
     {
         //isUpgrade=true;
         thunderAtk = GetComponent<Attacks>().abl1_Atk;
         //     amtFireBall = fireBallAbl1.GetComponent<Animator>();
         extraDmg = GetComponent<Attacks>().extraDmg;
+        pl = GetComponent<PlayerController>();
         //OnUpgrade();
         //lastPoint = spawnLocation.position.x + 6f;
     }
@@ -38,7 +40,7 @@ public class LightningMageControllder : MonoBehaviour
         // Kiểm tra xem collider va chạm có phải là Enemy hay EnemyCastle không
 
 
-        GetComponent<Attacks>().isAbl1 = Vector3.Distance(other.transform.position, transform.position) >= 1f;
+        GetComponent<Attacks>().isAbl1 = Vector3.Distance(other.transform.position, transform.position) >= 1.8f;
 
 
     }
@@ -84,12 +86,29 @@ public class LightningMageControllder : MonoBehaviour
                 newSpawn = new Vector3(-i, 0, 0);
             }
 
-            GameObject thunderStrikeInstance = Instantiate(thunerStrike, spawnLocation.position + newSpawn, Quaternion.identity);
+            GameObject thunderStrikeInstance = Instantiate(thunderStrike, spawnLocation.position + newSpawn, Quaternion.identity);
             thunderStrikeInstance.SetActive(true);
 
             // Đợi 0,3 giây trước khi spawn tia sét tiếp theo
             yield return new WaitForSeconds(0.3f);
         }
+    }
+    public void SummondThuner_To_Explosion()
+    {
+        GameObject thunder;
+        float distance = pl.isRightWay ? 4 : -4;
+        Vector3 distanceVector = new Vector3(distance, 0, 0);
+        if (pl.isChosen)
+        {
+
+            thunder = Instantiate(thunderStrike, transform.position + distanceVector, Quaternion.identity);
+
+        }
+        else
+        {
+            thunder = Instantiate(thunderStrike, pl.target.transform.position, Quaternion.identity);
+        }
+        thunder.SetActive(true);
     }
 }
 

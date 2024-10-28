@@ -102,8 +102,9 @@ MonoBehaviour:
   arow_Dmg: 1
   speedArrow: 3
   maxArrowDistance: 8
-  isChangre: 0
+  isChangre: 1
   isColide: 0
+  isAblity: 1
 --- !u!95 &9150078097970515922
 Animator:
   serializedVersion: 5
