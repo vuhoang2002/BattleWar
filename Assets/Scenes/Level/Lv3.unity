@@ -3768,11 +3768,11 @@ PrefabInstance:
       objectReference: {fileID: 3150590802993403629, guid: e6c438e48c15f24458f71819f63596fe, type: 3}
     - target: {fileID: 2463877766458830520, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -786
+      value: -827
       objectReference: {fileID: 0}
     - target: {fileID: 2463877766458830520, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -420
+      value: -311
       objectReference: {fileID: 0}
     - target: {fileID: 2736280596767183343, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: attackSound
@@ -3790,6 +3790,22 @@ PrefabInstance:
       propertyPath: iconOrderActive
       value: 
       objectReference: {fileID: 3150590802993403629, guid: db8353cf4fe7b7546a964442db6e460e, type: 3}
+    - target: {fileID: 3237752416738812661, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_text
+      value: 10/30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237752416738812661, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 3237752416738812661, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 3237752416738812661, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3330888452817368774, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_fontColor.b
       value: 0

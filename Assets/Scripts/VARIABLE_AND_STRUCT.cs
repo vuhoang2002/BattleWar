@@ -54,6 +54,14 @@ public enum UnitOrder
     Hold,
     Null
 }
+public enum SpeardDamage
+{
+    NormalAttack,
+    HaveCount,
+    Ability
+
+}
+
 //dành cho việc sắp xếp
 [System.Serializable]
 public class UnitListOrder
@@ -102,6 +110,7 @@ public class Player_ListObject
         }
         return playerControllers;
     }
+
 }
 
 

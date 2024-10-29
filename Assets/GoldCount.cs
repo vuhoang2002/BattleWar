@@ -4,10 +4,12 @@ using UnityEngine.EventSystems; // Thêm thư viện để sử dụng IPointerC
 using TMPro;
 using Unity.VisualScripting;
 using System;
+using System.Collections;
 
 public class GoldCount : MonoBehaviour, IPointerClickHandler
 {
     public Button gold_Button;
+    public Image unActivePicture;
     public int currentGold = 0;
     public int MAX_GOLD;
     public float time_add_gold = 2f;
@@ -22,6 +24,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
     public Level_Controller levelWarMod;
     public bool isWarMod = false;
     Image rend;
+    public GameObject popUp;
 
 
 
@@ -85,6 +88,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
                 if (!isWarMod)
                 {
                     buttonText.text = currentGold.ToString() + "/" + MAX_GOLD.ToString();
+                    Filled_CointCount_UpgradeGold();
                 }
                 else
                 {
@@ -96,6 +100,7 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
                 Debug.LogError("Không tìm thấy thành phần TextMeshProUGUI trên Button.");
             }
         }
+
         time_add_gold_TIMER += Time.deltaTime;
     }
 
@@ -115,7 +120,8 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
                 MAX_GOLD += MAX_VALUE_GOLD;
                 // ChangeUpgradeGoldValue(old_Max_Gold);
                 upgrade_Gold_Value = (int)(MAX_GOLD * (0.75f));
-                upgradeGold_btn.text = upgrade_Gold_Value.ToString(); ;
+                upgradeGold_btn.text = upgrade_Gold_Value.ToString();
+                ShowPopUpGold();
                 GetComponent<SoundPlay>().PlayBtnSound(true);
                 goldAge++;
             }
@@ -143,6 +149,24 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
         //     upgrade_Gold_Value += (MAX_GOLD) / 4;
         //     upgradeGold_btn.text = goldAge.ToString();
         // } while (upgrade_Gold_Value < MAX_GOLD);
+    }
+    public void Filled_CointCount_UpgradeGold()
+    {
+        if (currentGold < upgrade_Gold_Value)
+        {
+            unActivePicture.fillAmount = 1 - ((float)currentGold / (float)upgrade_Gold_Value);
+        }
+    }
+    public void ShowPopUpGold()
+    {
+        GameObject instance = Instantiate(popUp, transform.position, Quaternion.identity);
+        // Đặt instance là con của đối tượng hiện tại
+        instance.transform.SetParent(transform);
+        // Lấy component TextMeshPro từ instance
+        TextMeshProUGUI textComponent = instance.GetComponentInChildren<TextMeshProUGUI>();
+        textComponent.text = "+ " + MAX_VALUE_GOLD.ToString() + " MAX GOLD VALUE";
+        textComponent.color = Color.yellow;
+
 
     }
 }

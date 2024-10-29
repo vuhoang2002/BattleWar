@@ -740,6 +740,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 117020333328364149, guid: 1211ee287ce0e66439af25c34463e30d, type: 3}
+      propertyPath: speardDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 117020333328364149, guid: 1211ee287ce0e66439af25c34463e30d, type: 3}
       propertyPath: myWeightExtra
       value: 0
       objectReference: {fileID: 0}

@@ -548,7 +548,8 @@ PrefabInstance:
       objectReference: {fileID: 899633302}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
-      value: "B\u1EADc th\u1EA7y c\u1EE7a s\xE9t v\xE0 b\u0103ng"
+      value: "Tia s\xE9t g\xE2y s\xE1t th\u01B0\u01A1ng nhi\u1EC1u m\u1EE5c ti\xEAu, 
+        \u0111\xF2n d\xE1nh th\u01B0\u1EDDng t\u1EA7m xa"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1591,7 +1592,8 @@ PrefabInstance:
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
       value: "Golem v\u1EDBi s\u1EE9c ch\u1ED1ng ch\u1ECBu m\u1EA1nh m\u1EBD, \u0111\u01B0\u1EE3c
-        l\xE0m t\u1EEB \u0111\xE1"
+        l\xE0m t\u1EEB \u0111\xE1, \u0111\xF2n \u0111\xE1nh th\u01B0\u1EDDng g\xE2y
+        s\xE1t th\u01B0\u01A1ng lan"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

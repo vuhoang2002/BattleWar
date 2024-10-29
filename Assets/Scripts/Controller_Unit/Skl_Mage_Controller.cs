@@ -13,6 +13,7 @@ public class Skl_Mage_Controller : MonoBehaviour
     private Animator animator;
     public GameObject skullOne;
     public GameObject skullTwo;
+    public GameObject explosionWhenSummondToken;
     void Start()
     {
         attacks = GetComponent<Attacks>();
@@ -38,7 +39,10 @@ public class Skl_Mage_Controller : MonoBehaviour
         {
             bool direction = GetComponent<PlayerController>().isRightWay;
             int xAxisSummond = direction ? 1 : -1;
-            GameObject summondSkull_Ins = Instantiate(summondSkull, transform.position + new Vector3(xAxisSummond, 0, 0), Quaternion.identity);
+            Vector3 summondPosition = transform.position + new Vector3(xAxisSummond, 0, 0);
+            Creat_Gas_WhenSummondTokenSkull(summondPosition);
+            GameObject summondSkull_Ins = Instantiate(summondSkull, summondPosition, Quaternion.identity);
+
             summondCount++;
             if (summondCount == 1)
             {
@@ -66,6 +70,11 @@ public class Skl_Mage_Controller : MonoBehaviour
             skullTwo.GetComponent<SummondToken>().DestroyWithMaster();
         }
         Debug.Log("Die with me skull");
+    }
+    public void Creat_Gas_WhenSummondTokenSkull(Vector3 position)
+    {
+        GameObject gas_Ins = Instantiate(explosionWhenSummondToken, position, Quaternion.identity);
+        gas_Ins.SetActive(true);
     }
 
 }

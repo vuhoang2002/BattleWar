@@ -16,4 +16,8 @@ public class SummondExplosion : MonoBehaviour
     {
         GameObject explosionIns = Instantiate(prefabExpllosion, position, Quaternion.identity);
     }
+    public void DestroyExplolsion()
+    {
+        Destroy(this.gameObject);
+    }
 }
