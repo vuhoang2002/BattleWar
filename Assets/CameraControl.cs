@@ -18,6 +18,7 @@ public class CameraControl : MonoBehaviour
     public float cameraOffsetX = 1.0f;
     private bool isMoving;// di chuyển mục tiêu
     public static Vector3 myPosition;
+    public bool canMove = true;
 
     void Start()
     {
@@ -30,37 +31,39 @@ public class CameraControl : MonoBehaviour
 
     void Update()
     {
-        if (isMoving)
+        if (canMove)
         {
-            // Di chuyển camera
-            float desiredPositionX = myPosition.x; // Thêm offset
-
-            // Kiểm tra giới hạn
-            desiredPositionX = CheckBounds(desiredPositionX, worldMinPosition.x, worldMaxPosition.x);
-
-            Vector3 smoothedPosition = new Vector3(desiredPositionX, transform.position.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, smoothedPosition, 0.1f);
-
-            // Kiểm tra nếu đã gần đến vị trí
-            if (Vector3.Distance(transform.position, smoothedPosition) < 0.5f)
+            if (isMoving)
             {
-                isMoving = false; // Dừng di chuyển
-                ; // Gọi coroutine để tắt trạng thái di chuyển
+                // Di chuyển camera
+                float desiredPositionX = myPosition.x; // Thêm offset
+
+                // Kiểm tra giới hạn
+                desiredPositionX = CheckBounds(desiredPositionX, worldMinPosition.x, worldMaxPosition.x);
+
+                Vector3 smoothedPosition = new Vector3(desiredPositionX, transform.position.y, transform.position.z);
+                transform.position = Vector3.Lerp(transform.position, smoothedPosition, 0.1f);
+
+                // Kiểm tra nếu đã gần đến vị trí
+                if (Vector3.Distance(transform.position, smoothedPosition) < 0.5f)
+                {
+                    isMoving = false; // Dừng di chuyển
+                    ; // Gọi coroutine để tắt trạng thái di chuyển
+                }
+                StartCoroutine(OffMovingCam());
             }
-            StartCoroutine(OffMovingCam());
-        }
 
-        if (isLockCamera == false)
-        {
-            FreeCamera();
+            if (isLockCamera == false)
+            {
+                FreeCamera();
+            }
+            else
+            {
+                LockCamera();
+                isMoving = false; // Kết thúc di chuyển nếu có player được chọn
+            }
+            // nếu như mà ấn 1 lần vào màn hình( ngoài trừ UI) thì debug cho tôi
         }
-        else
-        {
-            LockCamera();
-            isMoving = false; // Kết thúc di chuyển nếu có player được chọn
-        }
-        // nếu như mà ấn 1 lần vào màn hình( ngoài trừ UI) thì debug cho tôi
-
     }
 
     private IEnumerator OffMovingCam()

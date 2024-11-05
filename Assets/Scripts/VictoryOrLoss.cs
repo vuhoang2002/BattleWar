@@ -19,17 +19,17 @@ public class Victory_Or_Loss : MonoBehaviour
         GameObject battleCanva = GameObject.Find("BattleCanva");
         if (battleCanva == null)
         {
-            Debug.LogError("BattleCanva not found!");
+            //Debug.LogError("BattleCanva not found!");
             return; // Dừng lại nếu không tìm thấy BattleCanva
         }
 
         GameObject ui = battleCanva.transform.Find(uiName)?.gameObject;
         if (ui == null)
         {
-            Debug.LogError(uiName + " not found in BattleCanva!");
+            // Debug.LogError(uiName + " not found in BattleCanva!");
             return; // Dừng lại nếu không tìm thấy UI
         }
-        Debug.Log("UI is" + ui);
+        // Debug.Log("UI is" + ui);
 
         ShowCanva(ui);
         // StartCoroutine(WaitBeforeShowCanva(ui));

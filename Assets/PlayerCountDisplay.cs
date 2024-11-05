@@ -36,7 +36,7 @@ public class PlayerCountDisplay : MonoBehaviour
             if (playerCount <= 0)
             {
                 // thua
-                Debug.Log("Thua");
+                //  Debug.Log("Thua");
                 new Victory_Or_Loss().Get_Loss();
             }
         }

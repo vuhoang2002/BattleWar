@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 // Start is called before the first frame update
@@ -110,7 +112,27 @@ public class Player_ListObject
         }
         return playerControllers;
     }
+}
+[System.Serializable]
+public class SpawnButtonInfo
+{
+    public Vector2 position; // Tọa độ
+    public GameObject button; // Tham chiếu đến nút
 
+    public SpawnButtonInfo(GameObject btn, Vector2 pos)
+    {
+        position = pos;
+        button = btn;
+    }
+    public void setPostionButton(Vector2 postion2)
+    {
+        this.position = postion2;
+    }
+
+    public static implicit operator Vector2(SpawnButtonInfo v)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

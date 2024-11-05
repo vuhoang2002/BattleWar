@@ -273,4 +273,14 @@ public class UnitListManager : MonoBehaviour
         TagList tagList = unitTagLists.Find(tagList => tagList.tagName == prefabName);
         return tagList.unitCount;
     }
+    public void Create_defPosition_All()
+    {
+        int numberOfChildren = transform.childCount;
+        int Index = transform.GetSiblingIndex();
+        for (int i = 1; i < numberOfChildren; i++)
+        {
+            Transform child = transform.GetChild(i);
+            child.GetComponent<FomationManager_NewUprade>().Create_defPosition(); ;
+        }
+    }
 }

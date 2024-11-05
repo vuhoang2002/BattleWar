@@ -136,7 +136,6 @@ public class FomationManager_NewUprade : MonoBehaviour
             Transform child = parent.GetChild(i);
             child.GetComponent<FomationManager_NewUprade>().Create_defPosition(); ;
         }
-
     }
     public void showColum()
     {

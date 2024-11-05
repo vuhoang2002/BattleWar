@@ -20,8 +20,8 @@ public class EarthGolem_Controller : MonoBehaviour
     public void AttackAndCreateExplosionEarth()
     {
         bool isRightWay = GetComponent<PlayerController>().isRightWay;
-        int direction = isRightWay ? 1 : -1;
-        GameObject explosion_Ins = Instantiate(explosionEarth, transform.position + new Vector3(1f, 0.2f, 0), Quaternion.identity);
+        float direction = isRightWay ? 1f : -1f;
+        GameObject explosion_Ins = Instantiate(explosionEarth, transform.position + new Vector3(direction, 0.2f, 0), Quaternion.identity);
         explosion_Ins.SetActive(true);
     }
 }

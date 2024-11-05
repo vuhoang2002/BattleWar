@@ -119,4 +119,24 @@ public class FindObjectAndUI : MonoBehaviour
         Support_For_FunctionCanva("Abl1_Btn", false, functionCanva);
         Support_For_FunctionCanva("Atck_Btn", false, functionCanva);
     }
+    public Transform FindPanel_BattleCanva()
+    {
+        GameObject BattleCanvas = GameObject.Find("BattleCanva");
+        Transform findCanva = BattleCanvas.transform.Find("UnitCanva");
+        findCanva = findCanva.transform.Find("Panel");
+        return findCanva;
+    }
+    public Vector2[] Find_SpawnButton_Location()
+    {
+
+        Transform panel = FindPanel_BattleCanva();
+        int spawnBtnCount = panel.transform.childCount;
+        Vector2[] spawnBtn_Location = new Vector2[spawnBtnCount];
+        //start active
+        for (int i = 0; i < spawnBtnCount; i++)
+        {
+            spawnBtn_Location[i] = panel.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition;
+        }
+        return spawnBtn_Location;
+    }
 }

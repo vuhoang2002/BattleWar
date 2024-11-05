@@ -41,6 +41,8 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public event UnitSpawnedHandler OnUnitSpawned;
     public Level_Controller levelWarMod;
     public bool isWarMod = false;
+    public Transform defAreaUnit;
+    private GameObject mainCamera;
 
     private void Start()
     {
@@ -58,6 +60,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         this.OnUnitSpawned += HandleUnitSpawned;
         cooldownImage.fillAmount = 0;
         levelWarMod.OnBattleStart += HandleBattleStart;
+        mainCamera = GameObject.Find("Main Camera");
         // đăng kí sk war mod
 
     }
@@ -98,29 +101,9 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         Debug.Log("Chế độ chiến tranh đã được kích hoạt.");
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        isHolding = true; // Đặt trạng thái ấn giữ thành true
-        holdTime = 0f; // Reset thời gian ấn giữ
-        StartCoroutine(HandleHold()); // Bắt đầu coroutine xử lý ấn giữ
-    }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isHolding = false; // Đặt trạng thái ấn giữ thành false
 
-        if (holdTime < maxHoldTime)
-        {
-            spawnUnit(); // Spawn đơn vị nếu ấn giữ dưới 1.5 giây
-            ZoomOut(); // Quay lại kích thước ban đầu
-        }
-        else
-        {
-            ZoomOut(); // Quay lại kích thước ban đầu nếu ấn giữ lâu
-            // Tính toán vị trí mới của nút chỉ khi đã giữ lâu hơn maxHoldTime
-            RepositionButton();
-        }
-    }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -180,42 +163,43 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void RepositionButton()
     {
         // Lấy tất cả các nút trong cùng một parent
-        SpawnPlayer[] buttons = FindObjectsOfType<SpawnPlayer>();
-        Vector2 currentPos = rectTransform.anchoredPosition;
-        int newIndex = -1;
+        // SpawnPlayer[] spawnBtns = FindObjectsOfType<SpawnPlayer>();
+        // Vector2 currentPos = rectTransform.anchoredPosition;
+        // int newIndex = -1;
 
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            if (buttons[i] != this) // Tránh so sánh với chính nó
-            {
-                Vector2 buttonPos = buttons[i].rectTransform.anchoredPosition;
+        // for (int i = 0; i < spawnBtns.Length; i++)
+        // {
+        //     if (spawnBtns[i] != this) // Tránh so sánh với chính nó
+        //     {
+        //         Vector2 buttonPos = spawnBtns[i].rectTransform.anchoredPosition;
 
-                if (currentPos.x < buttonPos.x)
-                {
-                    newIndex = i; // Ghi nhận chỉ số nút thay thế
-                    break; // Ngừng vòng lặp nếu đã tìm thấy nút có vị trí lớn hơn
-                }
-            }
-        }
+        //         if (currentPos.x < buttonPos.x)
+        //         {
+        //             newIndex = i; // Ghi nhận chỉ số nút thay thế
+        //             break; // Ngừng vòng lặp nếu đã tìm thấy nút có vị trí lớn hơn
+        //         }
+        //     }
+        // }
+        // // Đặt vị trí mới cho nút
+        // if (newIndex == -1)
+        // {
+        //     // Nếu không tìm thấy nút nào lớn hơn, đặt ở cuối
+        //     rectTransform.SetAsLastSibling();
+        // }
+        // else
+        // {
+        //     // Nếu tìm thấy, đặt vị trí nút hiện tại ra sau nút đang so sánh
+        //     rectTransform.SetAsFirstSibling();
+        //     for (int i = 0; i < newIndex; i++)
+        //     {
+        //         if (spawnBtns[i] != this)
+        //         {
+        //             spawnBtns[i].rectTransform.SetAsLastSibling(); // Đẩy nút khác về cuối
+        //         }
+        //     }
+        // }
+        ChangeButtonLocation();
 
-        // Đặt vị trí mới cho nút
-        if (newIndex == -1)
-        {
-            // Nếu không tìm thấy nút nào lớn hơn, đặt ở cuối
-            rectTransform.SetAsLastSibling();
-        }
-        else
-        {
-            // Nếu tìm thấy, đặt vị trí nút hiện tại ra sau nút đang so sánh
-            rectTransform.SetAsFirstSibling();
-            for (int i = 0; i < newIndex; i++)
-            {
-                if (buttons[i] != this)
-                {
-                    buttons[i].rectTransform.SetAsLastSibling(); // Đẩy nút khác về cuối
-                }
-            }
-        }
     }
 
     public void setUpButton(GameObject unitToSpawn, Sprite unitAvatar, GameObject mapSize, int price, float cd, GameMod mod)
@@ -304,7 +288,122 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         positionSpawn_X = min.x; // Lấy tọa độ X thấp nhất
     }
 
-    private void HandleUnitSpawned(GameObject newUnit, string unitId)
+    private void HandleUnitSpawned(GameObject newUnit, string unitId)// xư lí khi nhân vật đc spawn
     {
+    }
+    public void OnPointerDown(PointerEventData eventData) // khi ấn nút xuống
+    {
+        mainCamera.GetComponent<CameraControl>().canMove = false;// ngăn chặn camera hoạt động
+        isHolding = true; // Đặt trạng thái ấn giữ thành true
+        holdTime = 0f; // Reset thời gian ấn giữ
+        StartCoroutine(HandleHold()); // Bắt đầu coroutine xử lý ấn giữ
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isHolding = false; // Đặt trạng thái ấn giữ thành false
+        mainCamera.GetComponent<CameraControl>().canMove = true;
+        if (holdTime < maxHoldTime)
+        {
+            spawnUnit(); // Spawn đơn vị nếu ấn giữ dưới 1.5 giây
+            ZoomOut(); // Quay lại kích thước ban đầu
+        }
+        else
+        {
+            ZoomOut(); // Quay lại kích thước ban đầu nếu ấn giữ lâu
+            // Tính toán vị trí mới của nút chỉ khi đã giữ lâu hơn maxHoldTime
+            RepositionButton();
+        }
+    }
+    public void ChangeButtonLocation()
+    {
+        Vector2 reactLocation = rectTransform.anchoredPosition; // Lấy tọa độ nút hiện tại
+        List<SpawnButtonInfo> otherLocations = new FindObjectAndUI().Find_UnitPanelFunction().spawnBtnInfoList; // Lấy danh sách các nút khác
+        int targetIndex = -1;
+        float maxPositionX = float.MinValue; // Khởi tạo giá trị nhỏ nhất cho maxPositionX
+        Debug.Log("Tọa đôh nút hiện tại khi nhả ra là " + reactLocation);
+        if (defAreaUnit == null)
+        {
+            FindObjectDefAreaByName(gameObject.name);
+        }
+        for (int i = 0; i < otherLocations.Count; i++)
+        {
+            // Lấy tọa độ hiện tại
+            Vector2 currentPosition = otherLocations[i].position;
+
+            // Kiểm tra xem reactLocation lớn hơn currentPosition không
+            if (reactLocation.x > currentPosition.x && currentPosition.x > maxPositionX)
+            {
+                maxPositionX = currentPosition.x; // Cập nhật giá trị lớn nhất
+                targetIndex = i; // Lưu chỉ số của nút lớn nhất
+            }
+        }
+
+        // Kiểm tra xem có tìm thấy một nút hợp lệ không
+        if (targetIndex != -1)
+        {
+            Debug.Log("reactLocation lớn hơn nút tại vị trí X: " + otherLocations[targetIndex].button.name + " với chỉ số: " + targetIndex);
+
+            // Thay đổi vị trí của nút hiện tại
+            Vector2 targetPosition = otherLocations[targetIndex].position; // Lấy tọa độ của nút khác
+            rectTransform.anchoredPosition = targetPosition; // Cập nhật vị trí của nút hiện tại
+
+            // Cập nhật chỉ số sibling
+            Transform playerUnitList = GameObject.Find("PUnit_List").transform;
+
+            int currentIndex = transform.GetSiblingIndex(); // Lấy chỉ số hiện tại của nút
+            rectTransform.SetSiblingIndex(targetIndex); // Đặt nút hiện tại vào vị trí mới
+            defAreaUnit.transform.SetSiblingIndex(targetIndex + 1);
+            playerUnitList.GetComponent<UnitListManager>().Create_defPosition_All();
+            // otherLocations[targetIndex].button.transform.SetSiblingIndex(currentIndex); // Đặt nút khác về chỉ số cũ
+
+            // Nếu cần, thực hiện thêm các hành động khác
+        }
+        else
+        {
+            Debug.Log("Không tìm thấy nút nào mà reactLocation lớn hơn.");
+        }
+        // tạo danh sách mới sau khi chỉnh
+        new FindObjectAndUI().Find_UnitPanelFunction().CouroutineTime();
+    }
+    private bool IsBetweenX(float pointX, float lowerBoundX, float upperBoundX)
+    {
+        // Kiểm tra xem pointX có nằm giữa lowerBoundX và upperBoundX không
+        return (pointX > lowerBoundX && pointX < upperBoundX) || (pointX < lowerBoundX && pointX > upperBoundX);
+    }
+    private void FindObjectDefAreaByName(string name)
+    {
+        // Tìm vị trí của ký tự '_' trong chuỗi
+        int underscoreIndex = name.IndexOf('_');
+
+        // Nếu không tìm thấy ký tự '_', trả về
+        if (underscoreIndex == -1)
+        {
+            Debug.LogWarning("Ký tự '_' không được tìm thấy trong tên: " + name);
+            return;
+        }
+        // Cắt chuỗi đến ký tự '_', sau đó thêm "_DefArea"
+        string baseName = name.Substring(0, underscoreIndex) + "_DefArea";
+        Transform playerUnitList = GameObject.Find("PUnit_List").transform;
+
+        if (playerUnitList == null)
+        {
+            Debug.LogWarning("Không tìm thấy đối tượng PUnitList.");
+            return;
+        }
+
+        // Tìm đối tượng con theo tên
+        Transform defAreaTransform = playerUnitList.Find(baseName);
+
+        // Kiểm tra và xử lý kết quả
+        if (defAreaTransform != null)
+        {
+            Debug.Log("Đã tìm thấy đối tượng: " + defAreaTransform.name);
+            defAreaUnit = defAreaTransform;
+            // Thực hiện hành động với đối tượng tìm thấy
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy đối tượng: " + baseName);
+        }
     }
 }
