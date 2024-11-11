@@ -10,6 +10,7 @@ public class CheckParentTAG : MonoBehaviour
     public bool isCursor;
     public float currentScaleX;
     public float currentScaleY;
+    public int orderCaculateValue = 1;// giá trị tăng hay giảm của bullet so với parent(order layer)
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class CheckParentTAG : MonoBehaviour
     {
         Renderer rend = GetComponent<Renderer>();
         PlayerController playerController = parentObject.GetComponent<PlayerController>();
-        rend.sortingOrder = playerController.GetOrderLayer() + 1;
+        rend.sortingOrder = playerController.GetOrderLayer() + orderCaculateValue;
         bool isRightWay = playerController.isRightWay;
 
         float scale = playerController.scale;

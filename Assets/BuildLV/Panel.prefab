@@ -114,15 +114,15 @@ MonoBehaviour:
   - unitTag: ArcherSamurai
     prefab: {fileID: 3622957466471559262, guid: 4c44cbe0d7edfdc44bb3b4743035c228, type: 3}
     prefabSprite: {fileID: 2094444279, guid: ddbad37a0ed4db645a85ad1be77e6cc8, type: 3}
-    unitPrice: 75
+    unitPrice: 90
     cdTimerUnit: 8
     unitStrength: 3
     isUnit: 0
   - unitTag: LightningMage
     prefab: {fileID: 5799506397286250514, guid: 0871296892d7538468b4c6efd01e34f1, type: 3}
     prefabSprite: {fileID: 21300000, guid: 566cb9e7567e6fb469db0c3a8aafb033, type: 3}
-    unitPrice: 110
-    cdTimerUnit: 8
+    unitPrice: 160
+    cdTimerUnit: 15
     unitStrength: 7
     isUnit: 0
   - unitTag: WandererMagi
@@ -164,7 +164,7 @@ MonoBehaviour:
     prefab: {fileID: 447399120621047007, guid: 12e4366bbe5402f4f96922922b2cefff, type: 3}
     prefabSprite: {fileID: 21300000, guid: cc96b618da10b15458544fe238b5233a, type: 3}
     unitPrice: 250
-    cdTimerUnit: 8
+    cdTimerUnit: 25
     unitStrength: 9
     isUnit: 0
   - unitTag: SkeletonMagician
@@ -184,8 +184,8 @@ MonoBehaviour:
   - unitTag: FireVizard
     prefab: {fileID: 8460218703059110111, guid: ec3c0f4818b0a8845ae5dba011a8065c, type: 3}
     prefabSprite: {fileID: 21300000, guid: da96b98ec823b1642b1e4e3360f6cbb6, type: 3}
-    unitPrice: 130
-    cdTimerUnit: 10
+    unitPrice: 105
+    cdTimerUnit: 12
     unitStrength: 7
     isUnit: 0
   - unitTag: FireUpgrade
@@ -202,11 +202,19 @@ MonoBehaviour:
     cdTimerUnit: 10
     unitStrength: 5
     isUnit: 0
+  - unitTag: Kitsune
+    prefab: {fileID: 571988412079611092, guid: 2c1b31ee4e807e343a24ae6284ac6e00, type: 3}
+    prefabSprite: {fileID: 21300000, guid: 41afcea2b3cb39442b3f115aff0e96c3, type: 3}
+    unitPrice: 200
+    cdTimerUnit: 25
+    unitStrength: 10
+    isUnit: 0
   selectedUnitTags: []
   UnitPanel: {fileID: 0}
   cloneSpawnBtn: {fileID: 0}
   mapSize: {fileID: 0}
   mod: 0
+  spawnBtnInfoList: []
 --- !u!114 &1243435315843118853
 MonoBehaviour:
   m_ObjectHideFlags: 0

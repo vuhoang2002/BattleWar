@@ -153,7 +153,6 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             else if (isDef_Order)
             {
                 unit_Over_Healing();
-
                 if (transform.position.x < def_Position.x)
                 {//đảm bảo việc vừa spawn thì vẫn đánh
                     isDef_Force = false;
@@ -162,10 +161,10 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
                 {
                     isDef_Force = true; //ép buộc lui về
                 }
-                currentDirection = new Vector3(0, 0, 0);
+                currentDirection = new Vector3(0, 0, 0);// ủa what the hell quên mất r
                 // Logic phòng thủ
                 // Giữ nguyên vị trí, chỉ tấn công kẻ địch trong phạm vi vị trí đó, nếu kẻ địch rời khỏi phạm vi thì quay về
-                if (def_Position != null && isDef_Hold)
+                if (isDef_Hold || isDef_Force)
                 {
                     if (Vector3.Distance(transform.position, def_Position) > 0.1f)
                     {
@@ -996,3 +995,5 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     }
 
 }
+
+//1000 dòng

@@ -319,7 +319,6 @@ MonoBehaviour:
   isDef_Order: 1
   isFallBack_Order: 0
   isHold_Order: 0
-  heal: 5
   def_Position: {x: 0, y: 0, z: 0}
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
@@ -354,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityCount: 1
-  basic_Atk: 10
+  basic_Atk: 13
   basic_Cd: 1.7
   basic_Cd_Time: 0
   abl1_Atk: 10

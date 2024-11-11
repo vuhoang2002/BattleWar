@@ -11,10 +11,18 @@ public class MeleAttack : MonoBehaviour
     public bool isActive = false;
     public SpeardDamage speardDamage;
     public byte spreadDamageCount;
+    public byte spreadDamageCount_Time;
+    public GameObject target;
+    public bool isDestroyAfterCollding = false;// áp dụng cho tuyêt chiêu là bản sao
 
+    void Start()
+    {
+        spreadDamageCount_Time = spreadDamageCount;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        target = other.gameObject;
         if (!isActive) return;
 
         Health health = other.gameObject.GetComponent<Health>();
@@ -22,6 +30,7 @@ public class MeleAttack : MonoBehaviour
         {
             int totalDamage = damage + (CheckTargetUnitClass_Weight(other.gameObject, myWeightExtra) ? extraDmg : 0);
             health.TakeDamage(totalDamage);
+
             if (speardDamage == SpeardDamage.NormalAttack)// đòn đánh thương gây 1 lần sát thương
             {
                 gameObject.SetActive(false);
@@ -29,17 +38,26 @@ public class MeleAttack : MonoBehaviour
             }
             else if (speardDamage == SpeardDamage.HaveCount)
             {
-                if (spreadDamageCount > 0)// số mục tiêu tối đa chịu sát thương lan
+                if (spreadDamageCount_Time > 1)// số mục tiêu tối đa chịu sát thương lan do thực hiện trc 1 lần hàm nên lần này ta chỉnh là 1
                 {
-                    spreadDamageCount--;
+                    spreadDamageCount_Time--;
                 }
                 else
                 {
                     gameObject.SetActive(false);
                     isActive = false;
+                    //spreadDamageCount_Time = spreadDamageCount;
                 }
             }
             // còn lại là Ability gây st lan cho toàn bộ mục tiêu(pháp sư)
+            if (isDestroyAfterCollding)
+            {
+                if (GetComponent<Animator>() != null)
+                {
+                    GetComponent<Animator>().SetBool("Destroy", true);
+                }
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -61,12 +79,16 @@ public class MeleAttack : MonoBehaviour
     }
     public void Off_MeleAttack()
     {
+
         gameObject.SetActive(false);
+
     }
     public void Active_MeleeAttack()
     {
+        spreadDamageCount_Time = spreadDamageCount;
         gameObject.SetActive(true);
         isActive = true;
+
     }
 
 }

@@ -48,6 +48,7 @@ public class Level_Controller : MonoBehaviour
             // chế độ WarMode có thay đổi về vàng
             Debug.Log("khai báo sk");
             OnGameModeChanged_War?.Invoke();
+            title = "Chiến thắng với " + currentGold + " vàng";
             GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
             War_UI.transform.SetParent(battleCanva.transform);
             StartCoroutine(On_WarModeActive(timer, War_UI));
@@ -59,7 +60,7 @@ public class Level_Controller : MonoBehaviour
             timer = (int)level_Surival_Mode.timeSur;
             GameObject War_UI = Instantiate(WarUI, battleCanva.transform.position + new Vector3(0, 151, 0), Quaternion.identity);
             OnGameModeChanged_Survival?.Invoke();
-            title = "Sống sót trong vòng " + timer + "s";
+            title = "Sống sót trong vòng " + timer + "s\n Tiêu diệt hết kẻ địch";
             War_UI.transform.SetParent(battleCanva.transform);
             StartCoroutine(On_SurvivalModeActive(timer, War_UI));
 
@@ -138,7 +139,7 @@ public class Level_Controller : MonoBehaviour
 
         OnKillEnemyToWin?.Invoke();
         warUI.GetComponentInChildren<TextMeshProUGUI>().text = "Kill All Enemy!";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         Destroy(warUI);
         // new Victory_Or_Loss().Get_Victory();
     }

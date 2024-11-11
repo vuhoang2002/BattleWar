@@ -10,23 +10,26 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         // Kiểm tra nếu người chơi nhấn phím Escape để tạm dừng hoặc tiếp tục game
-        
+
     }
 
     public void TogglePause()
     {
         //isPaused = !isPaused;
         pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            // Có thể hiển thị menu pause ở đây
-      
+        Time.timeScale = 0f;
+        // Có thể hiển thị menu pause ở đây
+
     }
-    public void OnPause(){
+    public void OnPause()
+    {
         TogglePause();
+        new FindObjectAndUI().Find_MainCamera().GetComponent<CameraControl>().canMove = false;
     }
     public void OnResumeGame()
-{
-    Time.timeScale = 1f; // Tiếp tục thời gian
-    pauseMenu.SetActive(false); // Ẩn menu pause
-}
+    {
+        Time.timeScale = 1f; // Tiếp tục thời gian
+        pauseMenu.SetActive(false); // Ẩn menu pause
+        new FindObjectAndUI().Find_MainCamera().GetComponent<CameraControl>().canMove = true;
+    }
 }

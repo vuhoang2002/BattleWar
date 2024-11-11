@@ -6,6 +6,7 @@ public class ShowCanva : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Canva;
+    public GameObject offCanva;
     public static bool show = true;
     void Start()
     {
@@ -17,5 +18,10 @@ public class ShowCanva : MonoBehaviour
     {
         Canva.SetActive(show);
         show = !show;
+        OffOtherCanva();
+    }
+    public void OffOtherCanva()
+    {
+        offCanva.SetActive(false);
     }
 }

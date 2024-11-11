@@ -330,7 +330,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.073041566, y: 0.025755078}
@@ -733,7 +733,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 117020333328364149, guid: 1211ee287ce0e66439af25c34463e30d, type: 3}
       propertyPath: damage
-      value: 20
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 117020333328364149, guid: 1211ee287ce0e66439af25c34463e30d, type: 3}
       propertyPath: extraDmg
@@ -890,6 +890,7 @@ MonoBehaviour:
   isCursor: 0
   currentScaleX: 0
   currentScaleY: 0
+  orderCaculateValue: 2
 --- !u!61 &5999224404854455979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -996,6 +997,7 @@ MonoBehaviour:
   isCursor: 0
   currentScaleX: 0
   currentScaleY: 0
+  orderCaculateValue: 1
 --- !u!4 &8710317404246050539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6471150370901828653, guid: 1211ee287ce0e66439af25c34463e30d, type: 3}
@@ -1015,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 5799506397286250514}
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: extraDmg
-      value: 18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: m_Enabled
@@ -1023,12 +1025,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: thunerDmg
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: summondExplosion
       value: 
       objectReference: {fileID: 3154015610067433135}
+    - target: {fileID: 419603150549806997, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+      propertyPath: magicsterOrderLayout
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 646784004252996486, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: m_Color.b
       value: 0.80166054
@@ -1111,7 +1117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6050409959158137948, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050409959158137948, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7576364104817690472, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
       propertyPath: m_Color.b
@@ -1137,8 +1147,7 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.2924528
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6050409959158137948, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3020263793797738343, guid: 86cc312c64480e540847aa82d51884e7, type: 3}
     m_AddedGameObjects: []

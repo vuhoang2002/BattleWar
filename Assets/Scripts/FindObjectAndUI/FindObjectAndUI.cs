@@ -139,4 +139,8 @@ public class FindObjectAndUI : MonoBehaviour
         }
         return spawnBtn_Location;
     }
+    public GameObject Find_MainCamera()
+    {
+        return GameObject.Find("Main Camera");
+    }
 }

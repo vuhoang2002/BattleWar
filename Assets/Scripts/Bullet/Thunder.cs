@@ -21,6 +21,10 @@ public class Thunder : MonoBehaviour
     {
         GetComponent<BoxCollider2D>().enabled = true;
     }
+    public void removeBoxCoiler()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         Health targetHealth = other.GetComponent<Health>();

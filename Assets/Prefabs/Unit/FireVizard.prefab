@@ -341,7 +341,7 @@ MonoBehaviour:
   basic_Atk: 11
   basic_Cd: 1.5
   basic_Cd_Time: 0
-  abl1_Atk: 20
+  abl1_Atk: 25
   abl1_Cd: 1.5
   abl2_Atk: 0
   abl2_Cd: 1
@@ -382,7 +382,6 @@ MonoBehaviour:
   isDef_Order: 1
   isFallBack_Order: 0
   isHold_Order: 0
-  heal: 5
   def_Position: {x: 0, y: 0, z: 0}
   retreat_Position: {x: 0, y: 0, z: 0}
   hold_Position: {x: 0, y: 0, z: 0}
@@ -535,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWeight: 0
-  extraDMGWeight: 0
+  extraDMGWeight: 1
   unitRace: 2
 --- !u!114 &4612677446827444663
 MonoBehaviour:
@@ -1112,6 +1111,7 @@ MonoBehaviour:
   isCursor: 0
   currentScaleX: 0
   currentScaleY: 0
+  orderCaculateValue: 1
 --- !u!4 &2678447742828322024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4708064614801522357, guid: 055fd11877e31a842a5275fdd0092b41, type: 3}

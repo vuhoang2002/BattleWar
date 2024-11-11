@@ -152,8 +152,8 @@ public class Attacks : MonoBehaviour
         //mục tiêu mà chết quá sớm sẽ ko ảnh hưởng gì
         // int damageToDeal = isDealExtraDamage ? (basic_Atk + extraDmg) : basic_Atk;
         //targetHealth.TakeDamage(damageToDeal);
-        MeleAttack.GetComponent<MeleAttack>().isActive = true;
-        MeleAttack.SetActive(true);
+        MeleAttack.GetComponent<MeleAttack>().Active_MeleeAttack();
+
 
     }
 
@@ -229,7 +229,7 @@ public class Attacks : MonoBehaviour
     public void OffMeleAttack()
     {
         // MeleAttack.GetComponent<MeleAttack>().isActive = false;
-        MeleAttack.SetActive(false);
+        MeleAttack.GetComponent<MeleAttack>().Off_MeleAttack();
     }
     public void BasicAttackByBtn()
     {

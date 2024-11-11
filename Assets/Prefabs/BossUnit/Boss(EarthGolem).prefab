@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitWeight: 2
-  extraDMGWeight: 1
+  extraDMGWeight: 0
   unitRace: 0
 --- !u!114 &-5625746903622123534
 MonoBehaviour:

@@ -18,6 +18,7 @@ public class Arrow : MonoBehaviour
     CheckParentTAG checkParentTAG;
     private bool isActive = true;
     public bool isAblity = false;
+    public bool isCanBeDestroyByCollider = true;// là false thì bắn xuyên qua
 
     void Start()
     {
@@ -57,7 +58,10 @@ public class Arrow : MonoBehaviour
             gameObject.SetActive(false);
             isActive = false; // Đánh dấu là không còn hoạt động
         }
-        OnDestroy(); // Hủy mũi tên sau khi trúng đích
+        if (isCanBeDestroyByCollider)
+        {
+            OnDestroy(); // Hủy mũi tên sau khi trúng đích
+        }
     }
 
     public void ArrowFly()

@@ -53,4 +53,22 @@ public class SceneChanger : MonoBehaviour
         current_sceneName = SceneManager.GetActiveScene().name;
         LoadNewScene(current_sceneName);
     }
+    public void LoadToNextLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log("Đang là màn "+currentSceneName );
+        if (currentSceneName.StartsWith("Lv"))
+        {
+            string levelNumberString = currentSceneName.Substring(2); // Remove the "lv" prefix
+            int levelNumber;
+            if (int.TryParse(levelNumberString, out levelNumber))
+            {
+                levelNumber++;
+                string nextLevelSceneName = "Lv" + levelNumber.ToString();
+                Debug.Log("Chuyển màn "+ nextLevelSceneName);
+                SceneManager.LoadScene(nextLevelSceneName);
+            }
+        }
+    }
+
 }

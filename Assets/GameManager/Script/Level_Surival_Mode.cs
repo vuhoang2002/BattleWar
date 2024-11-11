@@ -18,6 +18,7 @@ public class Level_Surival_Mode : MonoBehaviour
     public float timeCallingBoss;
     public GameObject WarUI;
     public bool stopCallingMoster = false;
+    public int monsters_WithBoss = 7;
 
     void Start()
     {
@@ -66,7 +67,7 @@ public class Level_Surival_Mode : MonoBehaviour
                 // Spawn boss
                 GameObject bossUnit_Ins = enemyManager.SpawnUnit_ByPrefab(bossUnit);
                 bossUnit.GetComponent<PlayerController>().SetBehavius(true, false, false, false);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < monsters_WithBoss; i++)
                 {
                     enemyManager.SpawnEnemy(get_RandomUnitIndex(), 1);
                 }

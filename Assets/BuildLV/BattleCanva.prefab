@@ -4425,6 +4425,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5203800583468679200, guid: 3d4deb9bc3ab38b49a771056dcba4509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203800583468679200, guid: 3d4deb9bc3ab38b49a771056dcba4509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -4442,7 +4446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5203800583468679200, guid: 3d4deb9bc3ab38b49a771056dcba4509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNewScene
+      value: LoadToNextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5203800583468679200, guid: 3d4deb9bc3ab38b49a771056dcba4509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

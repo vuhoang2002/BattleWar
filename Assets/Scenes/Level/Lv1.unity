@@ -426,11 +426,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[0].enemyName
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
+      propertyPath: spawnTimer.Array.data[1].enemyName
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[2].enemyName
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[3].enemyName
@@ -446,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[0].spawnCount
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[0].timerSpawn
@@ -458,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[1].timerSpawn
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[2].spawnCount
@@ -466,23 +470,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[2].timerSpawn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
-      propertyPath: spawnTimer.Array.data[3].spawnCount
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
+      propertyPath: spawnTimer.Array.data[3].spawnCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[3].timerSpawn
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[4].spawnCount
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[4].timerSpawn
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[5].spawnCount
@@ -490,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423581820398693827, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: spawnTimer.Array.data[5].timerSpawn
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5233412416526380353, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -543,11 +547,19 @@ PrefabInstance:
     - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[0].enemyPrefab
       value: 
-      objectReference: {fileID: 8275368642616864759, guid: 2388ec94ee44af045a9c4418b0a13cdb, type: 3}
+      objectReference: {fileID: 2916172966324721739, guid: a29d890423538094cab9ed58c0e61204, type: 3}
     - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[1].enemyPrefab
       value: 
-      objectReference: {fileID: 395389567526222890, guid: 589e6998e7620524993c7f56b10e516a, type: 3}
+      objectReference: {fileID: 8275368642616864759, guid: 2388ec94ee44af045a9c4418b0a13cdb, type: 3}
+    - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
+      propertyPath: enemyType.Array.data[2].enemyPrefab
+      value: 
+      objectReference: {fileID: 8667527969351417461, guid: fa2cf0ca9febc4149b667ced742b237f, type: 3}
+    - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
+      propertyPath: enemyType.Array.data[3].enemyPrefab
+      value: 
+      objectReference: {fileID: 3974870113231231300, guid: 21bb67c390ccabe4b815fde3f8813ea7, type: 3}
     - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[4].enemyPrefab
       value: 
@@ -555,7 +567,7 @@ PrefabInstance:
     - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[5].enemyPrefab
       value: 
-      objectReference: {fileID: 3771389466485940781, guid: f3e9448579adc094cbeaa68a929b7673, type: 3}
+      objectReference: {fileID: 2520483857507915414, guid: b4ca4ff1c751875459e14d394a377655, type: 3}
     - target: {fileID: 5273809473902207877, guid: 45555fc48c398d3459bdf000b7f76e5e, type: 3}
       propertyPath: enemyType.Array.data[5].isInCurrentMatch
       value: 1
@@ -742,6 +754,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1973117219128777617, guid: c36edaae88affcb40be605da908eb447, type: 3}
   m_PrefabInstance: {fileID: 1454186248}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &414496864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5203325100928979286, guid: c36edaae88affcb40be605da908eb447, type: 3}
+  m_PrefabInstance: {fileID: 1454186248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4995e88248dd4e49b75a45ca06ad81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &434180396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,6 +2844,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 760841655650997535, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: MAX_PLAYER_COUNT
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1964648175179850309, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2837,10 +2864,22 @@ PrefabInstance:
       propertyPath: unActivePicture
       value: 
       objectReference: {fileID: 1902967106}
+    - target: {fileID: 5916146665956441133, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6017964974306419016, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: mapSize
       value: 
       objectReference: {fileID: 1352302768}
+    - target: {fileID: 6703827138485044424, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 414496864}
+    - target: {fileID: 6703827138485044424, guid: c36edaae88affcb40be605da908eb447, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadToNextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 6842988607868850762, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3502,7 +3541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869499061492357135, guid: 8a28f507f3a59174bbdf7817e3edceb1, type: 3}
       propertyPath: timer
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7869499061492357135, guid: 8a28f507f3a59174bbdf7817e3edceb1, type: 3}
       propertyPath: gameMod
@@ -3514,7 +3553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869499061492357135, guid: 8a28f507f3a59174bbdf7817e3edceb1, type: 3}
       propertyPath: currentGold
-      value: 2500
+      value: 4500
       objectReference: {fileID: 0}
     - target: {fileID: 7869499061492357135, guid: 8a28f507f3a59174bbdf7817e3edceb1, type: 3}
       propertyPath: unitDataPanel

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7045558577231974616}
   - component: {fileID: 566269218770615167}
   - component: {fileID: -6104845775828115395}
+  - component: {fileID: 4827442373499715591}
   m_Layer: 10
   m_Name: MeleAttack
   m_TagString: Untagged
@@ -115,3 +116,35 @@ MonoBehaviour:
   damage: 0
   extraDmg: 0
   myWeightExtra: 0
+  isActive: 0
+  speardDamage: 0
+  spreadDamageCount: 0
+  spreadDamageCount_Time: 0
+  target: {fileID: 0}
+--- !u!50 &4827442373499715591
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107766623144568883}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
