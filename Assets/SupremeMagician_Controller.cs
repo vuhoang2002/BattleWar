@@ -11,6 +11,10 @@ public class SupremeMagician_Controller : MonoBehaviour
     private Attacks attacks;
     private Animator animator;
     public GameObject explosionWhenSummondToken;
+    public GameObject nuclearExplosion;
+    public int nuclear_explosionCount;
+    public float spaceBtwNuclerExplosion;
+
 
     void Start()
     {
@@ -34,17 +38,20 @@ public class SupremeMagician_Controller : MonoBehaviour
             }
         }
     }
-    public void SummondedSkull()
+    public IEnumerator SummondedSupremeObject()
     {
+
         if (summondCount < maxSummondCount)
         {
             int randomIndex = Random.Range(0, summondObject.Count);
+            Debug.Log("Random index là " + randomIndex);
             bool direction = GetComponent<PlayerController>().isRightWay;
             int xAxisSummond = direction ? 1 : -1;
             Vector3 summondPosition = transform.position + new Vector3(xAxisSummond, 0, 0);
             Creat_Gas_WhenSummondTokenSkull(summondPosition);
-            GameObject summondSkull_Ins = Instantiate(summondObject[randomIndex], summondPosition, Quaternion.identity);
-
+            GameObject summondObject_Ins = Instantiate(summondObject[randomIndex], summondPosition, Quaternion.identity);
+            SummondToken summondToken = summondObject_Ins.AddComponent<SummondToken>();
+            summondToken.masterOfToken = this.gameObject;
             summondCount++;
             if (summondCount == 1)
             {
@@ -54,11 +61,12 @@ public class SupremeMagician_Controller : MonoBehaviour
             {
                 /// skullTwo = summondSkull_Ins;
             }
-            summondSkull_Ins.SetActive(true);
+            summondObject_Ins.SetActive(true);
             string parentName = gameObject.CompareTag("Player") ? "PlayerList(Clone)" : "EnemyList(Clone)";
             // Đặt parent cho summondSkull_Ins
             Transform parent = GameObject.Find(parentName).transform;
-            summondSkull_Ins.transform.SetParent(parent);
+            summondObject_Ins.transform.SetParent(parent);
+            yield return new WaitForEndOfFrame();
         }
     }
     public void Creat_Gas_WhenSummondTokenSkull(Vector3 position)
@@ -68,6 +76,16 @@ public class SupremeMagician_Controller : MonoBehaviour
     }
     public IEnumerator Abl_NuclerExplosion()
     {
-        yield return new WaitForSeconds(1f);
+        Debug.Log("eXPLOSIO");
+        float space = GetComponent<PlayerController>().isRightWay ? spaceBtwNuclerExplosion : -spaceBtwNuclerExplosion;
+
+        for (int i = 0; i < nuclear_explosionCount; i++)
+        {
+            GameObject ins = Instantiate(nuclearExplosion, transform.position + new Vector3(space * (i + 1), 0f, 0f), Quaternion.identity);
+            ins.GetComponent<MeleAttack>().SetUp_MeleAttack(attacks.abl1_Atk, attacks.extraDmg, attacks.extraWeight);
+            ins.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+        }
+
     }
 }

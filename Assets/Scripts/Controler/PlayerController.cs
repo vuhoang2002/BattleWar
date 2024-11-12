@@ -882,6 +882,10 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
                 SpriteRenderer childSpriteRenderer = child.GetChild(1).GetComponent<SpriteRenderer>();
                 childSpriteRenderer.color = Color.red;
             }
+            if (child.name.CompareTo("ChosenArea") == 0)
+            {
+                child.gameObject.SetActive(false);
+            }
         }
         ChangePlayerToEnemy();
     }

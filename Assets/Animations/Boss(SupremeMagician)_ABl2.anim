@@ -30,9 +30,21 @@ AnimationClip:
       value: {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
     - time: 0.6
       value: {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
-    - time: 0.75
+    - time: 0.71666664
+      value: {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - time: 0.8333333
+      value: {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - time: 0.96666664
+      value: {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - time: 1.1
+      value: {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - time: 1.2166667
+      value: {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - time: 1.35
+      value: {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - time: 1.4833333
       value: {fileID: 1085138182, guid: 01978ed678d82094b95ec583e4084348, type: 3}
-    - time: 0.9
+    - time: 1.6333333
       value: {fileID: -527423310, guid: 01978ed678d82094b95ec583e4084348, type: 3}
     attribute: m_Sprite
     path: 
@@ -61,6 +73,12 @@ AnimationClip:
     - {fileID: -699582950, guid: 01978ed678d82094b95ec583e4084348, type: 3}
     - {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
     - {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - {fileID: -1044892048, guid: 01978ed678d82094b95ec583e4084348, type: 3}
+    - {fileID: 438519782, guid: 01978ed678d82094b95ec583e4084348, type: 3}
     - {fileID: 1085138182, guid: 01978ed678d82094b95ec583e4084348, type: 3}
     - {fileID: -527423310, guid: 01978ed678d82094b95ec583e4084348, type: 3}
   m_AnimationClipSettings:
@@ -68,7 +86,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.9166666
+    m_StopTime: 1.65
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,4 +105,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.2166667
+    functionName: SummondedSupremeObject
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

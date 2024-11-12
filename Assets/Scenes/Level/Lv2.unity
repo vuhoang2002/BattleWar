@@ -3046,14 +3046,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6baa3f0718807f44fb0a9032e1c232cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSur: 240
+  timeSur: 200
   titleSur: 
   enemyManager: {fileID: 0}
   minSpawnTime: 10
   maxSpawnTime: 14
   enemyTypeCount: 0
-  bossUnit: {fileID: 447399120621047007, guid: 769c14f3235ab0343ab326c31ed5b19e, type: 3}
-  timeCallingBoss: 197
+  bossUnit: {fileID: 1144346200497960483, guid: 8c4941975e2c57345865a20e4ef3a098, type: 3}
+  timeCallingBoss: 185
   WarUI: {fileID: 2140477294476434926, guid: 8f24d0a5b7b081c418069c2a5ea473b2, type: 3}
   stopCallingMoster: 0
   monsters_WithBoss: 30
@@ -3514,7 +3514,7 @@ PrefabInstance:
     - target: {fileID: 1231134606811503517, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: gameplayMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 2823fb34449cba44694ff8804fa80dc8, type: 3}
+      objectReference: {fileID: 8300000, guid: 797d28db9a71677408ff233d74cd3704, type: 3}
     - target: {fileID: 1354464271753230668, guid: c36edaae88affcb40be605da908eb447, type: 3}
       propertyPath: iconOrderActive
       value: 
