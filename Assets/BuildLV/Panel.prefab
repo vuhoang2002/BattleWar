@@ -204,7 +204,7 @@ MonoBehaviour:
     isUnit: 0
   - unitTag: Kitsune
     prefab: {fileID: 571988412079611092, guid: 2c1b31ee4e807e343a24ae6284ac6e00, type: 3}
-    prefabSprite: {fileID: 21300000, guid: 41afcea2b3cb39442b3f115aff0e96c3, type: 3}
+    prefabSprite: {fileID: 21300000, guid: c6bd970faebfcfd4981df32aea7d83b5, type: 3}
     unitPrice: 200
     cdTimerUnit: 25
     unitStrength: 10

@@ -256,8 +256,8 @@ PrefabInstance:
       objectReference: {fileID: 899633302}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
-      value: "Basic Samurai v\u1EDBi t\xEDnh c\u01A1 \u0111\u1ED9ng v\xE0 s\xE1t
-        th\u01B0\u01A1ng \u1ED5n\n"
+      value: "Samurai v\u1EDBi t\xEDnh c\u01A1 \u0111\u1ED9ng v\xE0 s\xE1t th\u01B0\u01A1ng
+        \u1ED5n\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -697,8 +697,8 @@ PrefabInstance:
       objectReference: {fileID: 899633302}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
-      value: "M\u1ED9t \xE1nh nh\xECn c\xF3 th\u1EC3 h\xF3a \u0111\xE1/ th\u1EEBa
-        th\u1EDDi gian s\u1EBD l\xE0m/"
+      value: "Medusa s\xE1t th\u01B0\u01A1ng th\xEAm l\xEAn c\xE1c \u0111\u01A1n
+        v\u1ECB h\u1EA1ng n\u1EB7ng(Heavy)"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2084,7 +2084,7 @@ PrefabInstance:
       objectReference: {fileID: 899633302}
     - target: {fileID: 1769067631167440953, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Name
-      value: Yamabushi_tengu (1)
+      value: Kitsune
       objectReference: {fileID: 0}
     - target: {fileID: 2185696116786790355, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Pivot.x
@@ -2185,7 +2185,7 @@ PrefabInstance:
     - target: {fileID: 4889794194981756454, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 569091988, guid: da0b966d63dd0d14c831fb410b23e78b, type: 3}
+      objectReference: {fileID: 21300000, guid: c6bd970faebfcfd4981df32aea7d83b5, type: 3}
     - target: {fileID: 5735401286994626171, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2204,7 +2204,7 @@ PrefabInstance:
       objectReference: {fileID: 899633302}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: title
-      value: Liliana
+      value: "Y\xEAu h\u1ED3 v\u1EDBi s\xE1t th\u01B0\u01A1ng kh\u1EE7ng"
       objectReference: {fileID: 0}
     - target: {fileID: 7662220044457259384, guid: aaa01cdd696cf024784476a1b1402658, type: 3}
       propertyPath: cardType

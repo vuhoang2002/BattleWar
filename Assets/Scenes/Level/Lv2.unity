@@ -3056,7 +3056,7 @@ MonoBehaviour:
   timeCallingBoss: 185
   WarUI: {fileID: 2140477294476434926, guid: 8f24d0a5b7b081c418069c2a5ea473b2, type: 3}
   stopCallingMoster: 0
-  monsters_WithBoss: 30
+  monsters_WithBoss: 25
 --- !u!1001 &1342464412
 PrefabInstance:
   m_ObjectHideFlags: 0
