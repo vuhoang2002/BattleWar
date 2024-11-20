@@ -54,6 +54,7 @@ public class SummondToken : MonoBehaviour
             randomValue = -0.5f;
             //  pl.SetID(masterOfToken.GetComponent<PlayerController>().id + numberType);
         }
+
         pl.SetID(masterOfToken.GetComponent<PlayerController>().id + numberType);
     }
     public void DestroyWithMaster()

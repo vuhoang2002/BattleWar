@@ -11,6 +11,7 @@ TagManager:
   - EnemyCastle
   - RangerBullet
   - Button
+  - Wall
   layers:
   - Default
   - TransparentFX

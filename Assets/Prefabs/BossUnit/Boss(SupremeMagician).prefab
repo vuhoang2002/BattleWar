@@ -1020,6 +1020,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.0669702
       objectReference: {fileID: 0}
+    - target: {fileID: 2117459410821614876, guid: 6de95df174fa22347b4bbfeea19cbf62, type: 3}
+      propertyPath: maxArrowDistance
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3237059319622315704, guid: 6de95df174fa22347b4bbfeea19cbf62, type: 3}
       propertyPath: m_Color.b
       value: 0

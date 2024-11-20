@@ -67,7 +67,6 @@ public class FomationManager_NewUprade : MonoBehaviour
         unitPerCol.Clear();
         totalColum = 0;
         // sắp xếp bắt đầu
-
         //tính số lượng hàng dọc cần thiết cho việc sắp xếp
         totalColum = unit.Count / Max_Unit_Per_Col;
         for (int i = 1; i <= totalColum; i++)

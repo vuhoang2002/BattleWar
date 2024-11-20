@@ -27,13 +27,13 @@ EditorBuildSettings:
     path: Assets/GameManager/SceneLevelBuild/SurivalModeScene.unity
     guid: 2c0aa78aa307f4843aec2230af8bbf48
   - enabled: 1
-    path: Assets/Scenes/Level/Lv2.unity
+    path: Assets/Scenes/Level/Lv3.unity
     guid: f3fa61403b744be4b98b2fd24178c238
   - enabled: 1
     path: Assets/Scenes/Level/Lv5.unity
     guid: c3049e4aae3af754bbe69e5fcb5f8e30
   - enabled: 1
-    path: Assets/Scenes/Level/Lv3.unity
+    path: Assets/Scenes/Level/Lv2.unity
     guid: 80f0fd7d300c3544f8376477f06bc8f6
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 01494b49833d53948b0c7a3c92f91b2a, type: 2}

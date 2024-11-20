@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     public delegate void SelectionChangedEventHandler(bool isSelected);
     public event SelectionChangedEventHandler OnSelectionChanged;
     public GameObject cursorSelect;
+    public bool isCanFlip = true;
 
 
 
@@ -326,9 +327,9 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         Vector2 currentPosition = transform.position;
         // Tính toán sự thay đổi tọa độ
         currentDirection.x = currentPosition.x - previousPosition.x;
-        // Debug.Log(currentDirection.x);
+        //Debug.Log(currentDirection.x);
         // Kiểm tra sự thay đổi về tọa độ
-        if (currentPosition != previousPosition)
+        if (currentPosition != previousPosition && isCanFlip)
         {
             amt.SetBool("isRunning", true);
         }
@@ -342,19 +343,21 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     // wait for running là isRunning nhưng nó có độ delay( dùng khi command_order)
     void Flip()
     {
-        if (currentDirection.x > 0 && !isRightWay) // Di chuyển sang phải
+        if (isCanFlip)
         {
-            // Debug.Log("Phải Direction.x là" + movement.x + "is rightway là " + isRightWay);
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            isRightWay = true;
-            // Debug.Log("xoay phải");
-        }
-        else if (currentDirection.x < 0 && isRightWay) // Di chuyển sang trái
-        {
-            // Debug.Log(" Trái Direction.x là" + movement.x + "is rightway là " + isRightWay);
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            isRightWay = false;// tức là nhân vật đang quay sang trái, nó có tác dụng trong hàm scale
-
+            if (currentDirection.x > 0 && !isRightWay) // Di chuyển sang phải
+            {
+                // Debug.Log("Phải Direction.x là" + movement.x + "is rightway là " + isRightWay);
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                isRightWay = true;
+                // Debug.Log("xoay phải");
+            }
+            else if (currentDirection.x < 0 && isRightWay) // Di chuyển sang trái
+            {
+                // Debug.Log(" Trái Direction.x là" + movement.x + "is rightway là " + isRightWay);
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x) * scale / Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                isRightWay = false;// tức là nhân vật đang quay sang trái, nó có tác dụng trong hàm scale
+            }
         }
     }
 
@@ -602,6 +605,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     }
     private void OnTriggerStay2D(Collider2D other)
     {
+        //Debug.Log("va chạm vs stay" + other);
         BoxCollider2D boxCollider = other.GetComponent<BoxCollider2D>();
         Collider2D thisCollider = GetComponent<Collider2D>();
         if (!isChosen && (other.gameObject.CompareTag(findTarget) || (other.gameObject.CompareTag(findTargetCastle))) && boxCollider != null)
@@ -617,6 +621,11 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         {
             attackComponent.CallAttack(other.gameObject);
         }
+        // if (other.gameObject.CompareTag("Wall"))
+        // {
+        //     amt.SetBool("isRunning", false);
+        //     isCanFlip = false;
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -627,12 +636,51 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
             //("tấn công");
             //  GetComponent<PolygonCollider2D>().enabled=false;// ngăn chặn tấn công đa mục tiêu
         }
+        //Debug.Log("va chạm vs enter" + other);
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        // Debug.Log(" thoát va chạm vs" + other);
         attackComponent.setAttack(false);
         isColliding = false;
+
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Xử lý va chạm
+            //  Debug.Log("Chạm vào bức tường!");
+
+            amt.SetBool("isRunning", false);
+            isCanFlip = false;
+
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Nhân vật vẫn va chạm vào bức tường
+            //Debug.Log("Đang chạm vào bức tường!");
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Nhân vật rời khỏi bức tường
+            //Debug.Log("Rời khỏi bức tường!");
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                amt.SetBool("isRunning", false);
+                isCanFlip = true;
+            }
+        }
     }
     public void Show_OrderCanva()
     {
@@ -852,7 +900,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
         //throw new NotImplementedException();
-        Debug.Log("hihi");
+        //Debug.Log("hihi");
     }
     // thay đổi layer và tag của đối tượng thành enemy
     public void Change_Prefab_To_Enemy()
@@ -953,7 +1001,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     // nếu isSelect true và nếu isSelect là false
     private void HandleSelectionChanged(bool isSelected)
     {
-        Debug.Log("Đăng kí sự kiện select");
+        // Debug.Log("Đăng kí sự kiện select");
         Transform[] children = GetComponentsInChildren<Transform>();
         //throw new NotImplementedException();
         if (isSelect)
@@ -999,5 +1047,3 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     }
 
 }
-
-//1000 dòng

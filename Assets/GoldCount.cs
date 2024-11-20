@@ -60,7 +60,6 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
 
     void FixedUpdate()
     {
-
         if (!isWarMod)
         {
             if (currentGold >= MAX_GOLD)
@@ -94,10 +93,6 @@ public class GoldCount : MonoBehaviour, IPointerClickHandler
                 {
                     buttonText.text = currentGold.ToString();
                 }
-            }
-            else
-            {
-                Debug.LogError("Không tìm thấy thành phần TextMeshProUGUI trên Button.");
             }
         }
 

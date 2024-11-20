@@ -234,13 +234,12 @@ public class SpawnPlayer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void spawnUnit()
     {
-        // Thiết lập vị trí spawn ngẫu nhiên
+        //xem có đủ điều kiện spawn ko
         if (!isSpawnReady || GOLD_Counter.GetComponent<GoldCount>().currentGold < priceUnit || isWarMod)
         {
             GetComponent<SoundPlay>().PlayBtnSound(false);
             return;
         }
-
         float positionSpawn_Y = Random.Range(lowest_Y, highest_Y);
         isMaxPlayer = playerCountDisplay.get_isMaxPlayer(); // Lấy thông tin về số lượng người chơi hiện tại
 
